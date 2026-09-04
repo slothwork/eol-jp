@@ -17,6 +17,7 @@
     "test:eol-decisions": "node --experimental-strip-types scripts/test-eol-decision.mjs",
     "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
     "test:tracked-products": "node --experimental-strip-types scripts/test-tracked-products.mjs",
+    "test:eol-reminders": "node --experimental-strip-types scripts/test-eol-reminders.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
