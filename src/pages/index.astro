@@ -2,13 +2,40 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductCard from '@/components/ProductCard.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
+import attentionRankingData from '@/data/eol-attention-ranking.json';
 import { featuredProducts, generatedAt, products, recentlyEnded, statusFor, upcomingReleases } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
+
+type AttentionRankingSnapshot = {
+  generatedAt: string | null;
+  periodStart: string | null;
+  periodEnd: string | null;
+  windowDays: number;
+  scopeDays: number;
+  source: string;
+  items: Array<{ slug: string; pageViews: number }>;
+};
+
+const attentionRanking = attentionRankingData as AttentionRankingSnapshot;
 const upcoming90 = upcomingReleases(90);
+const upcoming180 = upcomingReleases(180);
 const upcoming365 = upcomingReleases(365);
 const ended = recentlyEnded(90);
 const featured = featuredProducts().slice(0, 9);
 const updated = new Date(generatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', dateStyle: 'long', timeStyle: 'short' });
+
+const upcomingByProduct = new Map<string, (typeof upcoming180)[number]>();
+for (const item of upcoming180) {
+  if (!upcomingByProduct.has(item.product.slug)) upcomingByProduct.set(item.product.slug, item);
+}
+
+const attentionItems = attentionRanking.items.flatMap((ranking) => {
+  const upcoming = upcomingByProduct.get(ranking.slug);
+  return upcoming ? [{ ...ranking, ...upcoming }] : [];
+});
+const attentionUpdated = attentionRanking.generatedAt
+  ? new Date(attentionRanking.generatedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })
+  : null;
 ---
 <BaseLayout title="EOL情報.jp" description="ソフトウェア、OS、データベース、フレームワークのEOL・サポート終了日を日本語で分かりやすく確認できます。">
   <section class="hero">
@@ -46,10 +73,36 @@ const updated = new Date(generatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/
     </div>
   </section>
 
+  {attentionItems.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2>注目されているEOL情報</h2>
+        <p class="section-lead">
+          {attentionRanking.scopeDays}日以内にEOLを迎える製品のうち、直近{attentionRanking.windowDays}日間に当サイトで閲覧された回数が多い順です。製品の普及率や人気度を示すものではありません。
+        </p>
+        <div class="attention-list">
+          {attentionItems.map(({ product, release, pageViews }, index) => (
+            <div class="attention-row">
+              <div class="attention-rank" aria-label={`${index + 1}位`}>{index + 1}</div>
+              <div>
+                <strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong>
+                <div class="muted">バージョン {release.name} · {formatJaDate(release.eolFrom)}</div>
+              </div>
+              <div><StatusBadge status={statusFor(release)} /></div>
+              <div>{relativeEol(release.eolFrom)}</div>
+              <div class="attention-views">{pageViews.toLocaleString('ja-JP')} 閲覧</div>
+            </div>
+          ))}
+        </div>
+        <p class="section-note">Cloudflare Web Analyticsによるページ閲覧数を集計。{attentionUpdated && <>最終集計：{attentionUpdated}</>}</p>
+      </div>
+    </section>
+  )}
+
   <section class="section">
     <div class="container">
-      <h2>よく確認される製品</h2>
-      <p class="section-lead">日本のWeb開発・インフラ運用で確認機会が多い製品を優先表示します。</p>
+      <h2>主要製品から探す</h2>
+      <p class="section-lead">EOL確認の入口として、主要な開発・インフラ製品を優先表示しています。</p>
       <div class="grid">{featured.map((product) => <ProductCard product={product} />)}</div>
     </div>
   </section>
