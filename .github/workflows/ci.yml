@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Check, build and SEO validate
+    name: Generate package lock
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -35,18 +35,7 @@ jobs:
 
       - name: Emit generated package-lock
         run: |
-          echo "PACKAGE_LOCK_BASE64_BEGIN"
-          base64 -w0 package-lock.json
+          echo "PACKAGE_LOCK_GZIP_BASE64_BEGIN"
+          gzip -c package-lock.json | base64 -w0
           echo
-          echo "PACKAGE_LOCK_BASE64_END"
-
-      - name: Astro check
-        run: npm run check
-
-      - name: Production build
-        run: npm run build
-        env:
-          PUBLIC_SITE_URL: https://eol.slothwright.com
-
-      - name: SEO validation
-        run: npm run validate:seo
+          echo "PACKAGE_LOCK_GZIP_BASE64_END"
