@@ -27,6 +27,92 @@ export const productSummaries: Record<string, string> = {
   nextjs: 'Next.js の各メジャーバージョンについて、サポート状況・EOL・最新リリースを確認できます。アップグレード時は React やNode.js要件、公式移行ガイドも確認してください。'
 };
 
+export type ProductMigrationGuide = {
+  label: string;
+  url: string;
+  note?: string;
+};
+
+export const productMigrationGuides: Record<string, ProductMigrationGuide> = {
+  nodejs: {
+    label: 'Node.js 公式 Migration Guides',
+    url: 'https://nodejs.org/en/blog/migrations'
+  },
+  python: {
+    label: 'Python 公式 What’s New / Porting情報',
+    url: 'https://docs.python.org/3/whatsnew/index.html'
+  },
+  php: {
+    label: 'PHP 公式 移行ガイド',
+    url: 'https://www.php.net/manual/ja/migration85.php'
+  },
+  postgresql: {
+    label: 'PostgreSQL 公式 Upgrading a PostgreSQL Cluster',
+    url: 'https://www.postgresql.org/docs/current/upgrading.html'
+  },
+  mysql: {
+    label: 'MySQL 公式 Upgrading MySQL',
+    url: 'https://dev.mysql.com/doc/refman/8.4/en/upgrading.html'
+  },
+  ubuntu: {
+    label: 'Ubuntu 公式 Release Upgrade Guide',
+    url: 'https://documentation.ubuntu.com/server/how-to/software/upgrade-your-release/'
+  },
+  windows: {
+    label: 'Microsoft 公式 Windowsアップグレード・移行ガイド',
+    url: 'https://learn.microsoft.com/ja-jp/windows/deployment/upgrade/windows-upgrade-and-migration-considerations'
+  },
+  'windows-server': {
+    label: 'Microsoft 公式 Windows Server Upgrade Path',
+    url: 'https://learn.microsoft.com/en-us/windows-server/get-started/install-upgrade-migrate'
+  },
+  kubernetes: {
+    label: 'Kubernetes 公式 kubeadmアップグレードガイド',
+    url: 'https://kubernetes.io/ja/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/'
+  },
+  'docker-engine': {
+    label: 'Docker 公式 Docker Engine Install / Upgrade',
+    url: 'https://docs.docker.com/engine/install/'
+  },
+  nginx: {
+    label: 'nginx 公式 Executable Upgrade',
+    url: 'https://nginx.org/en/docs/control.html#upgrade'
+  },
+  redis: {
+    label: 'Redis 公式 Upgrade Redis Open Source',
+    url: 'https://redis.io/docs/latest/operate/oss_and_stack/install/upgrade/'
+  },
+  mongodb: {
+    label: 'MongoDB 公式 Versioning / Upgrade Path',
+    url: 'https://www.mongodb.com/docs/manual/reference/versioning/'
+  },
+  java: {
+    label: 'Oracle JDK Migration Guide',
+    url: 'https://docs.oracle.com/en/java/javase/26/migrate/index.html',
+    note: 'JDKベンダーによって移行手順やサポート条件が異なるため、実際に利用しているJDKベンダーの資料も確認してください。'
+  },
+  dotnet: {
+    label: 'Microsoft 公式 .NET Upgrade Overview',
+    url: 'https://learn.microsoft.com/en-us/dotnet/core/porting/'
+  },
+  go: {
+    label: 'Go 公式 Release History / Release Notes',
+    url: 'https://go.dev/doc/devel/release'
+  },
+  laravel: {
+    label: 'Laravel 公式 Upgrade Guide',
+    url: 'https://laravel.com/docs/13.x/upgrade'
+  },
+  django: {
+    label: 'Django 公式 Upgrade Guide',
+    url: 'https://docs.djangoproject.com/en/6.0/howto/upgrade-version/'
+  },
+  nextjs: {
+    label: 'Next.js 公式 Upgrade Guides',
+    url: 'https://nextjs.org/docs/app/guides/upgrading'
+  }
+};
+
 export const categoryLabels: Record<string, string> = {
   app: 'アプリケーション',
   database: 'データベース',
