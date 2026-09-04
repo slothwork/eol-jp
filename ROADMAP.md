@@ -42,7 +42,9 @@
 - [x] 「利用中バージョン」ローカル保存
 - [x] マイEOLダッシュボード
 - [x] 30/90/180日前リマインダー（マイEOL閲覧時のローカル判定）
-- [ ] メール / Slack / Discord通知
+- [x] Slack / Discord外部通知のWorker・Cron・Webhook判定基盤
+- [ ] Slack / Discord通知設定UI + Workers KV本番binding
+- [ ] メール通知
 - [ ] 公開JSON API / embeddable badge検討
 
 ## Phase 4 — Trust & expansion
