@@ -2,6 +2,7 @@
 import '@/styles.css';
 import '@/external-notifications.css';
 import ExternalNotificationSettings from '@/components/ExternalNotificationSettings.astro';
+import EmailNotificationSettings from '@/components/EmailNotificationSettings.astro';
 interface Props {
   title: string;
   description: string;
@@ -74,6 +75,7 @@ const showExternalNotificationSettings = canonicalPath === '/my-eol/';
         <section class="section external-notification-section">
           <div class="container">
             <ExternalNotificationSettings />
+            <EmailNotificationSettings />
           </div>
         </section>
       )}
