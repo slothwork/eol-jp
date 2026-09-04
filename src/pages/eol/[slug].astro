@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
-import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
+import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSummary, nearestUpcomingEol, products, recommendedTarget, statusFor } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
 
 export function getStaticPaths() {
@@ -14,8 +14,8 @@ const canonicalPath = `/eol/${product.slug}/`;
 const title = `${product.label}のEOL・サポート終了日`;
 const description = `${product.label}のバージョン別EOL（End of Life）、サポート終了日、最新リリースを日本語で確認できます。`;
 const categoryLabel = getCategoryLabel(product.category);
-const mostUrgent = releases.find((release) => statusFor(release) !== 'ended');
-const target = mostUrgent ? recommendedTarget(product, mostUrgent) : null;
+const nearestEol = nearestUpcomingEol(product);
+const target = nearestEol ? recommendedTarget(product, nearestEol) : null;
 const migrationGuide = getProductMigrationGuide(product);
 const supported = releases.filter((release) => statusFor(release) !== 'ended');
 const ended = releases.filter((release) => statusFor(release) === 'ended');
@@ -24,9 +24,9 @@ const pageUrl = new URL(canonicalPath, siteBase).toString();
 const faq = [
   {
     q: `${product.label} のEOLはいつですか？`,
-    a: mostUrgent
-      ? `${product.label} ${mostUrgent.name} は ${formatJaDate(mostUrgent.eolFrom)} がEOL予定です。製品やリリース系列ごとに期限が異なるため、上の一覧と公式サポート方針を確認してください。`
-      : `現在のスナップショットでは、${product.label} のサポート中バージョンについて確定したEOL日を特定できません。公式サポート方針も確認してください。`
+    a: nearestEol
+      ? `${product.label} ${nearestEol.name} は ${formatJaDate(nearestEol.eolFrom)} が、現在確認できるサポート中系列の中で最も近いEOL予定です。製品やリリース系列ごとに期限が異なるため、上の一覧と公式サポート方針を確認してください。`
+      : `現在のスナップショットでは、${product.label} のサポート中バージョンについて将来のEOL日を特定できません。期限が未定の系列もあるため、公式サポート方針も確認してください。`
   },
   {
     q: `${product.label} のEOL後も使えますか？`,
@@ -35,7 +35,7 @@ const faq = [
   {
     q: `${product.label} はどのバージョンへ更新すればよいですか？`,
     a: target
-      ? `このサイトではサポート中の ${target.name} 系を候補として表示しています。ただし、実際の移行先は互換性、依存関係、LTS方針、ベンダーの移行ガイドを確認して決定してください。`
+      ? `このサイトでは、現在の系列より新しくサポート中と確認できる${target.isLts ? ' LTS' : ''} ${target.name} 系を移行候補として表示しています。ただし、実際の移行先は互換性、依存関係、LTS方針、ベンダーの移行ガイドを確認して決定してください。`
       : '移行先を一律には決められません。公式のサポート方針、互換性情報、依存関係を確認してサポート中のバージョンを選んでください。'
   }
 ];
@@ -123,12 +123,12 @@ const structured = {
     </div>
     <aside class="panel">
       <h2>どうすればいい？</h2>
-      {mostUrgent ? (
+      {nearestEol ? (
         <>
-          <p><strong>{product.label} {mostUrgent.name}</strong> は {relativeEol(mostUrgent.eolFrom)} です。</p>
-          {target && <p>更新を検討する場合は、まずサポート中の <strong>{target.name}</strong> 系を候補にし、公式の移行手順・互換性情報を確認してください。</p>}
+          <p><strong>{product.label} {nearestEol.name}</strong> は、現在確認できるサポート中系列の中で最もEOLが近く、{relativeEol(nearestEol.eolFrom)} です。</p>
+          {target && <p>更新先の候補として、現在の系列より新しくサポート中の {target.isLts && <strong>LTS </strong>}<strong>{target.name}</strong> 系を確認してください。公式の移行手順・互換性情報を確認してから判断してください。</p>}
         </>
-      ) : <p>現在のスナップショットではサポート中バージョンを特定できません。</p>}
+      ) : <p>現在のスナップショットでは、将来のEOL日が確定しているサポート中バージョンを特定できません。期限未定の系列を含め、公式のサポート方針を確認してください。</p>}
       <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
       {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
       {migrationGuide && <>
