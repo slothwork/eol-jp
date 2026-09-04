@@ -13,6 +13,7 @@
     "sync:eol": "node scripts/sync-eol.mjs",
     "sync:attention": "node scripts/sync-eol-attention.mjs",
     "test:attention": "node scripts/test-attention-ranking.mjs",
+    "test:eol-decisions": "node --experimental-strip-types scripts/test-eol-decision.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
