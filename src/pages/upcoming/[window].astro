@@ -11,7 +11,7 @@ const windows = {
 } as const;
 
 export function getStaticPaths() {
-  return Object.keys(windows).map((window) => ({ params: { window } }));
+  return ['30-days', '90-days', '180-days'].map((window) => ({ params: { window } }));
 }
 
 const key = Astro.params.window as keyof typeof windows;
