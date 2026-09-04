@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -17,15 +17,13 @@ concurrency:
 
 jobs:
   validate:
-    name: Generate package lock
+    name: Check, build and SEO validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: chore/npm-lockfile
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,16 +31,15 @@ jobs:
           node-version-file: .nvmrc
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
-      - name: Commit generated package-lock
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          if git diff --cached --quiet; then
-            echo "package-lock.json is already up to date"
-          else
-            git commit -m "chore: add package-lock"
-            git push origin HEAD:chore/npm-lockfile
-          fi
+      - name: Astro check
+        run: npm run check
+
+      - name: Production build
+        run: npm run build
+        env:
+          PUBLIC_SITE_URL: https://eol.slothwright.com
+
+      - name: SEO validation
+        run: npm run validate:seo
