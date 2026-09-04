@@ -45,7 +45,7 @@
 - [x] Slack / Discord外部通知のWorker・Cron・Webhook判定基盤
 - [x] Slack / Discord通知設定UI + Workers KV本番binding
 - [ ] メール通知
-- [ ] 公開JSON API / embeddable badge検討
+- [x] 公開JSON API / embeddable badge
 
 ## Phase 4 — Trust & expansion
 
