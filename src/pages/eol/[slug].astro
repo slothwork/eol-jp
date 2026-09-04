@@ -9,8 +9,10 @@ export function getStaticPaths() {
   return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
 }
 
+const INITIAL_RELEASE_LIMIT = 20;
 const { product } = Astro.props;
 const releases = product.releases.slice().sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
+const hiddenReleaseCount = Math.max(0, releases.length - INITIAL_RELEASE_LIMIT);
 const canonicalPath = `/eol/${product.slug}/`;
 const title = getProductSeoTitle(product);
 const description = getProductSeoDescription(product);
@@ -82,11 +84,11 @@ const structured = {
   <section class="section"><div class="container two-col">
     <div>
       <h2>バージョン別サポート状況</h2>
-      <div class="table-wrap"><table>
+      <div class="table-wrap"><table id="version-support-table">
         <thead><tr><th>バージョン</th><th>状態</th><th>リリース日</th><th>通常サポート</th><th>EOL / セキュリティ終了</th><th>最新</th></tr></thead>
         <tbody>
-          {releases.map((release) => (
-            <tr>
+          {releases.map((release, index) => (
+            <tr hidden={index >= INITIAL_RELEASE_LIMIT} data-version-extra={index >= INITIAL_RELEASE_LIMIT ? '' : undefined}>
               <td><strong>{release.name}</strong>{release.isLts && <><br/><span class="eyebrow">LTS</span></>}</td>
               <td><StatusBadge status={statusFor(release)} /><br/><small>{relativeEol(release.eolFrom)}</small></td>
               <td>{formatJaDate(release.releaseDate)}</td>
@@ -97,6 +99,22 @@ const structured = {
           ))}
         </tbody>
       </table></div>
+      {hiddenReleaseCount > 0 && (
+        <>
+          <p class="section-note">最新 {INITIAL_RELEASE_LIMIT} 件を表示しています。全 {releases.length} 件。</p>
+          <div class="hero-actions">
+            <button
+              class="button"
+              type="button"
+              data-version-more
+              aria-expanded="false"
+              aria-controls="version-support-table"
+            >
+              MORE（残り {hiddenReleaseCount} 件）
+            </button>
+          </div>
+        </>
+      )}
 
       {supported.length > 0 && (
         <section class="subsection">
@@ -157,10 +175,22 @@ const structured = {
         </details>
       ))}
     </div>
-  </div></section>
+  </section>
 
   <section class="section"><div class="container">
     <h2>EOLとは？</h2>
     <p>EOL（End of Life）は、そのバージョンに対する通常の保守・修正・セキュリティ更新などが終了する節目です。製品によって「Active Support」「Security Support」「Maintenance Support」など段階が異なるため、実際の運用では公式のサポート方針も合わせて確認してください。</p>
   </div></section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-version-more]').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll<HTMLTableRowElement>('[data-version-extra]').forEach((row) => {
+          row.hidden = false;
+        });
+        button.setAttribute('aria-expanded', 'true');
+        button.hidden = true;
+      });
+    });
+  </script>
 </BaseLayout>
