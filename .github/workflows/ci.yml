@@ -60,6 +60,9 @@ jobs:
       - name: Public API tests
         run: npm run test:public-api
 
+      - name: JST date boundary tests
+        run: npm run test:date-boundary
+
       - name: Astro check
         run: npm run check
 
