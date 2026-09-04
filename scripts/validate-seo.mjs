@@ -55,6 +55,12 @@ function metaContent(html, attribute, value) {
   return tag?.match(/\bcontent=["']([^"']+)["']/i)?.[1] ?? null;
 }
 
+function robotsDirectives(html) {
+  const content = metaContent(html, 'name', 'robots');
+  if (!content) return [];
+  return content.split(',').map((directive) => directive.trim().toLowerCase()).filter(Boolean);
+}
+
 function validateBreadcrumb(node, label) {
   const items = node?.itemListElement;
   if (!Array.isArray(items) || items.length < 2) {
@@ -83,7 +89,7 @@ async function validateProductPages() {
   const productDirs = entries.filter((entry) => entry.isDirectory());
   if (productDirs.length < 100) fail(`Unexpectedly few product pages: ${productDirs.length}`);
 
-  const canonicals = [];
+  const pages = [];
   for (const entry of productDirs) {
     const relativePath = path.join('eol', entry.name, 'index.html');
     const html = await read(relativePath);
@@ -93,11 +99,12 @@ async function validateProductPages() {
     const expectedCanonical = `${siteOrigin}${label}`;
     const canonical = canonicalFrom(html);
     if (canonical !== expectedCanonical) fail(`${label}: canonical mismatch (${canonical ?? 'missing'})`);
-    else canonicals.push(canonical);
 
-    if (/<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*noindex/i.test(html)) {
-      fail(`${label}: product page must not be noindex`);
-    }
+    const directives = robotsDirectives(html);
+    const noindex = directives.includes('noindex');
+    if (noindex && directives.includes('nofollow')) fail(`${label}: noindex page must remain followable`);
+    if (noindex && !directives.includes('follow')) fail(`${label}: noindex page must explicitly use follow`);
+    pages.push({ canonical: expectedCanonical, indexable: !noindex });
 
     if (!html.includes('aria-label="パンくずリスト"')) fail(`${label}: visible breadcrumb is missing`);
     if (!html.includes('EOLに関するよくある質問')) fail(`${label}: visible FAQ section is missing`);
@@ -126,10 +133,15 @@ async function validateProductPages() {
     }
   }
 
-  return canonicals;
+  const indexableCount = pages.filter((page) => page.indexable).length;
+  const noindexCount = pages.length - indexableCount;
+  if (indexableCount < 20) fail(`Unexpectedly few indexable product pages: ${indexableCount}`);
+  if (noindexCount < 1) fail('Index policy did not classify any sparse product page as noindex');
+
+  return pages;
 }
 
-async function validateSiteOutputs(productCanonicals) {
+async function validateSiteOutputs(productPages) {
   const home = await read('index.html');
   if (home && canonicalFrom(home) !== `${siteOrigin}/`) fail('/: canonical mismatch');
 
@@ -154,16 +166,22 @@ async function validateSiteOutputs(productCanonicals) {
   const sitemap = await read('sitemap.xml');
   const sitemapUrls = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
   if (!sitemapUrls.has(`${siteOrigin}/changes/`)) fail('sitemap.xml: /changes/ is missing');
-  for (const canonical of productCanonicals) {
-    if (!sitemapUrls.has(canonical)) fail(`sitemap.xml: ${canonical} is missing`);
+
+  for (const page of productPages) {
+    if (page.indexable && !sitemapUrls.has(page.canonical)) {
+      fail(`sitemap.xml: indexable ${page.canonical} is missing`);
+    }
+    if (!page.indexable && sitemapUrls.has(page.canonical)) {
+      fail(`sitemap.xml: noindex ${page.canonical} must be excluded`);
+    }
   }
 
   const robots = await read('robots.txt');
   if (!robots.includes(`Sitemap: ${siteOrigin}/sitemap.xml`)) fail('robots.txt: production sitemap URL is missing');
 }
 
-const productCanonicals = await validateProductPages();
-await validateSiteOutputs(productCanonicals);
+const productPages = await validateProductPages();
+await validateSiteOutputs(productPages);
 
 if (failures.length > 0) {
   console.error(`SEO validation failed with ${failures.length} issue(s):`);
@@ -171,4 +189,6 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`SEO validation passed for ${productCanonicals.length} product pages.`);
+const indexableCount = productPages.filter((page) => page.indexable).length;
+const noindexCount = productPages.length - indexableCount;
+console.log(`SEO validation passed for ${productPages.length} product pages: ${indexableCount} indexable, ${noindexCount} noindex.`);
