@@ -28,6 +28,28 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         保存内容を読み込んでいます。
       </div>
 
+      <section class="panel eol-reminder-panel" data-eol-reminder-panel hidden>
+        <div class="calendar-heading-row">
+          <div>
+            <span class="eyebrow">REMINDER</span>
+            <h2>EOLリマインダー</h2>
+          </div>
+          <span class="eyebrow">マイEOL閲覧時に判定</span>
+        </div>
+        <p class="section-lead">利用中バージョンが設定した期限に入ると、ここにリマインダーを表示します。サイトを閉じている間にバックグラウンド通知を送る機能ではありません。</p>
+
+        <fieldset class="reminder-settings">
+          <legend>リマインドするタイミング</legend>
+          <label class="reminder-choice"><input type="checkbox" value="180" data-reminder-threshold /> 180日前</label>
+          <label class="reminder-choice"><input type="checkbox" value="90" data-reminder-threshold /> 90日前</label>
+          <label class="reminder-choice"><input type="checkbox" value="30" data-reminder-threshold /> 30日前</label>
+        </fieldset>
+
+        <div class="notice" data-reminder-empty hidden>現在、新しいリマインダーはありません。</div>
+        <div class="history-list reminder-list" data-reminder-list></div>
+        <p class="section-note">確認済みにしても、次のより近い期限（180日 → 90日 → 30日）に入ると再度リマインドします。設定と確認済み状態もこのブラウザ内だけに保存されます。</p>
+      </section>
+
       <div class="panel" data-my-eol-empty hidden>
         <h2>まだ保存された製品はありません</h2>
         <p>各製品ページの「MY EOL」から利用中バージョンを保存すると、ここに一覧表示されます。</p>
@@ -52,6 +74,19 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <script>
     import { daysUntil, formatJaDate, relativeEol } from '@/lib/date';
     import { statusForRelease, type DecisionStatus } from '@/lib/eol-decision';
+    import {
+      EOL_REMINDER_STORAGE_KEY,
+      acknowledgeReminder,
+      defaultEolReminderState,
+      isReminderAcknowledged,
+      parseEolReminderState,
+      reminderAcknowledgementKey,
+      reminderThresholdForDays,
+      serializeEolReminderState,
+      setReminderThresholdEnabled,
+      type EolReminderState,
+      type ReminderThreshold
+    } from '@/lib/eol-reminders';
     import {
       TRACKED_PRODUCTS_STORAGE_KEY,
       parseTrackedProducts,
@@ -84,6 +119,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       savedAt: string;
     };
 
+    type ReminderEntry = {
+      entry: DashboardEntry;
+      threshold: ReminderThreshold;
+      key: string;
+      days: number;
+    };
+
     const statusLabels: Record<DecisionStatus, string> = {
       ended: 'EOL済み',
       critical: '30日以内',
@@ -110,12 +152,21 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     const totalNode = document.querySelector<HTMLElement>('[data-my-eol-total]');
     const urgentNode = document.querySelector<HTMLElement>('[data-my-eol-urgent]');
     const endedNode = document.querySelector<HTMLElement>('[data-my-eol-ended]');
+    const reminderPanel = document.querySelector<HTMLElement>('[data-eol-reminder-panel]');
+    const reminderList = document.querySelector<HTMLElement>('[data-reminder-list]');
+    const reminderEmpty = document.querySelector<HTMLElement>('[data-reminder-empty]');
+    const reminderThresholdInputs = Array.from(document.querySelectorAll<HTMLInputElement>('[data-reminder-threshold]'));
 
     let state: TrackedProductsState = parseTrackedProducts(null);
+    let reminderState: EolReminderState = defaultEolReminderState();
     let catalog = new Map<string, CatalogProduct>();
 
     const persist = () => {
       localStorage.setItem(TRACKED_PRODUCTS_STORAGE_KEY, serializeTrackedProducts(state));
+    };
+
+    const persistReminderState = () => {
+      localStorage.setItem(EOL_REMINDER_STORAGE_KEY, serializeEolReminderState(reminderState));
     };
 
     const buildEntries = (): DashboardEntry[] => {
@@ -148,6 +199,92 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         });
     };
 
+    const buildReminderEntries = (entries: DashboardEntry[]): ReminderEntry[] => {
+      return entries
+        .flatMap((entry) => {
+          const eolFrom = entry.release?.eolFrom;
+          if (!eolFrom) return [];
+
+          const days = daysUntil(eolFrom);
+          const threshold = reminderThresholdForDays(days, reminderState.thresholds);
+          if (days === null || threshold === null) return [];
+
+          const key = reminderAcknowledgementKey(entry.slug, entry.version, eolFrom, threshold);
+          if (isReminderAcknowledged(reminderState, key)) return [];
+
+          return [{ entry, threshold, key, days } satisfies ReminderEntry];
+        })
+        .sort((a, b) => a.days - b.days || a.entry.label.localeCompare(b.entry.label, 'ja'));
+    };
+
+    const renderReminders = (entries: DashboardEntry[]) => {
+      if (!reminderPanel || !reminderList || !reminderEmpty) return;
+
+      reminderPanel.hidden = entries.length === 0;
+      if (entries.length === 0) return;
+
+      for (const input of reminderThresholdInputs) {
+        const threshold = Number(input.value) as ReminderThreshold;
+        input.checked = reminderState.thresholds.includes(threshold);
+      }
+
+      const reminders = buildReminderEntries(entries);
+      reminderList.replaceChildren();
+      reminderEmpty.hidden = reminders.length !== 0;
+
+      for (const reminder of reminders) {
+        const { entry, threshold, key } = reminder;
+        const article = document.createElement('article');
+        article.className = 'history-item reminder-item';
+
+        const titleRow = document.createElement('div');
+        titleRow.className = 'card-topline';
+
+        const title = document.createElement('h2');
+        const link = document.createElement('a');
+        link.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+        link.textContent = `${entry.label} ${entry.version}`;
+        title.append(link);
+
+        const badge = document.createElement('span');
+        badge.className = `status-badge ${threshold === 30 ? 'status-critical' : threshold === 90 ? 'status-warning' : 'status-planning'}`;
+        badge.textContent = `${threshold}日前リマインダー`;
+        titleRow.append(title, badge);
+
+        const text = document.createElement('p');
+        text.textContent = entry.release
+          ? `EOL: ${formatJaDate(entry.release.eolFrom)}（${relativeEol(entry.release.eolFrom)}）`
+          : 'EOL期限を確認できません。';
+
+        const actions = document.createElement('div');
+        actions.className = 'hero-actions';
+
+        const details = document.createElement('a');
+        details.className = 'button';
+        details.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+        details.textContent = '詳細を見る';
+
+        const acknowledge = document.createElement('button');
+        acknowledge.className = 'button primary';
+        acknowledge.type = 'button';
+        acknowledge.textContent = '確認済みにする';
+        acknowledge.addEventListener('click', () => {
+          try {
+            reminderState = acknowledgeReminder(reminderState, key);
+            persistReminderState();
+            renderReminders(buildEntries());
+          } catch {
+            acknowledge.disabled = true;
+            acknowledge.textContent = '保存できません';
+          }
+        });
+
+        actions.append(details, acknowledge);
+        article.append(titleRow, text, actions);
+        reminderList.append(article);
+      }
+    };
+
     const render = () => {
       if (!list || !empty || !content || !stats || !totalNode || !urgentNode || !endedNode) return;
 
@@ -159,6 +296,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       stats.hidden = entries.length === 0;
       empty.hidden = entries.length !== 0;
       content.hidden = entries.length === 0;
+      renderReminders(entries);
 
       for (const entry of entries) {
         const article = document.createElement('article');
@@ -229,11 +367,25 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       }
     };
 
+    for (const input of reminderThresholdInputs) {
+      input.addEventListener('change', () => {
+        try {
+          const threshold = Number(input.value) as ReminderThreshold;
+          reminderState = setReminderThresholdEnabled(reminderState, threshold, input.checked);
+          persistReminderState();
+          renderReminders(buildEntries());
+        } catch {
+          input.checked = !input.checked;
+        }
+      });
+    }
+
     const initialize = async () => {
       if (!loading || !empty || !content) return;
 
       try {
         state = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+        reminderState = parseEolReminderState(localStorage.getItem(EOL_REMINDER_STORAGE_KEY));
       } catch {
         loading.textContent = 'このブラウザではローカル保存を利用できません。';
         return;

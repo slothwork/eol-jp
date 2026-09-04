@@ -48,6 +48,9 @@ jobs:
       - name: Tracked product storage tests
         run: npm run test:tracked-products
 
+      - name: EOL reminder tests
+        run: npm run test:eol-reminders
+
       - name: Astro check
         run: npm run check
 
