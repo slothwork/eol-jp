@@ -6,7 +6,15 @@ import { formatJaDate, relativeEol } from '@/lib/date';
 const items = upcomingReleases(365);
 ---
 <BaseLayout title="今後1年のEOL・サポート終了予定" description="今後30日、90日、180日、1年以内にEOLを迎えるソフトウェアやOSを期限順に確認できます。">
-  <section class="page-head"><div class="container"><h1>今後1年のEOL予定</h1><p>期限が近い順です。30日以内は特に優先して確認してください。</p></div></section>
+  <section class="page-head"><div class="container">
+    <h1>今後1年のEOL予定</h1>
+    <p>期限が近い順です。30日以内は特に優先して確認してください。</p>
+    <div class="hero-actions">
+      <a class="button" href="/upcoming/30-days/">30日以内</a>
+      <a class="button" href="/upcoming/90-days/">90日以内</a>
+      <a class="button" href="/upcoming/180-days/">180日以内</a>
+    </div>
+  </div></section>
   <section class="section"><div class="container">
     <div class="deadline-list">
       {items.map(({ product, release }) => (

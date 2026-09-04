@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductCard from '@/components/ProductCard.astro';
-import { products } from '@/lib/eol';
+import { getCategoryLabel, products } from '@/lib/eol';
+const categories = [...new Set(products.map((product) => product.category))]
+  .sort((a, b) => getCategoryLabel(a).localeCompare(getCategoryLabel(b), 'ja'));
 ---
 <BaseLayout title="EOL・サポート期限 製品一覧" description="Node.js、Python、PHP、Ubuntu、PostgreSQL、KubernetesなどのEOL・サポート終了日を製品別に確認できます。">
   <section class="page-head"><div class="container">
@@ -10,6 +12,14 @@ import { products } from '@/lib/eol';
     <input id="product-search" class="search-box" type="search" placeholder="例：Python / Ubuntu / PostgreSQL" autocomplete="off" />
   </div></section>
   <section class="section"><div class="container">
+    <h2 id="categories">カテゴリから探す</h2>
+    <p class="section-lead">製品種別ごとのEOL一覧から探せます。</p>
+    <div class="hero-actions">
+      {categories.map((category) => <a class="button" href={`/category/${category}/`}>{getCategoryLabel(category)}</a>)}
+    </div>
+  </div></section>
+  <section class="section"><div class="container">
+    <h2>全製品</h2>
     <div id="product-grid" class="grid">{products.map((product) => <ProductCard product={product} />)}</div>
     <p id="no-results" hidden>該当する製品がありません。</p>
   </div></section>

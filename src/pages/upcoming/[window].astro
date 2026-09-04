@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import { statusFor, upcomingReleases } from '@/lib/eol';
+import { formatJaDate, relativeEol } from '@/lib/date';
+
+const windows = {
+  '30-days': { days: 30, title: '30日以内にEOLを迎える製品', lead: '今後30日以内にEOL・サポート終了を迎える製品です。優先度を上げて更新計画を確認してください。' },
+  '90-days': { days: 90, title: '90日以内にEOLを迎える製品', lead: '今後90日以内にEOL・サポート終了を迎える製品です。移行検証や更新計画を早めに進めるための一覧です。' },
+  '180-days': { days: 180, title: '180日以内にEOLを迎える製品', lead: '今後180日以内にEOL・サポート終了を迎える製品です。半年前からの更新計画や予算化に利用できます。' }
+} as const;
+
+export function getStaticPaths() {
+  return ['30-days', '90-days', '180-days'].map((window) => ({ params: { window } }));
+}
+
+const key = Astro.params.window as keyof typeof windows;
+const config = windows[key];
+const items = upcomingReleases(config.days);
+---
+<BaseLayout title={config.title} description={`${config.lead} EOL日、残り日数、対象バージョンを期限順に確認できます。`} canonicalPath={`/upcoming/${key}/`}>
+  <section class="page-head"><div class="container">
+    <span class="eyebrow">EOL DEADLINE</span>
+    <h1>{config.title}</h1>
+    <p>{config.lead}</p>
+    <div class="hero-actions">
+      <a class="button" href="/upcoming/30-days/">30日以内</a>
+      <a class="button" href="/upcoming/90-days/">90日以内</a>
+      <a class="button" href="/upcoming/180-days/">180日以内</a>
+      <a class="button" href="/upcoming/">1年以内</a>
+    </div>
+  </div></section>
+  <section class="section"><div class="container">
+    <p class="section-lead">該当件数: {items.length}件</p>
+    {items.length > 0 ? (
+      <div class="deadline-list">
+        {items.map(({ product, release }) => (
+          <div class="deadline-row">
+            <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
+            <div><StatusBadge status={statusFor(release)} /></div>
+            <div>{relativeEol(release.eolFrom)}</div>
+            <div class="muted">{formatJaDate(release.eolFrom)}</div>
+          </div>
+        ))}
+      </div>
+    ) : <div class="notice">現在のデータでは、この期間内にEOLを迎える製品はありません。</div>}
+  </div></section>
+</BaseLayout>
