@@ -62,9 +62,39 @@ function detectChanges(previous, next) {
   return changes;
 }
 
+function emptyHistory() {
+  return {
+    schemaVersion: '2',
+    startedAt: '2026-09-04',
+    updatedAt: null,
+    events: []
+  };
+}
+
+function normalizeHistory(value) {
+  if (value && Array.isArray(value.events)) {
+    return {
+      schemaVersion: '2',
+      startedAt: typeof value.startedAt === 'string' ? value.startedAt : '2026-09-04',
+      updatedAt: typeof value.updatedAt === 'string' ? value.updatedAt : null,
+      events: value.events
+    };
+  }
+  return emptyHistory();
+}
+
+function toHistoryEvents(changes, detectedAt) {
+  return changes
+    .filter((change) => ['release-added', 'eol-changed', 'support-changed'].includes(change.type))
+    .map((change) => ({ detectedAt, ...change }));
+}
+
 async function main() {
   let previous = null;
   try { previous = JSON.parse(await fs.readFile(snapshotPath, 'utf8')); } catch {}
+
+  let history = emptyHistory();
+  try { history = normalizeHistory(JSON.parse(await fs.readFile(changeLogPath, 'utf8'))); } catch {}
 
   const response = await fetch(API_URL, { headers: { 'User-Agent': 'eol-jp/0.1 (+https://eol.slothwright.com)' } });
   if (!response.ok) throw new Error(`endoflife.date API returned ${response.status}`);
@@ -79,9 +109,19 @@ async function main() {
   };
 
   const changes = detectChanges(previous, next);
+  const historyEvents = toHistoryEvents(changes, next.generatedAt);
+
+  if (historyEvents.length > 0) {
+    history = {
+      ...history,
+      updatedAt: next.generatedAt,
+      events: [...history.events, ...historyEvents]
+    };
+  }
+
   await fs.writeFile(snapshotPath, `${JSON.stringify(next, null, 2)}\n`);
-  await fs.writeFile(changeLogPath, `${JSON.stringify({ generatedAt: next.generatedAt, changes }, null, 2)}\n`);
-  console.log(`Synced ${next.products.length} products. Changes: ${changes.length}`);
+  await fs.writeFile(changeLogPath, `${JSON.stringify(history, null, 2)}\n`);
+  console.log(`Synced ${next.products.length} products. Changes: ${changes.length}. History events added: ${historyEvents.length}`);
 }
 
 main().catch((error) => {

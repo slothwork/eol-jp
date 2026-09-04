@@ -142,6 +142,7 @@ const structured = {
       <ul>
         {product.links.releasePolicy && <li><a href={product.links.releasePolicy} rel="external">公式リリース / サポート方針</a></li>}
         {product.links.html && <li><a href={product.links.html} rel="external">endoflife.date の {product.label} ページ</a></li>}
+        <li><a href={`/changes/?product=${product.slug}`}>{product.label} の変更履歴</a></li>
       </ul>
     </aside>
   </div></section>

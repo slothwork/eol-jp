@@ -11,6 +11,7 @@ export async function GET({ site }: { site?: URL }) {
     '/upcoming/90-days/',
     '/upcoming/180-days/',
     '/calendar/',
+    '/changes/',
     '/about/',
     ...categories.map((category) => `/category/${category}/`),
     ...products.map((product) => `/eol/${product.slug}/`)

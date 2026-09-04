@@ -1,0 +1,111 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import changeLog from '@/data/change-log.json';
+import { formatJaDate } from '@/lib/date';
+
+type ChangeEvent = {
+  detectedAt: string;
+  type: 'release-added' | 'eol-changed' | 'support-changed';
+  product: string;
+  label: string;
+  release: string;
+  from?: string | null;
+  to?: string | null;
+  eolFrom?: string | null;
+};
+
+type ChangeHistory = {
+  schemaVersion?: string;
+  startedAt?: string | null;
+  updatedAt?: string | null;
+  events?: ChangeEvent[];
+};
+
+const history = changeLog as ChangeHistory;
+const events = (history.events ?? [])
+  .slice()
+  .sort((a, b) => b.detectedAt.localeCompare(a.detectedAt));
+const visibleEvents = events.slice(0, 300);
+const products = [...new Map(visibleEvents.map((event) => [event.product, event.label])).entries()]
+  .sort((a, b) => a[1].localeCompare(b[1], 'ja'));
+
+function changeLabel(event: ChangeEvent) {
+  if (event.type === 'release-added') return 'リリース追加';
+  if (event.type === 'eol-changed') return 'EOL変更';
+  return '通常サポート変更';
+}
+
+function changeText(event: ChangeEvent) {
+  if (event.type === 'release-added') {
+    return event.eolFrom
+      ? `${event.release} が追加されました。EOL: ${formatJaDate(event.eolFrom)}`
+      : `${event.release} が追加されました。EOL日は未定です。`;
+  }
+  return `${formatJaDate(event.from ?? null)} → ${formatJaDate(event.to ?? null)}`;
+}
+---
+<BaseLayout
+  title="EOL・サポート期限の変更履歴"
+  description="endoflife.date の同期で検出したEOL日、通常サポート期限、新規リリースの変更履歴を日本語で確認できます。"
+  canonicalPath="/changes/"
+>
+  <section class="page-head"><div class="container">
+    <span class="eyebrow">CHANGE HISTORY</span>
+    <h1>EOL・サポート期限の変更履歴</h1>
+    <p>定期同期で検出した、EOL日・通常サポート期限・新規リリースの変更を記録します。履歴の記録開始日は {history.startedAt ?? '未設定'} です。</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="notice">
+      <strong>履歴について</strong>
+      <p>このページは公式ベンダーの変更履歴そのものではなく、EOL情報.jp が定期同期時に検出した差分です。重要な判断では必ず製品ページから公式サポート方針も確認してください。</p>
+    </div>
+
+    {visibleEvents.length > 0 ? (
+      <>
+        <div class="history-toolbar">
+          <label for="history-product">製品で絞り込み</label>
+          <select id="history-product" class="history-select">
+            <option value="">すべての製品</option>
+            {products.map(([slug, label]) => <option value={slug}>{label}</option>)}
+          </select>
+          <span class="muted">最新 {visibleEvents.length} 件を表示</span>
+        </div>
+
+        <div class="history-list" id="history-list">
+          {visibleEvents.map((event) => (
+            <article class="history-item" data-product={event.product}>
+              <div class="history-meta">
+                <span class="eyebrow">{changeLabel(event)}</span>
+                <time datetime={event.detectedAt}>{formatJaDate(event.detectedAt.slice(0, 10))}</time>
+              </div>
+              <h2><a href={`/eol/${event.product}/`}>{event.label}</a> {event.release}</h2>
+              <p>{changeText(event)}</p>
+            </article>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="notice history-empty">
+        <strong>まだ変更履歴はありません。</strong>
+        <p>今後の定期同期でEOL日・通常サポート期限・新規リリースの変更を検出すると、ここに蓄積されます。</p>
+      </div>
+    )}
+  </div></section>
+
+  <script is:inline>
+    const select = document.getElementById('history-product');
+    const items = Array.from(document.querySelectorAll('[data-product]'));
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get('product') || '';
+    if (select && initial) select.value = initial;
+    const applyFilter = () => {
+      const value = select?.value || '';
+      for (const item of items) {
+        item.hidden = Boolean(value && item.getAttribute('data-product') !== value);
+      }
+    };
+    if (select) select.addEventListener('change', applyFilter);
+    applyFilter();
+  </script>
+</BaseLayout>
