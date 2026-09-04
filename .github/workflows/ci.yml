@@ -33,6 +33,13 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Emit generated package-lock
+        run: |
+          echo "PACKAGE_LOCK_BASE64_BEGIN"
+          base64 -w0 package-lock.json
+          echo
+          echo "PACKAGE_LOCK_BASE64_END"
+
       - name: Astro check
         run: npm run check
 
