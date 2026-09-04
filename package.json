@@ -12,8 +12,10 @@
     "check": "astro check",
     "sync:eol": "node scripts/sync-eol.mjs",
     "sync:attention": "node scripts/sync-eol-attention.mjs",
+    "analyze:gsc": "node scripts/analyze-search-console.mjs",
     "test:attention": "node scripts/test-attention-ranking.mjs",
     "test:eol-decisions": "node --experimental-strip-types scripts/test-eol-decision.mjs",
+    "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
