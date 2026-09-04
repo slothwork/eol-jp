@@ -45,6 +45,9 @@ jobs:
       - name: Search Console analysis tests
         run: npm run test:gsc-analysis
 
+      - name: Tracked product storage tests
+        run: npm run test:tracked-products
+
       - name: Astro check
         run: npm run check
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
+import TrackedVersionPanel from '@/components/TrackedVersionPanel.astro';
 import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSeoDescription, getProductSeoTitle, getProductSummary, nearestUpcomingEol, products, recommendedTarget, statusFor } from '@/lib/eol';
 import { isIndexableProduct } from '@/lib/index-policy';
 import { formatJaDate, relativeEol } from '@/lib/date';
@@ -83,6 +84,8 @@ const structured = {
 
   <section class="section"><div class="container two-col">
     <div>
+      <TrackedVersionPanel product={product} />
+
       <h2>バージョン別サポート状況</h2>
       <div class="table-wrap"><table id="version-support-table">
         <thead><tr><th>バージョン</th><th>状態</th><th>リリース日</th><th>通常サポート</th><th>EOL / セキュリティ終了</th><th>最新</th></tr></thead>

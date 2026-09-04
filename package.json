@@ -16,6 +16,7 @@
     "test:attention": "node scripts/test-attention-ranking.mjs",
     "test:eol-decisions": "node --experimental-strip-types scripts/test-eol-decision.mjs",
     "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
+    "test:tracked-products": "node --experimental-strip-types scripts/test-tracked-products.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
