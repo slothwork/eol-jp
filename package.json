@@ -12,6 +12,7 @@
     "check": "astro check",
     "sync:eol": "node scripts/sync-eol.mjs",
     "sync:attention": "node scripts/sync-eol-attention.mjs",
+    "test:attention": "node scripts/test-attention-ranking.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {

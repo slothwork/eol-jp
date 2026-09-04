@@ -36,6 +36,9 @@ jobs:
       - name: Attention sync syntax check
         run: node --check scripts/sync-eol-attention.mjs
 
+      - name: Attention ranking tests
+        run: npm run test:attention
+
       - name: Astro check
         run: npm run check
 

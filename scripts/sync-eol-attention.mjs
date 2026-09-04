@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { hasMeaningfulRankingChange } from './attention-ranking-utils.mjs';
 
 const API_ENDPOINT = 'https://api.cloudflare.com/client/v4/graphql';
 const HOSTNAME = 'eol.slothwright.com';
@@ -21,6 +22,13 @@ if (!/^[a-f0-9]{32}$/i.test(accountId)) {
 const snapshotPath = resolve('src/data/eol-snapshot.json');
 const outputPath = resolve('src/data/eol-attention-ranking.json');
 const snapshot = JSON.parse(await readFile(snapshotPath, 'utf8'));
+
+let currentOutput = null;
+try {
+  currentOutput = JSON.parse(await readFile(outputPath, 'utf8'));
+} catch (error) {
+  if (error?.code !== 'ENOENT') throw error;
+}
 
 const now = new Date();
 const periodEnd = now.toISOString();
@@ -120,5 +128,9 @@ const output = {
   items
 };
 
-await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-console.log(`Wrote ${items.length} attention ranking items to ${outputPath}`);
+if (!hasMeaningfulRankingChange(currentOutput, output)) {
+  console.log('Attention ranking is unchanged; keeping the existing snapshot timestamps.');
+} else {
+  await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+  console.log(`Wrote ${items.length} attention ranking items to ${outputPath}`);
+}
