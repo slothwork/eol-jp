@@ -1,0 +1,64 @@
+---
+import '@/styles.css';
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+}
+const { title, description, canonicalPath = Astro.url.pathname, noindex = false } = Astro.props;
+const siteName = 'EOL情報.jp';
+const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString();
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: siteName,
+      url: Astro.site?.toString() ?? canonical,
+      inLanguage: 'ja-JP',
+      description: 'ソフトウェアやOSのEOL・サポート終了日を日本語で確認できるサイト'
+    })}></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="/">EOL情報.jp</a>
+        <nav aria-label="メインナビゲーション">
+          <a href="/eol/">製品一覧</a>
+          <a href="/upcoming/">まもなくEOL</a>
+          <a href="/calendar/">カレンダー</a>
+          <a href="/about/">このサイトについて</a>
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>EOL情報.jp</strong>
+          <p>ソフトウェアのサポート終了を、日本語で分かりやすく。</p>
+        </div>
+        <div>
+          <p>ライフサイクルデータの一部は <a href="https://endoflife.date/" rel="external">endoflife.date</a> を利用しています。</p>
+          <p><a href="/about/">データ出典・免責事項</a> · <a href="/feed.xml">RSS</a> · <a href="/calendar.ics">iCalendar</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

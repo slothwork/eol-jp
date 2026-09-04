@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { generatedAt, sourceUrl } from '@/lib/eol';
+---
+<BaseLayout title="このサイトについて" description="EOL情報.jpの目的、データ出典、更新方法、免責事項について説明します。">
+  <section class="page-head"><div class="container"><h1>このサイトについて</h1><p>「いつサポートが終わるのか」を日本語で素早く判断できることを目的としたEOL情報サイトです。</p></div></section>
+  <section class="section"><div class="container two-col">
+    <div class="panel">
+      <h2>データ出典</h2>
+      <p>ライフサイクルの構造化データは <a href="https://endoflife.date/">endoflife.date</a> のAPIを利用しています。データはMIT Licenseで提供されています。</p>
+      <p>API: <a href={sourceUrl}>{sourceUrl}</a></p>
+      <p>スナップショット生成日時: {generatedAt}</p>
+      <p>製品説明文を機械翻訳して転載するのではなく、当サイトでは独自の短い日本語説明と期限表示を組み合わせます。</p>
+    </div>
+    <aside class="panel">
+      <h2>免責事項</h2>
+      <p>掲載情報の正確性・完全性を保証するものではありません。サポート契約、ディストリビューション、クラウド事業者、Extended Support等により実際の期限が異なる場合があります。</p>
+      <p>重要な更新判断では必ずベンダー・プロジェクト公式情報を確認してください。</p>
+    </aside>
+  </div></section>
+</BaseLayout>

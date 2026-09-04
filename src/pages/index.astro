@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import { featuredProducts, generatedAt, products, recentlyEnded, statusFor, upcomingReleases } from '@/lib/eol';
+import { formatJaDate, relativeEol } from '@/lib/date';
+const upcoming90 = upcomingReleases(90);
+const upcoming365 = upcomingReleases(365);
+const ended = recentlyEnded(90);
+const featured = featuredProducts().slice(0, 9);
+const updated = new Date(generatedAt).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', dateStyle: 'long', timeStyle: 'short' });
+---
+<BaseLayout title="EOL情報.jp" description="ソフトウェア、OS、データベース、フレームワークのEOL・サポート終了日を日本語で分かりやすく確認できます。">
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">END OF LIFE / SUPPORT LIFECYCLE</span>
+      <h1>「このバージョン、いつまで使える？」を日本語ですぐ確認。</h1>
+      <p>EOL（End of Life）やセキュリティサポート終了を、日付だけでなく「あと何日か」まで分かりやすく表示します。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="/eol/">製品を検索する</a>
+        <a class="button" href="/upcoming/">まもなくEOLを見る</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>{products.length}</strong><span>掲載製品</span></div>
+        <div class="stat"><strong>{upcoming90.length}</strong><span>90日以内にEOL</span></div>
+        <div class="stat"><strong>{upcoming365.length}</strong><span>1年以内にEOL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>まもなくEOL</h2>
+      <p class="section-lead">期限が近いものから表示しています。移行・更新計画の優先順位付けに利用できます。</p>
+      <div class="deadline-list">
+        {upcoming365.slice(0, 8).map(({ product, release }) => (
+          <div class="deadline-row">
+            <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
+            <div><StatusBadge status={statusFor(release)} /></div>
+            <div>{relativeEol(release.eolFrom)}</div>
+            <div class="muted">{formatJaDate(release.eolFrom)}</div>
+          </div>
+        ))}
+      </div>
+      <p><a href="/upcoming/">今後1年のEOLをすべて見る →</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>よく確認される製品</h2>
+      <p class="section-lead">日本のWeb開発・インフラ運用で確認機会が多い製品を優先表示します。</p>
+      <div class="grid">{featured.map((product) => <ProductCard product={product} />)}</div>
+    </div>
+  </section>
+
+  {ended.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2>最近EOLになったバージョン</h2>
+        <div class="deadline-list">
+          {ended.slice(0, 5).map(({ product, release }) => (
+            <div class="deadline-row">
+              <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong></div>
+              <div>バージョン {release.name}</div>
+              <div><StatusBadge status="ended" /></div>
+              <div class="muted">{formatJaDate(release.eolFrom)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container notice">
+      <strong>データ更新：</strong> {updated}。ライフサイクル情報は endoflife.date API を基礎データとして利用し、表示用に正規化しています。
+    </div>
+  </section>
+</BaseLayout>

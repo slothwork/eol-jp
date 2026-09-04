@@ -1,0 +1,90 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import process from 'node:process';
+
+const API_URL = 'https://endoflife.date/api/v1/products/full';
+const snapshotPath = path.resolve('src/data/eol-snapshot.json');
+const changeLogPath = path.resolve('src/data/change-log.json');
+
+const nullableDate = (value) => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
+const nullableString = (value) => typeof value === 'string' && value.length > 0 ? value : null;
+
+function normalizeProduct(product) {
+  return {
+    slug: product.name,
+    label: product.label ?? product.name,
+    category: product.category ?? 'app',
+    versionCommand: nullableString(product.versionCommand),
+    links: {
+      html: nullableString(product.links?.html),
+      releasePolicy: nullableString(product.links?.releasePolicy)
+    },
+    releases: Array.isArray(product.releases) ? product.releases.map((release) => ({
+      name: String(release.name ?? release.label ?? 'unknown'),
+      label: nullableString(release.label),
+      codename: nullableString(release.codename),
+      releaseDate: nullableDate(release.releaseDate),
+      isLts: Boolean(release.isLts),
+      ltsFrom: nullableDate(release.ltsFrom),
+      eoasFrom: nullableDate(release.eoasFrom),
+      eolFrom: nullableDate(release.eolFrom),
+      isEol: Boolean(release.isEol),
+      isMaintained: Boolean(release.isMaintained),
+      latest: {
+        name: nullableString(release.latest?.name),
+        date: nullableDate(release.latest?.date),
+        link: nullableString(release.latest?.link)
+      }
+    })) : []
+  };
+}
+
+function releaseKey(product, release) {
+  return `${product.slug}@@${release.name}`;
+}
+
+function detectChanges(previous, next) {
+  const oldMap = new Map();
+  for (const product of previous?.products ?? []) for (const release of product.releases ?? []) oldMap.set(releaseKey(product, release), release);
+  const changes = [];
+  for (const product of next.products) {
+    for (const release of product.releases) {
+      const old = oldMap.get(releaseKey(product, release));
+      if (!old) {
+        changes.push({ type: 'release-added', product: product.slug, label: product.label, release: release.name, eolFrom: release.eolFrom });
+        continue;
+      }
+      if (old.eolFrom !== release.eolFrom) changes.push({ type: 'eol-changed', product: product.slug, label: product.label, release: release.name, from: old.eolFrom, to: release.eolFrom });
+      if (old.eoasFrom !== release.eoasFrom) changes.push({ type: 'support-changed', product: product.slug, label: product.label, release: release.name, from: old.eoasFrom, to: release.eoasFrom });
+      if (old.latest?.name !== release.latest?.name) changes.push({ type: 'latest-changed', product: product.slug, label: product.label, release: release.name, from: old.latest?.name ?? null, to: release.latest?.name ?? null });
+    }
+  }
+  return changes;
+}
+
+async function main() {
+  let previous = null;
+  try { previous = JSON.parse(await fs.readFile(snapshotPath, 'utf8')); } catch {}
+
+  const response = await fetch(API_URL, { headers: { 'User-Agent': 'eol-jp/0.1 (+https://eol.slothwright.com)' } });
+  if (!response.ok) throw new Error(`endoflife.date API returned ${response.status}`);
+  const payload = await response.json();
+  if (!Array.isArray(payload.result)) throw new Error('Unexpected API payload: result is not an array');
+
+  const next = {
+    schemaVersion: String(payload.schema_version ?? 'unknown'),
+    generatedAt: String(payload.generated_at ?? new Date().toISOString()),
+    sourceUrl: API_URL,
+    products: payload.result.map(normalizeProduct).filter((product) => product.slug && product.releases.length > 0)
+  };
+
+  const changes = detectChanges(previous, next);
+  await fs.writeFile(snapshotPath, `${JSON.stringify(next, null, 2)}\n`);
+  await fs.writeFile(changeLogPath, `${JSON.stringify({ generatedAt: next.generatedAt, changes }, null, 2)}\n`);
+  console.log(`Synced ${next.products.length} products. Changes: ${changes.length}`);
+}
+
+main().catch((error) => {
+  console.error(error instanceof Error ? error.stack : error);
+  process.exit(1);
+});

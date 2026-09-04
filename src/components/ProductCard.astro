@@ -1,0 +1,25 @@
+---
+import type { Product } from '@/lib/eol';
+import { getCategoryLabel, getProductSummary, statusFor } from '@/lib/eol';
+import { daysUntil, relativeEol } from '@/lib/date';
+import StatusBadge from '@/components/StatusBadge.astro';
+interface Props { product: Product }
+const { product } = Astro.props;
+const next = product.releases
+  .map((release) => ({ release, days: daysUntil(release.eolFrom) }))
+  .filter((item) => item.days !== null && item.days >= 0)
+  .sort((a, b) => (a.days ?? Infinity) - (b.days ?? Infinity))[0];
+---
+<article class="product-card" data-search={`${product.label} ${product.slug} ${getCategoryLabel(product.category)}`.toLowerCase()}>
+  <div class="card-topline">
+    <span class="eyebrow">{getCategoryLabel(product.category)}</span>
+    {next && <StatusBadge status={statusFor(next.release)} />}
+  </div>
+  <h3><a href={`/eol/${product.slug}/`}>{product.label}</a></h3>
+  <p>{getProductSummary(product)}</p>
+  {next ? (
+    <p class="card-deadline"><strong>{next.release.name}</strong>：{relativeEol(next.release.eolFrom)}</p>
+  ) : (
+    <p class="card-deadline">今後のEOL日が登録されていません。</p>
+  )}
+</article>
