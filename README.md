@@ -64,14 +64,25 @@ GitHub Actionsの `Sync EOL attention ranking` は毎週月曜 00:45 UTC に実�
 
 1. Cloudflare DashboardのWeb Analyticsで `eol.slothwright.com` を有効化する。Cloudflareでプロキシしているサイトは自動セットアップを利用できます。
 2. Cloudflare API Tokenを作成し、`Account > Account Analytics > Read` 権限を付与する。
-3. GitHub repository secretsに以下を登録する。
+3. GitHubのfine-grained personal access tokenを `eol-jp` リポジトリだけに限定して作成する。
+4. fine-grained PATには以下のRepository permissionsだけを付与する。
+
+```text
+Contents: Read and write
+Pull requests: Read and write
+```
+
+5. GitHub repository secretsに以下を登録する。
 
 ```text
 CLOUDFLARE_API_TOKEN=<Cloudflare API Token>
 CLOUDFLARE_ACCOUNT_ID=<Cloudflare Account ID>
+EOL_AUTOMATION_TOKEN=<GitHub fine-grained PAT>
 ```
 
-Secretsが未設定の場合、ランキング同期workflowはエラーにせずスキップします。ランキングデータが空の場合、トップページのランキングセクションも表示しません。
+`EOL_AUTOMATION_TOKEN` はランキング更新ブランチのpushとPR作成・更新に使います。標準の `GITHUB_TOKEN` でActionsからPRを作成すると、そのPRのCIは承認待ちになるため、通常のPRと同様にCIを自動実行させる目的で専用トークンを使用します。不要な権限は追加せず、トークンの有効期限前に更新してください。
+
+Cloudflare Secretsが未設定の場合、ランキング同期はデータ取得をスキップします。`EOL_AUTOMATION_TOKEN` が未設定の場合は、自動PRのCIを保証できないためworkflowを明示的に失敗させます。ランキングデータが空の場合、トップページのランキングセクションは表示しません。
 
 ## ローカル実行
 
