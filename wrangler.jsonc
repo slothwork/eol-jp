@@ -6,7 +6,11 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/notifications/*"]
+    "run_worker_first": [
+      "/api/notifications/*",
+      "/api/v1/*",
+      "/badge/*"
+    ]
   },
   "kv_namespaces": [
     {

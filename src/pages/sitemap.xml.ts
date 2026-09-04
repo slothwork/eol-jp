@@ -16,6 +16,7 @@ export async function GET({ site }: { site?: URL }) {
     '/upcoming/180-days/',
     '/calendar/',
     '/changes/',
+    '/api/',
     '/about/',
     ...categories.map((category) => `/category/${category}/`),
     ...indexableProducts.map((product) => `/eol/${product.slug}/`)

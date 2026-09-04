@@ -9,6 +9,12 @@ import {
   type NotificationChannel,
   type NotificationSubscription
 } from './notification-core';
+import {
+  buildBadgeSvg,
+  buildProductIndex,
+  buildProductPayload,
+  type PublicCatalog
+} from './public-api';
 
 type KvListResult = {
   keys: Array<{ name: string }>;
@@ -31,12 +37,26 @@ type Env = {
 const PREFIX = 'subscription:';
 const MAX_BODY_BYTES = 32_768;
 const SITE_ORIGIN = 'https://eol.slothwright.com';
+const PUBLIC_CACHE_CONTROL = 'public, max-age=300, s-maxage=3600';
 
 function json(data: unknown, status = 200): Response {
   return Response.json(data, {
     status,
     headers: {
       'Cache-Control': 'no-store',
+      'X-Content-Type-Options': 'nosniff'
+    }
+  });
+}
+
+function publicJson(data: unknown, status = 200, head = false): Response {
+  const body = head ? null : JSON.stringify(data);
+  return new Response(body, {
+    status,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': status === 200 ? PUBLIC_CACHE_CONTROL : 'public, max-age=60',
+      'Access-Control-Allow-Origin': '*',
       'X-Content-Type-Options': 'nosniff'
     }
   });
@@ -228,10 +248,64 @@ async function handleApi(request: Request, env: Env): Promise<Response> {
   return json({ error: 'method_not_allowed' }, 405);
 }
 
-async function loadCatalog(env: Env): Promise<NotificationCatalog> {
+async function loadCatalog(env: Env): Promise<NotificationCatalog & PublicCatalog> {
   const response = await env.ASSETS.fetch(new Request('https://assets.local/my-eol-data.json'));
   if (!response.ok) throw new Error(`catalog_fetch_${response.status}`);
-  return response.json() as Promise<NotificationCatalog>;
+  return response.json() as Promise<NotificationCatalog & PublicCatalog>;
+}
+
+async function handlePublicApi(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+        'Access-Control-Max-Age': '86400'
+      }
+    });
+  }
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return publicJson({ error: 'method_not_allowed' }, 405, request.method === 'HEAD');
+  }
+
+  const catalog = await loadCatalog(env);
+  const head = request.method === 'HEAD';
+  if (url.pathname === '/api/v1/products' || url.pathname === '/api/v1/products/') {
+    return publicJson(buildProductIndex(catalog), 200, head);
+  }
+
+  const match = /^\/api\/v1\/products\/([a-z0-9._-]+)\/?$/i.exec(url.pathname);
+  if (!match) return publicJson({ error: 'not_found' }, 404, head);
+  const version = url.searchParams.get('version')?.trim() || null;
+  const payload = buildProductPayload(catalog, match[1], version, new Date());
+  if (!payload) return publicJson({ error: version ? 'version_not_found' : 'product_not_found' }, 404, head);
+  return publicJson(payload, 200, head);
+}
+
+async function handleBadge(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return new Response(null, { status: 405, headers: { Allow: 'GET, HEAD' } });
+  }
+  const match = /^\/badge\/([a-z0-9._-]+)\.svg$/i.exec(url.pathname);
+  if (!match) return new Response(null, { status: 404 });
+
+  const catalog = await loadCatalog(env);
+  const version = url.searchParams.get('version')?.trim() || null;
+  const badge = buildBadgeSvg(catalog, match[1], version, new Date());
+  return new Response(request.method === 'HEAD' ? null : badge.svg, {
+    status: 200,
+    headers: {
+      'Content-Type': 'image/svg+xml; charset=utf-8',
+      'Cache-Control': PUBLIC_CACHE_CONTROL,
+      'Access-Control-Allow-Origin': '*',
+      'X-Content-Type-Options': 'nosniff',
+      'Content-Security-Policy': "default-src 'none'",
+      'X-EOL-Badge-Found': badge.found ? '1' : '0'
+    }
+  });
 }
 
 async function processSubscription(kv: KvNamespace, subscription: NotificationSubscription, catalog: NotificationCatalog, now: Date): Promise<void> {
@@ -287,6 +361,8 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname.startsWith('/api/notifications/')) return handleApi(request, env);
+    if (url.pathname.startsWith('/api/v1/')) return handlePublicApi(request, env);
+    if (url.pathname.startsWith('/badge/')) return handleBadge(request, env);
     return env.ASSETS.fetch(request);
   },
 
