@@ -3,21 +3,38 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import { statusFor, upcomingReleases } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
+
 const items = upcomingReleases(365);
+const priorityItems = items.filter(({ release }) => statusFor(release) !== 'supported');
+const supportedItems = items
+  .filter(({ release }) => statusFor(release) === 'supported')
+  .map(({ product, release }) => ({
+    productLabel: product.label,
+    productSlug: product.slug,
+    version: release.name,
+    relative: relativeEol(release.eolFrom),
+    date: formatJaDate(release.eolFrom)
+  }));
+const supportedItemsJson = JSON.stringify(supportedItems).replace(/</g, '\\u003c');
 ---
 <BaseLayout title="今後1年のEOL・サポート終了予定" description="今後30日、90日、180日、1年以内にEOLを迎えるソフトウェアやOSを期限順に確認できます。">
   <section class="page-head"><div class="container">
     <h1>今後1年のEOL予定</h1>
-    <p>期限が近い順です。30日以内は特に優先して確認してください。</p>
+    <p>初期表示では180日以内にEOLを迎えるものを期限順に表示します。181日〜1年以内の「サポート中」は必要なときだけ表示できます。</p>
     <div class="hero-actions">
       <a class="button" href="/upcoming/30-days/">30日以内</a>
       <a class="button" href="/upcoming/90-days/">90日以内</a>
       <a class="button" href="/upcoming/180-days/">180日以内</a>
+      {supportedItems.length > 0 && (
+        <button id="toggle-supported" class="button" type="button" data-count={supportedItems.length} aria-expanded="false" aria-controls="supported-eol-list">
+          サポート中も表示（{supportedItems.length}件）
+        </button>
+      )}
     </div>
   </div></section>
   <section class="section"><div class="container">
     <div class="deadline-list">
-      {items.map(({ product, release }) => (
+      {priorityItems.map(({ product, release }) => (
         <div class="deadline-row">
           <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
           <div><StatusBadge status={statusFor(release)} /></div>
@@ -26,5 +43,69 @@ const items = upcomingReleases(365);
         </div>
       ))}
     </div>
+    <div id="supported-eol-list" class="deadline-list" hidden></div>
   </div></section>
+  <script id="supported-eol-data" type="application/json" is:inline set:html={supportedItemsJson}></script>
+  <script>
+    const toggle = document.querySelector<HTMLButtonElement>('#toggle-supported');
+    const list = document.querySelector<HTMLElement>('#supported-eol-list');
+    const dataElement = document.querySelector<HTMLScriptElement>('#supported-eol-data');
+    let rendered = false;
+
+    function renderSupportedItems() {
+      if (rendered || !list || !dataElement) return;
+      const items = JSON.parse(dataElement.textContent ?? '[]') as Array<{
+        productLabel: string;
+        productSlug: string;
+        version: string;
+        relative: string;
+        date: string;
+      }>;
+
+      const fragment = document.createDocumentFragment();
+      items.forEach((item) => {
+        const row = document.createElement('div');
+        row.className = 'deadline-row';
+
+        const productCell = document.createElement('div');
+        const strong = document.createElement('strong');
+        const link = document.createElement('a');
+        link.href = `/eol/${item.productSlug}/`;
+        link.textContent = item.productLabel;
+        strong.append(link);
+        const version = document.createElement('div');
+        version.className = 'muted';
+        version.textContent = `バージョン ${item.version}`;
+        productCell.append(strong, version);
+
+        const statusCell = document.createElement('div');
+        const badge = document.createElement('span');
+        badge.className = 'status-badge status-supported';
+        badge.textContent = 'サポート中';
+        statusCell.append(badge);
+
+        const relativeCell = document.createElement('div');
+        relativeCell.textContent = item.relative;
+
+        const dateCell = document.createElement('div');
+        dateCell.className = 'muted';
+        dateCell.textContent = item.date;
+
+        row.append(productCell, statusCell, relativeCell, dateCell);
+        fragment.append(row);
+      });
+      list.append(fragment);
+      rendered = true;
+    }
+
+    toggle?.addEventListener('click', () => {
+      if (!list) return;
+      const shouldShow = list.hidden;
+      if (shouldShow) renderSupportedItems();
+      list.hidden = !shouldShow;
+      toggle.setAttribute('aria-expanded', String(shouldShow));
+      const count = toggle.dataset.count ?? '0';
+      toggle.textContent = shouldShow ? 'サポート中を隠す' : `サポート中も表示（${count}件）`;
+    });
+  </script>
 </BaseLayout>
