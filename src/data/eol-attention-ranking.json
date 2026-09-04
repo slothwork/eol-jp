@@ -1,9 +1,14 @@
 {
-  "generatedAt": null,
-  "periodStart": null,
-  "periodEnd": null,
+  "generatedAt": "2026-09-04T05:57:35.264Z",
+  "periodStart": "2026-08-05T05:57:35.264Z",
+  "periodEnd": "2026-09-04T05:57:35.264Z",
   "windowDays": 30,
   "scopeDays": 180,
   "source": "cloudflare-web-analytics",
-  "items": []
+  "items": [
+    {
+      "slug": "chrome",
+      "pageViews": 10
+    }
+  ]
 }
