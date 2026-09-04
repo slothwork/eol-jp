@@ -1,5 +1,6 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
+import { productSeoOverrides } from '@/data/product-seo';
 import { daysUntil } from '@/lib/date';
 import {
   chooseRecommendedTarget,
@@ -57,6 +58,16 @@ export function getCategoryLabel(category: string): string {
 export function getProductSummary(product: Product): string {
   return productSummaries[product.slug]
     ?? `${product.label} のバージョン別サポート期限、EOL（End of Life）、最新リリースを日本語で確認できます。`;
+}
+
+export function getProductSeoTitle(product: Product): string {
+  return productSeoOverrides[product.slug]?.title
+    ?? `${product.label}のEOL・サポート終了日`;
+}
+
+export function getProductSeoDescription(product: Product): string {
+  return productSeoOverrides[product.slug]?.description
+    ?? `${product.label}のバージョン別EOL（End of Life）、サポート終了日、最新リリースを日本語で確認できます。`;
 }
 
 export function getProductMigrationGuide(product: Product) {
