@@ -124,16 +124,9 @@ const selectId = `tracked-version-${product.slug}`;
       clearButton.hidden = false;
     };
 
-    try {
-      const state = loadState();
-      const saved = state.products[slug];
-      render(saved?.version ?? null);
-    } catch {
-      saveButton.disabled = true;
-      clearButton.hidden = true;
-      message.textContent = 'このブラウザではローカル保存を利用できません。';
-      return;
-    }
+    const state = loadState();
+    const saved = state.products[slug];
+    render(saved?.version ?? null);
 
     saveButton.addEventListener('click', () => {
       const version = select.value;
@@ -143,8 +136,8 @@ const selectId = `tracked-version-${product.slug}`;
       }
 
       try {
-        const state = setTrackedProduct(loadState(), slug, version);
-        persistState(state);
+        const nextState = setTrackedProduct(loadState(), slug, version);
+        persistState(nextState);
         render(version);
         message.textContent = `${label} ${version} をこのブラウザに保存しました。`;
       } catch {
@@ -154,8 +147,8 @@ const selectId = `tracked-version-${product.slug}`;
 
     clearButton.addEventListener('click', () => {
       try {
-        const state = removeTrackedProduct(loadState(), slug);
-        persistState(state);
+        const nextState = removeTrackedProduct(loadState(), slug);
+        persistState(nextState);
         render(null);
         message.textContent = `${label} の保存を解除しました。`;
       } catch {
@@ -164,3 +157,110 @@ const selectId = `tracked-version-${product.slug}`;
     });
   });
 </script>
+
+<style>
+  .tracked-version-panel {
+    margin-bottom: 32px;
+    padding: 20px;
+    border: 1px solid #cbd8ee;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f8fbff 0%, #ffffff 72%);
+  }
+  .tracked-version-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .tracked-version-heading h2 {
+    margin: 3px 0 0;
+    font-size: 1.3rem;
+  }
+  .tracked-version-local {
+    flex: 0 0 auto;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #edf3ff;
+    color: #3157a3;
+    font-size: .76rem;
+    font-weight: 700;
+  }
+  .tracked-version-controls {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) auto;
+    gap: 8px 12px;
+    align-items: end;
+    margin-top: 16px;
+  }
+  .tracked-version-controls label {
+    grid-column: 1 / -1;
+    font-weight: 700;
+  }
+  .tracked-version-select {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #bcc7d6;
+    border-radius: 10px;
+    background: #fff;
+    color: #172033;
+    font: inherit;
+  }
+  .tracked-version-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tracked-version-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 14px 16px;
+    border: 1px solid #dce3ec;
+    border-radius: 12px;
+    background: #fff;
+  }
+  .tracked-version-summary[hidden] {
+    display: none;
+  }
+  .tracked-version-summary-label {
+    display: block;
+    color: #637083;
+    font-size: .76rem;
+    font-weight: 700;
+  }
+  .tracked-version-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px 12px;
+    color: #4f5c70;
+    font-size: .9rem;
+  }
+  @media (max-width: 620px) {
+    .tracked-version-heading,
+    .tracked-version-summary {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .tracked-version-controls {
+      grid-template-columns: 1fr;
+    }
+    .tracked-version-controls label {
+      grid-column: auto;
+    }
+    .tracked-version-actions {
+      width: 100%;
+    }
+    .tracked-version-actions :global(.button) {
+      flex: 1;
+      justify-content: center;
+    }
+    .tracked-version-meta {
+      justify-content: flex-start;
+    }
+  }
+</style>
