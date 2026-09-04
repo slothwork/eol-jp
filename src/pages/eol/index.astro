@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import { products } from '@/lib/eol';
+---
+<BaseLayout title="EOL・サポート期限 製品一覧" description="Node.js、Python、PHP、Ubuntu、PostgreSQL、KubernetesなどのEOL・サポート終了日を製品別に確認できます。">
+  <section class="page-head"><div class="container">
+    <h1>EOL・サポート期限 製品一覧</h1>
+    <p>製品名、技術名、カテゴリから検索できます。</p>
+    <input id="product-search" class="search-box" type="search" placeholder="例：Python / Ubuntu / PostgreSQL" autocomplete="off" />
+  </div></section>
+  <section class="section"><div class="container">
+    <div id="product-grid" class="grid">{products.map((product) => <ProductCard product={product} />)}</div>
+    <p id="no-results" hidden>該当する製品がありません。</p>
+  </div></section>
+  <script>
+    const input = document.querySelector<HTMLInputElement>('#product-search');
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-search]')];
+    const noResults = document.querySelector<HTMLElement>('#no-results');
+    input?.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = !query || card.dataset.search?.includes(query);
+        card.hidden = !match;
+        if (match) visible += 1;
+      });
+      if (noResults) noResults.hidden = visible !== 0;
+    });
+  </script>
+</BaseLayout>

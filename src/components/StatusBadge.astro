@@ -1,0 +1,7 @@
+---
+import type { EolStatus } from '@/lib/eol';
+import { statusLabel } from '@/lib/eol';
+interface Props { status: EolStatus }
+const { status } = Astro.props;
+---
+<span class:list={['status-badge', `status-${status}`]}>{statusLabel(status)}</span>

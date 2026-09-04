@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import { getCategoryLabel, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
+import { formatJaDate, relativeEol } from '@/lib/date';
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+}
+const { product } = Astro.props;
+const releases = product.releases.slice().sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
+const canonicalPath = `/eol/${product.slug}/`;
+const title = `${product.label}のEOL・サポート終了日`;
+const description = `${product.label}のバージョン別EOL（End of Life）、サポート終了日、最新リリースを日本語で確認できます。`;
+const mostUrgent = releases.find((release) => statusFor(release) !== 'ended');
+const target = mostUrgent ? recommendedTarget(product, mostUrgent) : null;
+const structured = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: title,
+  description,
+  inLanguage: 'ja-JP',
+  about: product.label,
+  mainEntityOfPage: new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString()
+};
+---
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
+  <section class="page-head"><div class="container">
+    <span class="eyebrow">{getCategoryLabel(product.category)}</span>
+    <h1>{product.label} のEOL・サポート期限</h1>
+    <p>{getProductSummary(product)}</p>
+  </div></section>
+
+  <section class="section"><div class="container two-col">
+    <div>
+      <h2>バージョン別サポート状況</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>バージョン</th><th>状態</th><th>リリース日</th><th>通常サポート</th><th>EOL / セキュリティ終了</th><th>最新</th></tr></thead>
+        <tbody>
+          {releases.map((release) => (
+            <tr>
+              <td><strong>{release.name}</strong>{release.isLts && <><br/><span class="eyebrow">LTS</span></>}</td>
+              <td><StatusBadge status={statusFor(release)} /><br/><small>{relativeEol(release.eolFrom)}</small></td>
+              <td>{formatJaDate(release.releaseDate)}</td>
+              <td>{formatJaDate(release.eoasFrom)}</td>
+              <td><strong>{formatJaDate(release.eolFrom)}</strong></td>
+              <td>{release.latest?.name ?? '不明'}{release.latest?.date && <><br/><small>{formatJaDate(release.latest.date)}</small></>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table></div>
+    </div>
+    <aside class="panel">
+      <h2>どうすればいい？</h2>
+      {mostUrgent ? (
+        <>
+          <p><strong>{product.label} {mostUrgent.name}</strong> は {relativeEol(mostUrgent.eolFrom)} です。</p>
+          {target && <p>更新を検討する場合は、まずサポート中の <strong>{target.name}</strong> 系を候補にし、公式の移行手順・互換性情報を確認してください。</p>}
+        </>
+      ) : <p>現在のスナップショットではサポート中バージョンを特定できません。</p>}
+      <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
+      {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
+      <h3>一次情報</h3>
+      <ul>
+        {product.links.releasePolicy && <li><a href={product.links.releasePolicy} rel="external">公式リリース / サポート方針</a></li>}
+        {product.links.html && <li><a href={product.links.html} rel="external">endoflife.date の {product.label} ページ</a></li>}
+      </ul>
+    </aside>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <h2>EOLとは？</h2>
+    <p>EOL（End of Life）は、そのバージョンに対する通常の保守・修正・セキュリティ更新などが終了する節目です。製品によって「Active Support」「Security Support」「Maintenance Support」など段階が異なるため、実際の運用では公式のサポート方針も合わせて確認してください。</p>
+  </div></section>
+</BaseLayout>

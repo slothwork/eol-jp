@@ -1,0 +1,35 @@
+name: Sync EOL data
+
+on:
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-eol-data
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch endoflife.date data
+        run: node scripts/sync-eol.mjs
+      - name: Commit updated snapshot
+        run: |
+          if git diff --quiet -- src/data/eol-snapshot.json src/data/change-log.json; then
+            echo "No EOL data changes"
+            exit 0
+          fi
+          git config user.name "eol-jp-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/eol-snapshot.json src/data/change-log.json
+          git commit -m "chore(data): sync endoflife.date"
+          git push

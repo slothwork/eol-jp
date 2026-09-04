@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { upcomingReleases } from '@/lib/eol';
+import { formatJaDate } from '@/lib/date';
+const items = upcomingReleases(730);
+const groups = new Map<string, typeof items>();
+for (const item of items) {
+  const key = item.release.eolFrom?.slice(0, 7) ?? '未定';
+  groups.set(key, [...(groups.get(key) ?? []), item]);
+}
+---
+<BaseLayout title="EOLカレンダー" description="ソフトウェア・OS・データベースのEOL予定を月別カレンダー形式で確認できます。iCalendarも購読できます。">
+  <section class="page-head"><div class="container">
+    <h1>EOLカレンダー</h1>
+    <p>今後2年間のサポート終了予定を月単位でまとめています。<a href="/calendar.ics">iCalendarを購読</a>できます。</p>
+  </div></section>
+  <section class="section"><div class="container">
+    {[...groups.entries()].map(([month, monthItems]) => (
+      <section class="panel" style="margin-bottom:16px">
+        <h2>{month.replace('-', '年')}月</h2>
+        <div class="deadline-list">
+          {monthItems.map(({ product, release }) => (
+            <div class="deadline-row"><div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong></div><div>v{release.name}</div><div>{formatJaDate(release.eolFrom)}</div><div class="muted">EOL</div></div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div></section>
+</BaseLayout>
