@@ -11,6 +11,8 @@ export function getStaticPaths() {
 const category = Astro.params.category!;
 const label = getCategoryLabel(category);
 const items = products.filter((product) => product.category === category);
+const categories = [...new Set(products.map((product) => product.category))]
+  .sort((a, b) => getCategoryLabel(a).localeCompare(getCategoryLabel(b), 'ja'));
 const title = `${label}のEOL・サポート終了日一覧`;
 ---
 <BaseLayout title={title} description={`${label}に分類されるソフトウェア・OS・サービスのEOL、サポート終了日、最新リリースを一覧で確認できます。`} canonicalPath={`/category/${category}/`}>
@@ -18,6 +20,13 @@ const title = `${label}のEOL・サポート終了日一覧`;
     <span class="eyebrow">CATEGORY</span>
     <h1>{label}のEOL・サポート終了日一覧</h1>
     <p>{items.length}製品を掲載しています。製品ごとのページでバージョン別のEOL日とサポート状況を確認できます。</p>
+    <nav class="filter-tabs" aria-label="カテゴリを切り替える">
+      {categories.map((item) => (
+        <a class:list={['filter-tab', item === category && 'active']} href={`/category/${item}/`} aria-current={item === category ? 'page' : undefined}>
+          {getCategoryLabel(item)}
+        </a>
+      ))}
+    </nav>
   </div></section>
   <section class="section"><div class="container">
     <div class="grid">{items.map((product) => <ProductCard product={product} />)}</div>
