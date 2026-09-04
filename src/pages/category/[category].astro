@@ -3,9 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductCard from '@/components/ProductCard.astro';
 import { getCategoryLabel, products } from '@/lib/eol';
 
-const categories = [...new Set(products.map((product) => product.category))].sort();
-
 export function getStaticPaths() {
+  const categories = [...new Set(products.map((product) => product.category))].sort();
   return categories.map((category) => ({ params: { category } }));
 }
 
