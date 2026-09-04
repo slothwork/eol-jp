@@ -12,14 +12,17 @@
 - 日本語の短い判断ガイド
 - EOLカレンダー、RSS、iCalendar
 - 公式リリースポリシーと元データへのリンク
+- 180日以内にEOLを迎える製品のうち、直近30日で関心が集まっている情報を表示
 
 ## 技術構成
 
 - Astro 7 / TypeScript
 - 静的HTML生成（SSRなし）
-- Cloudflare Pages
+- Cloudflare Workers + Static Assets
 - endoflife.date API v1 `/api/v1/products/full`
-- GitHub Actionsで1日1回データ同期
+- Cloudflare Web Analytics
+- GitHub ActionsでEOLデータを1日1回同期
+- GitHub ActionsでEOL注目度ランキングを週1回同期
 
 ## データ更新の流れ
 
@@ -29,15 +32,46 @@ endoflife.date API
 GitHub Actions
        ↓
 src/data/eol-snapshot.json
-       ↓ commit
+       ↓ PR / merge
 GitHub main
        ↓
-Cloudflare Pages build
+Cloudflare Workers build
        ↓
 静的HTML / RSS / iCalendar / sitemap
 ```
 
 Cloudflareのビルド時に外部APIを必須にしないことで、API一時障害や仕様変更の影響を本番配信から切り離します。
+
+### 注目されているEOL情報
+
+トップページの「注目されているEOL情報」は、製品の普及率や一般的な人気度を示すランキングではありません。
+
+```text
+Cloudflare Web Analytics
+       ↓ 直近30日の /eol/{slug}/ Page Views
+scripts/sync-eol-attention.mjs
+       ↓ 180日以内にEOLを迎える製品だけに限定
+src/data/eol-attention-ranking.json
+       ↓ Top 10
+トップページ
+```
+
+集計対象は「180日以内にEOLを迎える製品」、順位は「直近30日間の製品ページ閲覧数」です。これにより、EOLが近い製品の中で当サイト利用者の関心がどこに集まっているかを見るための補助指標として利用します。
+
+GitHub Actionsの `Sync EOL attention ranking` は毎週月曜 00:45 UTC に実行し、ランキングJSONに変更があれば `chore/eol-attention-ranking` ブランチのPRを作成または更新します。
+
+事前設定:
+
+1. Cloudflare DashboardのWeb Analyticsで `eol.slothwright.com` を有効化する。Cloudflareでプロキシしているサイトは自動セットアップを利用できます。
+2. Cloudflare API Tokenを作成し、`Account > Account Analytics > Read` 権限を付与する。
+3. GitHub repository secretsに以下を登録する。
+
+```text
+CLOUDFLARE_API_TOKEN=<Cloudflare API Token>
+CLOUDFLARE_ACCOUNT_ID=<Cloudflare Account ID>
+```
+
+Secretsが未設定の場合、ランキング同期workflowはエラーにせずスキップします。ランキングデータが空の場合、トップページのランキングセクションも表示しません。
 
 ## ローカル実行
 
@@ -52,13 +86,21 @@ npm run dev
 npm run sync:eol
 ```
 
+Cloudflare Web Analyticsのランキングを更新する場合：
+
+```bash
+CLOUDFLARE_API_TOKEN=... \
+CLOUDFLARE_ACCOUNT_ID=... \
+npm run sync:attention
+```
+
 本番ビルド：
 
 ```bash
 npm run build
 ```
 
-## Cloudflare Pages
+## Cloudflare Workers
 
 推奨設定：
 
