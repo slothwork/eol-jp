@@ -18,6 +18,15 @@ async function read(relativePath) {
   }
 }
 
+async function requireAsset(relativePath, minBytes = 1) {
+  try {
+    const stat = await fs.stat(path.join(distDir, relativePath));
+    if (!stat.isFile() || stat.size < minBytes) fail(`${relativePath}: generated asset is empty or too small`);
+  } catch {
+    fail(`Missing build asset: ${relativePath}`);
+  }
+}
+
 function extractJsonLd(html, label) {
   const blocks = [];
   const pattern = /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>([\s\S]*?)<\/script>/gi;
@@ -38,6 +47,12 @@ function flattenStructuredData(blocks) {
 function canonicalFrom(html) {
   const tag = html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i)?.[0];
   return tag?.match(/\bhref=["']([^"']+)["']/i)?.[1] ?? null;
+}
+
+function metaContent(html, attribute, value) {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  const tag = tags.find((candidate) => new RegExp(`\\b${attribute}=["']${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["']`, 'i').test(candidate));
+  return tag?.match(/\bcontent=["']([^"']+)["']/i)?.[1] ?? null;
 }
 
 function validateBreadcrumb(node, label) {
@@ -117,6 +132,21 @@ async function validateProductPages() {
 async function validateSiteOutputs(productCanonicals) {
   const home = await read('index.html');
   if (home && canonicalFrom(home) !== `${siteOrigin}/`) fail('/: canonical mismatch');
+
+  const expectedOgImage = `${siteOrigin}/og-default.png`;
+  if (home) {
+    if (!home.includes('rel="icon" type="image/svg+xml" href="/favicon.svg"')) fail('/: SVG favicon link is missing');
+    if (!home.includes('rel="apple-touch-icon"')) fail('/: Apple Touch Icon link is missing');
+    if (metaContent(home, 'property', 'og:image') !== expectedOgImage) fail('/: og:image is missing or invalid');
+    if (metaContent(home, 'property', 'og:image:width') !== '1200') fail('/: og:image width must be 1200');
+    if (metaContent(home, 'property', 'og:image:height') !== '630') fail('/: og:image height must be 630');
+    if (metaContent(home, 'name', 'twitter:card') !== 'summary_large_image') fail('/: twitter card must use summary_large_image');
+    if (metaContent(home, 'name', 'twitter:image') !== expectedOgImage) fail('/: twitter:image is missing or invalid');
+  }
+
+  await requireAsset('favicon.svg', 100);
+  await requireAsset('apple-touch-icon.png', 500);
+  await requireAsset('og-default.png', 5000);
 
   const changes = await read(path.join('changes', 'index.html'));
   if (changes && canonicalFrom(changes) !== `${siteOrigin}/changes/`) fail('/changes/: canonical mismatch');

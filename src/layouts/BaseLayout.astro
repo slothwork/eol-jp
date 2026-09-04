@@ -8,7 +8,9 @@ interface Props {
 }
 const { title, description, canonicalPath = Astro.url.pathname, noindex = false } = Astro.props;
 const siteName = 'EOL情報.jp';
-const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString();
+const siteBase = Astro.site ?? Astro.url.origin;
+const canonical = new URL(canonicalPath, siteBase).toString();
+const ogImage = new URL('/og-default.png', siteBase).toString();
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 ---
 <!doctype html>
@@ -16,21 +18,35 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#2457d6" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EOL情報.jp - ソフトウェアのサポート終了日を日本語で確認" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="EOL情報.jp - ソフトウェアのサポート終了日を日本語で確認" />
     <title>{fullTitle}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: siteName,
       url: Astro.site?.toString() ?? canonical,
+      image: ogImage,
       inLanguage: 'ja-JP',
       description: 'ソフトウェアやOSのEOL・サポート終了日を日本語で確認できるサイト'
     })}></script>

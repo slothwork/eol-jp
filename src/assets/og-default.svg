@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f6f8fb"/>
+  <rect width="1200" height="12" fill="#2457d6"/>
+
+  <rect x="64" y="72" width="362" height="486" rx="44" fill="#fff" stroke="#dce3ec" stroke-width="2"/>
+  <rect x="120" y="126" width="250" height="250" rx="56" fill="#2457d6"/>
+  <circle cx="245" cy="251" r="74" fill="none" stroke="#fff" stroke-width="18"/>
+  <path d="M245 251V211M245 251l35 16" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="307" cy="208" r="18" fill="#d94b4b" stroke="#fff" stroke-width="6"/>
+  <rect x="132" y="420" width="226" height="74" rx="22" fill="#eef3ff"/>
+  <text x="245" y="470" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#2457d6">EOL</text>
+
+  <text x="490" y="207" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" fill="#172033">EOL INFO .JP</text>
+  <text x="492" y="278" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#172033">SOFTWARE LIFECYCLE STATUS</text>
+  <text x="492" y="334" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#637083">Support deadlines, countdowns and upgrade planning.</text>
+
+  <rect x="492" y="410" width="150" height="60" rx="18" fill="#fff" stroke="#dce3ec" stroke-width="2"/>
+  <circle cx="518" cy="440" r="8" fill="#d94b4b"/>
+  <text x="542" y="449" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172033">30 DAYS</text>
+
+  <rect x="660" y="410" width="150" height="60" rx="18" fill="#fff" stroke="#dce3ec" stroke-width="2"/>
+  <circle cx="686" cy="440" r="8" fill="#d9902f"/>
+  <text x="710" y="449" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172033">90 DAYS</text>
+
+  <rect x="828" y="410" width="180" height="60" rx="18" fill="#fff" stroke="#dce3ec" stroke-width="2"/>
+  <circle cx="854" cy="440" r="8" fill="#2f8f5b"/>
+  <text x="878" y="449" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#172033">180 DAYS</text>
+
+  <text x="492" y="535" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#2457d6">eol.slothwright.com</text>
+</svg>
