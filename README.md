@@ -60,6 +60,8 @@ src/data/eol-attention-ranking.json
 
 GitHub Actionsの `Sync EOL attention ranking` は毎週月曜 00:45 UTC に実行し、ランキングJSONに変更があれば `chore/eol-attention-ranking` ブランチのPRを作成または更新します。
 
+ランキングの変更判定では、集計時刻だけの差分は無視します。Top 10の製品・順位・Page Views、30日/180日条件、データソースがすべて前回と同じ場合は既存JSONを書き換えず、PRも作成しません。
+
 事前設定:
 
 1. Cloudflare DashboardのWeb Analyticsで `eol.slothwright.com` を有効化する。Cloudflareでプロキシしているサイトは自動セットアップを利用できます。
