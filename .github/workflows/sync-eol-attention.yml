@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: sync-eol-attention-ranking
@@ -17,10 +16,20 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Check automation token
+        env:
+          EOL_AUTOMATION_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+        run: |
+          if [ -z "$EOL_AUTOMATION_TOKEN" ]; then
+            echo "::error::EOL_AUTOMATION_TOKEN is not configured. Add a fine-grained PAT with Contents: Read and write and Pull requests: Read and write."
+            exit 1
+          fi
+
       - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.EOL_AUTOMATION_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -71,7 +80,7 @@ jobs:
       - name: Create pull request if needed
         if: steps.changes.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
         run: |
           existing_pr="$(gh pr list --base main --head chore/eol-attention-ranking --state open --json number --jq '.[0].number // empty')"
           if [ -n "$existing_pr" ]; then
