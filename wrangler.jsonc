@@ -8,6 +8,12 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/notifications/*"]
   },
+  "kv_namespaces": [
+    {
+      "binding": "NOTIFICATION_SUBSCRIPTIONS",
+      "id": "ee50aa2917ec4cdeae0f644f3b3bee23"
+    }
+  ],
   "triggers": {
     "crons": ["15 1 * * *"]
   }
