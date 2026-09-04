@@ -1,5 +1,5 @@
-import type { EolReminderState, ReminderThreshold } from './eol-reminders';
-import type { TrackedProductsState } from './tracked-products';
+import type { EolReminderState, ReminderThreshold } from './eol-reminders.ts';
+import type { TrackedProductsState } from './tracked-products.ts';
 
 export const EXTERNAL_NOTIFICATION_STORAGE_KEY = 'eol-jp:external-notifications:v1';
 export const MAX_EXTERNAL_NOTIFICATION_ITEMS = 25;
