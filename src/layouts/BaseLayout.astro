@@ -78,5 +78,29 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
         </div>
       </div>
     </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="ページの一番上に戻る" title="一番上に戻る" hidden>↑</button>
+    <script>
+      const backToTop = document.querySelector<HTMLButtonElement>('#back-to-top');
+      let ticking = false;
+
+      const updateBackToTop = () => {
+        if (backToTop) backToTop.hidden = window.scrollY < 640;
+        ticking = false;
+      };
+
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(updateBackToTop);
+      }, { passive: true });
+
+      backToTop?.addEventListener('click', () => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+
+      updateBackToTop();
+    </script>
   </body>
 </html>
