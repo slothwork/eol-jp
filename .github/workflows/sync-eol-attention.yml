@@ -1,0 +1,86 @@
+name: Sync EOL attention ranking
+
+on:
+  schedule:
+    - cron: '45 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-eol-attention-ranking
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check Cloudflare configuration
+        id: config
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare analytics secrets are not configured; skipping ranking sync."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch Cloudflare Web Analytics ranking
+        if: steps.config.outputs.configured == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/sync-eol-attention.mjs
+
+      - name: Detect changes
+        if: steps.config.outputs.configured == 'true'
+        id: changes
+        run: |
+          if git diff --quiet -- src/data/eol-attention-ranking.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No ranking changes"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push ranking branch
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "eol-jp-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B chore/eol-attention-ranking
+          git add src/data/eol-attention-ranking.json
+          git commit -m "chore(data): update EOL attention ranking"
+          git push --force origin HEAD:chore/eol-attention-ranking
+
+      - name: Create pull request if needed
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing_pr="$(gh pr list --base main --head chore/eol-attention-ranking --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$existing_pr" ]; then
+            echo "Updated existing PR #$existing_pr"
+            exit 0
+          fi
+
+          gh pr create \
+            --base main \
+            --head chore/eol-attention-ranking \
+            --title "chore(data): EOL注目度ランキングを更新" \
+            --body "Cloudflare Web Analyticsの直近30日Page Viewsを基に、180日以内にEOLを迎える製品の注目度Top 10を更新します。CI通過後にマージしてください。"
