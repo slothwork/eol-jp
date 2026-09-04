@@ -20,7 +20,7 @@
 - [x] 独自ドメイン確定
 - [x] robots.txtのSitemap URL確定
 - [x] Google Search Console登録・sitemap送信
-- [ ] OGP画像 / favicon
+- [x] OGP画像 / favicon
 - [x] 主要20製品の日本語summary手動整備
 
 ## Phase 2 — Search growth
