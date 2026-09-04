@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
-import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSummary, nearestUpcomingEol, products, recommendedTarget, statusFor } from '@/lib/eol';
+import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSeoDescription, getProductSeoTitle, getProductSummary, nearestUpcomingEol, products, recommendedTarget, statusFor } from '@/lib/eol';
 import { isIndexableProduct } from '@/lib/index-policy';
 import { formatJaDate, relativeEol } from '@/lib/date';
 
@@ -12,8 +12,8 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 const releases = product.releases.slice().sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
 const canonicalPath = `/eol/${product.slug}/`;
-const title = `${product.label}のEOL・サポート終了日`;
-const description = `${product.label}のバージョン別EOL（End of Life）、サポート終了日、最新リリースを日本語で確認できます。`;
+const title = getProductSeoTitle(product);
+const description = getProductSeoDescription(product);
 const categoryLabel = getCategoryLabel(product.category);
 const indexable = isIndexableProduct(product);
 const nearestEol = nearestUpcomingEol(product);

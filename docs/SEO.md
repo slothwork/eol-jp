@@ -39,6 +39,24 @@
 7. FAQはユーザー向けの可視コンテンツとして掲載する。
 8. 製品ごとの公式移行・アップグレード資料へ導線を置ける場合は追加する。
 
+## Search Console / CTR policy
+
+製品ページのtitle・descriptionは、推測だけで主要製品を一括変更しない。Search Console の表示回数・CTR・平均掲載順位・実クエリを根拠に、改善対象を少数ずつ選ぶ。
+
+- CSV解析は `npm run analyze:gsc -- <csv>` を使用する。
+- 1ページ目に表示されているのにCTRが低い行をtitle / descriptionレビュー候補とする。
+- 11〜20位の行はtitle変更より先に本文・内部リンク・検索意図との一致を確認する。
+- 実クエリで根拠が確認できた製品だけ `src/data/product-seo.ts` にoverrideを追加する。
+- overrideには `rationale` を残し、変更理由を追跡できるようにする。
+- Search Console の生エクスポートはGitHubへコミットしない。
+
+詳細運用は `docs/SEARCH_CONSOLE.md` を参照する。
+
+Reference:
+- https://support.google.com/webmasters/answer/7576553?hl=ja
+- https://support.google.com/webmasters/answer/7042828?hl=ja
+- https://developers.google.com/search/docs/appearance/title-link?hl=ja
+
 ## Structured data policy
 
 - JSON-LDを使用する。
