@@ -57,6 +57,12 @@ jobs:
       - name: External notification client tests
         run: npm run test:external-notification-client
 
+      - name: Email notification tests
+        run: npm run test:email-notifications
+
+      - name: Email notification client tests
+        run: npm run test:email-notification-client
+
       - name: Public API tests
         run: npm run test:public-api
 
