@@ -18,7 +18,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   <section class="section">
     <div class="container">
-      <div class="stats my-eol-stats" data-my-eol-stats hidden>
+      <div class="stats" data-my-eol-stats hidden>
         <div class="stat"><strong data-my-eol-total>0</strong><span>保存中</span></div>
         <div class="stat"><strong data-my-eol-urgent>0</strong><span>90日以内</span></div>
         <div class="stat"><strong data-my-eol-ended>0</strong><span>EOL済み</span></div>
@@ -28,21 +28,21 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         保存内容を読み込んでいます。
       </div>
 
-      <div class="panel my-eol-empty" data-my-eol-empty hidden>
+      <div class="panel" data-my-eol-empty hidden>
         <h2>まだ保存された製品はありません</h2>
         <p>各製品ページの「MY EOL」から利用中バージョンを保存すると、ここに一覧表示されます。</p>
         <a class="button primary" href="/eol/">製品一覧から選ぶ</a>
       </div>
 
       <div data-my-eol-content hidden>
-        <div class="my-eol-heading-row">
+        <div class="calendar-heading-row">
           <div>
             <h2>利用中バージョン</h2>
             <p class="section-lead">EOL済み・期限が近い製品から順に表示します。</p>
           </div>
-          <span class="tracked-version-local">このブラウザ内のみ</span>
+          <span class="eyebrow">このブラウザ内のみ</span>
         </div>
-        <div class="my-eol-list" data-my-eol-list></div>
+        <div class="history-list" data-my-eol-list></div>
       </div>
 
       <p class="section-note">保存内容はログイン情報やサーバーには紐づきません。別のブラウザや端末には自動同期されません。</p>
@@ -162,15 +162,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
       for (const entry of entries) {
         const article = document.createElement('article');
-        article.className = `my-eol-item my-eol-item-${entry.status}`;
+        article.className = 'history-item';
 
         const main = document.createElement('div');
-        main.className = 'my-eol-item-main';
 
         const titleRow = document.createElement('div');
-        titleRow.className = 'my-eol-item-title';
+        titleRow.className = 'card-topline';
 
-        const title = document.createElement('h3');
+        const title = document.createElement('h2');
         const link = document.createElement('a');
         link.href = `/eol/${encodeURIComponent(entry.slug)}/`;
         link.textContent = entry.label;
@@ -182,11 +181,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         titleRow.append(title, badge);
 
         const version = document.createElement('p');
-        version.className = 'my-eol-version';
+        version.className = 'muted';
         version.textContent = `利用中: ${entry.version}${entry.release?.isLts ? ' (LTS)' : ''}`;
 
         const meta = document.createElement('div');
-        meta.className = 'my-eol-meta';
+        meta.className = 'history-meta';
         if (entry.release) {
           const eol = document.createElement('span');
           eol.textContent = `EOL: ${formatJaDate(entry.release.eolFrom)}`;
@@ -202,7 +201,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         main.append(titleRow, version, meta);
 
         const actions = document.createElement('div');
-        actions.className = 'my-eol-actions';
+        actions.className = 'hero-actions';
 
         const details = document.createElement('a');
         details.className = 'button';
