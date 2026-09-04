@@ -14,6 +14,9 @@ const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
 if (!apiToken || !accountId) {
   throw new Error('CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are required.');
 }
+if (!/^[a-f0-9]{32}$/i.test(accountId)) {
+  throw new Error('CLOUDFLARE_ACCOUNT_ID must be a 32-character hexadecimal account ID.');
+}
 
 const snapshotPath = resolve('src/data/eol-snapshot.json');
 const outputPath = resolve('src/data/eol-attention-ranking.json');
@@ -41,9 +44,9 @@ const eligibleSlugs = new Set(
 );
 
 const query = `
-query AttentionRanking($accountTag: string, $start: Time, $end: Time) {
+query AttentionRanking($start: Time, $end: Time) {
   viewer {
-    accounts(filter: { accountTag: $accountTag }) {
+    accounts(filter: { accountTag: "${accountId}" }) {
       pages: rumPageloadEventsAdaptiveGroups(
         limit: 1000
         orderBy: [count_DESC]
@@ -51,7 +54,6 @@ query AttentionRanking($accountTag: string, $start: Time, $end: Time) {
           datetime_geq: $start
           datetime_leq: $end
           requestHost: "${HOSTNAME}"
-          requestPath_like: "/eol/%"
         }
       ) {
         count
@@ -72,7 +74,6 @@ const response = await fetch(API_ENDPOINT, {
   body: JSON.stringify({
     query,
     variables: {
-      accountTag: accountId,
       start: periodStart,
       end: periodEnd
     }
