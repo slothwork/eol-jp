@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Check and build
+    name: Check, build and SEO validate
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -40,3 +40,6 @@ jobs:
         run: npm run build
         env:
           PUBLIC_SITE_URL: https://eol.slothwright.com
+
+      - name: SEO validation
+        run: npm run validate:seo
