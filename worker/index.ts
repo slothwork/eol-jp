@@ -9,6 +9,7 @@ import {
   type NotificationChannel,
   type NotificationSubscription
 } from './notification-core';
+import { handleEmailApi, runEmailNotifications, type EmailRuntimeEnv } from './email-runtime';
 import {
   buildBadgeSvg,
   buildProductIndex,
@@ -24,18 +25,19 @@ type KvListResult = {
 
 type KvNamespace = {
   get(key: string): Promise<string | null>;
-  put(key: string, value: string): Promise<void>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
   delete(key: string): Promise<void>;
   list(options?: { prefix?: string; cursor?: string; limit?: number }): Promise<KvListResult>;
 };
 
-type Env = {
+type Env = EmailRuntimeEnv & {
   ASSETS: { fetch(request: Request): Promise<Response> };
   NOTIFICATION_SUBSCRIPTIONS?: KvNamespace;
 };
 
 const PREFIX = 'subscription:';
 const MAX_BODY_BYTES = 32_768;
+const MAX_NOTIFICATION_ITEMS = 25;
 const SITE_ORIGIN = 'https://eol.slothwright.com';
 const PUBLIC_CACHE_CONTROL = 'public, max-age=300, s-maxage=3600';
 
@@ -136,7 +138,10 @@ async function createSubscription(request: Request, env: Env): Promise<Response>
   const candidate = body as Record<string, unknown>;
   const channel = candidate.channel === 'slack' || candidate.channel === 'discord' ? candidate.channel : null;
   const webhookUrl = typeof candidate.webhookUrl === 'string' ? candidate.webhookUrl.trim() : '';
-  const items = normalizeTrackedItems(candidate.items);
+  if (Array.isArray(candidate.items) && candidate.items.length > MAX_NOTIFICATION_ITEMS) {
+    return json({ error: 'too_many_tracked_items', max: MAX_NOTIFICATION_ITEMS }, 400);
+  }
+  const items = normalizeTrackedItems(candidate.items, MAX_NOTIFICATION_ITEMS);
   const thresholds = normalizeThresholds(candidate.thresholds);
 
   if (!channel) return json({ error: 'unsupported_channel' }, 400);
@@ -208,7 +213,10 @@ async function updateSubscription(request: Request, env: Env, id: string): Promi
   }
   if (!body || typeof body !== 'object') return json({ error: 'invalid_request' }, 400);
   const candidate = body as Record<string, unknown>;
-  const items = normalizeTrackedItems(candidate.items);
+  if (Array.isArray(candidate.items) && candidate.items.length > MAX_NOTIFICATION_ITEMS) {
+    return json({ error: 'too_many_tracked_items', max: MAX_NOTIFICATION_ITEMS }, 400);
+  }
+  const items = normalizeTrackedItems(candidate.items, MAX_NOTIFICATION_ITEMS);
   const thresholds = normalizeThresholds(candidate.thresholds);
   if (items.length === 0) return json({ error: 'tracked_items_required' }, 400);
   if (thresholds.length === 0) return json({ error: 'threshold_required' }, 400);
@@ -355,11 +363,14 @@ async function runScheduled(env: Env, scheduledTime: number): Promise<void> {
     cursor = page.list_complete ? undefined : page.cursor;
     if (page.list_complete) break;
   } while (cursor);
+
+  await runEmailNotifications(env, catalog, now);
 }
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+    if (url.pathname.startsWith('/api/notifications/email/')) return handleEmailApi(request, env);
     if (url.pathname.startsWith('/api/notifications/')) return handleApi(request, env);
     if (url.pathname.startsWith('/api/v1/')) return handlePublicApi(request, env);
     if (url.pathname.startsWith('/badge/')) return handleBadge(request, env);
