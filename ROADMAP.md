@@ -12,21 +12,21 @@
 
 ## Phase 1 — Public MVP
 
-- [ ] GitHubリポジトリ作成・initial commit
+- [x] GitHubリポジトリ作成・initial commit
 - [ ] `npm install` でlockfile生成
-- [ ] `npm run sync:eol` で全製品を取得
-- [ ] `npm run check && npm run build`
-- [ ] Cloudflare Pages接続
-- [ ] 独自ドメイン確定
-- [ ] robots.txtのSitemap URL確定
-- [ ] Google Search Console登録・sitemap送信
+- [x] `npm run sync:eol` で全製品を取得
+- [x] `npm run check && npm run build`
+- [x] Cloudflare Workers接続
+- [x] 独自ドメイン確定
+- [x] robots.txtのSitemap URL確定
+- [x] Google Search Console登録・sitemap送信
 - [ ] OGP画像 / favicon
-- [ ] 主要20製品の日本語summary手動整備
+- [x] 主要20製品の日本語summary手動整備
 
 ## Phase 2 — Search growth
 
-- [ ] 「30日以内 / 90日以内 / 半年以内」専用ランディング
-- [ ] カテゴリ別ページ（言語 / OS / DB / インフラ）
+- [x] 「30日以内 / 90日以内 / 半年以内」専用ランディング
+- [x] カテゴリ別ページ（言語 / OS / DB / インフラ等）
 - [ ] バージョン単位の見出し・FAQ強化
 - [ ] EOL変更履歴ページ
 - [ ] 主要製品の公式移行ガイドへの導線
