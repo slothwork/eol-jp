@@ -1,32 +1,80 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
-import { getCategoryLabel, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
+import { getCategoryLabel, getProductMigrationGuide, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
+
 export function getStaticPaths() {
   return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
 }
+
 const { product } = Astro.props;
 const releases = product.releases.slice().sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
 const canonicalPath = `/eol/${product.slug}/`;
 const title = `${product.label}のEOL・サポート終了日`;
 const description = `${product.label}のバージョン別EOL（End of Life）、サポート終了日、最新リリースを日本語で確認できます。`;
+const categoryLabel = getCategoryLabel(product.category);
 const mostUrgent = releases.find((release) => statusFor(release) !== 'ended');
 const target = mostUrgent ? recommendedTarget(product, mostUrgent) : null;
+const migrationGuide = getProductMigrationGuide(product);
+const supported = releases.filter((release) => statusFor(release) !== 'ended');
+const ended = releases.filter((release) => statusFor(release) === 'ended');
+const siteBase = Astro.site ?? Astro.url.origin;
+const faq = [
+  {
+    q: `${product.label} のEOLはいつですか？`,
+    a: mostUrgent
+      ? `${product.label} ${mostUrgent.name} は ${formatJaDate(mostUrgent.eolFrom)} がEOL予定です。製品やリリース系列ごとに期限が異なるため、上の一覧と公式サポート方針を確認してください。`
+      : `現在のスナップショットでは、${product.label} のサポート中バージョンについて確定したEOL日を特定できません。公式サポート方針も確認してください。`
+  },
+  {
+    q: `${product.label} のEOL後も使えますか？`,
+    a: '技術的に動作し続ける場合はありますが、通常はセキュリティ修正や不具合修正の提供が終了または縮小します。継続利用する場合は、リスクを確認したうえで更新計画を立ててください。'
+  },
+  {
+    q: `${product.label} はどのバージョンへ更新すればよいですか？`,
+    a: target
+      ? `このサイトではサポート中の ${target.name} 系を候補として表示しています。ただし、実際の移行先は互換性、依存関係、LTS方針、ベンダーの移行ガイドを確認して決定してください。`
+      : '移行先を一律には決められません。公式のサポート方針、互換性情報、依存関係を確認してサポート中のバージョンを選んでください。'
+  }
+];
 const structured = {
   '@context': 'https://schema.org',
-  '@type': 'TechArticle',
-  headline: title,
-  description,
-  inLanguage: 'ja-JP',
-  about: product.label,
-  mainEntityOfPage: new URL(canonicalPath, Astro.site ?? Astro.url.origin).toString()
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      headline: title,
+      description,
+      inLanguage: 'ja-JP',
+      about: product.label,
+      mainEntityOfPage: new URL(canonicalPath, siteBase).toString()
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'ホーム', item: new URL('/', siteBase).toString() },
+        { '@type': 'ListItem', position: 2, name: '製品一覧', item: new URL('/eol/', siteBase).toString() },
+        { '@type': 'ListItem', position: 3, name: product.label, item: new URL(canonicalPath, siteBase).toString() }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a }
+      }))
+    }
+  ]
 };
 ---
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
   <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
   <section class="page-head"><div class="container">
-    <span class="eyebrow">{getCategoryLabel(product.category)}</span>
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="/">ホーム</a><span>/</span><a href="/eol/">製品一覧</a><span>/</span><span aria-current="page">{product.label}</span>
+    </nav>
+    <span class="eyebrow">{categoryLabel}</span>
     <h1>{product.label} のEOL・サポート期限</h1>
     <p>{getProductSummary(product)}</p>
   </div></section>
@@ -49,6 +97,31 @@ const structured = {
           ))}
         </tbody>
       </table></div>
+
+      {supported.length > 0 && (
+        <section class="subsection">
+          <h2>現在サポート中の主なバージョン</h2>
+          <div class="version-list">
+            {supported.slice(0, 8).map((release) => (
+              <article class="version-item">
+                <h3>{product.label} {release.name}</h3>
+                <p>EOL: <strong>{formatJaDate(release.eolFrom)}</strong>（{relativeEol(release.eolFrom)}）</p>
+                <p class="muted">最新リリース: {release.latest?.name ?? '不明'}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {ended.length > 0 && (
+        <section class="subsection">
+          <h2>EOL済みの主なバージョン</h2>
+          <p class="section-lead">EOL済みバージョンは、原則として新しい保守対象バージョンへの移行を検討してください。</p>
+          <ul class="compact-list">
+            {ended.slice(0, 8).map((release) => <li>{product.label} {release.name} — {formatJaDate(release.eolFrom)}</li>)}
+          </ul>
+        </section>
+      )}
     </div>
     <aside class="panel">
       <h2>どうすればいい？</h2>
@@ -60,12 +133,29 @@ const structured = {
       ) : <p>現在のスナップショットではサポート中バージョンを特定できません。</p>}
       <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
       {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
+      {migrationGuide && <>
+        <h3>公式の移行・アップグレード資料</h3>
+        <p><a href={migrationGuide.url} rel="external">{migrationGuide.label} →</a></p>
+        {migrationGuide.note && <p class="muted">{migrationGuide.note}</p>}
+      </>}
       <h3>一次情報</h3>
       <ul>
         {product.links.releasePolicy && <li><a href={product.links.releasePolicy} rel="external">公式リリース / サポート方針</a></li>}
         {product.links.html && <li><a href={product.links.html} rel="external">endoflife.date の {product.label} ページ</a></li>}
       </ul>
     </aside>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <h2>{product.label} のEOLに関するよくある質問</h2>
+    <div class="faq-list">
+      {faq.map((item) => (
+        <details class="faq-item">
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
   </div></section>
 
   <section class="section"><div class="container">

@@ -1,5 +1,5 @@
 import snapshot from '@/data/eol-snapshot.json';
-import { categoryLabels, featuredSlugs, productSummaries } from '@/data/product-meta';
+import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
 import { daysUntil } from '@/lib/date';
 
 export type LatestRelease = {
@@ -51,6 +51,10 @@ export function getCategoryLabel(category: string): string {
 export function getProductSummary(product: Product): string {
   return productSummaries[product.slug]
     ?? `${product.label} のバージョン別サポート期限、EOL（End of Life）、最新リリースを日本語で確認できます。`;
+}
+
+export function getProductMigrationGuide(product: Product) {
+  return productMigrationGuides[product.slug] ?? null;
 }
 
 export function statusFor(release: Release): EolStatus {
