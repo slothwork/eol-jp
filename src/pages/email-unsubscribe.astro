@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="メール通知の解除"
+  description="EOL情報.jpのメール通知を解除します。"
+  canonicalPath="/email-unsubscribe/"
+  noindex={true}
+>
+  <section class="section">
+    <div class="container narrow">
+      <span class="eyebrow">EMAIL NOTIFICATION</span>
+      <h1>メール通知の解除</h1>
+      <p class="section-lead">通知メールに記載された解除リンクからアクセスしています。解除すると、このメールアドレスへのEOL通知は停止します。</p>
+      <div class="notice" data-unsubscribe-status>解除内容を確認してください。</div>
+      <div class="hero-actions">
+        <button class="button primary" type="button" data-unsubscribe-button>メール通知を解除する</button>
+        <a class="button" href="/my-eol/">マイEOLへ戻る</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const status = document.querySelector<HTMLElement>('[data-unsubscribe-status]');
+  const button = document.querySelector<HTMLButtonElement>('[data-unsubscribe-button]');
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') ?? '';
+  const token = params.get('token') ?? '';
+
+  if (!id || !token) {
+    if (status) status.textContent = '解除情報が不足しています。通知メールに記載されたリンクから開いてください。';
+    if (button) button.disabled = true;
+  }
+
+  button?.addEventListener('click', async () => {
+    button.disabled = true;
+    if (status) status.textContent = 'メール通知を解除しています。';
+    try {
+      const response = await fetch('/api/notifications/email/unsubscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, token })
+      });
+      if (!response.ok && response.status !== 204) {
+        if (status) status.textContent = 'メール通知を解除できませんでした。リンクが無効か、すでに解除済みの可能性があります。';
+        button.disabled = false;
+        return;
+      }
+      history.replaceState({}, '', '/email-unsubscribe/');
+      if (status) status.textContent = 'メール通知を解除しました。';
+      button.hidden = true;
+    } catch {
+      if (status) status.textContent = '通信に失敗しました。時間を空けてもう一度お試しください。';
+      button.disabled = false;
+    }
+  });
+</script>
