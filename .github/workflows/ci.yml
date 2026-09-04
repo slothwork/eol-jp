@@ -39,6 +39,9 @@ jobs:
       - name: Attention ranking tests
         run: npm run test:attention
 
+      - name: EOL decision tests
+        run: npm run test:eol-decisions
+
       - name: Astro check
         run: npm run check
 
