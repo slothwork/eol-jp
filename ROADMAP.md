@@ -44,7 +44,8 @@
 - [x] 30/90/180日前リマインダー（マイEOL閲覧時のローカル判定）
 - [x] Slack / Discord外部通知のWorker・Cron・Webhook判定基盤
 - [x] Slack / Discord通知設定UI + Workers KV本番binding
-- [ ] メール通知
+- [x] メール通知実装（Resend Free + Turnstile + メールアドレス確認）
+- [ ] メール通知の本番有効化（Resend送信ドメイン / API key + Turnstile keys）
 - [x] 公開JSON API / embeddable badge
 
 ## Phase 4 — Trust & expansion
