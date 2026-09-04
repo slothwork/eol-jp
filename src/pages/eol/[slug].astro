@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
-import { getCategoryLabel, getProductMigrationGuide, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
+import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSummary, products, recommendedTarget, statusFor } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
 
 export function getStaticPaths() {
@@ -20,6 +20,7 @@ const migrationGuide = getProductMigrationGuide(product);
 const supported = releases.filter((release) => statusFor(release) !== 'ended');
 const ended = releases.filter((release) => statusFor(release) === 'ended');
 const siteBase = Astro.site ?? Astro.url.origin;
+const pageUrl = new URL(canonicalPath, siteBase).toString();
 const faq = [
   {
     q: `${product.label} のEOLはいつですか？`,
@@ -42,34 +43,31 @@ const structured = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'TechArticle',
-      headline: title,
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
       description,
       inLanguage: 'ja-JP',
-      about: product.label,
-      mainEntityOfPage: new URL(canonicalPath, siteBase).toString()
+      dateModified: generatedAt,
+      about: {
+        '@type': 'Thing',
+        name: product.label
+      }
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'ホーム', item: new URL('/', siteBase).toString() },
         { '@type': 'ListItem', position: 2, name: '製品一覧', item: new URL('/eol/', siteBase).toString() },
-        { '@type': 'ListItem', position: 3, name: product.label, item: new URL(canonicalPath, siteBase).toString() }
+        { '@type': 'ListItem', position: 3, name: product.label, item: pageUrl }
       ]
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faq.map((item) => ({
-        '@type': 'Question',
-        name: item.q,
-        acceptedAnswer: { '@type': 'Answer', text: item.a }
-      }))
     }
   ]
 };
 ---
 <BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
-  <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structured)}></script>
   <section class="page-head"><div class="container">
     <nav class="breadcrumb" aria-label="パンくずリスト">
       <a href="/">ホーム</a><span>/</span><a href="/eol/">製品一覧</a><span>/</span><span aria-current="page">{product.label}</span>
