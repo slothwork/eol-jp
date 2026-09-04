@@ -47,7 +47,7 @@
 - FAQ本文は表示するが、Google検索でFAQリッチリザルトが廃止されたため `FAQPage` JSON-LDは付けない。
 - `TechArticle` や `Article` を検索表示目的だけで無理に付けず、ページの実態に合う型を優先する。
 - 構造化データは画面上の内容と矛盾させない。
-- `npm run build` 後に `npm run validate:seo` を実行し、全製品ページのcanonical、JSON-LD、breadcrumb、sitemapを検査する。
+- `npm run build` 後に `npm run validate:seo` を実行し、全製品ページのcanonical、JSON-LD、breadcrumb、index方針、sitemapを検査する。
 
 Reference:
 - https://developers.google.com/search/docs/appearance/structured-data/sd-policies
@@ -56,8 +56,44 @@ Reference:
 
 ## Indexing
 
-- canonicalを固定。
-- XML sitemapを自動生成。
-- 404はnoindex。
+製品ページはすべてユーザーから閲覧可能な静的ページとして生成する。一方で、検索エンジンへのindex対象はページの情報量で選別し、データが乏しいページを検索流入目的だけで大量indexさせない。
+
+### Indexする製品ページ
+
+次のどちらかを満たす製品ページをindex対象とする。
+
+1. `src/data/product-meta.ts` に独自日本語summaryがある。
+2. 独自summaryがなくても、EOL日が確定しているリリース系列が2件以上あり、公式release policyまたはendoflife.dateの参照リンクを持つ。
+
+この判定は `src/lib/index-policy.ts` に集約する。主要製品は独自コンテンツによってindexを維持し、それ以外は実際のライフサイクルデータが十分にある場合だけindexする。
+
+### noindexにする製品ページ
+
+上記条件を満たさない製品ページは削除せず、`noindex,follow` とする。
+
+- 製品一覧やカテゴリからは引き続き閲覧できる。
+- ページ内の一次情報や関連ページへのリンクはfollow可能なままにする。
+- XML sitemapからは除外する。
+- 将来データが充実してindex条件を満たした場合は、自動的にindex対象へ戻る。
+
+### Validation
+
+`npm run validate:seo` では以下を検証する。
+
+- 全製品ページのself canonical。
+- noindexページが `follow` を維持していること。
+- index対象ページだけがsitemapへ含まれること。
+- noindexページがsitemapへ混入しないこと。
+- index/noindexの件数をCIログへ出力すること。
+
+その他の基本方針:
+
+- canonicalを固定する。
+- XML sitemapを自動生成する。
+- 404はnoindexとする。
 - URLパラメータで検索結果ページを生成しない。
 - JSだけに重要コンテンツを閉じ込めない。
+
+Reference:
+- https://developers.google.com/search/docs/crawling-indexing/block-indexing
+- https://developers.google.com/search/docs/essentials/spam-policies
