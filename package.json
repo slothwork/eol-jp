@@ -19,6 +19,7 @@
     "test:tracked-products": "node --experimental-strip-types scripts/test-tracked-products.mjs",
     "test:eol-reminders": "node --experimental-strip-types scripts/test-eol-reminders.mjs",
     "test:external-notifications": "node --experimental-strip-types scripts/test-external-notifications.mjs",
+    "test:external-notification-client": "node --experimental-strip-types scripts/test-external-notification-client.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {

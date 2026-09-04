@@ -1,0 +1,279 @@
+<section class="panel external-notification-panel" data-external-notification-panel>
+  <div class="calendar-heading-row">
+    <div>
+      <span class="eyebrow">EXTERNAL NOTIFICATION</span>
+      <h2>Slack / Discord通知</h2>
+    </div>
+    <span class="eyebrow">毎日10:15 JSTに判定</span>
+  </div>
+  <p class="section-lead">マイEOLに保存した利用中バージョンを、30 / 90 / 180日前の設定に合わせてSlackまたはDiscordへ通知します。サイトを閉じていてもCloudflare Workerが日次で判定します。</p>
+
+  <div class="notice" data-external-notification-summary>通知対象を確認しています。</div>
+  <div class="notice external-notification-message" data-external-notification-message hidden></div>
+
+  <form class="external-notification-form" data-external-notification-form>
+    <label>
+      通知先
+      <select class="history-select" data-external-notification-channel>
+        <option value="slack">Slack</option>
+        <option value="discord">Discord</option>
+      </select>
+    </label>
+    <label>
+      Incoming Webhook URL
+      <input
+        class="search-box"
+        type="password"
+        inputmode="url"
+        autocomplete="new-password"
+        spellcheck="false"
+        placeholder="https://hooks.slack.com/services/..."
+        data-external-notification-webhook
+      />
+    </label>
+    <div class="hero-actions">
+      <button class="button primary" type="submit" data-external-notification-register>テストして通知を登録</button>
+    </div>
+    <p class="section-note">登録時に固定のテストメッセージを1回送信します。Webhook URLはブラウザには保存せず、通知処理のためCloudflare KVに保存されます。管理tokenはこのブラウザ内だけに保存されます。</p>
+  </form>
+
+  <div data-external-notification-configured hidden>
+    <div class="external-notification-status-row">
+      <div>
+        <strong data-external-notification-channel-label></strong>
+        <p class="muted" data-external-notification-status></p>
+      </div>
+      <span class="status-badge status-supported" data-external-notification-sync-badge>同期済み</span>
+    </div>
+    <div class="hero-actions">
+      <button class="button primary" type="button" data-external-notification-sync>現在のマイEOLと同期</button>
+      <button class="button" type="button" data-external-notification-delete>通知設定を解除</button>
+    </div>
+    <p class="section-note">利用中バージョンやリマインダー期限を変更した場合は「現在のマイEOLと同期」を実行してください。</p>
+  </div>
+</section>
+
+<script>
+  import {
+    EXTERNAL_NOTIFICATION_STORAGE_KEY,
+    MAX_EXTERNAL_NOTIFICATION_ITEMS,
+    buildExternalNotificationPayload,
+    clearExternalNotificationSubscription,
+    emptyExternalNotificationState,
+    externalNotificationNeedsSync,
+    markExternalNotificationSynced,
+    parseExternalNotificationState,
+    serializeExternalNotificationState,
+    setExternalNotificationSubscription,
+    type ExternalNotificationChannel,
+    type ExternalNotificationState
+  } from '@/lib/external-notifications';
+  import { EOL_REMINDER_STORAGE_KEY, parseEolReminderState } from '@/lib/eol-reminders';
+  import { TRACKED_PRODUCTS_STORAGE_KEY, parseTrackedProducts } from '@/lib/tracked-products';
+
+  const form = document.querySelector<HTMLFormElement>('[data-external-notification-form]');
+  const configured = document.querySelector<HTMLElement>('[data-external-notification-configured]');
+  const summary = document.querySelector<HTMLElement>('[data-external-notification-summary]');
+  const message = document.querySelector<HTMLElement>('[data-external-notification-message]');
+  const channelSelect = document.querySelector<HTMLSelectElement>('[data-external-notification-channel]');
+  const webhookInput = document.querySelector<HTMLInputElement>('[data-external-notification-webhook]');
+  const registerButton = document.querySelector<HTMLButtonElement>('[data-external-notification-register]');
+  const channelLabel = document.querySelector<HTMLElement>('[data-external-notification-channel-label]');
+  const statusText = document.querySelector<HTMLElement>('[data-external-notification-status]');
+  const syncBadge = document.querySelector<HTMLElement>('[data-external-notification-sync-badge]');
+  const syncButton = document.querySelector<HTMLButtonElement>('[data-external-notification-sync]');
+  const deleteButton = document.querySelector<HTMLButtonElement>('[data-external-notification-delete]');
+
+  let externalState: ExternalNotificationState = emptyExternalNotificationState();
+
+  const readPayload = () => {
+    const tracked = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+    const reminders = parseEolReminderState(localStorage.getItem(EOL_REMINDER_STORAGE_KEY));
+    return buildExternalNotificationPayload(tracked, reminders);
+  };
+
+  const thresholdText = (thresholds: number[]) => thresholds.length > 0
+    ? thresholds.map((threshold) => `${threshold}日前`).join('・')
+    : '通知タイミング未設定';
+
+  const showMessage = (text: string, isError = false) => {
+    if (!message) return;
+    message.hidden = false;
+    message.textContent = text;
+    message.classList.toggle('external-notification-error', isError);
+  };
+
+  const clearMessage = () => {
+    if (!message) return;
+    message.hidden = true;
+    message.textContent = '';
+    message.classList.remove('external-notification-error');
+  };
+
+  const persistExternalState = () => {
+    localStorage.setItem(EXTERNAL_NOTIFICATION_STORAGE_KEY, serializeExternalNotificationState(externalState));
+  };
+
+  const render = () => {
+    if (!form || !configured || !summary || !registerButton || !channelLabel || !statusText || !syncBadge || !syncButton) return;
+    const payload = readPayload();
+    const count = payload.items.length;
+    const tooMany = count > MAX_EXTERNAL_NOTIFICATION_ITEMS;
+    const noThresholds = payload.thresholds.length === 0;
+    summary.textContent = `現在の通知対象: ${count}製品 / ${thresholdText(payload.thresholds)}`;
+
+    const subscription = externalState.subscription;
+    form.hidden = Boolean(subscription);
+    configured.hidden = !subscription;
+
+    if (!subscription) {
+      registerButton.disabled = count === 0 || tooMany || noThresholds;
+      if (tooMany) summary.textContent += ` — 外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`;
+      else if (count === 0) summary.textContent += ' — 先に利用中バージョンを保存してください。';
+      else if (noThresholds) summary.textContent += ' — 30 / 90 / 180日前のいずれかをONにしてください。';
+      return;
+    }
+
+    const needsSync = externalNotificationNeedsSync(externalState, payload);
+    channelLabel.textContent = subscription.channel === 'slack' ? 'Slack通知を登録済み' : 'Discord通知を登録済み';
+    statusText.textContent = `最終同期: ${new Date(subscription.syncedAt).toLocaleString('ja-JP')}`;
+    syncBadge.textContent = needsSync ? '同期が必要' : '同期済み';
+    syncBadge.className = `status-badge ${needsSync ? 'status-warning' : 'status-supported'}`;
+    syncButton.disabled = count === 0 || tooMany || noThresholds || !needsSync;
+  };
+
+  const authorizedFetch = (method: string, body?: unknown) => {
+    const subscription = externalState.subscription;
+    if (!subscription) throw new Error('subscription_missing');
+    return fetch(`/api/notifications/subscriptions/${encodeURIComponent(subscription.id)}`, {
+      method,
+      headers: {
+        Authorization: `Bearer ${subscription.token}`,
+        ...(body ? { 'Content-Type': 'application/json' } : {})
+      },
+      body: body ? JSON.stringify(body) : undefined
+    });
+  };
+
+  const verifyRemote = async () => {
+    const subscription = externalState.subscription;
+    if (!subscription) return;
+    try {
+      const response = await authorizedFetch('GET');
+      if (response.status === 401 || response.status === 404) {
+        externalState = clearExternalNotificationSubscription();
+        persistExternalState();
+        render();
+        showMessage('サーバー側の通知設定を確認できなかったため、このブラウザの古い管理情報をクリアしました。', true);
+        return;
+      }
+      if (!response.ok) showMessage('通知設定の状態確認に失敗しました。後でもう一度確認してください。', true);
+    } catch {
+      showMessage('通知設定の状態確認に失敗しました。通信状態を確認してください。', true);
+    }
+  };
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearMessage();
+    if (!channelSelect || !webhookInput || !registerButton) return;
+
+    const payload = readPayload();
+    if (payload.items.length === 0 || payload.items.length > MAX_EXTERNAL_NOTIFICATION_ITEMS || payload.thresholds.length === 0) {
+      render();
+      return;
+    }
+    const webhookUrl = webhookInput.value.trim();
+    if (!webhookUrl) {
+      showMessage('Webhook URLを入力してください。', true);
+      return;
+    }
+
+    registerButton.disabled = true;
+    registerButton.textContent = 'テスト送信中…';
+    try {
+      const channel = channelSelect.value as ExternalNotificationChannel;
+      const response = await fetch('/api/notifications/subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ channel, webhookUrl, ...payload })
+      });
+      const data = await response.json() as { id?: string; token?: string; error?: string };
+      if (!response.ok || !data.id || !data.token) throw new Error(data.error ?? 'registration_failed');
+
+      externalState = setExternalNotificationSubscription(
+        externalState,
+        { id: data.id, token: data.token, channel },
+        payload
+      );
+      persistExternalState();
+      webhookInput.value = '';
+      render();
+      showMessage('テスト送信に成功し、外部通知を登録しました。');
+    } catch (error) {
+      const code = error instanceof Error ? error.message : '';
+      const text = code === 'invalid_webhook_url'
+        ? 'SlackまたはDiscordの正しいWebhook URLを確認してください。'
+        : code === 'too_many_tracked_items'
+          ? `外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`
+          : '通知登録またはテスト送信に失敗しました。Webhook URLを確認してください。';
+      showMessage(text, true);
+    } finally {
+      registerButton.textContent = 'テストして通知を登録';
+      render();
+    }
+  });
+
+  syncButton?.addEventListener('click', async () => {
+    clearMessage();
+    const payload = readPayload();
+    if (payload.items.length === 0 || payload.items.length > MAX_EXTERNAL_NOTIFICATION_ITEMS || payload.thresholds.length === 0) {
+      render();
+      return;
+    }
+    syncButton.disabled = true;
+    syncButton.textContent = '同期中…';
+    try {
+      const response = await authorizedFetch('PUT', payload);
+      const data = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(data.error ?? 'sync_failed');
+      externalState = markExternalNotificationSynced(externalState, payload);
+      persistExternalState();
+      render();
+      showMessage('現在の利用中バージョンとリマインダー設定を外部通知へ同期しました。');
+    } catch {
+      showMessage('外部通知の同期に失敗しました。後でもう一度実行してください。', true);
+    } finally {
+      syncButton.textContent = '現在のマイEOLと同期';
+      render();
+    }
+  });
+
+  deleteButton?.addEventListener('click', async () => {
+    clearMessage();
+    if (!deleteButton) return;
+    deleteButton.disabled = true;
+    deleteButton.textContent = '解除中…';
+    try {
+      const response = await authorizedFetch('DELETE');
+      if (!response.ok && response.status !== 404) throw new Error('delete_failed');
+      externalState = clearExternalNotificationSubscription();
+      persistExternalState();
+      render();
+      showMessage('外部通知設定を解除しました。');
+    } catch {
+      showMessage('外部通知設定を解除できませんでした。後でもう一度実行してください。', true);
+    } finally {
+      deleteButton.textContent = '通知設定を解除';
+      deleteButton.disabled = false;
+    }
+  });
+
+  try {
+    externalState = parseExternalNotificationState(localStorage.getItem(EXTERNAL_NOTIFICATION_STORAGE_KEY));
+    render();
+    void verifyRemote();
+  } catch {
+    showMessage('このブラウザでは外部通知の管理情報を保存できません。', true);
+  }
+</script>
