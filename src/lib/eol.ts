@@ -1,6 +1,12 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
 import { daysUntil } from '@/lib/date';
+import {
+  chooseRecommendedTarget,
+  nearestUpcomingEolRelease,
+  statusForRelease,
+  type DecisionStatus
+} from '@/lib/eol-decision';
 
 export type LatestRelease = {
   name: string | null;
@@ -34,7 +40,7 @@ export type Product = {
   releases: Release[];
 };
 
-export type EolStatus = 'ended' | 'critical' | 'warning' | 'planning' | 'supported' | 'unknown';
+export type EolStatus = DecisionStatus;
 
 export const products = (snapshot.products as Product[]).slice().sort((a, b) => a.label.localeCompare(b.label, 'ja'));
 export const generatedAt = snapshot.generatedAt;
@@ -58,13 +64,11 @@ export function getProductMigrationGuide(product: Product) {
 }
 
 export function statusFor(release: Release): EolStatus {
-  const days = daysUntil(release.eolFrom);
-  if (release.isEol || (days !== null && days < 0)) return 'ended';
-  if (days === null) return release.isMaintained ? 'supported' : 'unknown';
-  if (days <= 30) return 'critical';
-  if (days <= 90) return 'warning';
-  if (days <= 180) return 'planning';
-  return 'supported';
+  return statusForRelease(release);
+}
+
+export function nearestUpcomingEol(product: Product): Release | null {
+  return nearestUpcomingEolRelease(product.releases);
 }
 
 export function statusLabel(status: EolStatus): string {
@@ -98,8 +102,5 @@ export function featuredProducts() {
 }
 
 export function recommendedTarget(product: Product, release: Release): Release | null {
-  const candidates = product.releases
-    .filter((candidate) => candidate.name !== release.name && statusFor(candidate) !== 'ended')
-    .sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
-  return candidates[0] ?? null;
+  return chooseRecommendedTarget(product.releases, release);
 }
