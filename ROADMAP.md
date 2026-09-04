@@ -31,7 +31,7 @@
 - [x] EOL変更履歴ページ
 - [x] 主要製品の公式移行ガイドへの導線
 - [ ] Search Consoleのクエリ別CTR改善
-- [ ] 構造化データ検証
+- [x] 構造化データ検証
 
 ## Phase 3 — Utility product
 

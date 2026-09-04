@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "sync:eol": "node scripts/sync-eol.mjs"
+    "sync:eol": "node scripts/sync-eol.mjs",
+    "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
     "astro": "^7.3.1"
