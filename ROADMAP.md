@@ -33,7 +33,8 @@
 - [x] 「注目されているEOL情報」表示基盤（180日以内 × 直近30日閲覧）
 - [x] 製品ページの最接近EOL判定・LTS優先の保守的な移行候補判定
 - [x] 製品ページの情報量に応じたindex / noindex方針とsitemap連動
-- [ ] Search Consoleのクエリ別CTR改善
+- [x] Search Console CSVのクエリ / ページ別CTR改善候補抽出基盤
+- [ ] Search Console実データに基づくtitle / description改善と効果検証
 - [x] 構造化データ検証
 
 ## Phase 3 — Utility product
