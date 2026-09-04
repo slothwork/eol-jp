@@ -40,7 +40,7 @@
 ## Phase 3 — Utility product
 
 - [x] 「利用中バージョン」ローカル保存
-- [ ] マイEOLダッシュボード
+- [x] マイEOLダッシュボード
 - [ ] 30/90/180日前リマインダー
 - [ ] メール / Slack / Discord通知
 - [ ] 公開JSON API / embeddable badge検討

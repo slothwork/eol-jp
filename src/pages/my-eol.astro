@@ -1,0 +1,256 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="マイEOL"
+  description="このブラウザに保存した利用中ソフトウェアのEOL・サポート期限をまとめて確認できます。"
+  canonicalPath="/my-eol/"
+  noindex={true}
+>
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">MY EOL</span>
+      <h1>マイEOLダッシュボード</h1>
+      <p>製品ページで保存した「利用中バージョン」を、EOLの緊急度が高い順にまとめて確認できます。保存内容はこのブラウザ内だけに保持されます。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="stats" data-my-eol-stats hidden>
+        <div class="stat"><strong data-my-eol-total>0</strong><span>保存中</span></div>
+        <div class="stat"><strong data-my-eol-urgent>0</strong><span>90日以内</span></div>
+        <div class="stat"><strong data-my-eol-ended>0</strong><span>EOL済み</span></div>
+      </div>
+
+      <div class="notice" data-my-eol-loading>
+        保存内容を読み込んでいます。
+      </div>
+
+      <div class="panel" data-my-eol-empty hidden>
+        <h2>まだ保存された製品はありません</h2>
+        <p>各製品ページの「MY EOL」から利用中バージョンを保存すると、ここに一覧表示されます。</p>
+        <a class="button primary" href="/eol/">製品一覧から選ぶ</a>
+      </div>
+
+      <div data-my-eol-content hidden>
+        <div class="calendar-heading-row">
+          <div>
+            <h2>利用中バージョン</h2>
+            <p class="section-lead">EOL済み・期限が近い製品から順に表示します。</p>
+          </div>
+          <span class="eyebrow">このブラウザ内のみ</span>
+        </div>
+        <div class="history-list" data-my-eol-list></div>
+      </div>
+
+      <p class="section-note">保存内容はログイン情報やサーバーには紐づきません。別のブラウザや端末には自動同期されません。</p>
+    </div>
+  </section>
+
+  <script>
+    import { daysUntil, formatJaDate, relativeEol } from '@/lib/date';
+    import { statusForRelease, type DecisionStatus } from '@/lib/eol-decision';
+    import {
+      TRACKED_PRODUCTS_STORAGE_KEY,
+      parseTrackedProducts,
+      removeTrackedProduct,
+      serializeTrackedProducts,
+      type TrackedProductsState
+    } from '@/lib/tracked-products';
+
+    type CatalogRelease = {
+      name: string;
+      releaseDate: string | null;
+      eolFrom: string | null;
+      isLts: boolean;
+      isEol: boolean;
+      isMaintained: boolean;
+    };
+
+    type CatalogProduct = {
+      slug: string;
+      label: string;
+      releases: CatalogRelease[];
+    };
+
+    type DashboardEntry = {
+      slug: string;
+      label: string;
+      version: string;
+      release: CatalogRelease | null;
+      status: DecisionStatus;
+      savedAt: string;
+    };
+
+    const statusLabels: Record<DecisionStatus, string> = {
+      ended: 'EOL済み',
+      critical: '30日以内',
+      warning: '90日以内',
+      planning: '180日以内',
+      supported: 'サポート中',
+      unknown: '期限未定'
+    };
+
+    const priority: Record<DecisionStatus, number> = {
+      ended: 0,
+      critical: 1,
+      warning: 2,
+      planning: 3,
+      supported: 4,
+      unknown: 5
+    };
+
+    const loading = document.querySelector<HTMLElement>('[data-my-eol-loading]');
+    const empty = document.querySelector<HTMLElement>('[data-my-eol-empty]');
+    const content = document.querySelector<HTMLElement>('[data-my-eol-content]');
+    const list = document.querySelector<HTMLElement>('[data-my-eol-list]');
+    const stats = document.querySelector<HTMLElement>('[data-my-eol-stats]');
+    const totalNode = document.querySelector<HTMLElement>('[data-my-eol-total]');
+    const urgentNode = document.querySelector<HTMLElement>('[data-my-eol-urgent]');
+    const endedNode = document.querySelector<HTMLElement>('[data-my-eol-ended]');
+
+    let state: TrackedProductsState = parseTrackedProducts(null);
+    let catalog = new Map<string, CatalogProduct>();
+
+    const persist = () => {
+      localStorage.setItem(TRACKED_PRODUCTS_STORAGE_KEY, serializeTrackedProducts(state));
+    };
+
+    const buildEntries = (): DashboardEntry[] => {
+      return Object.entries(state.products)
+        .map(([slug, tracked]) => {
+          const product = catalog.get(slug);
+          const release = product?.releases.find((item) => item.name === tracked.version) ?? null;
+          return {
+            slug,
+            label: product?.label ?? slug,
+            version: tracked.version,
+            release,
+            status: release ? statusForRelease(release) : 'unknown',
+            savedAt: tracked.savedAt
+          } satisfies DashboardEntry;
+        })
+        .sort((a, b) => {
+          const byPriority = priority[a.status] - priority[b.status];
+          if (byPriority !== 0) return byPriority;
+
+          const aDays = a.release ? daysUntil(a.release.eolFrom) : null;
+          const bDays = b.release ? daysUntil(b.release.eolFrom) : null;
+          if (aDays !== null || bDays !== null) {
+            if (aDays === null) return 1;
+            if (bDays === null) return -1;
+            if (aDays !== bDays) return aDays - bDays;
+          }
+
+          return a.label.localeCompare(b.label, 'ja');
+        });
+    };
+
+    const render = () => {
+      if (!list || !empty || !content || !stats || !totalNode || !urgentNode || !endedNode) return;
+
+      const entries = buildEntries();
+      list.replaceChildren();
+      totalNode.textContent = String(entries.length);
+      urgentNode.textContent = String(entries.filter((entry) => entry.status === 'critical' || entry.status === 'warning').length);
+      endedNode.textContent = String(entries.filter((entry) => entry.status === 'ended').length);
+      stats.hidden = entries.length === 0;
+      empty.hidden = entries.length !== 0;
+      content.hidden = entries.length === 0;
+
+      for (const entry of entries) {
+        const article = document.createElement('article');
+        article.className = 'history-item';
+
+        const main = document.createElement('div');
+
+        const titleRow = document.createElement('div');
+        titleRow.className = 'card-topline';
+
+        const title = document.createElement('h2');
+        const link = document.createElement('a');
+        link.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+        link.textContent = entry.label;
+        title.append(link);
+
+        const badge = document.createElement('span');
+        badge.className = `status-badge status-${entry.status}`;
+        badge.textContent = statusLabels[entry.status];
+        titleRow.append(title, badge);
+
+        const version = document.createElement('p');
+        version.className = 'muted';
+        version.textContent = `利用中: ${entry.version}${entry.release?.isLts ? ' (LTS)' : ''}`;
+
+        const meta = document.createElement('div');
+        meta.className = 'history-meta';
+        if (entry.release) {
+          const eol = document.createElement('span');
+          eol.textContent = `EOL: ${formatJaDate(entry.release.eolFrom)}`;
+          const relative = document.createElement('strong');
+          relative.textContent = relativeEol(entry.release.eolFrom);
+          meta.append(eol, relative);
+        } else {
+          const missing = document.createElement('span');
+          missing.textContent = '保存済みバージョンが現在のデータに見つかりません。製品ページで再選択してください。';
+          meta.append(missing);
+        }
+
+        main.append(titleRow, version, meta);
+
+        const actions = document.createElement('div');
+        actions.className = 'hero-actions';
+
+        const details = document.createElement('a');
+        details.className = 'button';
+        details.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+        details.textContent = '詳細を見る';
+
+        const remove = document.createElement('button');
+        remove.className = 'button';
+        remove.type = 'button';
+        remove.textContent = '保存を解除';
+        remove.addEventListener('click', () => {
+          try {
+            state = removeTrackedProduct(state, entry.slug);
+            persist();
+            render();
+          } catch {
+            remove.disabled = true;
+            remove.textContent = '解除できません';
+          }
+        });
+
+        actions.append(details, remove);
+        article.append(main, actions);
+        list.append(article);
+      }
+    };
+
+    const initialize = async () => {
+      if (!loading || !empty || !content) return;
+
+      try {
+        state = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+      } catch {
+        loading.textContent = 'このブラウザではローカル保存を利用できません。';
+        return;
+      }
+
+      try {
+        const response = await fetch('/my-eol-data.json');
+        if (!response.ok) throw new Error('catalog fetch failed');
+        const data = await response.json() as { products?: CatalogProduct[] };
+        catalog = new Map((data.products ?? []).map((product) => [product.slug, product]));
+        loading.hidden = true;
+        render();
+      } catch {
+        loading.textContent = 'EOL情報を読み込めませんでした。ページを再読み込みしてください。';
+      }
+    };
+
+    void initialize();
+  </script>
+</BaseLayout>
