@@ -94,7 +94,7 @@ const attentionUpdated = attentionRanking.generatedAt
             </div>
           ))}
         </div>
-        <p class="section-note">Cloudflare Web Analyticsによるページ閲覧数を集計。{attentionUpdated && <>最終集計：{attentionUpdated}</>}</p>
+        <p class="section-note">Cloudflare Web Analyticsによるページ閲覧数を集計。{attentionUpdated ? `最終集計：${attentionUpdated}` : ''}</p>
       </div>
     </section>
   )}
