@@ -29,7 +29,7 @@ assert.equal(EMAIL_VERIFY_MAX_ATTEMPTS, 5);
 assert.equal(normalizeEmail(' User@Example.COM '), 'user@example.com');
 assert.equal(normalizeEmail('invalid'), null);
 assert.equal(normalizeEmail('a@b'), null);
-assert.equal(maskEmail('user@example.com'), 'us**@example.com');
+assert.equal(maskEmail('user@example.com'), 'us***@example.com');
 assert.equal(maskEmail('a@example.com'), 'a***@example.com');
 assert.equal(isVerificationCode('123456'), true);
 assert.equal(isVerificationCode('12345'), false);
