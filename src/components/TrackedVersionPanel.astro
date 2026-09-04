@@ -1,0 +1,166 @@
+---
+import type { Product } from '@/lib/eol';
+import { formatJaDate, relativeEol } from '@/lib/date';
+import { statusFor, statusLabel } from '@/lib/eol';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const releases = product.releases
+  .slice()
+  .sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
+const selectId = `tracked-version-${product.slug}`;
+---
+
+<section class="tracked-version-panel" data-tracked-version-panel data-product-slug={product.slug} data-product-label={product.label}>
+  <div class="tracked-version-heading">
+    <div>
+      <span class="eyebrow">MY EOL</span>
+      <h2>利用中バージョンを保存</h2>
+    </div>
+    <span class="tracked-version-local">このブラウザ内のみ</span>
+  </div>
+  <p class="section-lead">現在利用しているバージョンを保存すると、次回このページを開いたときにもEOL状況を確認できます。</p>
+
+  <div class="tracked-version-controls">
+    <label for={selectId}>利用中の {product.label}</label>
+    <select id={selectId} class="tracked-version-select" data-tracked-version-select>
+      <option value="">バージョンを選択</option>
+      {releases.map((release) => {
+        const status = statusFor(release);
+        return (
+          <option
+            value={release.name}
+            data-status={status}
+            data-status-label={statusLabel(status)}
+            data-eol-label={formatJaDate(release.eolFrom)}
+            data-relative-eol={relativeEol(release.eolFrom)}
+            data-is-lts={release.isLts ? 'true' : 'false'}
+          >
+            {release.name}{release.isLts ? ' (LTS)' : ''}
+          </option>
+        );
+      })}
+    </select>
+    <div class="tracked-version-actions">
+      <button class="button primary" type="button" data-tracked-version-save>保存</button>
+      <button class="button" type="button" data-tracked-version-clear hidden>保存を解除</button>
+    </div>
+  </div>
+
+  <div class="tracked-version-summary" data-tracked-version-summary hidden>
+    <div>
+      <span class="tracked-version-summary-label">保存中</span>
+      <strong data-tracked-version-current></strong>
+    </div>
+    <div class="tracked-version-meta">
+      <span data-tracked-version-status></span>
+      <span data-tracked-version-eol></span>
+    </div>
+  </div>
+  <p class="section-note" data-tracked-version-message aria-live="polite">保存内容はサーバーへ送信されません。</p>
+</section>
+
+<script>
+  import {
+    TRACKED_PRODUCTS_STORAGE_KEY,
+    parseTrackedProducts,
+    removeTrackedProduct,
+    serializeTrackedProducts,
+    setTrackedProduct
+  } from '@/lib/tracked-products';
+
+  function loadState() {
+    try {
+      return parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+    } catch {
+      return parseTrackedProducts(null);
+    }
+  }
+
+  function persistState(state: ReturnType<typeof loadState>) {
+    localStorage.setItem(TRACKED_PRODUCTS_STORAGE_KEY, serializeTrackedProducts(state));
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-tracked-version-panel]').forEach((panel) => {
+    const slug = panel.dataset.productSlug ?? '';
+    const label = panel.dataset.productLabel ?? slug;
+    const select = panel.querySelector<HTMLSelectElement>('[data-tracked-version-select]');
+    const saveButton = panel.querySelector<HTMLButtonElement>('[data-tracked-version-save]');
+    const clearButton = panel.querySelector<HTMLButtonElement>('[data-tracked-version-clear]');
+    const summary = panel.querySelector<HTMLElement>('[data-tracked-version-summary]');
+    const current = panel.querySelector<HTMLElement>('[data-tracked-version-current]');
+    const status = panel.querySelector<HTMLElement>('[data-tracked-version-status]');
+    const eol = panel.querySelector<HTMLElement>('[data-tracked-version-eol]');
+    const message = panel.querySelector<HTMLElement>('[data-tracked-version-message]');
+
+    if (!slug || !select || !saveButton || !clearButton || !summary || !current || !status || !eol || !message) return;
+
+    const render = (version: string | null) => {
+      if (!version) {
+        select.value = '';
+        summary.hidden = true;
+        clearButton.hidden = true;
+        return;
+      }
+
+      const option = Array.from(select.options).find((item) => item.value === version);
+      if (!option) {
+        select.value = '';
+        summary.hidden = true;
+        clearButton.hidden = false;
+        message.textContent = `保存済みの ${label} ${version} は現在のデータに見つかりません。バージョンを再選択してください。`;
+        return;
+      }
+
+      select.value = version;
+      current.textContent = `${label} ${version}${option.dataset.isLts === 'true' ? ' (LTS)' : ''}`;
+      status.textContent = option.dataset.statusLabel ?? '状態不明';
+      status.className = `status-badge status-${option.dataset.status ?? 'unknown'}`;
+      eol.textContent = `EOL: ${option.dataset.eolLabel ?? '不明'}（${option.dataset.relativeEol ?? '期限不明'}）`;
+      summary.hidden = false;
+      clearButton.hidden = false;
+    };
+
+    try {
+      const state = loadState();
+      const saved = state.products[slug];
+      render(saved?.version ?? null);
+    } catch {
+      saveButton.disabled = true;
+      clearButton.hidden = true;
+      message.textContent = 'このブラウザではローカル保存を利用できません。';
+      return;
+    }
+
+    saveButton.addEventListener('click', () => {
+      const version = select.value;
+      if (!version) {
+        message.textContent = '保存するバージョンを選択してください。';
+        return;
+      }
+
+      try {
+        const state = setTrackedProduct(loadState(), slug, version);
+        persistState(state);
+        render(version);
+        message.textContent = `${label} ${version} をこのブラウザに保存しました。`;
+      } catch {
+        message.textContent = '保存できませんでした。ブラウザのストレージ設定を確認してください。';
+      }
+    });
+
+    clearButton.addEventListener('click', () => {
+      try {
+        const state = removeTrackedProduct(loadState(), slug);
+        persistState(state);
+        render(null);
+        message.textContent = `${label} の保存を解除しました。`;
+      } catch {
+        message.textContent = '保存内容を解除できませんでした。';
+      }
+    });
+  });
+</script>
