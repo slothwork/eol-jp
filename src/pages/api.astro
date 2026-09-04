@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="公開JSON API・EOLバッジ"
+  description="EOL情報.jpの公開JSON APIと、READMEや社内Wikiに埋め込めるバージョン別EOLバッジの使い方です。"
+  canonicalPath="/api/"
+>
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">DEVELOPER API</span>
+      <h1>公開JSON API・EOLバッジ</h1>
+      <p>EOL情報.jpの正規化済みライフサイクルデータをJSONで参照し、利用中バージョンのEOL状況をSVGバッジとして埋め込めます。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel">
+        <h2>JSON API</h2>
+        <p>認証なしの読み取り専用APIです。EOLまでの日数と状態は、日本時間（JST）の現在日付を基準にリクエスト時に計算します。</p>
+
+        <h3>製品一覧</h3>
+        <pre><code>GET https://eol.slothwright.com/api/v1/products</code></pre>
+
+        <h3>製品詳細</h3>
+        <pre><code>GET https://eol.slothwright.com/api/v1/products/nodejs</code></pre>
+
+        <h3>特定バージョン</h3>
+        <pre><code>GET https://eol.slothwright.com/api/v1/products/nodejs?version=22</code></pre>
+
+        <p class="section-note">レスポンスには <code>status</code> と <code>daysUntilEol</code> を追加しています。CORSを許可しているため、ブラウザのクライアントコードからもGETできます。</p>
+      </div>
+
+      <div class="panel">
+        <h2>ステータス</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>status</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr><td><code>ended</code></td><td>EOL済み</td></tr>
+              <tr><td><code>critical</code></td><td>0〜30日以内</td></tr>
+              <tr><td><code>warning</code></td><td>31〜90日</td></tr>
+              <tr><td><code>planning</code></td><td>91〜180日</td></tr>
+              <tr><td><code>supported</code></td><td>181日以上</td></tr>
+              <tr><td><code>unknown</code></td><td>EOL日未定</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="eyebrow">EMBEDDABLE</span>
+        <h2>EOLバッジ</h2>
+        <p>製品slugと利用中バージョンを指定すると、現在のEOL状況をSVGで返します。</p>
+
+        <p><img src="/badge/nodejs.svg?version=22" alt="Node.js 22のEOL状況バッジ" /></p>
+
+        <h3>Markdown</h3>
+        <pre><code>![Node.js 22 EOL](https://eol.slothwright.com/badge/nodejs.svg?version=22)</code></pre>
+
+        <h3>HTML</h3>
+        <pre><code>&lt;img src="https://eol.slothwright.com/badge/nodejs.svg?version=22" alt="Node.js 22 EOL" /&gt;</code></pre>
+
+        <p class="section-note">バージョンは必須です。存在しない製品・バージョンの場合も画像自体は返し、バッジ上で「version不明」などと表示します。</p>
+      </div>
+
+      <div class="notice">
+        ライフサイクルデータの主ソースは endoflife.date API v1 です。不明な日付は推測せず <code>null</code> / <code>unknown</code> として扱います。重要な移行判断ではベンダー公式のサポート方針も確認してください。
+      </div>
+    </div>
+  </section>
+</BaseLayout>
