@@ -26,7 +26,7 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <title>{fullTitle}</title>
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: siteName,
