@@ -6,18 +6,21 @@ export type NotificationTrackedItem = {
   version: string;
 };
 
-export type NotificationSubscription = {
+export type ScheduledNotificationSubscription = {
+  items: NotificationTrackedItem[];
+  thresholds: NotificationThreshold[];
+  sent: Record<string, string>;
+  disabledAt?: string;
+};
+
+export type NotificationSubscription = ScheduledNotificationSubscription & {
   schemaVersion: 1;
   id: string;
   channel: NotificationChannel;
   webhookUrl: string;
-  items: NotificationTrackedItem[];
-  thresholds: NotificationThreshold[];
   tokenHash: string;
   createdAt: string;
   updatedAt: string;
-  sent: Record<string, string>;
-  disabledAt?: string;
   lastError?: string;
 };
 
@@ -44,6 +47,7 @@ export type DueNotification = {
 };
 
 const DAY = 86_400_000;
+const JST_OFFSET = 9 * 60 * 60 * 1000;
 const ALLOWED_THRESHOLDS: NotificationThreshold[] = [180, 90, 30];
 
 function parseDateOnly(value: string): Date | null {
@@ -52,12 +56,16 @@ function parseDateOnly(value: string): Date | null {
   return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
 }
 
+export function tokyoDateEpoch(now = new Date()): number {
+  const shifted = new Date(now.getTime() + JST_OFFSET);
+  return Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
+}
+
 export function daysUntilDate(value: string | null | undefined, now = new Date()): number | null {
   if (!value) return null;
   const date = parseDateOnly(value);
   if (!date) return null;
-  const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-  return Math.round((date.getTime() - today.getTime()) / DAY);
+  return Math.round((date.getTime() - tokyoDateEpoch(now)) / DAY);
 }
 
 export function normalizeThresholds(value: unknown): NotificationThreshold[] {
@@ -119,7 +127,7 @@ export function notificationDeliveryKey(slug: string, version: string, eolFrom: 
 }
 
 export function collectDueNotifications(
-  subscription: NotificationSubscription,
+  subscription: ScheduledNotificationSubscription,
   catalog: NotificationCatalog,
   now = new Date()
 ): DueNotification[] {

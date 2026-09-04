@@ -20,6 +20,8 @@
     "test:eol-reminders": "node --experimental-strip-types scripts/test-eol-reminders.mjs",
     "test:external-notifications": "node --experimental-strip-types scripts/test-external-notifications.mjs",
     "test:external-notification-client": "node --experimental-strip-types scripts/test-external-notification-client.mjs",
+    "test:email-notifications": "node --experimental-strip-types scripts/test-email-notifications.mjs",
+    "test:email-notification-client": "node --experimental-strip-types scripts/test-email-notification-client.mjs",
     "test:public-api": "node --experimental-strip-types scripts/test-public-api.mjs",
     "test:date-boundary": "node --experimental-strip-types scripts/test-date-boundary.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
