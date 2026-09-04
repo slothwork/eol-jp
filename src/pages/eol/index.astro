@@ -1,41 +1,182 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductCard from '@/components/ProductCard.astro';
-import { getCategoryLabel, products } from '@/lib/eol';
+import { getCategoryLabel, getProductSummary, products, statusFor, statusLabel } from '@/lib/eol';
+import { daysUntil, relativeEol } from '@/lib/date';
+
 const categories = [...new Set(products.map((product) => product.category))]
   .sort((a, b) => getCategoryLabel(a).localeCompare(getCategoryLabel(b), 'ja'));
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+function groupForLabel(label: string) {
+  const first = label.trim().charAt(0).toUpperCase();
+  if (alphabet.includes(first)) return first;
+  if (/^\d$/.test(first)) return '0-9';
+  return 'その他';
+}
+
+const groups = [...alphabet, '0-9', 'その他']
+  .filter((group) => products.some((product) => groupForLabel(product.label) === group));
+const initialGroup = groups.includes('A') ? 'A' : (groups[0] ?? 'その他');
+const initialProducts = products.filter((product) => groupForLabel(product.label) === initialGroup);
+
+const productData = products.map((product) => {
+  const categoryLabel = getCategoryLabel(product.category);
+  const next = product.releases
+    .map((release) => ({ release, days: daysUntil(release.eolFrom) }))
+    .filter((item) => item.days !== null && item.days >= 0)
+    .sort((a, b) => (a.days ?? Infinity) - (b.days ?? Infinity))[0];
+
+  return {
+    slug: product.slug,
+    label: product.label,
+    category: categoryLabel,
+    summary: getProductSummary(product),
+    group: groupForLabel(product.label),
+    search: `${product.label} ${product.slug} ${categoryLabel}`.toLowerCase(),
+    status: next ? statusFor(next.release) : null,
+    statusLabel: next ? statusLabel(statusFor(next.release)) : null,
+    version: next?.release.name ?? null,
+    relative: next ? relativeEol(next.release.eolFrom) : null
+  };
+});
+const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
 ---
 <BaseLayout title="EOL・サポート期限 製品一覧" description="Node.js、Python、PHP、Ubuntu、PostgreSQL、KubernetesなどのEOL・サポート終了日を製品別に確認できます。">
   <section class="page-head"><div class="container">
     <h1>EOL・サポート期限 製品一覧</h1>
-    <p>製品名、技術名、カテゴリから検索できます。</p>
+    <p>製品名、技術名、カテゴリから検索できます。通常表示は頭文字ごとに分け、初期表示を軽量化しています。</p>
     <input id="product-search" class="search-box" type="search" placeholder="例：Python / Ubuntu / PostgreSQL" autocomplete="off" />
   </div></section>
   <section class="section"><div class="container">
     <h2 id="categories">カテゴリから探す</h2>
     <p class="section-lead">製品種別ごとのEOL一覧から探せます。</p>
-    <div class="hero-actions">
-      {categories.map((category) => <a class="button" href={`/category/${category}/`}>{getCategoryLabel(category)}</a>)}
+    <div class="filter-tabs">
+      {categories.map((category) => <a class="filter-tab" href={`/category/${category}/`}>{getCategoryLabel(category)}</a>)}
     </div>
   </div></section>
   <section class="section"><div class="container">
-    <h2>全製品</h2>
-    <div id="product-grid" class="grid">{products.map((product) => <ProductCard product={product} />)}</div>
+    <h2>製品名から探す</h2>
+    <p class="section-lead">頭文字を選択すると、そのグループだけを表示します。検索欄を使うと全製品から検索します。</p>
+    <div class="filter-tabs" role="group" aria-label="製品名の頭文字">
+      {groups.map((group) => (
+        <button class:list={['filter-tab', group === initialGroup && 'active']} type="button" data-product-group={group} aria-pressed={group === initialGroup ? 'true' : 'false'}>{group}</button>
+      ))}
+      <button class="filter-tab" type="button" data-product-group="all" aria-pressed="false">すべて</button>
+    </div>
+    <p id="product-count" class="muted">{initialGroup}：{initialProducts.length}製品</p>
+    <div id="product-grid" class="grid" data-initial-group={initialGroup}>
+      {initialProducts.map((product) => <ProductCard product={product} />)}
+    </div>
     <p id="no-results" hidden>該当する製品がありません。</p>
   </div></section>
+  <script id="product-data" type="application/json" is:inline set:html={productDataJson}></script>
   <script>
+    type ProductView = {
+      slug: string;
+      label: string;
+      category: string;
+      summary: string;
+      group: string;
+      search: string;
+      status: string | null;
+      statusLabel: string | null;
+      version: string | null;
+      relative: string | null;
+    };
+
     const input = document.querySelector<HTMLInputElement>('#product-search');
-    const cards = [...document.querySelectorAll<HTMLElement>('[data-search]')];
+    const grid = document.querySelector<HTMLElement>('#product-grid');
+    const count = document.querySelector<HTMLElement>('#product-count');
     const noResults = document.querySelector<HTMLElement>('#no-results');
+    const dataElement = document.querySelector<HTMLScriptElement>('#product-data');
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('[data-product-group]')];
+    const productData = JSON.parse(dataElement?.textContent ?? '[]') as ProductView[];
+    let activeGroup = grid?.dataset.initialGroup ?? 'A';
+
+    function createProductCard(item: ProductView) {
+      const article = document.createElement('article');
+      article.className = 'product-card';
+
+      const topline = document.createElement('div');
+      topline.className = 'card-topline';
+      const category = document.createElement('span');
+      category.className = 'eyebrow';
+      category.textContent = item.category;
+      topline.append(category);
+      if (item.status && item.statusLabel) {
+        const badge = document.createElement('span');
+        badge.className = `status-badge status-${item.status}`;
+        badge.textContent = item.statusLabel;
+        topline.append(badge);
+      }
+
+      const heading = document.createElement('h3');
+      const link = document.createElement('a');
+      link.href = `/eol/${item.slug}/`;
+      link.textContent = item.label;
+      heading.append(link);
+
+      const summary = document.createElement('p');
+      summary.textContent = item.summary;
+
+      const deadline = document.createElement('p');
+      deadline.className = 'card-deadline';
+      if (item.version && item.relative) {
+        const strong = document.createElement('strong');
+        strong.textContent = item.version;
+        deadline.append(strong, document.createTextNode(`：${item.relative}`));
+      } else {
+        deadline.textContent = '今後のEOL日が登録されていません。';
+      }
+
+      article.append(topline, heading, summary, deadline);
+      return article;
+    }
+
+    function setActiveTab(group: string | null) {
+      tabs.forEach((tab) => {
+        const active = group !== null && tab.dataset.productGroup === group;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function renderProducts(items: ProductView[], label: string) {
+      if (!grid) return;
+      const fragment = document.createDocumentFragment();
+      items.forEach((item) => fragment.append(createProductCard(item)));
+      grid.replaceChildren(fragment);
+      if (count) count.textContent = `${label}：${items.length}製品`;
+      if (noResults) noResults.hidden = items.length !== 0;
+    }
+
+    function renderActiveGroup() {
+      const items = activeGroup === 'all'
+        ? productData
+        : productData.filter((item) => item.group === activeGroup);
+      renderProducts(items, activeGroup === 'all' ? 'すべて' : activeGroup);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        activeGroup = tab.dataset.productGroup ?? activeGroup;
+        if (input) input.value = '';
+        setActiveTab(activeGroup);
+        renderActiveGroup();
+      });
+    });
+
     input?.addEventListener('input', () => {
       const query = input.value.trim().toLowerCase();
-      let visible = 0;
-      cards.forEach((card) => {
-        const match = !query || card.dataset.search?.includes(query);
-        card.hidden = !match;
-        if (match) visible += 1;
-      });
-      if (noResults) noResults.hidden = visible !== 0;
+      if (!query) {
+        setActiveTab(activeGroup);
+        renderActiveGroup();
+        return;
+      }
+      setActiveTab(null);
+      const matches = productData.filter((item) => item.search.includes(query));
+      renderProducts(matches, '検索結果');
     });
   </script>
 </BaseLayout>
