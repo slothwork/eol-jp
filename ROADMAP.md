@@ -13,7 +13,7 @@
 ## Phase 1 — Public MVP
 
 - [x] GitHubリポジトリ作成・initial commit
-- [ ] `npm install` でlockfile生成
+- [x] package-lock.json生成・CIをnpm ciへ移行
 - [x] `npm run sync:eol` で全製品を取得
 - [x] `npm run check && npm run build`
 - [x] Cloudflare Workers接続
