@@ -2,28 +2,132 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { upcomingReleases } from '@/lib/eol';
 import { formatJaDate } from '@/lib/date';
+
 const items = upcomingReleases(730);
-const groups = new Map<string, typeof items>();
-for (const item of items) {
-  const key = item.release.eolFrom?.slice(0, 7) ?? '未定';
-  groups.set(key, [...(groups.get(key) ?? []), item]);
-}
+const now = new Date();
+const monthKeys = Array.from({ length: 24 }, (_, index) => {
+  const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + index, 1));
+  return date.toISOString().slice(0, 7);
+});
+
+const calendarData = Object.fromEntries(monthKeys.map((month) => [
+  month,
+  items
+    .filter((item) => item.release.eolFrom?.startsWith(month))
+    .map(({ product, release }) => ({
+      productLabel: product.label,
+      productSlug: product.slug,
+      releaseName: release.name,
+      eolFrom: release.eolFrom,
+      dateLabel: formatJaDate(release.eolFrom)
+    }))
+]));
+
+const initialMonth = monthKeys[0];
+const initialItems = calendarData[initialMonth] ?? [];
+const monthLabel = (month: string) => {
+  const [year, value] = month.split('-');
+  return `${year}年${Number(value)}月`;
+};
 ---
 <BaseLayout title="EOLカレンダー" description="ソフトウェア・OS・データベースのEOL予定を月別カレンダー形式で確認できます。iCalendarも購読できます。">
   <section class="page-head"><div class="container">
     <h1>EOLカレンダー</h1>
-    <p>今後2年間のサポート終了予定を月単位でまとめています。<a href="/calendar.ics">iCalendarを購読</a>できます。</p>
+    <p>今後2年間のサポート終了予定を月単位で確認できます。<a href="/calendar.ics">iCalendarを購読</a>できます。</p>
   </div></section>
+
   <section class="section"><div class="container">
-    {[...groups.entries()].map(([month, monthItems]) => (
-      <section class="panel" style="margin-bottom:16px">
-        <h2>{month.replace('-', '年')}月</h2>
-        <div class="deadline-list">
-          {monthItems.map(({ product, release }) => (
-            <div class="deadline-row"><div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong></div><div>v{release.name}</div><div>{formatJaDate(release.eolFrom)}</div><div class="muted">EOL</div></div>
-          ))}
-        </div>
-      </section>
-    ))}
+    <div class="calendar-toolbar" aria-label="表示月を選択">
+      <button id="calendar-prev" class="button calendar-nav-button" type="button" aria-label="前の月">← 前月</button>
+      <label for="calendar-month" class="calendar-label">表示月</label>
+      <select id="calendar-month" class="calendar-select">
+        {monthKeys.map((month) => <option value={month} selected={month === initialMonth}>{monthLabel(month)}</option>)}
+      </select>
+      <button id="calendar-next" class="button calendar-nav-button" type="button" aria-label="次の月">次月 →</button>
+    </div>
+
+    <section class="panel calendar-panel" aria-live="polite">
+      <div class="calendar-heading-row">
+        <h2 id="calendar-title">{monthLabel(initialMonth)}</h2>
+        <span id="calendar-count" class="muted">{initialItems.length}件</span>
+      </div>
+      <div id="calendar-list" class="deadline-list">
+        {initialItems.map((item) => (
+          <div class="deadline-row">
+            <div><strong><a href={`/eol/${item.productSlug}/`}>{item.productLabel}</a></strong></div>
+            <div>v{item.releaseName}</div>
+            <div>{item.dateLabel}</div>
+            <div class="muted">EOL</div>
+          </div>
+        ))}
+      </div>
+      <p id="calendar-empty" class="muted" hidden={initialItems.length > 0}>この月に登録されているEOL予定はありません。</p>
+    </section>
   </div></section>
+
+  <script id="calendar-data" type="application/json" is:inline set:html={JSON.stringify(calendarData)}></script>
+  <script>
+    type CalendarItem = {
+      productLabel: string;
+      productSlug: string;
+      releaseName: string;
+      eolFrom: string | null;
+      dateLabel: string;
+    };
+
+    const dataElement = document.querySelector<HTMLScriptElement>('#calendar-data');
+    const select = document.querySelector<HTMLSelectElement>('#calendar-month');
+    const previous = document.querySelector<HTMLButtonElement>('#calendar-prev');
+    const next = document.querySelector<HTMLButtonElement>('#calendar-next');
+    const title = document.querySelector<HTMLElement>('#calendar-title');
+    const count = document.querySelector<HTMLElement>('#calendar-count');
+    const list = document.querySelector<HTMLElement>('#calendar-list');
+    const empty = document.querySelector<HTMLElement>('#calendar-empty');
+    const calendarData = JSON.parse(dataElement?.textContent || '{}') as Record<string, CalendarItem[]>;
+    const months = select ? [...select.options].map((option) => option.value) : [];
+
+    const escapeHtml = (value: string) => value.replace(/[&<>'"]/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    })[character] ?? character);
+
+    const labelFor = (month: string) => {
+      const [year, value] = month.split('-');
+      return `${year}年${Number(value)}月`;
+    };
+
+    const renderMonth = (month: string) => {
+      if (!select || !list) return;
+      const items = calendarData[month] ?? [];
+      select.value = month;
+      if (title) title.textContent = labelFor(month);
+      if (count) count.textContent = `${items.length}件`;
+      list.innerHTML = items.map((item) => `
+        <div class="deadline-row">
+          <div><strong><a href="/eol/${encodeURIComponent(item.productSlug)}/">${escapeHtml(item.productLabel)}</a></strong></div>
+          <div>v${escapeHtml(item.releaseName)}</div>
+          <div>${escapeHtml(item.dateLabel)}</div>
+          <div class="muted">EOL</div>
+        </div>
+      `).join('');
+      if (empty) empty.hidden = items.length > 0;
+
+      const index = months.indexOf(month);
+      if (previous) previous.disabled = index <= 0;
+      if (next) next.disabled = index === -1 || index >= months.length - 1;
+    };
+
+    select?.addEventListener('change', () => renderMonth(select.value));
+    previous?.addEventListener('click', () => {
+      if (!select) return;
+      const index = months.indexOf(select.value);
+      if (index > 0) renderMonth(months[index - 1]);
+    });
+    next?.addEventListener('click', () => {
+      if (!select) return;
+      const index = months.indexOf(select.value);
+      if (index >= 0 && index < months.length - 1) renderMonth(months[index + 1]);
+    });
+
+    if (select) renderMonth(select.value);
+  </script>
 </BaseLayout>
