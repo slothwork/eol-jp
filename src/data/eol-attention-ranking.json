@@ -1,0 +1,9 @@
+{
+  "generatedAt": null,
+  "periodStart": null,
+  "periodEnd": null,
+  "windowDays": 30,
+  "scopeDays": 180,
+  "source": "cloudflare-web-analytics",
+  "items": []
+}
