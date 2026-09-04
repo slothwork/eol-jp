@@ -51,6 +51,9 @@ jobs:
       - name: EOL reminder tests
         run: npm run test:eol-reminders
 
+      - name: External notification tests
+        run: npm run test:external-notifications
+
       - name: Astro check
         run: npm run check
 
