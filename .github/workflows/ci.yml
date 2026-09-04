@@ -54,6 +54,9 @@ jobs:
       - name: External notification tests
         run: npm run test:external-notifications
 
+      - name: External notification client tests
+        run: npm run test:external-notification-client
+
       - name: Astro check
         run: npm run check
 
