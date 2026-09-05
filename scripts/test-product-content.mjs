@@ -3,7 +3,18 @@ import { productOverviews, productReleaseHighlights } from '../src/data/product-
 import { featuredSlugs } from '../src/data/product-meta.ts';
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-const requiredReleaseHighlightSlugs = ['nodejs', 'python', 'php', 'postgresql', 'dotnet'];
+const requiredReleaseHighlightSlugs = [
+  'nodejs',
+  'python',
+  'php',
+  'postgresql',
+  'dotnet',
+  'ubuntu',
+  'kubernetes',
+  'go',
+  'django',
+  'redis'
+];
 
 for (const slug of featuredSlugs) {
   const overview = productOverviews[slug];
