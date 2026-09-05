@@ -1,0 +1,122 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import auditLog from '@/data/audit-log.json';
+import { formatJaDate } from '@/lib/date';
+
+type AuditEntry = {
+  id: string;
+  syncedAt: string;
+  sourceGeneratedAt: string;
+  sourceUrl: string;
+  beforeSha256: string;
+  afterSha256: string;
+  productCount: number;
+  releaseCount: number;
+  changes: {
+    total: number;
+    releaseAdded: number;
+    releaseRemoved: number;
+    eolChanged: number;
+    supportChanged: number;
+    latestChanged: number;
+    releaseMetadataChanged: number;
+    productMetadataChanged: number;
+  };
+  affectedProducts: Array<{ slug: string; label: string }>;
+};
+
+type AuditLog = {
+  schemaVersion?: string;
+  startedAt?: string | null;
+  updatedAt?: string | null;
+  entries?: AuditEntry[];
+};
+
+const log = auditLog as AuditLog;
+const entries = (log.entries ?? [])
+  .slice()
+  .sort((a, b) => b.syncedAt.localeCompare(a.syncedAt))
+  .slice(0, 200);
+
+function formatTimestamp(value: string) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? value : date.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+}
+---
+<BaseLayout
+  title="EOLデータ変更監査ログ"
+  description="EOL情報.jpがendoflife.dateから同期したデータについて、変更前後のSHA-256、変更件数、影響製品、入力ソースを公開します。"
+  canonicalPath="/trust/audit-log/"
+>
+  <section class="page-head"><div class="container">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="/">ホーム</a><span>/</span><a href="/trust/official-sources/">信頼性情報</a><span>/</span><span aria-current="page">変更監査ログ</span>
+    </nav>
+    <span class="eyebrow">DATA AUDIT LOG</span>
+    <h1>EOLデータ変更監査ログ</h1>
+    <p>定期同期で製品・リリース情報の内容が変わった時に、変更前後のSHA-256と差分概要を記録します。表示用の変更履歴とは別に、データ更新の追跡可能性を高めるための監査情報です。</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="notice">
+      <strong>監査ログの記録ルール</strong>
+      <ul class="compact-list">
+        <li>入力元は endoflife.date API v1 のみです。</li>
+        <li>製品データを正規化したうえでSHA-256を計算し、意味のある内容変更があった同期だけ記録します。</li>
+        <li>製品やリリースの並び順だけが変わった場合は同一内容として扱います。</li>
+        <li>監査ログは変更内容の正しさを保証するものではありません。重要な判断では各製品の公式一次情報も確認してください。</li>
+      </ul>
+      <p class="muted">監査記録開始日: {formatJaDate(log.startedAt ?? null)}</p>
+    </div>
+
+    {entries.length > 0 ? (
+      <div class="history-list">
+        {entries.map((entry) => (
+          <article class="history-item">
+            <div class="history-meta">
+              <span class="eyebrow">AUDITED SYNC</span>
+              <time datetime={entry.syncedAt}>{formatTimestamp(entry.syncedAt)}</time>
+            </div>
+            <h2>変更 {entry.changes.total} 件・影響 {entry.affectedProducts.length} 製品</h2>
+            <p>
+              リリース追加: <strong>{entry.changes.releaseAdded}</strong> / 
+              リリース削除: <strong>{entry.changes.releaseRemoved}</strong> / 
+              EOL変更: <strong>{entry.changes.eolChanged}</strong> / 
+              通常サポート変更: <strong>{entry.changes.supportChanged}</strong>
+            </p>
+            <p>
+              最新版情報変更: <strong>{entry.changes.latestChanged}</strong> / 
+              リリース属性変更: <strong>{entry.changes.releaseMetadataChanged}</strong> / 
+              製品属性変更: <strong>{entry.changes.productMetadataChanged}</strong>
+            </p>
+            <p>同期後: {entry.productCount} 製品・{entry.releaseCount} リリース</p>
+            {entry.affectedProducts.length > 0 && (
+              <p>
+                影響製品: {entry.affectedProducts.map((product, index) => (
+                  <>{index > 0 && ' / '}<a href={`/eol/${product.slug}/`}>{product.label}</a></>
+                ))}
+              </p>
+            )}
+            <div class="code">before sha256: {entry.beforeSha256}<br/>after&nbsp; sha256: {entry.afterSha256}</div>
+            <p class="muted">
+              API生成時刻: {formatTimestamp(entry.sourceGeneratedAt)}<br/>
+              監査ID: {entry.id}
+            </p>
+            <p><a href={entry.sourceUrl} rel="external">同期元APIを確認する →</a></p>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="notice">
+        <strong>監査ログの記録開始後、まだ実データ差分はありません。</strong>
+        <p>今後の定期同期で製品データの内容変更を検出すると、変更前後のSHA-256と差分概要がここに追加されます。</p>
+      </div>
+    )}
+
+    <section class="subsection">
+      <h2>変更内容を確認する</h2>
+      <p><a href="/changes/">EOL・サポート期限の変更履歴を見る →</a></p>
+      <p><a href="/trust/official-sources/">主要20製品の公式ソース照合状況を見る →</a></p>
+    </section>
+  </div></section>
+</BaseLayout>

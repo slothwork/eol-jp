@@ -33,6 +33,9 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: EOL sync syntax check
+        run: node --check scripts/sync-eol.mjs
+
       - name: Attention sync syntax check
         run: node --check scripts/sync-eol-attention.mjs
 
@@ -74,6 +77,9 @@ jobs:
 
       - name: Product content tests
         run: npm run test:product-content
+
+      - name: EOL audit log tests
+        run: npm run test:eol-audit
 
       - name: Astro check
         run: npm run check

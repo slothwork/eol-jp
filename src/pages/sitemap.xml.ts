@@ -18,6 +18,7 @@ export async function GET({ site }: { site?: URL }) {
     '/changes/',
     '/trust/official-sources/',
     '/trust/commercial-support/',
+    '/trust/audit-log/',
     '/api/',
     '/about/',
     ...categories.map((category) => `/category/${category}/`),
