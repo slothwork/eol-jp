@@ -1,0 +1,383 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="GitHubリポジトリから利用バージョンを検出"
+  description="公開GitHubリポジトリのSBOMとバージョン指定ファイルからEOL対象製品を検出し、確認後にマイEOLへ保存できます。"
+  canonicalPath="/my-eol/github-import/"
+  noindex={true}
+>
+  <section class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">ホーム</a><span>/</span><a href="/my-eol/">マイEOL</a><span>/</span><span aria-current="page">GitHubから検出</span>
+      </nav>
+      <span class="eyebrow">GITHUB IMPORT</span>
+      <h1>公開GitHubリポジトリから利用バージョンを検出</h1>
+      <p>Dependency GraphのSBOMと、リポジトリ直下の明示的なランタイム指定を確認し、EOL情報.jpの製品・バージョンへ安全に対応付けできる候補だけを表示します。</p>
+    </div>
+  </section>
+
+  <section class="section github-import-section">
+    <div class="container">
+      <div class="panel github-import-panel">
+        <div>
+          <h2>リポジトリを解析</h2>
+          <p class="section-lead">対象は公開リポジトリのみです。GitHubトークンやログインは不要です。</p>
+        </div>
+
+        <form class="github-import-form" data-github-import-form>
+          <label for="github-repository-url">GitHubリポジトリURL</label>
+          <div class="github-import-input-row">
+            <input
+              id="github-repository-url"
+              class="search-box"
+              type="url"
+              inputmode="url"
+              autocomplete="url"
+              spellcheck="false"
+              required
+              placeholder="https://github.com/owner/repository"
+              data-github-repository-url
+            />
+            <button class="button primary" type="submit" data-github-import-submit>解析する</button>
+          </div>
+        </form>
+
+        <div class="notice github-import-privacy">
+          <strong>解析はブラウザからGitHubへ直接アクセスします。</strong>
+          <p>入力したGitHub URL、SBOM、マニフェスト内容、解析結果はEOL情報.jpのWorker・KV・通知基盤へ送信しません。GitHub REST APIの未認証公開データ枠を使用するため、GitHub側のレート制限が適用されます。</p>
+        </div>
+
+        <div class="notice" data-github-import-status aria-live="polite">GitHubリポジトリURLを入力してください。</div>
+      </div>
+
+      <section class="github-import-results" data-github-import-results hidden>
+        <div class="calendar-heading-row github-import-results-heading">
+          <div>
+            <span class="eyebrow">DETECTED</span>
+            <h2>検出結果</h2>
+            <p class="section-lead">内容を確認し、マイEOLへ保存する製品だけを選択してください。自動保存はしません。</p>
+          </div>
+          <a href="#" rel="external noopener" data-github-import-repository-link>GitHubで確認 →</a>
+        </div>
+
+        <div class="notice github-import-save-message" data-github-import-save-message hidden aria-live="polite"></div>
+
+        <div data-github-import-ready-wrap hidden>
+          <h3>保存できる候補</h3>
+          <div class="history-list github-import-ready" data-github-import-ready></div>
+          <div class="hero-actions">
+            <button class="button primary" type="button" data-github-import-save>選択した候補をマイEOLへ保存</button>
+            <a class="button" href="/my-eol/">マイEOLを見る</a>
+          </div>
+        </div>
+
+        <div class="notice" data-github-import-no-ready hidden>
+          <strong>自動保存できる高信頼度の候補は見つかりませんでした。</strong>
+          <p>曖昧なバージョン範囲や、EOL情報.jpの現在の系列へ安全に対応付けできない検出結果は自動候補から除外しています。</p>
+        </div>
+
+        <div class="github-import-secondary" data-github-import-conflicts-wrap hidden>
+          <h3>確認が必要な競合</h3>
+          <p class="section-lead">同じ製品について異なる系列が検出されたため、自動保存しません。</p>
+          <div class="history-list" data-github-import-conflicts></div>
+        </div>
+
+        <div class="github-import-secondary" data-github-import-unmatched-wrap hidden>
+          <h3>系列を対応付けできなかった検出</h3>
+          <p class="section-lead">製品は特定できましたが、現在のEOLデータに一致する系列がないため保存対象外です。</p>
+          <div class="history-list" data-github-import-unmatched></div>
+        </div>
+
+        <div class="github-import-secondary" data-github-import-warnings-wrap hidden>
+          <h3>解析時の注意</h3>
+          <ul class="compact-list github-import-warnings" data-github-import-warnings></ul>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <script>
+    import {
+      analyzePublicGitHubRepository,
+      resolveImportCandidates,
+      type GitHubImportProgress,
+      type ImportCatalogProduct,
+      type ImportResolution
+    } from '@/lib/github-import';
+    import {
+      TRACKED_PRODUCTS_STORAGE_KEY,
+      parseTrackedProducts,
+      serializeTrackedProducts,
+      setTrackedProduct
+    } from '@/lib/tracked-products';
+
+    const form = document.querySelector<HTMLFormElement>('[data-github-import-form]');
+    const input = document.querySelector<HTMLInputElement>('[data-github-repository-url]');
+    const submit = document.querySelector<HTMLButtonElement>('[data-github-import-submit]');
+    const status = document.querySelector<HTMLElement>('[data-github-import-status]');
+    const results = document.querySelector<HTMLElement>('[data-github-import-results]');
+    const repositoryLink = document.querySelector<HTMLAnchorElement>('[data-github-import-repository-link]');
+    const readyWrap = document.querySelector<HTMLElement>('[data-github-import-ready-wrap]');
+    const readyList = document.querySelector<HTMLElement>('[data-github-import-ready]');
+    const saveButton = document.querySelector<HTMLButtonElement>('[data-github-import-save]');
+    const saveMessage = document.querySelector<HTMLElement>('[data-github-import-save-message]');
+    const noReady = document.querySelector<HTMLElement>('[data-github-import-no-ready]');
+    const conflictsWrap = document.querySelector<HTMLElement>('[data-github-import-conflicts-wrap]');
+    const conflictsList = document.querySelector<HTMLElement>('[data-github-import-conflicts]');
+    const unmatchedWrap = document.querySelector<HTMLElement>('[data-github-import-unmatched-wrap]');
+    const unmatchedList = document.querySelector<HTMLElement>('[data-github-import-unmatched]');
+    const warningsWrap = document.querySelector<HTMLElement>('[data-github-import-warnings-wrap]');
+    const warningsList = document.querySelector<HTMLElement>('[data-github-import-warnings]');
+
+    let resolution: ImportResolution | null = null;
+    let catalogPromise: Promise<ImportCatalogProduct[]> | null = null;
+
+    const progressText: Record<GitHubImportProgress, string> = {
+      repository: '公開リポジトリを確認しています。',
+      manifests: 'バージョン指定ファイルを確認しています。',
+      sbom: 'GitHub Dependency GraphのSBOMを生成・確認しています。',
+      complete: '解析結果を整理しています。'
+    };
+
+    const errorText = (code: string) => ({
+      invalid_repository_url: 'GitHubの公開リポジトリURLを入力してください。',
+      repository_not_found: '公開リポジトリが見つかりません。URLまたは公開設定を確認してください。',
+      private_repository_not_supported: 'privateリポジトリは現在対応していません。',
+      repository_lookup_failed: 'GitHubからリポジトリ情報を取得できませんでした。',
+      github_rate_limited: 'GitHub REST APIの未認証レート制限に達しました。時間を空けてから再度お試しください。',
+      github_request_failed: 'GitHub APIへ接続できませんでした。ネットワーク状態を確認してください。'
+    } as Record<string, string>)[code] ?? '解析に失敗しました。URLとGitHubの状態を確認して再度お試しください。';
+
+    const warningText = (code: string) => ({
+      manifest_list_unavailable: 'リポジトリ直下のファイル一覧を取得できなかったため、マニフェスト補完を省略しました。',
+      manifest_fetch_partial: '一部のバージョン指定ファイルを取得できませんでした。',
+      sbom_unavailable: 'このリポジトリではDependency GraphのSBOMを取得できませんでした。マニフェスト検出結果のみ表示しています。',
+      sbom_generate_failed: 'SBOM生成要求を完了できませんでした。マニフェスト検出結果のみ表示しています。',
+      sbom_fetch_failed: '生成したSBOMを取得できませんでした。マニフェスト検出結果のみ表示しています。',
+      sbom_parse_failed: 'SBOMを解析できませんでした。マニフェスト検出結果のみ表示しています。',
+      sbom_pending_timeout: 'SBOM生成が今回の確認回数内に完了しませんでした。再解析すると取得できる場合があります。',
+      sbom_too_large: 'SBOMがMVPの解析上限を超えたため、SBOM解析を省略しました。',
+      github_rate_limited: '解析途中でGitHub REST APIの未認証レート制限に達しました。',
+      github_request_failed: '解析途中でGitHub APIへの接続に失敗しました。'
+    } as Record<string, string>)[code] ?? `解析の一部を完了できませんでした（${code}）。`;
+
+    function loadCatalog(): Promise<ImportCatalogProduct[]> {
+      if (!catalogPromise) {
+        catalogPromise = fetch('/my-eol-data.json')
+          .then((response) => {
+            if (!response.ok) throw new Error('catalog_fetch_failed');
+            return response.json() as Promise<{ products?: ImportCatalogProduct[] }>;
+          })
+          .then((data) => data.products ?? []);
+      }
+      return catalogPromise;
+    }
+
+    function makeMeta(text: string) {
+      const p = document.createElement('p');
+      p.className = 'muted';
+      p.textContent = text;
+      return p;
+    }
+
+    function clearResults() {
+      resolution = null;
+      if (results) results.hidden = true;
+      if (readyList) readyList.replaceChildren();
+      if (conflictsList) conflictsList.replaceChildren();
+      if (unmatchedList) unmatchedList.replaceChildren();
+      if (warningsList) warningsList.replaceChildren();
+      if (saveMessage) saveMessage.hidden = true;
+    }
+
+    function renderReady(next: ImportResolution) {
+      if (!readyWrap || !readyList || !noReady) return;
+      readyList.replaceChildren();
+      readyWrap.hidden = next.ready.length === 0;
+      noReady.hidden = next.ready.length !== 0;
+
+      let tracked = parseTrackedProducts(null);
+      try { tracked = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY)); } catch { /* localStorage unavailable */ }
+
+      next.ready.forEach((candidate, index) => {
+        const article = document.createElement('article');
+        article.className = 'history-item github-import-candidate';
+
+        const choice = document.createElement('label');
+        choice.className = 'github-import-choice';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = true;
+        checkbox.dataset.githubImportCandidate = candidate.slug;
+        checkbox.setAttribute('aria-label', `${candidate.label} ${candidate.version} をマイEOLへ保存`);
+
+        const content = document.createElement('span');
+        const title = document.createElement('strong');
+        title.textContent = `${candidate.label} ${candidate.version}`;
+        const detected = makeMeta(`検出バージョン: ${candidate.detectedVersions.join(' / ')}`);
+        const sources = makeMeta(`検出元: ${candidate.sources.join(' / ')}`);
+        content.append(title, detected, sources);
+
+        const current = tracked.products[candidate.slug];
+        if (current) {
+          const existing = makeMeta(current.version === candidate.version
+            ? `マイEOL: ${current.version} を保存済み`
+            : `マイEOL: ${current.version} を保存中（保存すると ${candidate.version} に更新）`);
+          existing.classList.add('github-import-existing');
+          content.append(existing);
+        }
+
+        choice.htmlFor = `github-import-candidate-${index}`;
+        checkbox.id = `github-import-candidate-${index}`;
+        choice.append(checkbox, content);
+        article.append(choice);
+        readyList.append(article);
+      });
+    }
+
+    function renderConflicts(next: ImportResolution) {
+      if (!conflictsWrap || !conflictsList) return;
+      conflictsList.replaceChildren();
+      conflictsWrap.hidden = next.conflicts.length === 0;
+      next.conflicts.forEach((item) => {
+        const article = document.createElement('article');
+        article.className = 'history-item';
+        const title = document.createElement('strong');
+        title.textContent = item.label;
+        article.append(
+          title,
+          makeMeta(`検出バージョン: ${item.detectedVersions.join(' / ')}`),
+          makeMeta(`対応候補系列: ${item.matchedVersions.join(' / ')}`),
+          makeMeta(`検出元: ${item.sources.join(' / ')}`)
+        );
+        conflictsList.append(article);
+      });
+    }
+
+    function renderUnmatched(next: ImportResolution) {
+      if (!unmatchedWrap || !unmatchedList) return;
+      unmatchedList.replaceChildren();
+      unmatchedWrap.hidden = next.unmatched.length === 0;
+      next.unmatched.forEach((item) => {
+        const article = document.createElement('article');
+        article.className = 'history-item';
+        const title = document.createElement('strong');
+        title.textContent = `${item.label} ${item.detectedVersion}`;
+        article.append(title, makeMeta(`検出元: ${item.source}`));
+        unmatchedList.append(article);
+      });
+    }
+
+    function renderWarnings(codes: string[]) {
+      if (!warningsWrap || !warningsList) return;
+      warningsList.replaceChildren();
+      warningsWrap.hidden = codes.length === 0;
+      for (const code of codes) {
+        const li = document.createElement('li');
+        li.textContent = warningText(code);
+        warningsList.append(li);
+      }
+    }
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const repositoryUrl = input?.value.trim() ?? '';
+      clearResults();
+      if (submit) submit.disabled = true;
+      if (status) status.textContent = progressText.repository;
+
+      try {
+        const catalogLoad = loadCatalog();
+        const analysis = await analyzePublicGitHubRepository(repositoryUrl, (progress) => {
+          if (status) status.textContent = progressText[progress];
+        });
+        const catalog = await catalogLoad;
+        resolution = resolveImportCandidates(analysis.detections, catalog);
+
+        if (repositoryLink) {
+          repositoryLink.href = analysis.repository.htmlUrl;
+          repositoryLink.textContent = `${analysis.repository.owner}/${analysis.repository.repo} をGitHubで確認 →`;
+        }
+        renderReady(resolution);
+        renderConflicts(resolution);
+        renderUnmatched(resolution);
+        renderWarnings(analysis.warnings);
+        if (results) results.hidden = false;
+        if (status) {
+          const detected = analysis.detections.length;
+          const ready = resolution.ready.length;
+          status.textContent = `${detected}件のバージョン情報を検出し、${ready}製品を安全に保存できる候補として整理しました。`;
+        }
+      } catch (error) {
+        const code = error instanceof Error ? error.message : 'unknown_error';
+        if (status) status.textContent = errorText(code);
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+
+    saveButton?.addEventListener('click', () => {
+      if (!resolution || !saveMessage) return;
+      const selected = new Set(
+        [...document.querySelectorAll<HTMLInputElement>('[data-github-import-candidate]:checked')]
+          .map((checkbox) => checkbox.dataset.githubImportCandidate ?? '')
+          .filter(Boolean)
+      );
+      const candidates = resolution.ready.filter((candidate) => selected.has(candidate.slug));
+      if (candidates.length === 0) {
+        saveMessage.hidden = false;
+        saveMessage.textContent = '保存する候補を1件以上選択してください。';
+        return;
+      }
+
+      try {
+        let state = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+        for (const candidate of candidates) state = setTrackedProduct(state, candidate.slug, candidate.version);
+        localStorage.setItem(TRACKED_PRODUCTS_STORAGE_KEY, serializeTrackedProducts(state));
+        saveMessage.hidden = false;
+        saveMessage.textContent = `${candidates.length}製品をマイEOLへ保存しました。利用中バージョンとして反映されています。`;
+        renderReady(resolution);
+      } catch {
+        saveMessage.hidden = false;
+        saveMessage.textContent = 'このブラウザへ保存できませんでした。ストレージ設定を確認してください。';
+      }
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .github-import-section { padding-top: 12px; }
+  .github-import-panel { display: grid; gap: 18px; }
+  .github-import-panel h2 { margin-bottom: 4px; }
+  .github-import-form { display: grid; gap: 8px; }
+  .github-import-form > label { font-weight: 700; }
+  .github-import-input-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; max-width: 860px; }
+  .github-import-input-row .search-box { max-width: none; min-width: 0; }
+  .github-import-input-row .button { justify-content: center; }
+  .github-import-privacy p { margin-bottom: 0; }
+  .github-import-results { margin-top: 28px; padding: 22px; border: 1px solid var(--border); border-radius: 14px; background: #fff; }
+  .github-import-results-heading { align-items: flex-start; }
+  .github-import-results-heading h2 { margin: 3px 0 4px; }
+  .github-import-save-message { margin: 18px 0; border-color: #b9d7c4; background: #f2fbf5; }
+  .github-import-ready { margin: 14px 0 16px; }
+  .github-import-candidate { padding: 0; }
+  .github-import-choice { display: flex; gap: 13px; padding: 17px 18px; cursor: pointer; }
+  .github-import-choice > input { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 3px; }
+  .github-import-choice > span { min-width: 0; }
+  .github-import-choice strong { font-size: 1.02rem; }
+  .github-import-choice p { margin: 4px 0 0; }
+  .github-import-existing { font-weight: 700; color: #3157a3; }
+  .github-import-secondary { margin-top: 30px; }
+  .github-import-secondary h3 { margin-bottom: 4px; }
+  .github-import-warnings { columns: 1; }
+  @media (max-width: 620px) {
+    .github-import-results { padding: 16px; }
+    .github-import-input-row { grid-template-columns: 1fr; }
+    .github-import-input-row .button { width: 100%; }
+    .github-import-choice { padding: 15px; }
+    .github-import-results-heading { align-items: flex-start; flex-direction: column; }
+  }
+</style>
