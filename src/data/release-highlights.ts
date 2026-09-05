@@ -1,7 +1,7 @@
 import {
   productReleaseHighlights as initialProductReleaseHighlights,
   type ProductReleaseHighlight
-} from './product-content';
+} from './product-content.ts';
 
 export const productReleaseHighlights: Record<string, ProductReleaseHighlight[]> = {
   ...initialProductReleaseHighlights,
