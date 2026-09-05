@@ -45,22 +45,74 @@ function releaseKey(product, release) {
   return `${product.slug}@@${release.name}`;
 }
 
+function productMetadata(product) {
+  return JSON.stringify({
+    label: product.label,
+    category: product.category,
+    versionCommand: product.versionCommand ?? null,
+    links: product.links ?? {}
+  });
+}
+
+function releaseMetadata(release) {
+  return JSON.stringify({
+    label: release.label ?? null,
+    codename: release.codename ?? null,
+    releaseDate: release.releaseDate ?? null,
+    isLts: Boolean(release.isLts),
+    ltsFrom: release.ltsFrom ?? null,
+    isEol: Boolean(release.isEol),
+    isMaintained: Boolean(release.isMaintained)
+  });
+}
+
 function detectChanges(previous, next) {
+  const oldProducts = new Map((previous?.products ?? []).map((product) => [product.slug, product]));
   const oldMap = new Map();
-  for (const product of previous?.products ?? []) for (const release of product.releases ?? []) oldMap.set(releaseKey(product, release), release);
+  for (const product of previous?.products ?? []) {
+    for (const release of product.releases ?? []) {
+      oldMap.set(releaseKey(product, release), { product, release });
+    }
+  }
+
+  const newKeys = new Set();
   const changes = [];
+
   for (const product of next.products) {
+    const oldProduct = oldProducts.get(product.slug);
+    if (oldProduct && productMetadata(oldProduct) !== productMetadata(product)) {
+      changes.push({ type: 'product-metadata-changed', product: product.slug, label: product.label, release: '' });
+    }
+
     for (const release of product.releases) {
-      const old = oldMap.get(releaseKey(product, release));
-      if (!old) {
+      const key = releaseKey(product, release);
+      newKeys.add(key);
+      const oldRecord = oldMap.get(key);
+      if (!oldRecord) {
         changes.push({ type: 'release-added', product: product.slug, label: product.label, release: release.name, eolFrom: release.eolFrom });
         continue;
       }
+
+      const old = oldRecord.release;
       if (old.eolFrom !== release.eolFrom) changes.push({ type: 'eol-changed', product: product.slug, label: product.label, release: release.name, from: old.eolFrom, to: release.eolFrom });
       if (old.eoasFrom !== release.eoasFrom) changes.push({ type: 'support-changed', product: product.slug, label: product.label, release: release.name, from: old.eoasFrom, to: release.eoasFrom });
-      if (old.latest?.name !== release.latest?.name) changes.push({ type: 'latest-changed', product: product.slug, label: product.label, release: release.name, from: old.latest?.name ?? null, to: release.latest?.name ?? null });
+      if (JSON.stringify(old.latest ?? null) !== JSON.stringify(release.latest ?? null)) changes.push({ type: 'latest-changed', product: product.slug, label: product.label, release: release.name, from: old.latest?.name ?? null, to: release.latest?.name ?? null });
+      if (releaseMetadata(old) !== releaseMetadata(release)) changes.push({ type: 'release-metadata-changed', product: product.slug, label: product.label, release: release.name });
     }
   }
+
+  for (const [key, oldRecord] of oldMap) {
+    if (!newKeys.has(key)) {
+      changes.push({
+        type: 'release-removed',
+        product: oldRecord.product.slug,
+        label: oldRecord.product.label,
+        release: oldRecord.release.name,
+        eolFrom: oldRecord.release.eolFrom ?? null
+      });
+    }
+  }
+
   return changes;
 }
 
