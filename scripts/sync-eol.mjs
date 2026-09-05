@@ -1,10 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import { appendAuditEntry, createAuditEntry, normalizeAuditLog } from './eol-audit.mjs';
 
 const API_URL = 'https://endoflife.date/api/v1/products/full';
 const snapshotPath = path.resolve('src/data/eol-snapshot.json');
 const changeLogPath = path.resolve('src/data/change-log.json');
+const auditLogPath = path.resolve('src/data/audit-log.json');
 
 const nullableDate = (value) => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 const nullableString = (value) => typeof value === 'string' && value.length > 0 ? value : null;
@@ -96,6 +98,9 @@ async function main() {
   let history = emptyHistory();
   try { history = normalizeHistory(JSON.parse(await fs.readFile(changeLogPath, 'utf8'))); } catch {}
 
+  let auditLog = normalizeAuditLog(null);
+  try { auditLog = normalizeAuditLog(JSON.parse(await fs.readFile(auditLogPath, 'utf8'))); } catch {}
+
   const response = await fetch(API_URL, { headers: { 'User-Agent': 'eol-jp/0.1 (+https://eol.slothwright.com)' } });
   if (!response.ok) throw new Error(`endoflife.date API returned ${response.status}`);
   const payload = await response.json();
@@ -119,9 +124,21 @@ async function main() {
     };
   }
 
+  const syncedAt = new Date().toISOString();
+  const auditEntry = createAuditEntry({
+    previous,
+    next,
+    changes,
+    syncedAt,
+    sourceGeneratedAt: next.generatedAt,
+    sourceUrl: API_URL
+  });
+  if (auditEntry) auditLog = appendAuditEntry(auditLog, auditEntry);
+
   await fs.writeFile(snapshotPath, `${JSON.stringify(next, null, 2)}\n`);
   await fs.writeFile(changeLogPath, `${JSON.stringify(history, null, 2)}\n`);
-  console.log(`Synced ${next.products.length} products. Changes: ${changes.length}. History events added: ${historyEvents.length}`);
+  await fs.writeFile(auditLogPath, `${JSON.stringify(auditLog, null, 2)}\n`);
+  console.log(`Synced ${next.products.length} products. Changes: ${changes.length}. History events added: ${historyEvents.length}. Audit entry added: ${auditEntry ? 'yes' : 'no'}`);
 }
 
 main().catch((error) => {
