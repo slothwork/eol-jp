@@ -2,7 +2,7 @@ import {
   officialSourceReviews,
   type OfficialComparisonStatus,
   type OfficialSourceReview
-} from './official-source-reviews';
+} from './official-source-reviews.ts';
 
 export type OfficialDateEvidence = {
   release: string;
