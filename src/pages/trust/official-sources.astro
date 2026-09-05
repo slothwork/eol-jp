@@ -1,0 +1,86 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  featuredProducts,
+  getOfficialSourceReview,
+  officialComparisonStatusLabel,
+  officialSourceCoverageLabel
+} from '@/lib/eol';
+import { formatJaDate } from '@/lib/date';
+
+const rows = featuredProducts().map((product) => ({
+  product,
+  review: getOfficialSourceReview(product)
+}));
+const directCount = rows.filter(({ review }) => review?.coverage === 'direct-dates').length;
+const pendingCount = rows.filter(({ review }) => review?.comparisonStatus === 'pending').length;
+const nonComparableCount = rows.filter(({ review }) => review?.comparisonStatus === 'not-comparable').length;
+---
+<BaseLayout
+  title="公式ソース照合状況"
+  description="EOL情報.jpが主要製品について参照しているベンダー・プロジェクト公式ライフサイクル情報と、endoflife.date由来データとの照合状況を公開します。"
+  canonicalPath="/trust/official-sources/"
+>
+  <section class="page-head"><div class="container">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="/">ホーム</a><span>/</span><span aria-current="page">公式ソース照合状況</span>
+    </nav>
+    <span class="eyebrow">TRUST & VERIFICATION</span>
+    <h1>ベンダー公式ソースとの照合状況</h1>
+    <p>主要20製品について、endoflife.dateとは独立した公式ソースを登録し、「公式ページを確認したこと」と「掲載日付まで一致確認したこと」を分けて管理しています。</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="stats-grid">
+      <div class="stat-card"><strong>{rows.length}</strong><span>レビュー対象製品</span></div>
+      <div class="stat-card"><strong>{directCount}</strong><span>公式ページに期限を直接掲載</span></div>
+      <div class="stat-card"><strong>{pendingCount}</strong><span>日付照合待ち</span></div>
+      <div class="stat-card"><strong>{nonComparableCount}</strong><span>一律比較対象外</span></div>
+    </div>
+
+    <div class="notice">
+      <strong>表示の読み方</strong>
+      <p>「公式ソース確認済み」は、そのURLがベンダー/公式プロジェクトの一次情報として確認できたことを示します。「公式日付と一致確認済み」は、別途サイトのスナップショットに入っているEOL日を人手で照合した場合だけ表示します。</p>
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead>
+        <tr>
+          <th>製品</th>
+          <th>公式ソース</th>
+          <th>掲載形式</th>
+          <th>日付照合</th>
+          <th>公式ソース確認日</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(({ product, review }) => (
+          <tr>
+            <td><a href={`/eol/${product.slug}/`}><strong>{product.label}</strong></a></td>
+            <td>
+              {review ? <a href={review.sourceUrl} rel="external">{review.sourceLabel} →</a> : <span>未登録</span>}
+              {review?.note && <><br/><small>{review.note}</small></>}
+            </td>
+            <td>{review ? officialSourceCoverageLabel(review.coverage) : '未登録'}</td>
+            <td>
+              {review ? officialComparisonStatusLabel(review.comparisonStatus) : '未登録'}
+              {review?.comparisonCheckedAt && <><br/><small>照合: {formatJaDate(review.comparisonCheckedAt)}</small></>}
+            </td>
+            <td>{review ? formatJaDate(review.sourceCheckedAt) : '未確認'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table></div>
+
+    <section class="subsection">
+      <h2>照合ルール</h2>
+      <ul class="compact-list">
+        <li>endoflife.dateのページそのものを「二重確認」の根拠にはしません。</li>
+        <li>ベンダーまたは公式プロジェクトが公開するライフサイクル、サポートポリシー、リリース情報を一次情報として使います。</li>
+        <li>公式ソースに期限がない製品は、推測して一致扱いにしません。</li>
+        <li>Javaのように利用ベンダーで保守期限が変わる製品は、一律のEOL一致判定を行いません。</li>
+        <li>公式情報とスナップショットが不一致の場合は、サイト表示を即断で書き換えず、対象・エディション・サポートフェーズの違いを確認します。</li>
+      </ul>
+    </section>
+  </div></section>
+</BaseLayout>
