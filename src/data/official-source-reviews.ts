@@ -27,29 +27,36 @@ export const officialSourceReviews: Record<string, OfficialSourceReview> = {
     sourceUrl: 'https://github.com/nodejs/Release#release-schedule',
     coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending'
+    comparisonStatus: 'matched',
+    comparisonCheckedAt: '2026-09-05',
+    note: '20.x・22.x・24.x・26.xのEOL日を公式Release scheduleと照合し、スナップショットと一致することを確認しました。'
   },
   python: {
     sourceLabel: 'Python Developer’s Guide — Status of Python versions',
     sourceUrl: 'https://devguide.python.org/versions/',
     coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending',
-    note: '予定日はリリースマネージャーにより変更される場合があります。'
+    comparisonStatus: 'partial',
+    comparisonCheckedAt: '2026-09-05',
+    note: '3.12・3.13・3.14のEOL月は公式DevGuideと一致しています。公式表はYYYY-MM粒度で、スナップショットは月末日まで保持するため、日付単位の完全一致とは扱いません。予定はリリースマネージャーにより変更される場合があります。'
   },
   php: {
     sourceLabel: 'PHP — Supported Versions',
     sourceUrl: 'https://www.php.net/supported-versions.php',
     coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending'
+    comparisonStatus: 'matched',
+    comparisonCheckedAt: '2026-09-05',
+    note: '8.2・8.3・8.4・8.5のSecurity Support Untilを公式表と照合し、スナップショットのEOL日と一致することを確認しました。'
   },
   postgresql: {
     sourceLabel: 'PostgreSQL — Versioning Policy',
     sourceUrl: 'https://www.postgresql.org/support/versioning/',
     coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending'
+    comparisonStatus: 'matched',
+    comparisonCheckedAt: '2026-09-05',
+    note: '14・15・16・17・18のFinal Release日を公式Versioning Policyと照合し、スナップショットのEOL日と一致することを確認しました。'
   },
   mysql: {
     sourceLabel: 'MySQL — Innovation and LTS release model',
@@ -138,7 +145,9 @@ export const officialSourceReviews: Record<string, OfficialSourceReview> = {
     sourceUrl: 'https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core',
     coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending'
+    comparisonStatus: 'matched',
+    comparisonCheckedAt: '2026-09-05',
+    note: '.NET 8・9・10のEnd of supportを公式表と照合し、スナップショットのEOL日と一致することを確認しました。'
   },
   go: {
     sourceLabel: 'Go — Release History / Release Policy',
