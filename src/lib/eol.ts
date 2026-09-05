@@ -1,5 +1,6 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { resolvedOfficialSourceReviews } from '@/data/official-date-evidence';
+import { japanCommercialSupportByProduct } from '@/data/japan-commercial-support';
 import { productOverviews } from '@/data/product-content';
 import { productReleaseHighlights } from '@/data/release-highlights';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
@@ -75,6 +76,10 @@ export function getProductOverview(product: Product): string | null {
 
 export function getProductReleaseHighlights(product: Product) {
   return productReleaseHighlights[product.slug] ?? [];
+}
+
+export function getJapanCommercialSupport(product: Product) {
+  return japanCommercialSupportByProduct[product.slug] ?? null;
 }
 
 export function getProductSeoTitle(product: Product): string {
