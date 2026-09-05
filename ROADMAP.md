@@ -51,8 +51,8 @@
 ## Phase 4 — Trust & expansion
 
 - [x] 主要20製品の公式ソースレビュー台帳 + 公開照合状況ページ
-- [ ] 主要20製品の公式日付との手動照合（比較可能な製品のみ。照合済み: Node.js / Python / PHP / PostgreSQL / .NET / Ubuntu / Windows / Kubernetes / Redis / MongoDB。比較対象外: Docker Engine / nginx / Java）
-- [x] 公式日付証跡とコミット済みsnapshotのCI照合（第2バッチから構造化）
+- [x] 主要20製品の公式日付との手動照合（比較可能な製品のみ。固定日付を比較できない製品は `not-comparable`、粒度/系列差がある製品は `partial` として明示）
+- [x] 公式日付証跡とコミット済みsnapshotのCI照合（構造化証跡30件以上 + pending 0件）
 - [ ] 製品ページへ公式ソース照合結果を表示
 - [ ] 日本固有の商用サポート情報（根拠が確認できるもののみ）
 - [ ] GitHub package / SBOM連携による自動バージョン検出の検討
