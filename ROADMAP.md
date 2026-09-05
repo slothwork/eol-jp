@@ -56,7 +56,7 @@
 - [x] 主要20製品の公式日付との手動照合（比較可能な製品のみ。固定日付を比較できない製品は `not-comparable`、粒度/系列差がある製品は `partial` として明示）
 - [x] 公式日付証跡とコミット済みsnapshotのCI照合（構造化証跡30件以上 + pending 0件）
 - [x] 製品ページへ公式ソース照合結果を表示（状態・公式ソース・確認日・構造化証跡）
-- [ ] リリース変更点の対象製品を主要20製品へ段階拡大（10/20完了: Node.js / Python / PHP / PostgreSQL / .NET / Ubuntu / Kubernetes / Go / Django / Redis）
+- [ ] リリース変更点の対象製品を主要20製品へ段階拡大（15/20完了: Node.js / Python / PHP / PostgreSQL / .NET / Ubuntu / Kubernetes / Go / Django / Redis / MongoDB / Java / Ruby / Laravel / Next.js）
 - [ ] 日本固有の商用サポート情報（根拠が確認できるもののみ）
 - [ ] GitHub package / SBOM連携による自動バージョン検出の検討
 - [ ] 変更監査ログ

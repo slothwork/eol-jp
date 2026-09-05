@@ -199,5 +199,90 @@ export const productReleaseHighlights: Record<string, ProductReleaseHighlight[]>
       sourceUrl: 'https://redis.io/blog/redis-8-ga/',
       checkedAt: '2026-09-05'
     }
+  ],
+  mongodb: [
+    {
+      version: '8.0',
+      releaseDate: '2024-10-02',
+      summary: 'MongoDB 8.0 は、読み書き性能、複数コレクション操作、時系列処理、シャーディング運用、クエリ制御を強化したメジャーリリースです。',
+      highlights: [
+        'MongoDB 7.0比で読み取りスループット最大36%、典型的なWebアプリケーション性能最大32%の改善を掲げる。',
+        '新しい bulkWrite コマンドにより、1リクエストで複数コレクションへ insert・update・delete をまとめて実行可能。',
+        '時系列クエリの一部で block processing を導入し、集計処理の実行速度とスループットを改善。',
+        'シャードクラスタでコレクションの unshard と、未シャードコレクションを別シャードへ移動する moveCollection を追加。',
+        '新しい query shape と query settings を導入し、従来の index filters は非推奨化されたため移行時の設定確認が必要。'
+      ],
+      sourceLabel: 'MongoDB 8.0 release notes',
+      sourceUrl: 'https://www.mongodb.com/docs/v8.0/release-notes/8.0',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  java: [
+    {
+      version: '26',
+      releaseDate: '2026-03-17',
+      summary: 'JDK 26 は、HTTP/3対応、並行処理・パターンマッチングのプレビュー機能、GC性能改善、旧API整理を含むJavaの機能リリースです。',
+      highlights: [
+        '標準 HTTP Client API が HTTP/3 に対応し、既存APIからHTTP/3サーバーへ接続可能。',
+        'primitive types を pattern・instanceof・switch で扱う機能が第4プレビューとして継続。',
+        'Structured Concurrency が第6プレビューとなり、関連タスクのキャンセル・エラー処理・可観測性を一体化。',
+        'G1 GC のアプリケーションスレッドとGCスレッド間の同期を削減し、スループット改善を実施。',
+        'Applet API を削除し、finalフィールドをdeep reflectionで変更する利用には将来制限へ向けた警告を追加。'
+      ],
+      sourceLabel: 'JDK 26 Release Notes',
+      sourceUrl: 'https://www.oracle.com/java/technologies/javase/26-relnote-issues.html',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  ruby: [
+    {
+      version: '4.0',
+      releaseDate: '2025-12-25',
+      summary: 'Ruby 4.0 は、定義隔離の実験機能Ruby Box、新JITのZJIT、Ractor並列実行の改善などを含むメジャーリリースです。',
+      highlights: [
+        '実験機能 Ruby::Box を追加し、モンキーパッチ、グローバル変数、クラス定義、読み込みライブラリなどをBox単位で隔離可能。',
+        '次世代JITとして実験的な ZJIT を追加し、--zjit または RubyVM::ZJIT.enable で有効化可能。',
+        'Ractor::Port、Ractor#join、Ractor#value などを追加し、Ractor間通信と並列実行基盤を改善。',
+        'Unicode / Emoji 17.0へ更新し、Setを標準ライブラリのautoloadではなくコアクラスへ移行。',
+        'Ractor関連のロック競合やCPUキャッシュ競合を削減する多数の性能・安定性改善を実施。'
+      ],
+      sourceLabel: 'Ruby 4.0.0 release announcement',
+      sourceUrl: 'https://www.ruby-lang.org/en/news/2025/12/25/ruby-4-0-0-released/',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  laravel: [
+    {
+      version: '13',
+      releaseDate: '2026-03-17',
+      summary: 'Laravel 13 は、AI機能、JSON:API、セマンティック検索、セキュリティ、キュー制御を拡張しつつ破壊的変更を抑えたメジャーリリースです。',
+      highlights: [
+        '最低PHPバージョンを8.3へ引き上げ、Laravel 13系列ではPHP 8.3〜8.5をサポート。',
+        'Laravel AI SDK をファーストパーティ機能として追加し、テキスト生成、エージェント、埋め込み、音声・画像などを統一APIで扱える。',
+        'JSON:API準拠のリソース表現をファーストパーティで追加し、関係・疎なフィールド・リンク等を標準対応。',
+        'PreventRequestForgery によりOriginを考慮したリクエスト検証を追加し、従来のCSRFトークン方式との互換性を維持。',
+        'Queue::route、PHP Attributes拡張、pgvectorを利用したセマンティック・ベクトル検索APIなどを追加。'
+      ],
+      sourceLabel: 'Laravel 13 Release Notes',
+      sourceUrl: 'https://laravel.com/docs/13.x/releases',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  nextjs: [
+    {
+      version: '16',
+      releaseDate: '2025-10-21',
+      summary: 'Next.js 16 は、Turbopackの標準化、Cache Components、ルーティング・キャッシュ改善、React 19.2対応を含むメジャーリリースです。',
+      highlights: [
+        'Turbopack が全アプリの既定バンドラーとしてStableとなり、開発時のFast Refreshとビルド性能を改善。',
+        'Cache Components と use cache を中心に、Partial Pre-Renderingを含む明示的なキャッシュモデルを導入。',
+        '従来の middleware.ts をネットワーク境界を明確にする proxy.ts へ置き換える方向へ変更。',
+        'React Compiler統合がStableとなり、React 19.2のView Transitions、useEffectEvent、Activityなどに対応。',
+        'async params や next/image の既定値など破壊的変更を含むため、公式Upgrade Guideとcodemodで移行確認が必要。'
+      ],
+      sourceLabel: 'Next.js 16 release announcement',
+      sourceUrl: 'https://nextjs.org/blog/next-16',
+      checkedAt: '2026-09-05'
+    }
   ]
 };
