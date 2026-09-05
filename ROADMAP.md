@@ -45,12 +45,14 @@
 - [x] Slack / Discord外部通知のWorker・Cron・Webhook判定基盤
 - [x] Slack / Discord通知設定UI + Workers KV本番binding
 - [x] メール通知実装（Resend Free + Turnstile + メールアドレス確認）
-- [ ] メール通知の本番有効化（Resend送信ドメイン / API key + Turnstile keys）
+- [x] メール通知の本番有効化 + 登録/解除E2E確認
 - [x] 公開JSON API / embeddable badge
 
 ## Phase 4 — Trust & expansion
 
-- [ ] ベンダー公式ソースとの二重確認フロー
+- [x] 主要20製品の公式ソースレビュー台帳 + 公開照合状況ページ
+- [ ] 主要20製品の公式日付との手動照合（比較可能な製品のみ）
+- [ ] 製品ページへ公式ソース照合結果を表示
 - [ ] 日本固有の商用サポート情報（根拠が確認できるもののみ）
 - [ ] GitHub package / SBOM連携による自動バージョン検出の検討
 - [ ] 変更監査ログ
