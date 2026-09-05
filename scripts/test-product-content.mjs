@@ -18,7 +18,12 @@ const requiredReleaseHighlightSlugs = [
   'java',
   'ruby',
   'laravel',
-  'nextjs'
+  'nextjs',
+  'mysql',
+  'windows',
+  'windows-server',
+  'docker-engine',
+  'nginx'
 ];
 
 for (const slug of featuredSlugs) {
