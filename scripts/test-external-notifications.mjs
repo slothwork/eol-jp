@@ -9,6 +9,13 @@ import {
   thresholdForDays,
   webhookPayload
 } from '../worker/notification-core.ts';
+import {
+  EXTERNAL_NOTIFICATION_DAILY_LIMIT,
+  EXTERNAL_NOTIFICATION_IP_HOURLY_LIMIT,
+  externalRegistrationDailyKey,
+  externalRegistrationIpKey,
+  reserveExternalRegistration
+} from '../worker/external-notification-security.ts';
 
 assert.equal(isAllowedWebhookUrl('slack', 'https://hooks.slack.com/services/T1/B2/token'), true);
 assert.equal(isAllowedWebhookUrl('slack', 'https://example.com/services/T1/B2/token'), false);
@@ -97,5 +104,56 @@ assert.match(text, /EOLまであと27日/);
 assert.match(text, /https:\/\/eol\.slothwright\.com\/eol\/nodejs\//);
 assert.deepEqual(webhookPayload('slack', 'hello'), { text: 'hello' });
 assert.deepEqual(webhookPayload('discord', 'hello'), { content: 'hello', allowed_mentions: { parse: [] } });
+
+assert.equal(EXTERNAL_NOTIFICATION_IP_HOURLY_LIMIT, 5);
+assert.equal(EXTERNAL_NOTIFICATION_DAILY_LIMIT, 100);
+assert.equal(externalRegistrationDailyKey(new Date('2026-09-05T23:59:59Z')), 'external-registration:daily:2026-09-05');
+assert.match(
+  externalRegistrationIpKey('abc123', new Date('2026-09-05T03:15:00Z')),
+  /^external-registration:ip:2026-09-05T03:abc123$/
+);
+
+class FakeKv {
+  values = new Map();
+  async get(key) {
+    return this.values.get(key) ?? null;
+  }
+  async put(key, value) {
+    this.values.set(key, value);
+  }
+}
+
+const rateNow = new Date('2026-09-05T03:15:00Z');
+const rateRequest = new Request('https://eol.slothwright.com/api/notifications/subscriptions', {
+  headers: { 'CF-Connecting-IP': '203.0.113.10' }
+});
+const rateKv = new FakeKv();
+for (let index = 0; index < EXTERNAL_NOTIFICATION_IP_HOURLY_LIMIT; index += 1) {
+  assert.deepEqual(await reserveExternalRegistration(rateKv, rateRequest, rateNow), { allowed: true });
+}
+assert.deepEqual(await reserveExternalRegistration(rateKv, rateRequest, rateNow), {
+  allowed: false,
+  error: 'external_notification_rate_limited'
+});
+
+const dailyKv = new FakeKv();
+dailyKv.values.set(externalRegistrationDailyKey(rateNow), String(EXTERNAL_NOTIFICATION_DAILY_LIMIT));
+const dailyRequest = new Request('https://eol.slothwright.com/api/notifications/subscriptions', {
+  headers: { 'CF-Connecting-IP': '203.0.113.11' }
+});
+assert.deepEqual(await reserveExternalRegistration(dailyKv, dailyRequest, rateNow), {
+  allowed: false,
+  error: 'external_notification_daily_limit_reached'
+});
+
+const missingIpKv = new FakeKv();
+assert.deepEqual(
+  await reserveExternalRegistration(
+    missingIpKv,
+    new Request('https://eol.slothwright.com/api/notifications/subscriptions'),
+    rateNow
+  ),
+  { allowed: false, error: 'client_ip_unavailable' }
+);
 
 console.log('External notification tests passed.');
