@@ -32,7 +32,7 @@ export const productReleaseHighlights: Record<string, ProductReleaseHighlight[]>
         'Enterprise / Education ではポリシーを使ってプリインストール済みMicrosoft Storeアプリを削除できる管理機能を追加。',
         'Improved Windows Search、Click to Do、File ExplorerのAI actionsなど、24H2以降に段階提供された機能を25H2へ統合。',
         'Quick machine recovery など回復・管理機能を拡張し、IT管理者向けの運用性を改善。',
-        '26H1は新しい特定ハードウェア向けで既存端末の機能更新ではないため、既存環境の一般的な更新先としては25H2が引き続き重要。'
+        '25H2のサービス期間はPro系がリリースから24か月、Enterprise / Education系が36か月。'
       ],
       sourceLabel: 'Windows 11 version 25H2 - What’s new',
       sourceUrl: 'https://learn.microsoft.com/en-us/windows/whats-new/whats-new-windows-11-version-25h2',
