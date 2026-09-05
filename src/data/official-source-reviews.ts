@@ -59,12 +59,12 @@ export const officialSourceReviews: Record<string, OfficialSourceReview> = {
     note: '14・15・16・17・18のFinal Release日を公式Versioning Policyと照合し、スナップショットのEOL日と一致することを確認しました。'
   },
   mysql: {
-    sourceLabel: 'MySQL — Innovation and LTS release model',
-    sourceUrl: 'https://dev.mysql.com/doc/refman/8.4/en/mysql-releases.html',
-    coverage: 'policy-only',
+    sourceLabel: 'Oracle — Lifetime Support Policy for Technology Products',
+    sourceUrl: 'https://www.oracle.com/assets/lsp-tech-chart-069290.pdf',
+    coverage: 'direct-dates',
     sourceCheckedAt: '2026-09-05',
     comparisonStatus: 'pending',
-    note: '具体的な保守期限はOracle Lifetime Support Policyも合わせて確認します。'
+    note: 'Oracle公式表はMySQL DatabaseのPremier/Extended Support終了を月単位で掲載しています。'
   },
   ubuntu: {
     sourceLabel: 'Ubuntu — Release cycle',
@@ -183,9 +183,10 @@ export const officialSourceReviews: Record<string, OfficialSourceReview> = {
   nextjs: {
     sourceLabel: 'Next.js — Support Policy',
     sourceUrl: 'https://nextjs.org/support-policy',
-    coverage: 'direct-dates',
+    coverage: 'policy-only',
     sourceCheckedAt: '2026-09-05',
-    comparisonStatus: 'pending'
+    comparisonStatus: 'pending',
+    note: '公式ページはActive/Maintenance LTSのルールと対象系列を掲載しますが、固定EOL日の一覧は掲載していません。'
   }
 };
 
