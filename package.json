@@ -27,6 +27,7 @@
     "test:official-source-reviews": "node --experimental-strip-types scripts/test-official-source-reviews.mjs",
     "test:product-content": "node --experimental-strip-types scripts/test-product-content.mjs",
     "test:eol-audit": "node scripts/test-eol-audit.mjs",
+    "test:responsive-shell": "node scripts/test-responsive-shell.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {

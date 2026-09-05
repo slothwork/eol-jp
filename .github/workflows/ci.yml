@@ -81,6 +81,9 @@ jobs:
       - name: EOL audit log tests
         run: npm run test:eol-audit
 
+      - name: Responsive shell tests
+        run: npm run test:responsive-shell
+
       - name: Astro check
         run: npm run check
 
