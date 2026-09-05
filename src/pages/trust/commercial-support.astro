@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { featuredProducts, getJapanCommercialSupport } from '@/lib/eol';
+import { formatJaDate } from '@/lib/date';
+
+const rows = featuredProducts().flatMap((product) => {
+  const support = getJapanCommercialSupport(product);
+  return support ? [{ product, support }] : [];
+});
+---
+<BaseLayout
+  title="日本で利用できる商用サポート"
+  description="EOL情報.jpがベンダー公式の日本向け情報まで確認できた主要製品について、商用サポートや延長セキュリティ更新の選択肢を整理します。"
+  canonicalPath="/trust/commercial-support/"
+>
+  <section class="page-head"><div class="container">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="/">ホーム</a><span>/</span><a href="/trust/official-sources/">公式ソース照合</a><span>/</span><span aria-current="page">商用サポート</span>
+    </nav>
+    <span class="eyebrow">TRUST & SUPPORT OPTIONS</span>
+    <h1>日本で利用できる商用サポート</h1>
+    <p>EOL後もすぐに移行できない場合や、企業向けの技術支援が必要な場合に検討できる公式の有償サポート情報をまとめています。</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="stats-grid">
+      <div class="stat-card"><strong>{rows.length}</strong><span>公式根拠を確認できた製品</span></div>
+      <div class="stat-card"><strong>一次情報のみ</strong><span>ベンダー公式・日本向け情報</span></div>
+    </div>
+
+    <div class="notice">
+      <strong>掲載方針</strong>
+      <p>ベンダーまたは製品提供元の一次情報に加え、日本向け公式ページまたは国内サポート窓口まで確認できたものだけを掲載します。第三者の保守会社や販売代理店を網羅するページではありません。</p>
+      <p>未掲載の製品に商用サポートが存在しないという意味ではありません。価格、対象バージョン、SLA、契約条件は変更されるため、実際の契約前に必ず各ベンダーの最新情報を確認してください。</p>
+    </div>
+
+    <div class="version-list">
+      {rows.map(({ product, support }) => (
+        <article class="version-item">
+          <span class="eyebrow">COMMERCIAL SUPPORT</span>
+          <h2><a href={`/eol/${product.slug}/`}>{product.label}</a></h2>
+          <h3>{support.service}</h3>
+          <p><strong>提供:</strong> {support.provider}</p>
+          <p>{support.summary}</p>
+          <ul class="compact-list">
+            {support.details.map((detail) => <li>{detail}</li>)}
+          </ul>
+          {support.caveat && <p class="warning-box">{support.caveat}</p>}
+          <p>
+            {support.sources.map((source, index) => (
+              <>
+                {index > 0 && <br/>}
+                <a href={source.url} rel="external">{source.label} →</a>
+              </>
+            ))}
+          </p>
+          <p class="muted">公式情報確認日: {formatJaDate(support.checkedAt)}</p>
+        </article>
+      ))}
+    </div>
+
+    <section class="subsection">
+      <h2>この情報の使い方</h2>
+      <ul class="compact-list">
+        <li>商用サポートは、EOLした製品を無期限に安全に使えることを保証するものではありません。</li>
+        <li>ESUのようにセキュリティ更新だけを延長するサービスと、障害対応を含む技術サポートは区別して確認してください。</li>
+        <li>オープンソース版と商用版でサポート対象が異なる製品があります。契約対象の製品名・エディションを確認してください。</li>
+        <li>移行できる場合は、原則としてサポート中の新しいバージョンへの更新を優先してください。</li>
+      </ul>
+      <p><a href="/trust/official-sources/">主要20製品の公式ソース照合状況を見る →</a></p>
+    </section>
+  </div></section>
+</BaseLayout>
