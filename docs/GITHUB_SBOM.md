@@ -1,134 +1,158 @@
-# GitHub package / SBOM連携による自動バージョン検出の検討
+# GitHub package / SBOM連携による自動バージョン検出
 
-確認日: 2026-09-05
+最終更新: 2026-09-05
 
-## 結論
+## 現在の結論
 
-GitHub連携による自動バージョン検出は技術的に実現可能。ただし、**GitHub Packages APIを主軸にはせず、GitHub Dependency GraphのSBOMを入口にし、必要に応じてリポジトリ内のマニフェスト/ランタイム指定ファイルを補完的に読む方式**を採用する。
+Public GitHub Repository Import MVPを実装した。
 
-現時点ではSBOMだけで主要20製品を十分な精度で検出できないため、Phase 4では調査・設計までを完了とし、ユーザー向け実装は後続フェーズで行う。
+GitHub Packages APIは主軸にせず、**GitHub Dependency Graphの非同期SBOM + リポジトリ直下のmanifest/runtime指定ファイル**を組み合わせる。
 
-## GitHub SBOMを採用する理由
+MVPでは公開リポジトリのみを対象とし、GitHubトークンやログインを要求しない。解析はブラウザからGitHub REST APIへ直接アクセスして行い、GitHub URL、SBOM、manifest内容、解析結果をEOL情報.jpのWorker・KVへ送信しない。
 
-GitHubのDependency Graphは、リポジトリの依存関係をSPDX形式のSBOMとして出力できる。SBOMには依存パッケージ名、バージョン、Package URL（purl）などが含まれるため、EOL情報.jp側の製品slugへ保守的に対応付けできる。
+実装ページ:
+
+- `/my-eol/github-import/`
+
+## GitHub SBOM
+
+GitHub Dependency Graphは、リポジトリの依存関係をSPDX形式のSBOMとして出力できる。
 
 公式ドキュメント:
 
 - https://docs.github.com/en/rest/dependency-graph/sboms
 - https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/establish-provenance-and-integrity/export-dependencies-as-sbom
 
-公開リポジトリについては、GitHubの公式REST API上で認証なしの取得が可能と明記されている。
+従来の同期API `GET /repos/{owner}/{repo}/dependency-graph/sbom` は2026-11-13に終了予定のため、MVPでは使用しない。
 
-## 旧同期APIは採用しない
+採用するフロー:
 
-従来の `GET /repos/{owner}/{repo}/dependency-graph/sbom` は2026-11-13に終了予定と案内されている。
+1. `GET /repos/{owner}/{repo}/dependency-graph/sbom/generate-report`
+2. 返却されたSBOM UUIDを取得
+3. `GET /repos/{owner}/{repo}/dependency-graph/sbom/fetch-report/{uuid}` を状態確認
+4. 生成完了後のSPDX JSONをブラウザ内で解析
+5. allowlistに一致する高信頼度候補だけをEOL製品へ対応付け
 
-実装時は最初から次の非同期フローを利用する。
+ブラウザからの直接アクセスではGitHub REST APIのCORSを利用する。未認証の公開データ利用はGitHub側のIP単位レート制限に従う。
 
-1. SBOM生成要求
-2. GitHubから返されたSBOM URL / UUIDを保持
-3. 生成完了まで状態確認
-4. SPDX JSONを取得
-5. EOL情報.jpで高信頼度の製品だけ抽出
+## SBOMで自動対応する製品
 
-GitHub API versionは実装時点の最新安定版を固定して利用する。
+MVPでは、クライアントライブラリとサーバー本体を誤認しないよう、package URL（purl）が製品そのものと明確に対応するものだけを採用する。
 
-## GitHub Packages APIを主軸にしない理由
+現在のallowlist:
 
-GitHub Packages REST APIはGitHub Packagesに公開・保存されているパッケージの管理を目的としており、リポジトリが実際に利用している依存関係の棚卸し用途とは目的が異なる。
+- `pkg:npm/next@...` → Next.js
+- `pkg:pypi/django@...` → Django
+- `pkg:composer/laravel/framework@...` → Laravel
 
-また、Packages APIの利用では `read:packages` を含む認証が必要になるケースがあり、公開リポジトリのEOL自動検出という用途に対して認証コストと権限が過大になる。
+MySQLクライアント、PostgreSQLドライバ、Redisクライアント等がSBOMに存在しても、サーバー製品のバージョン検出とは扱わない。
 
-公式ドキュメント:
+## manifest/runtime補完
 
-- https://docs.github.com/en/rest/packages/packages
+SBOMだけではランタイムやサーバー製品を十分に検出できないため、リポジトリ直下の次のファイルを補完的に確認する。
 
-## SBOMだけでは検出できないもの
+- `.nvmrc`
+- `.node-version`
+- `.python-version`
+- `.ruby-version`
+- `.java-version`
+- `.tool-versions`
+- `go.mod`
+- `global.json`
+- `package.json`
+- `composer.json`
+- `Gemfile`
+- `runtime.txt`
+- `Dockerfile`
 
-SBOMは「依存パッケージ」の検出には強いが、実行環境そのものは必ずしも含まれない。
+### 検出ポリシー
 
-SBOMだけで比較的高信頼度に対応しやすい例:
+具体的なバージョンだけを候補にする。
 
-- `pkg:npm/next@...` -> Next.js
-- `pkg:pypi/django@...` -> Django
-- `pkg:composer/laravel/framework@...` -> Laravel
+採用例:
 
-SBOMだけでは原則として不足する例:
+- `22.18.0`
+- `3.13.7`
+- `go 1.25.1`
+- `FROM node:22.18.0-alpine`
+- `FROM postgres:17-alpine`
 
-- Node.js / Python / PHP / Java / Go / Ruby のランタイム
-- Ubuntu / Windows / Windows Server
-- Docker Engine / Kubernetes / nginx
-- PostgreSQL / MySQL / Redis / MongoDB のサーバー本体
+除外例:
 
-クライアントライブラリとサーバー製品を誤対応させてはいけない。例えばMySQLクライアントパッケージが存在しても、利用中のMySQL Serverバージョンを確定したとは扱わない。
+- `latest`
+- `stable`
+- `lts`
+- `>=22`
+- `^8.2`
+- 環境変数のみの `FROM node:${NODE_VERSION}`
 
-## 推奨する将来実装
+Dockerfileでは、Node.js / Python / PHP / Ruby / Go / Java / Ubuntu / PostgreSQL / MySQL / Redis / MongoDB / nginx / .NET / Kubernetes / Windows Serverについて、具体的な公式・一般的イメージ名と数値タグが確認できる場合のみ候補化する。
 
-### 1. Public GitHub Repository Import
+## EOL系列との対応付け
 
-ユーザーが `https://github.com/{owner}/{repo}` を入力する。
+検出された完全バージョンをそのままマイEOLへ保存しない。
 
-対象はまず公開リポジトリのみとし、GitHubトークン入力は求めない。
-
-### 2. SBOM解析
-
-GitHubの非同期SBOM APIでSPDX JSONを取得し、purlをallowlist方式でEOL製品へ変換する。
-
-自動登録対象は「製品名とパッケージ名が明確に対応するもの」だけとする。
-
-### 3. マニフェスト補完
-
-SBOMで検出できないランタイムは、明示的なバージョン指定が存在する場合のみ補完候補にする。
+`my-eol-data.json` の現在のリリース系列と比較し、最長一致する系列へ正規化する。
 
 例:
 
-- `.nvmrc` / `.node-version`
-- `.python-version`
-- `.ruby-version`
-- `go.mod`
-- `composer.json` / `composer.lock`
-- `Dockerfile`
-- `devcontainer.json`
-- GitHub Actionsの `setup-node` / `setup-python` 等
+- Node.js `22.18.0` → `22`
+- Python `3.13.7` → `3.13`
+- Next.js `16.1.2` → `16`
 
-曖昧なバージョン範囲や `latest` は自動登録せず、「候補」としてユーザー確認を求める。
+現在のEOLデータに一致する系列がない場合は「系列を対応付けできなかった検出」として表示し、保存対象外にする。
 
-### 4. マイEOLへ取り込み
+同じ製品について複数の異なる系列が検出された場合も競合として表示し、自動保存しない。
 
-検出結果はサーバー側アカウントに保存せず、既存のマイEOLと同じローカル保存へ取り込む。
+## マイEOLへの保存
 
-初期実装では以下を必須とする。
+解析結果は自動保存しない。
 
-- 検出元を表示（SBOM / ファイル名）
-- 検出バージョンを表示
-- EOL情報.jp上の対応製品を表示
-- ユーザーが選択してから保存
-- 自動で勝手にマイEOLへ追加しない
+ユーザー画面で以下を表示する。
 
-## private repository対応
+- 対応製品
+- 保存されるEOL系列
+- 実際に検出したバージョン
+- 検出元（SBOM / ファイル名）
+- 既存のマイEOL保存内容
 
-初期実装では行わない。
+ユーザーがチェックされた候補を確認し、「選択した候補をマイEOLへ保存」を押した場合だけ既存の `eol-jp:tracked-products:v1` localStorageへ保存する。
 
-private repositoryを扱うにはGitHub App / OAuth / Fine-grained token等の認証設計が必要になる。EOL情報.jpは現時点でアカウントレス・低コスト運用を優先しているため、GitHub credentialをブラウザlocalStorageやKVへ保存する設計は採用しない。
+## プライバシー / コスト
+
+MVPはブラウザからGitHubへ直接アクセスする。
+
+そのため次をEOL情報.jp側には保存しない。
+
+- GitHubリポジトリURL
+- SBOM
+- manifest/runtimeファイル内容
+- 解析結果
+- GitHub credential
+
+Cloudflare WorkerのAPI中継、追加KV、常設DBは不要で、追加固定費0円の運用方針を維持する。
+
+## private repository
+
+MVPでは対応しない。
+
+private repositoryにはGitHub App / OAuth / fine-grained token等の認証設計が必要になる。アカウントレス・低コスト・credential非保存を優先するため、ブラウザlocalStorageやCloudflare KVへGitHub tokenを保存する設計は採用しない。
 
 将来必要になった場合は次の順で再検討する。
 
-1. ユーザーがローカルでSBOM JSONをアップロードして解析
+1. ユーザーがローカルSBOM JSONをアップロードしてブラウザ内解析
 2. GitHub Appでread-only権限を明示的に取得
 3. OAuth連携
 
-## コスト方針
+## テスト
 
-公開リポジトリのSBOM取得とブラウザ側解析を中心にすれば、追加の常設DBは不要。
+`src/lib/github-import.ts` の純粋処理についてCIで次を検証する。
 
-Cloudflare Workerを利用する場合も、入力検証・GitHub API中継・短時間キャッシュ程度に限定し、既存の低コスト運用方針を維持する。
-
-## 実装判断
-
-- GitHub Packages API単独: 採用しない
-- GitHub SBOM単独: 一部製品には有効だがカバレッジ不足
-- GitHub SBOM + manifest/runtime detection: 採用候補
-- private repository認証: 初期対象外
-- 自動保存: 採用しない。ユーザー確認後にマイEOLへ保存
-
-次の実装優先度は、サイト全体のモバイルUX改善と閲覧履歴を先に行い、その後にPublic GitHub Repository Import MVPを実装する。
+- GitHub URLの正規化 / 不正URL拒否
+- runtime manifest検出
+- Dockerfileの具体バージョン検出
+- SBOM purl allowlist
+- 完全バージョンからEOL系列への正規化
+- 同一系列の複数証跡統合
+- 異なる系列の競合検出
+- 現在のEOLデータにない系列の保存除外

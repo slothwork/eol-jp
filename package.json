@@ -18,6 +18,7 @@
     "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
     "test:tracked-products": "node --experimental-strip-types scripts/test-tracked-products.mjs",
     "test:view-history": "node --experimental-strip-types scripts/test-view-history.mjs",
+    "test:github-import": "node --experimental-strip-types scripts/test-github-import.mjs",
     "test:eol-reminders": "node --experimental-strip-types scripts/test-eol-reminders.mjs",
     "test:external-notifications": "node --experimental-strip-types scripts/test-external-notifications.mjs",
     "test:external-notification-client": "node --experimental-strip-types scripts/test-external-notification-client.mjs",
