@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { productOverviews, productReleaseHighlights } from '../src/data/product-content.ts';
+import { productOverviews } from '../src/data/product-content.ts';
+import { productReleaseHighlights } from '../src/data/release-highlights.ts';
 import { featuredSlugs } from '../src/data/product-meta.ts';
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -33,6 +34,7 @@ for (const slug of featuredSlugs) {
 }
 
 assert.equal(Object.keys(productOverviews).length, featuredSlugs.length, 'Product overview set should match featured products');
+assert.equal(Object.keys(productReleaseHighlights).length, featuredSlugs.length, 'Release highlight set should match featured products');
 
 for (const slug of requiredReleaseHighlightSlugs) {
   const releases = productReleaseHighlights[slug];
