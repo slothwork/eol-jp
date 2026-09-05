@@ -13,7 +13,12 @@ const requiredReleaseHighlightSlugs = [
   'kubernetes',
   'go',
   'django',
-  'redis'
+  'redis',
+  'mongodb',
+  'java',
+  'ruby',
+  'laravel',
+  'nextjs'
 ];
 
 for (const slug of featuredSlugs) {
