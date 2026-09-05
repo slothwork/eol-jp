@@ -11,7 +11,7 @@
   <div class="notice" data-external-notification-summary>通知対象を確認しています。</div>
   <div class="notice external-notification-message" data-external-notification-message hidden></div>
 
-  <form class="external-notification-form" data-external-notification-form>
+  <form class="external-notification-form" data-external-notification-form hidden>
     <label>
       通知先
       <select class="history-select" data-external-notification-channel>
@@ -31,10 +31,11 @@
         data-external-notification-webhook
       />
     </label>
+    <div class="email-turnstile" data-external-notification-turnstile></div>
     <div class="hero-actions">
       <button class="button primary" type="submit" data-external-notification-register>テストして通知を登録</button>
     </div>
-    <p class="section-note">登録時に固定のテストメッセージを1回送信します。Webhook URLはブラウザには保存せず、通知処理のためCloudflare KVに保存されます。管理tokenはこのブラウザ内だけに保存されます。</p>
+    <p class="section-note">登録時にCloudflare Turnstileでボット確認を行い、固定のテストメッセージを1回送信します。新規登録は1IPあたり1時間5件・サイト全体で1日100件のソフト上限です。Webhook URLはブラウザには保存せず、通知処理のためCloudflare KVに保存されます。管理tokenはこのブラウザ内だけに保存されます。</p>
   </form>
 
   <div data-external-notification-configured hidden>
@@ -71,6 +72,11 @@
   import { EOL_REMINDER_STORAGE_KEY, parseEolReminderState } from '@/lib/eol-reminders';
   import { TRACKED_PRODUCTS_STORAGE_KEY, parseTrackedProducts } from '@/lib/tracked-products';
 
+  type TurnstileApi = {
+    render(container: HTMLElement, options: Record<string, unknown>): string;
+    reset(widgetId?: string): void;
+  };
+
   const form = document.querySelector<HTMLFormElement>('[data-external-notification-form]');
   const configured = document.querySelector<HTMLElement>('[data-external-notification-configured]');
   const summary = document.querySelector<HTMLElement>('[data-external-notification-summary]');
@@ -83,8 +89,13 @@
   const syncBadge = document.querySelector<HTMLElement>('[data-external-notification-sync-badge]');
   const syncButton = document.querySelector<HTMLButtonElement>('[data-external-notification-sync]');
   const deleteButton = document.querySelector<HTMLButtonElement>('[data-external-notification-delete]');
+  const turnstileContainer = document.querySelector<HTMLElement>('[data-external-notification-turnstile]');
 
   let externalState: ExternalNotificationState = emptyExternalNotificationState();
+  let externalEnabled = false;
+  let turnstileSiteKey = '';
+  let turnstileToken = '';
+  let turnstileWidgetId: string | null = null;
 
   const readPayload = () => {
     const tracked = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
@@ -114,6 +125,17 @@
     localStorage.setItem(EXTERNAL_NOTIFICATION_STORAGE_KEY, serializeExternalNotificationState(externalState));
   };
 
+  const registrationErrorText = (code: string) => ({
+    invalid_webhook_url: 'SlackまたはDiscordの正しいWebhook URLを確認してください。',
+    too_many_tracked_items: `外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`,
+    turnstile_failed: 'ボット確認に失敗しました。もう一度お試しください。',
+    external_notification_rate_limited: 'この接続元からの新規登録回数が上限に達しました。時間を空けてお試しください。',
+    external_notification_daily_limit_reached: '本日の外部通知新規登録上限に達しました。明日もう一度お試しください。',
+    external_notifications_unconfigured: '外部通知の新規登録保護設定が利用できません。時間を空けてお試しください。',
+    forbidden_origin: '安全確認に失敗しました。ページを再読み込みしてお試しください。',
+    client_ip_unavailable: '接続元を確認できないため登録できませんでした。時間を空けてお試しください。'
+  } as Record<string, string>)[code] ?? '通知登録またはテスト送信に失敗しました。Webhook URLを確認してください。';
+
   const render = () => {
     if (!form || !configured || !summary || !registerButton || !channelLabel || !statusText || !syncBadge || !syncButton) return;
     const payload = readPayload();
@@ -123,12 +145,13 @@
     summary.textContent = `現在の通知対象: ${count}製品 / ${thresholdText(payload.thresholds)}`;
 
     const subscription = externalState.subscription;
-    form.hidden = Boolean(subscription);
+    form.hidden = Boolean(subscription) || !externalEnabled;
     configured.hidden = !subscription;
 
     if (!subscription) {
-      registerButton.disabled = count === 0 || tooMany || noThresholds;
-      if (tooMany) summary.textContent += ` — 外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`;
+      registerButton.disabled = !externalEnabled || !turnstileToken || count === 0 || tooMany || noThresholds;
+      if (!externalEnabled) summary.textContent += ' — 新規登録は安全確認設定が利用可能になるまで停止しています。';
+      else if (tooMany) summary.textContent += ` — 外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`;
       else if (count === 0) summary.textContent += ' — 先に利用中バージョンを保存してください。';
       else if (noThresholds) summary.textContent += ' — 30 / 90 / 180日前のいずれかをONにしてください。';
       return;
@@ -140,6 +163,59 @@
     syncBadge.textContent = needsSync ? '同期が必要' : '同期済み';
     syncBadge.className = `status-badge ${needsSync ? 'status-warning' : 'status-supported'}`;
     syncButton.disabled = count === 0 || tooMany || noThresholds || !needsSync;
+  };
+
+  const resetTurnstile = () => {
+    turnstileToken = '';
+    const api = (window as Window & { turnstile?: TurnstileApi }).turnstile;
+    if (api && turnstileWidgetId) api.reset(turnstileWidgetId);
+    render();
+  };
+
+  const loadTurnstile = async (): Promise<TurnstileApi> => {
+    const existing = (window as Window & { turnstile?: TurnstileApi }).turnstile;
+    if (existing) return existing;
+    await new Promise<void>((resolve, reject) => {
+      const current = document.querySelector<HTMLScriptElement>('script[data-eol-turnstile]');
+      if (current) {
+        current.addEventListener('load', () => resolve(), { once: true });
+        current.addEventListener('error', () => reject(new Error('turnstile_load_failed')), { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.defer = true;
+      script.dataset.eolTurnstile = '1';
+      script.addEventListener('load', () => resolve(), { once: true });
+      script.addEventListener('error', () => reject(new Error('turnstile_load_failed')), { once: true });
+      document.head.append(script);
+    });
+    const api = (window as Window & { turnstile?: TurnstileApi }).turnstile;
+    if (!api) throw new Error('turnstile_unavailable');
+    return api;
+  };
+
+  const ensureTurnstile = async () => {
+    if (!externalEnabled || !turnstileSiteKey || !turnstileContainer || turnstileWidgetId) return;
+    const api = await loadTurnstile();
+    turnstileWidgetId = api.render(turnstileContainer, {
+      sitekey: turnstileSiteKey,
+      action: 'external_notification',
+      theme: 'auto',
+      callback: (token: string) => {
+        turnstileToken = token;
+        render();
+      },
+      'expired-callback': () => {
+        turnstileToken = '';
+        render();
+      },
+      'error-callback': () => {
+        turnstileToken = '';
+        render();
+      }
+    });
   };
 
   const authorizedFetch = (method: string, body?: unknown) => {
@@ -163,6 +239,7 @@
       if (response.status === 401 || response.status === 404) {
         externalState = clearExternalNotificationSubscription();
         persistExternalState();
+        await ensureTurnstile();
         render();
         showMessage('サーバー側の通知設定を確認できなかったため、このブラウザの古い管理情報をクリアしました。', true);
         return;
@@ -188,6 +265,10 @@
       showMessage('Webhook URLを入力してください。', true);
       return;
     }
+    if (!turnstileToken) {
+      showMessage('ボット確認の完了を待ってから登録してください。', true);
+      return;
+    }
 
     registerButton.disabled = true;
     registerButton.textContent = 'テスト送信中…';
@@ -196,10 +277,13 @@
       const response = await fetch('/api/notifications/subscriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ channel, webhookUrl, ...payload })
+        body: JSON.stringify({ channel, webhookUrl, turnstileToken, ...payload })
       });
       const data = await response.json() as { id?: string; token?: string; error?: string };
-      if (!response.ok || !data.id || !data.token) throw new Error(data.error ?? 'registration_failed');
+      if (!response.ok || !data.id || !data.token) {
+        resetTurnstile();
+        throw new Error(data.error ?? 'registration_failed');
+      }
 
       externalState = setExternalNotificationSubscription(
         externalState,
@@ -208,16 +292,12 @@
       );
       persistExternalState();
       webhookInput.value = '';
+      turnstileToken = '';
       render();
       showMessage('テスト送信に成功し、外部通知を登録しました。');
     } catch (error) {
       const code = error instanceof Error ? error.message : '';
-      const text = code === 'invalid_webhook_url'
-        ? 'SlackまたはDiscordの正しいWebhook URLを確認してください。'
-        : code === 'too_many_tracked_items'
-          ? `外部通知は最大${MAX_EXTERNAL_NOTIFICATION_ITEMS}製品までです。`
-          : '通知登録またはテスト送信に失敗しました。Webhook URLを確認してください。';
-      showMessage(text, true);
+      showMessage(registrationErrorText(code), true);
     } finally {
       registerButton.textContent = 'テストして通知を登録';
       render();
@@ -259,6 +339,7 @@
       if (!response.ok && response.status !== 404) throw new Error('delete_failed');
       externalState = clearExternalNotificationSubscription();
       persistExternalState();
+      await ensureTurnstile();
       render();
       showMessage('外部通知設定を解除しました。');
     } catch {
@@ -269,11 +350,24 @@
     }
   });
 
-  try {
-    externalState = parseExternalNotificationState(localStorage.getItem(EXTERNAL_NOTIFICATION_STORAGE_KEY));
-    render();
-    void verifyRemote();
-  } catch {
-    showMessage('このブラウザでは外部通知の管理情報を保存できません。', true);
-  }
+  const initialize = async () => {
+    try {
+      externalState = parseExternalNotificationState(localStorage.getItem(EXTERNAL_NOTIFICATION_STORAGE_KEY));
+      const response = await fetch('/api/notifications/config', { headers: { Accept: 'application/json' } });
+      const config = await response.json() as { enabled?: boolean; turnstileSiteKey?: string | null };
+      externalEnabled = Boolean(response.ok && config.enabled && config.turnstileSiteKey);
+      turnstileSiteKey = config.turnstileSiteKey ?? '';
+      if (externalEnabled && !externalState.subscription) await ensureTurnstile();
+      if (!externalEnabled && !externalState.subscription) {
+        showMessage('Slack / Discord通知の新規登録は安全確認設定が利用できないため一時停止しています。既存設定の同期・解除には影響しません。', true);
+      }
+      render();
+      void verifyRemote();
+    } catch {
+      render();
+      showMessage('外部通知の設定状態を取得できませんでした。通信状態を確認してください。', true);
+    }
+  };
+
+  void initialize();
 </script>
