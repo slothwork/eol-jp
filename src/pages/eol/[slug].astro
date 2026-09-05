@@ -2,7 +2,21 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import TrackedVersionPanel from '@/components/TrackedVersionPanel.astro';
-import { generatedAt, getCategoryLabel, getProductMigrationGuide, getProductSeoDescription, getProductSeoTitle, getProductSummary, nearestUpcomingEol, products, recommendedTarget, statusFor } from '@/lib/eol';
+import {
+  generatedAt,
+  getCategoryLabel,
+  getOfficialSourceReview,
+  getProductMigrationGuide,
+  getProductSeoDescription,
+  getProductSeoTitle,
+  getProductSummary,
+  nearestUpcomingEol,
+  officialComparisonStatusLabel,
+  officialSourceCoverageLabel,
+  products,
+  recommendedTarget,
+  statusFor
+} from '@/lib/eol';
 import { isIndexableProduct } from '@/lib/index-policy';
 import { formatJaDate, relativeEol } from '@/lib/date';
 
@@ -22,6 +36,7 @@ const indexable = isIndexableProduct(product);
 const nearestEol = nearestUpcomingEol(product);
 const target = nearestEol ? recommendedTarget(product, nearestEol) : null;
 const migrationGuide = getProductMigrationGuide(product);
+const officialReview = getOfficialSourceReview(product);
 const supported = releases.filter((release) => statusFor(release) !== 'ended');
 const ended = releases.filter((release) => statusFor(release) === 'ended');
 const siteBase = Astro.site ?? Astro.url.origin;
@@ -143,6 +158,45 @@ const structured = {
           </ul>
         </section>
       )}
+
+      {officialReview && (
+        <section class="subsection" id="official-source-review">
+          <h2>公式ソースとの照合</h2>
+          <p class="section-lead">endoflife.date由来の掲載データとは別に、ベンダーまたは公式プロジェクトの一次情報を確認しています。</p>
+          <div class="notice">
+            <strong>{officialComparisonStatusLabel(officialReview.comparisonStatus)}</strong>
+            <p>
+              掲載形式: {officialSourceCoverageLabel(officialReview.coverage)}<br/>
+              公式ソース確認日: {formatJaDate(officialReview.sourceCheckedAt)}
+              {officialReview.comparisonCheckedAt && <><br/>日付照合日: {formatJaDate(officialReview.comparisonCheckedAt)}</>}
+            </p>
+            {officialReview.note && <p>{officialReview.note}</p>}
+            <p><a href={officialReview.sourceUrl} rel="external">{officialReview.sourceLabel} →</a></p>
+          </div>
+
+          {officialReview.evidence && officialReview.evidence.length > 0 && (
+            <>
+              <h3>構造化して照合した公式日付</h3>
+              <div class="table-wrap"><table>
+                <thead><tr><th>バージョン</th><th>公式EOL</th><th>照合精度</th><th>一次情報</th></tr></thead>
+                <tbody>
+                  {officialReview.evidence.map((evidence) => (
+                    <tr>
+                      <td><strong>{evidence.release}</strong></td>
+                      <td>{formatJaDate(evidence.officialEol)}</td>
+                      <td>{evidence.precision === 'day' ? '日単位' : '月単位'}</td>
+                      <td><a href={evidence.sourceUrl} rel="external">公式ソース →</a></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table></div>
+            </>
+          )}
+
+          <p class="muted">「一部のみ一致確認済み」は、公式情報の粒度、エディション、サポートフェーズ、TBDなどにより全系列を完全一致と判断していない状態です。「一律比較対象外」は固定EOL日一覧がない、またはベンダーごとに期限が異なる製品です。</p>
+          <p><a href="/trust/official-sources/">主要20製品の公式ソース照合状況を見る →</a></p>
+        </section>
+      )}
     </div>
     <aside class="panel">
       <h2>どうすればいい？</h2>
@@ -158,6 +212,11 @@ const structured = {
         <h3>公式の移行・アップグレード資料</h3>
         <p><a href={migrationGuide.url} rel="external">{migrationGuide.label} →</a></p>
         {migrationGuide.note && <p class="muted">{migrationGuide.note}</p>}
+      </>}
+      {officialReview && <>
+        <h3>公式ソース照合</h3>
+        <p><strong>{officialComparisonStatusLabel(officialReview.comparisonStatus)}</strong><br/><small>照合: {formatJaDate(officialReview.comparisonCheckedAt ?? officialReview.sourceCheckedAt)}</small></p>
+        <p><a href="#official-source-review">照合内容を確認する →</a></p>
       </>}
       <h3>一次情報</h3>
       <ul>
