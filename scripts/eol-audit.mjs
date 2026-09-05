@@ -51,18 +51,24 @@ export function summarizeChanges(changes) {
   const summary = {
     total: 0,
     releaseAdded: 0,
+    releaseRemoved: 0,
     eolChanged: 0,
     supportChanged: 0,
-    latestChanged: 0
+    latestChanged: 0,
+    releaseMetadataChanged: 0,
+    productMetadataChanged: 0
   };
   const affectedProducts = new Map();
 
   for (const change of changes ?? []) {
     summary.total += 1;
     if (change.type === 'release-added') summary.releaseAdded += 1;
+    if (change.type === 'release-removed') summary.releaseRemoved += 1;
     if (change.type === 'eol-changed') summary.eolChanged += 1;
     if (change.type === 'support-changed') summary.supportChanged += 1;
     if (change.type === 'latest-changed') summary.latestChanged += 1;
+    if (change.type === 'release-metadata-changed') summary.releaseMetadataChanged += 1;
+    if (change.type === 'product-metadata-changed') summary.productMetadataChanged += 1;
     if (change.product) affectedProducts.set(change.product, change.label ?? change.product);
   }
 
