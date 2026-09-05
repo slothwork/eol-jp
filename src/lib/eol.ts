@@ -1,6 +1,7 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { resolvedOfficialSourceReviews } from '@/data/official-date-evidence';
-import { productOverviews, productReleaseHighlights } from '@/data/product-content';
+import { productOverviews } from '@/data/product-content';
+import { productReleaseHighlights } from '@/data/release-highlights';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
 import {
   officialComparisonStatusLabels,
