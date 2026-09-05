@@ -1,5 +1,12 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
+import {
+  officialComparisonStatusLabels,
+  officialSourceCoverageLabels,
+  officialSourceReviews,
+  type OfficialComparisonStatus,
+  type OfficialSourceCoverage
+} from '@/data/official-source-reviews';
 import { productSeoOverrides } from '@/data/product-seo';
 import { daysUntil } from '@/lib/date';
 import {
@@ -72,6 +79,18 @@ export function getProductSeoDescription(product: Product): string {
 
 export function getProductMigrationGuide(product: Product) {
   return productMigrationGuides[product.slug] ?? null;
+}
+
+export function getOfficialSourceReview(product: Product) {
+  return officialSourceReviews[product.slug] ?? null;
+}
+
+export function officialSourceCoverageLabel(coverage: OfficialSourceCoverage): string {
+  return officialSourceCoverageLabels[coverage];
+}
+
+export function officialComparisonStatusLabel(status: OfficialComparisonStatus): string {
+  return officialComparisonStatusLabels[status];
 }
 
 export function statusFor(release: Release): EolStatus {
