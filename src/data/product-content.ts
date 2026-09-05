@@ -114,5 +114,90 @@ export const productReleaseHighlights: Record<string, ProductReleaseHighlight[]>
       sourceUrl: 'https://learn.microsoft.com/ja-jp/dotnet/core/whats-new/dotnet-10/overview',
       checkedAt: '2026-09-05'
     }
+  ],
+  ubuntu: [
+    {
+      version: '26.04 LTS',
+      releaseDate: '2026-04-23',
+      summary: 'Ubuntu 26.04 LTS（Resolute Raccoon）は、Linux 7.0やデスクトップ・起動基盤・基本コマンド群の大幅な更新を含む長期サポート版です。',
+      highlights: [
+        'Linux kernel 7.0 を採用し、新しいCPU・GPU・NPUや各種ハードウェアへの対応を拡充。',
+        'デスクトップは GNOME 50 を採用し、Ubuntu Desktop の標準セッションは Wayland のみへ移行。',
+        'sudo-rs と rust-coreutils を標準採用し、従来実装も互換性確保のため選択可能な形で提供。',
+        '初期RAMディスク基盤を initramfs-tools から Dracut へ変更し、新規インストールでは時刻同期も chrony が標準に。',
+        'systemd では cgroup v1 サポートが削除され、System V サービススクリプトも将来削除に向けた移行対象。'
+      ],
+      sourceLabel: 'Ubuntu 26.04 LTS release notes',
+      sourceUrl: 'https://documentation.ubuntu.com/release-notes/26.04/',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  kubernetes: [
+    {
+      version: '1.37',
+      releaseDate: '2026-08-26',
+      summary: 'Kubernetes 1.37 は、オートスケーリング、リソース管理、証明書・メトリクス周辺など多数の機能を成熟させたリリースです。',
+      highlights: [
+        '全67件のEnhancementのうち16件がStable、23件がBetaへ昇格し、27件のAlpha機能が追加。',
+        'HorizontalPodAutoscaler の scale-to-zero が Beta へ昇格し、対象メトリクスを使うワークロードで既定有効化。',
+        'Dynamic Resource Allocation の Extended Resource 対応がGAとなり、従来の拡張リソースAPIとの統合を強化。',
+        'Metrics API の安定化など、運用・可観測性に関するAPIの成熟が進行。',
+        'cgroup v1 は廃止に向けた移行段階にあり、既定では kubelet が cgroup v1 ノードで起動を拒否するためcgroup v2への移行確認が重要。'
+      ],
+      sourceLabel: 'Kubernetes v1.37 release announcement',
+      sourceUrl: 'https://kubernetes.io/blog/2026/08/26/kubernetes-v1-37-release/',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  go: [
+    {
+      version: '1.27',
+      releaseDate: '2026-08-19',
+      summary: 'Go 1.27 は、ジェネリクスの表現力、ツールチェーン、ランタイム性能、診断機能を拡張しつつGo 1互換性方針を維持したリリースです。',
+      highlights: [
+        'メソッド自身が型パラメータを宣言できる generic methods を追加。',
+        'ジェネリック関数の型推論を代入や変換など幅広い文脈へ拡張し、struct literal のフィールド指定も柔軟化。',
+        'go test が stdversion の vet チェックを既定実行し、go doc は package@version 形式などに対応。',
+        '小さなメモリ割り当て向けの最適化を追加し、割り当て負荷の高い処理でランタイム性能を改善。',
+        'ブロックされたまま復帰不能なgoroutineを検出する goroutineleak プロファイルが正式機能化。'
+      ],
+      sourceLabel: 'Go 1.27 Release Notes',
+      sourceUrl: 'https://go.dev/doc/go1.27',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  django: [
+    {
+      version: '6.0',
+      releaseDate: '2025-12-03',
+      summary: 'Django 6.0 は、Webセキュリティ、テンプレート再利用、バックグラウンド処理、メールAPIなどアプリケーション基盤を強化したメジャーリリースです。',
+      highlights: [
+        'Content Security Policy（CSP）を標準サポートし、ミドルウェアや設定からポリシーを適用可能。',
+        'Template Partials を追加し、1つのテンプレート内で名前付き断片を定義・再利用可能。',
+        'HTTPリクエスト外の処理をキューへ登録する組み込み Tasks framework を追加し、実行自体は外部ワーカーへ委譲。',
+        'メール処理を Python の modern EmailMessage API ベースへ移行し、Unicodeを含むメッセージ構築を改善。',
+        '対応Pythonは3.12・3.13・3.14となり、Python 3.10・3.11対応が必要な場合は5.2系列との互換性確認が必要。'
+      ],
+      sourceLabel: 'Django 6.0 release notes',
+      sourceUrl: 'https://docs.djangoproject.com/en/6.0/releases/6.0/',
+      checkedAt: '2026-09-05'
+    }
+  ],
+  redis: [
+    {
+      version: '8',
+      releaseDate: '2025-05-01',
+      summary: 'Redis 8 は、性能改善に加えてRedis Stackの機能群をRedis Open Sourceへ統合し、データ構造と検索機能を大きく拡張したメジャーリリースです。',
+      highlights: [
+        '30件を超える性能改善を実施し、コマンド処理、スループット、レプリケーション、クエリエンジンを高速化。',
+        'Redis Stack と従来のCommunity提供形態を Redis Open Source に統合し、主要モジュール機能を標準配布へ集約。',
+        'Vector Set（Beta）、JSON、Time Series、Bloom filterなど8種類の追加データ構造を利用可能。',
+        'Redis Query Engine を統合し、ハッシュやJSONに対する二次インデックス、全文・タグ・ベクトル検索を強化。',
+        'ライセンス選択肢として AGPLv3 が追加されているため、導入・再配布形態に応じてライセンス条件の確認が必要。'
+      ],
+      sourceLabel: 'Redis 8 GA announcement',
+      sourceUrl: 'https://redis.io/blog/redis-8-ga/',
+      checkedAt: '2026-09-05'
+    }
   ]
 };
