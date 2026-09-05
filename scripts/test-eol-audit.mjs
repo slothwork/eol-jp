@@ -4,7 +4,8 @@ import {
   createAuditEntry,
   emptyAuditLog,
   hashProducts,
-  normalizeAuditLog
+  normalizeAuditLog,
+  summarizeChanges
 } from './eol-audit.mjs';
 
 const productsA = [
@@ -73,6 +74,20 @@ assert.equal(entry.changes.eolChanged, 1);
 assert.deepEqual(entry.affectedProducts, [{ slug: 'alpha', label: 'Alpha' }]);
 assert.equal(entry.productCount, 2);
 assert.equal(entry.releaseCount, 3);
+
+const extendedSummary = summarizeChanges([
+  { type: 'release-removed', product: 'beta', label: 'Beta', release: '1' },
+  { type: 'release-metadata-changed', product: 'beta', label: 'Beta', release: '2' },
+  { type: 'product-metadata-changed', product: 'alpha', label: 'Alpha', release: '' }
+]);
+assert.equal(extendedSummary.summary.total, 3);
+assert.equal(extendedSummary.summary.releaseRemoved, 1);
+assert.equal(extendedSummary.summary.releaseMetadataChanged, 1);
+assert.equal(extendedSummary.summary.productMetadataChanged, 1);
+assert.deepEqual(extendedSummary.affectedProducts, [
+  { slug: 'alpha', label: 'Alpha' },
+  { slug: 'beta', label: 'Beta' }
+]);
 
 assert.equal(
   createAuditEntry({
