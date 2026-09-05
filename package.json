@@ -25,6 +25,7 @@
     "test:public-api": "node --experimental-strip-types scripts/test-public-api.mjs",
     "test:date-boundary": "node --experimental-strip-types scripts/test-date-boundary.mjs",
     "test:official-source-reviews": "node --experimental-strip-types scripts/test-official-source-reviews.mjs",
+    "test:product-content": "node --experimental-strip-types scripts/test-product-content.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
