@@ -54,6 +54,9 @@ jobs:
       - name: View history tests
         run: npm run test:view-history
 
+      - name: GitHub import tests
+        run: npm run test:github-import
+
       - name: EOL reminder tests
         run: npm run test:eol-reminders
 
