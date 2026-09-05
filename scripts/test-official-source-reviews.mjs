@@ -10,7 +10,12 @@ const slugs = Object.keys(officialSourceReviews).sort();
 assert.deepEqual(slugs, [...featuredSlugs].sort(), '主要20製品と公式ソース台帳を1:1に保つ');
 
 const validDate = /^\d{4}-\d{2}-\d{2}$/;
-const today = '2026-09-05';
+const today = new Intl.DateTimeFormat('sv-SE', {
+  timeZone: 'Asia/Tokyo',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+}).format(new Date());
 
 for (const slug of featuredSlugs) {
   const review = officialSourceReviews[slug];
@@ -31,6 +36,7 @@ for (const slug of featuredSlugs) {
     assert.ok(review.comparisonCheckedAt, `${slug}: completed comparison state requires comparisonCheckedAt`);
     assert.match(review.comparisonCheckedAt, validDate, `${slug}: comparisonCheckedAt must be YYYY-MM-DD`);
     assert.ok(review.comparisonCheckedAt <= today, `${slug}: comparisonCheckedAt cannot be in the future`);
+    assert.ok(review.note?.trim(), `${slug}: completed comparison state requires a review note`);
   }
 
   if (review.comparisonStatus === 'pending') {
