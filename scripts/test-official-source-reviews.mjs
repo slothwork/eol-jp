@@ -1,12 +1,15 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
 import { featuredSlugs } from '../src/data/product-meta.ts';
+import { resolvedOfficialSourceReviews } from '../src/data/official-date-evidence.ts';
 import {
-  officialSourceReviews,
   officialSourceCoverageLabels,
   officialComparisonStatusLabels
 } from '../src/data/official-source-reviews.ts';
 
-const slugs = Object.keys(officialSourceReviews).sort();
+const snapshot = JSON.parse(await fs.readFile(new URL('../src/data/eol-snapshot.json', import.meta.url), 'utf8'));
+const productMap = new Map((snapshot.products ?? []).map((product) => [product.slug, product]));
+const slugs = Object.keys(resolvedOfficialSourceReviews).sort();
 assert.deepEqual(slugs, [...featuredSlugs].sort(), '主要20製品と公式ソース台帳を1:1に保つ');
 
 const validDate = /^\d{4}-\d{2}-\d{2}$/;
@@ -16,9 +19,10 @@ const today = new Intl.DateTimeFormat('sv-SE', {
   month: '2-digit',
   day: '2-digit'
 }).format(new Date());
+let evidenceCount = 0;
 
 for (const slug of featuredSlugs) {
-  const review = officialSourceReviews[slug];
+  const review = resolvedOfficialSourceReviews[slug];
   assert.ok(review, `${slug}: review required`);
   assert.ok(review.sourceLabel.trim(), `${slug}: sourceLabel required`);
 
@@ -42,6 +46,38 @@ for (const slug of featuredSlugs) {
   if (review.comparisonStatus === 'pending') {
     assert.equal(review.comparisonCheckedAt, undefined, `${slug}: pending review must not have comparisonCheckedAt`);
   }
+
+  for (const evidence of review.evidence ?? []) {
+    evidenceCount += 1;
+    assert.match(evidence.officialEol, validDate, `${slug}/${evidence.release}: officialEol must be YYYY-MM-DD`);
+    assert.ok(evidence.precision === 'day' || evidence.precision === 'month', `${slug}/${evidence.release}: unsupported precision`);
+
+    const evidenceUrl = new URL(evidence.sourceUrl);
+    assert.equal(evidenceUrl.protocol, 'https:', `${slug}/${evidence.release}: evidence source must use HTTPS`);
+    assert.notEqual(evidenceUrl.hostname, 'endoflife.date', `${slug}/${evidence.release}: evidence source must be independent from endoflife.date`);
+    assert.notEqual(evidenceUrl.hostname, 'www.endoflife.date', `${slug}/${evidence.release}: evidence source must be independent from endoflife.date`);
+
+    const product = productMap.get(slug);
+    assert.ok(product, `${slug}: snapshot product required for evidence verification`);
+    const release = product.releases?.find((item) => item.name === evidence.release);
+    assert.ok(release, `${slug}/${evidence.release}: release must exist in committed snapshot`);
+    assert.ok(release.eolFrom, `${slug}/${evidence.release}: committed snapshot must have eolFrom`);
+
+    if (evidence.precision === 'day') {
+      assert.equal(
+        release.eolFrom,
+        evidence.officialEol,
+        `${slug}/${evidence.release}: committed snapshot EOL must match official evidence`
+      );
+    } else {
+      assert.equal(
+        release.eolFrom.slice(0, 7),
+        evidence.officialEol.slice(0, 7),
+        `${slug}/${evidence.release}: committed snapshot EOL month must match official evidence`
+      );
+    }
+  }
 }
 
-console.log(`Official source review tests passed for ${featuredSlugs.length} products.`);
+assert.ok(evidenceCount >= 15, '第2バッチの構造化された公式日付証跡を保持する');
+console.log(`Official source review tests passed for ${featuredSlugs.length} products with ${evidenceCount} date evidence rows.`);
