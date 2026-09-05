@@ -15,9 +15,12 @@ type AuditEntry = {
   changes: {
     total: number;
     releaseAdded: number;
+    releaseRemoved: number;
     eolChanged: number;
     supportChanged: number;
     latestChanged: number;
+    releaseMetadataChanged: number;
+    productMetadataChanged: number;
   };
   affectedProducts: Array<{ slug: string; label: string }>;
 };
@@ -77,9 +80,14 @@ function formatTimestamp(value: string) {
             <h2>変更 {entry.changes.total} 件・影響 {entry.affectedProducts.length} 製品</h2>
             <p>
               リリース追加: <strong>{entry.changes.releaseAdded}</strong> / 
+              リリース削除: <strong>{entry.changes.releaseRemoved}</strong> / 
               EOL変更: <strong>{entry.changes.eolChanged}</strong> / 
-              通常サポート変更: <strong>{entry.changes.supportChanged}</strong> / 
-              最新版変更: <strong>{entry.changes.latestChanged}</strong>
+              通常サポート変更: <strong>{entry.changes.supportChanged}</strong>
+            </p>
+            <p>
+              最新版情報変更: <strong>{entry.changes.latestChanged}</strong> / 
+              リリース属性変更: <strong>{entry.changes.releaseMetadataChanged}</strong> / 
+              製品属性変更: <strong>{entry.changes.productMetadataChanged}</strong>
             </p>
             <p>同期後: {entry.productCount} 製品・{entry.releaseCount} リリース</p>
             {entry.affectedProducts.length > 0 && (
