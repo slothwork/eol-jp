@@ -4,7 +4,7 @@ Phase 3の外部通知は、静的Astroサイトを維持しつつCloudflare Wor
 
 ## Current scope
 
-MY EOLからSlack / Discord Webhook通知とメール通知を登録・同期・解除できる。メール通知は追加固定費0円を優先し、Cloudflare Email SendingではなくResend Free + Cloudflare Turnstileを使用する。
+MY EOLからSlack / Discord Webhook通知とメール通知を登録・同期・解除できる。メール通知は追加固定費0円を優先し、Cloudflare Email SendingではなくResend Free + Cloudflare Turnstileを使用する。Slack / Discordの新規登録にも同じTurnstile widget設定を利用し、自動登録によるKV / Workerリソース消費を抑える。
 
 ## Architecture
 
@@ -59,13 +59,20 @@ KV namespace IDは公開識別子であり、Webhook URL、メールアドレス
 ## Slack / Discord
 
 - 利用中バージョンが1件以上ある場合にSlack / Discord通知を登録できる。
+- 新規登録時はCloudflare Turnstileを必須にし、WorkerからSiteverify APIで検証する。
+- Turnstile actionは `external_notification`、hostnameは現在のWorkerリクエストhostnameと一致させる。
+- 新規登録POSTは同一Originのブラウザリクエストのみ許可し、`Origin` が無いリクエストは拒否する。
+- `CF-Connecting-IP` をSHA-256したキーで1IPあたり1時間5件の新規登録ソフト上限を設ける。
+- サイト全体でも新規登録を100件/日のソフト上限にする。Workers KVはeventually consistentのため厳密な同時実行上限ではない。
 - 登録時にIncoming Webhook URLへ固定のテストメッセージを送信する。
 - テスト成功後にsubscriptionを作成し、Webhook入力欄はクリアする。
+- Webhook URLはSlack / DiscordのHTTPS公式Webhookホストだけを許可し、任意URLへの送信を許可しない。
 - 30 / 90 / 180日前のローカルリマインダー設定を外部通知にも使用する。
 - 利用中バージョンやthresholdが変わると「同期が必要」を表示する。
 - 「現在のマイEOLと同期」でPUTし、最新状態へ更新する。
 - 「通知設定を解除」でsubscriptionを削除する。
 - 1 subscriptionあたり最大25製品。
+- Turnstile設定が利用できない場合は新規登録だけを停止し、既存subscriptionのGET / PUT / DELETEと日次通知は継続する。
 
 ## Email
 
@@ -113,6 +120,8 @@ TURNSTILE_SITE_KEY      variable（公開値）
 TURNSTILE_SECRET_KEY    secret
 ```
 
+`TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` はSlack / Discordの新規登録保護にも使用する。Resendの2項目が欠けていても、Turnstile 2項目とKVが設定済みならSlack / Discordの新規登録は利用できる。
+
 `EMAIL_FROM` はResendで検証済みの送信ドメインを使う。例:
 
 ```text
@@ -123,12 +132,13 @@ EOL情報.jp <notify@verified.example.com>
 
 Turnstile widget側では本番hostname `eol.slothwright.com` を許可する。
 
-4項目のどれかが欠けている場合、`GET /api/notifications/email/config` は `enabled: false` を返し、MY EOLのメール登録UIは安全に無効化される。Slack / Discordや公開APIには影響しない。
+メール通知は4項目のどれかが欠けている場合、`GET /api/notifications/email/config` が `enabled: false` を返して登録UIを無効化する。Slack / Discord新規登録はKV + Turnstile 2項目だけで判定し、`GET /api/notifications/config` から状態を返す。
 
 ## API
 
 Slack / Discord:
 
+- `GET /api/notifications/config`
 - `POST /api/notifications/subscriptions`
 - `GET /api/notifications/subscriptions/{id}`
 - `PUT /api/notifications/subscriptions/{id}`

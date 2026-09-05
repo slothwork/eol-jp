@@ -9,6 +9,12 @@ import {
   type NotificationChannel,
   type NotificationSubscription
 } from './notification-core';
+import {
+  EXTERNAL_NOTIFICATION_DAILY_LIMIT,
+  EXTERNAL_NOTIFICATION_IP_HOURLY_LIMIT,
+  reserveExternalRegistration,
+  validateExternalNotificationTurnstile
+} from './external-notification-security';
 import { handleEmailApi, runEmailNotifications, type EmailRuntimeEnv } from './email-runtime';
 import {
   buildBadgeSvg,
@@ -66,8 +72,20 @@ function publicJson(data: unknown, status = 200, head = false): Response {
 
 function sameOriginRequest(request: Request): boolean {
   const origin = request.headers.get('Origin');
-  if (!origin) return true;
-  return origin === new URL(request.url).origin;
+  return Boolean(origin && origin === new URL(request.url).origin);
+}
+
+function externalNotificationsConfigured(env: Env): boolean {
+  return Boolean(env.NOTIFICATION_SUBSCRIPTIONS && env.TURNSTILE_SITE_KEY && env.TURNSTILE_SECRET_KEY);
+}
+
+function externalNotificationConfig(env: Env): Response {
+  return json({
+    enabled: externalNotificationsConfigured(env),
+    turnstileSiteKey: env.TURNSTILE_SITE_KEY ?? null,
+    hourlyPerIpLimit: EXTERNAL_NOTIFICATION_IP_HOURLY_LIMIT,
+    dailyRegistrationLimit: EXTERNAL_NOTIFICATION_DAILY_LIMIT
+  });
 }
 
 async function parseJsonBody(request: Request): Promise<unknown> {
@@ -125,6 +143,7 @@ async function sendWebhook(channel: NotificationChannel, webhookUrl: string, tex
 async function createSubscription(request: Request, env: Env): Promise<Response> {
   const kv = env.NOTIFICATION_SUBSCRIPTIONS;
   if (!kv) return json({ error: 'notification_storage_unconfigured' }, 503);
+  if (!externalNotificationsConfigured(env)) return json({ error: 'external_notifications_unconfigured' }, 503);
   if (!sameOriginRequest(request)) return json({ error: 'forbidden_origin' }, 403);
 
   let body: unknown;
@@ -148,6 +167,15 @@ async function createSubscription(request: Request, env: Env): Promise<Response>
   if (!isAllowedWebhookUrl(channel, webhookUrl)) return json({ error: 'invalid_webhook_url' }, 400);
   if (items.length === 0) return json({ error: 'tracked_items_required' }, 400);
   if (thresholds.length === 0) return json({ error: 'threshold_required' }, 400);
+
+  const turnstileOk = await validateExternalNotificationTurnstile(request, env.TURNSTILE_SECRET_KEY, candidate.turnstileToken);
+  if (!turnstileOk) return json({ error: 'turnstile_failed' }, 400);
+
+  const rate = await reserveExternalRegistration(kv, request);
+  if (!rate.allowed) {
+    const status = rate.error === 'client_ip_unavailable' ? 403 : 429;
+    return json({ error: rate.error }, status);
+  }
 
   const testText = `EOL情報.jp — ${channel === 'slack' ? 'Slack' : 'Discord'}通知のテストです。\n通知先の登録に成功しました。`;
   let testResponse: Response;
@@ -243,6 +271,11 @@ async function deleteSubscription(request: Request, env: Env, id: string): Promi
 
 async function handleApi(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
+  if (url.pathname === '/api/notifications/config') {
+    if (request.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
+    return externalNotificationConfig(env);
+  }
+
   if (url.pathname === '/api/notifications/subscriptions' && request.method === 'POST') {
     return createSubscription(request, env);
   }
