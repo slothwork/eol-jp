@@ -16,6 +16,7 @@ export async function GET({ site }: { site?: URL }) {
     '/upcoming/180-days/',
     '/calendar/',
     '/changes/',
+    '/trust/official-sources/',
     '/api/',
     '/about/',
     ...categories.map((category) => `/category/${category}/`),
