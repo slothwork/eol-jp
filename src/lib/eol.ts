@@ -1,9 +1,9 @@
 import snapshot from '@/data/eol-snapshot.json';
+import { resolvedOfficialSourceReviews } from '@/data/official-date-evidence';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
 import {
   officialComparisonStatusLabels,
   officialSourceCoverageLabels,
-  officialSourceReviews,
   type OfficialComparisonStatus,
   type OfficialSourceCoverage
 } from '@/data/official-source-reviews';
@@ -82,7 +82,7 @@ export function getProductMigrationGuide(product: Product) {
 }
 
 export function getOfficialSourceReview(product: Product) {
-  return officialSourceReviews[product.slug] ?? null;
+  return resolvedOfficialSourceReviews[product.slug] ?? null;
 }
 
 export function officialSourceCoverageLabel(coverage: OfficialSourceCoverage): string {
