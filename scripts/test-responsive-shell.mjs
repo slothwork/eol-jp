@@ -13,7 +13,7 @@ assert.match(layout, /id="site-main-nav"/, 'Main navigation must expose the cont
 assert.match(layout, /aria-expanded="false"/, 'Mobile menu toggle must expose collapsed state');
 assert.match(layout, /classList\.add\('js'\)/, 'JS enhancement marker is required for no-JS navigation fallback');
 assert.match(layout, /event\.key !== 'Escape'/, 'Mobile navigation must support Escape to close');
-assert.match(layout, /data\.open = String\(open\)/, 'Mobile navigation open state must be reflected in markup');
+assert.match(layout, /dataset\.open = String\(open\)/, 'Mobile navigation open state must be reflected in markup');
 
 assert.match(styles, /@media \(max-width: 620px\)/, 'Narrow-screen breakpoint is required');
 assert.match(styles, /\.js \.main-nav \{ display:none; \}/, 'JS-enhanced mobile navigation must collapse by default');
