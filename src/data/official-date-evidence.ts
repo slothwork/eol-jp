@@ -42,13 +42,13 @@ const comparisonOverrides: Record<string, ReviewOverride> = {
     note: 'Windows 11 Home/Proの24H2・23H2についてMicrosoft Lifecycleの終了日と一致を確認しました。Windows製品データにはEnterprise/Education/IoTなど別エディションも含まれ、サポート期間が異なるため部分照合とします。',
     evidence: [
       {
-        release: '11 24H2 (W)',
+        release: '11-24h2-w',
         officialEol: '2026-10-13',
         sourceUrl: 'https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro',
         precision: 'day'
       },
       {
-        release: '11 23H2 (W)',
+        release: '11-23h2-w',
         officialEol: '2025-11-11',
         sourceUrl: 'https://learn.microsoft.com/en-us/lifecycle/products/windows-11-home-and-pro',
         precision: 'day'
