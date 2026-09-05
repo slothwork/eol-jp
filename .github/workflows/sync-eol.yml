@@ -33,7 +33,7 @@ jobs:
       - name: Detect changes
         id: changes
         run: |
-          if git diff --quiet -- src/data/eol-snapshot.json src/data/change-log.json; then
+          if git diff --quiet -- src/data/eol-snapshot.json src/data/change-log.json src/data/audit-log.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No EOL data changes"
           else
@@ -46,7 +46,7 @@ jobs:
           git config user.name "eol-jp-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B chore/eol-data-sync
-          git add src/data/eol-snapshot.json src/data/change-log.json
+          git add src/data/eol-snapshot.json src/data/change-log.json src/data/audit-log.json
           git commit -m "chore(data): sync endoflife.date"
           git push --force origin HEAD:chore/eol-data-sync
 
