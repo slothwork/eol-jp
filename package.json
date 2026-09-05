@@ -24,6 +24,7 @@
     "test:email-notification-client": "node --experimental-strip-types scripts/test-email-notification-client.mjs",
     "test:public-api": "node --experimental-strip-types scripts/test-public-api.mjs",
     "test:date-boundary": "node --experimental-strip-types scripts/test-date-boundary.mjs",
+    "test:official-source-reviews": "node --experimental-strip-types scripts/test-official-source-reviews.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
