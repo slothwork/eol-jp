@@ -51,6 +51,9 @@ jobs:
       - name: Tracked product storage tests
         run: npm run test:tracked-products
 
+      - name: View history tests
+        run: npm run test:view-history
+
       - name: EOL reminder tests
         run: npm run test:eol-reminders
 

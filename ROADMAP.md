@@ -64,5 +64,5 @@
 ## Phase 5 — UX & repository import
 
 - [x] サイト全体のレスポンシブUX監査・改善（アクセシブルなモバイルナビ、44px操作領域、狭幅フォーム/Turnstile保護、表スクロール案内、長文折返し、safe-area対応）
-- [ ] 製品ページの閲覧履歴（localStorage、重複除外、最大20件、全削除、外部送信なし）
+- [x] 製品ページの閲覧履歴（localStorage、重複除外、最大20件、個別/全削除、外部送信なし。製品一覧/マイEOLで最近見た製品を表示）
 - [ ] Public GitHub Repository Import MVP（非同期SBOM API + manifest/runtime補完、高信頼度候補のみユーザー確認後にマイEOLへ保存）

@@ -1,0 +1,154 @@
+<section class="section recent-view-history" data-view-history-section hidden>
+  <div class="container">
+    <div class="calendar-heading-row view-history-heading">
+      <div>
+        <span class="eyebrow">RECENTLY VIEWED</span>
+        <h2>最近見た製品</h2>
+        <p class="section-lead">このブラウザで最近開いた製品ページです。</p>
+      </div>
+      <button class="button" type="button" data-view-history-clear>履歴をすべて削除</button>
+    </div>
+
+    <div class="history-list" data-view-history-list></div>
+    <div class="hero-actions" data-view-history-more-row hidden>
+      <button class="button" type="button" data-view-history-more aria-expanded="false">すべて表示</button>
+    </div>
+    <p class="section-note">閲覧履歴はこのブラウザ内だけに保存され、サーバーには送信されません。最大20製品まで保持します。</p>
+  </div>
+</section>
+
+<script>
+  import {
+    VIEW_HISTORY_STORAGE_KEY,
+    clearViewHistory,
+    parseViewHistory,
+    removeViewedProduct,
+    serializeViewHistory,
+    type ViewHistoryState
+  } from '@/lib/view-history';
+
+  const INITIAL_VISIBLE_ITEMS = 6;
+
+  document.querySelectorAll<HTMLElement>('[data-view-history-section]').forEach((section) => {
+    const list = section.querySelector<HTMLElement>('[data-view-history-list]');
+    const clearButton = section.querySelector<HTMLButtonElement>('[data-view-history-clear]');
+    const moreRow = section.querySelector<HTMLElement>('[data-view-history-more-row]');
+    const moreButton = section.querySelector<HTMLButtonElement>('[data-view-history-more]');
+    if (!list || !clearButton || !moreRow || !moreButton) return;
+
+    let expanded = false;
+
+    const load = (): ViewHistoryState => {
+      try {
+        return parseViewHistory(localStorage.getItem(VIEW_HISTORY_STORAGE_KEY));
+      } catch {
+        return parseViewHistory(null);
+      }
+    };
+
+    const persist = (state: ViewHistoryState) => {
+      localStorage.setItem(VIEW_HISTORY_STORAGE_KEY, serializeViewHistory(state));
+    };
+
+    const formatViewedAt = (value: string) => {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString('ja-JP', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    };
+
+    const render = () => {
+      const state = load();
+      const visibleItems = expanded ? state.items : state.items.slice(0, INITIAL_VISIBLE_ITEMS);
+      list.replaceChildren();
+
+      if (state.items.length === 0) {
+        section.hidden = true;
+        return;
+      }
+
+      section.hidden = false;
+      for (const item of visibleItems) {
+        const article = document.createElement('article');
+        article.className = 'history-item view-history-item';
+
+        const content = document.createElement('div');
+        const heading = document.createElement('h3');
+        const link = document.createElement('a');
+        link.href = `/eol/${encodeURIComponent(item.slug)}/`;
+        link.textContent = item.label;
+        heading.append(link);
+
+        const meta = document.createElement('p');
+        meta.className = 'muted';
+        meta.textContent = `最終閲覧: ${formatViewedAt(item.viewedAt)}`;
+        content.append(heading, meta);
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'button';
+        removeButton.type = 'button';
+        removeButton.textContent = '履歴から削除';
+        removeButton.addEventListener('click', () => {
+          try {
+            persist(removeViewedProduct(load(), item.slug));
+            render();
+          } catch {
+            removeButton.disabled = true;
+            removeButton.textContent = '削除できません';
+          }
+        });
+
+        article.append(content, removeButton);
+        list.append(article);
+      }
+
+      moreRow.hidden = state.items.length <= INITIAL_VISIBLE_ITEMS;
+      moreButton.setAttribute('aria-expanded', String(expanded));
+      moreButton.textContent = expanded ? '表示を減らす' : `すべて表示（${state.items.length}件）`;
+    };
+
+    clearButton.addEventListener('click', () => {
+      try {
+        persist(clearViewHistory());
+        expanded = false;
+        render();
+      } catch {
+        clearButton.disabled = true;
+        clearButton.textContent = '削除できません';
+      }
+    });
+
+    moreButton.addEventListener('click', () => {
+      expanded = !expanded;
+      render();
+    });
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === VIEW_HISTORY_STORAGE_KEY) render();
+    });
+
+    const pageHead = document.querySelector<HTMLElement>('main > .page-head');
+    pageHead?.after(section);
+    render();
+  });
+</script>
+
+<style>
+  .recent-view-history { padding-top: 20px; }
+  .view-history-heading { align-items: flex-start; margin-bottom: 16px; }
+  .view-history-heading .section-lead { margin-bottom: 0; }
+  .view-history-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .view-history-item h3 { margin: 0; font-size: 1.05rem; }
+  .view-history-item p { margin-top: 4px; }
+  @media (max-width: 620px) {
+    .view-history-heading,
+    .view-history-item { align-items: stretch; flex-direction: column; }
+    .view-history-heading > .button,
+    .view-history-item > .button { width: 100%; justify-content: center; }
+  }
+</style>

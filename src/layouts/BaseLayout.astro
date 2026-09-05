@@ -3,6 +3,7 @@ import '@/styles.css';
 import '@/external-notifications.css';
 import ExternalNotificationSettings from '@/components/ExternalNotificationSettings.astro';
 import EmailNotificationSettings from '@/components/EmailNotificationSettings.astro';
+import RecentViewedProducts from '@/components/RecentViewedProducts.astro';
 interface Props {
   title: string;
   description: string;
@@ -16,6 +17,8 @@ const canonical = new URL(canonicalPath, siteBase).toString();
 const ogImage = new URL('/og-default.png', siteBase).toString();
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const showExternalNotificationSettings = canonicalPath === '/my-eol/';
+const showRecentViewedProducts = canonicalPath === '/eol/' || canonicalPath === '/my-eol/';
+const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? null;
 ---
 <!doctype html>
 <html lang="ja">
@@ -82,6 +85,8 @@ const showExternalNotificationSettings = canonicalPath === '/my-eol/';
     </header>
     <main>
       <slot />
+      {showRecentViewedProducts && <RecentViewedProducts />}
+      {productHistorySlug && <span hidden data-view-history-recorder data-product-slug={productHistorySlug}></span>}
       {showExternalNotificationSettings && (
         <section class="section external-notification-section">
           <div class="container">
@@ -115,6 +120,36 @@ const showExternalNotificationSettings = canonicalPath === '/my-eol/';
 
     <button id="back-to-top" class="back-to-top" type="button" aria-label="ページの一番上に戻る" title="一番上に戻る" hidden>↑</button>
     <script>
+      import {
+        VIEW_HISTORY_STORAGE_KEY,
+        parseViewHistory,
+        recordViewedProduct,
+        serializeViewHistory
+      } from '@/lib/view-history';
+
+      const historyRecorder = document.querySelector<HTMLElement>('[data-view-history-recorder]');
+      if (historyRecorder) {
+        const slug = historyRecorder.dataset.productSlug ?? '';
+        const breadcrumbCurrent = document.querySelector<HTMLElement>('main .breadcrumb [aria-current="page"]');
+        const pageHeading = document.querySelector<HTMLElement>('main .page-head h1');
+        const headingText = pageHeading?.textContent?.trim() ?? '';
+        const headingSuffix = ' のEOL・サポート期限';
+        const fallbackLabel = headingText.endsWith(headingSuffix)
+          ? headingText.slice(0, -headingSuffix.length)
+          : slug;
+        const label = breadcrumbCurrent?.textContent?.trim() || fallbackLabel;
+
+        if (slug && label) {
+          try {
+            const current = parseViewHistory(localStorage.getItem(VIEW_HISTORY_STORAGE_KEY));
+            const next = recordViewedProduct(current, slug, label);
+            localStorage.setItem(VIEW_HISTORY_STORAGE_KEY, serializeViewHistory(next));
+          } catch {
+            // 履歴保存不可でも製品ページの閲覧は妨げない。
+          }
+        }
+      }
+
       const siteHeader = document.querySelector<HTMLElement>('[data-site-header]');
       const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
       const mainNav = document.querySelector<HTMLElement>('[data-main-nav]');
