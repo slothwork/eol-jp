@@ -58,5 +58,11 @@
 - [x] 製品ページへ公式ソース照合結果を表示（状態・公式ソース・確認日・構造化証跡）
 - [x] リリース変更点の対象製品を主要20製品へ段階拡大（20/20完了）
 - [x] 日本で利用できる商用サポート情報（一次情報と日本向け公式ページ/国内窓口を確認できた6製品: Ubuntu / MySQL / Java / Windows / Windows Server / nginx）
-- [ ] GitHub package / SBOM連携による自動バージョン検出の検討
+- [x] GitHub package / SBOM連携による自動バージョン検出の検討（SBOM単独では主要製品の検出範囲が狭いため、将来は公開GitHubリポジトリを対象にSBOM + manifest/runtime検出を組み合わせる方針。private repo認証は初期対象外）
 - [x] 変更監査ログ（同期差分のSHA-256・変更件数・影響製品・同期元を記録し公開）
+
+## Phase 5 — UX & repository import
+
+- [ ] サイト全体のレスポンシブUX監査・改善（モバイルナビ、フォーム、表、カード、サイドパネル、タップ領域を実機幅で確認）
+- [ ] 製品ページの閲覧履歴（localStorage、重複除外、最大20件、全削除、外部送信なし）
+- [ ] Public GitHub Repository Import MVP（非同期SBOM API + manifest/runtime補完、高信頼度候補のみユーザー確認後にマイEOLへ保存）
