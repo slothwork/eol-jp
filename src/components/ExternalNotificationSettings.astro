@@ -339,7 +339,8 @@
       if (!response.ok && response.status !== 404) throw new Error('delete_failed');
       externalState = clearExternalNotificationSubscription();
       persistExternalState();
-      await ensureTurnstile();
+      if (turnstileWidgetId) resetTurnstile();
+      else await ensureTurnstile();
       render();
       showMessage('外部通知設定を解除しました。');
     } catch {
