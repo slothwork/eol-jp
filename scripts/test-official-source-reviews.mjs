@@ -20,6 +20,7 @@ const today = new Intl.DateTimeFormat('sv-SE', {
   day: '2-digit'
 }).format(new Date());
 let evidenceCount = 0;
+let pendingCount = 0;
 
 for (const slug of featuredSlugs) {
   const review = resolvedOfficialSourceReviews[slug];
@@ -44,6 +45,7 @@ for (const slug of featuredSlugs) {
   }
 
   if (review.comparisonStatus === 'pending') {
+    pendingCount += 1;
     assert.equal(review.comparisonCheckedAt, undefined, `${slug}: pending review must not have comparisonCheckedAt`);
   }
 
@@ -79,5 +81,6 @@ for (const slug of featuredSlugs) {
   }
 }
 
-assert.ok(evidenceCount >= 15, '第2バッチの構造化された公式日付証跡を保持する');
-console.log(`Official source review tests passed for ${featuredSlugs.length} products with ${evidenceCount} date evidence rows.`);
+assert.equal(pendingCount, 0, '主要20製品の公式ソースレビューをpendingなしで維持する');
+assert.ok(evidenceCount >= 30, '主要製品の構造化された公式日付証跡を30件以上保持する');
+console.log(`Official source review tests passed for ${featuredSlugs.length} products with ${evidenceCount} date evidence rows and no pending reviews.`);
