@@ -7,6 +7,8 @@ import {
   getCategoryLabel,
   getOfficialSourceReview,
   getProductMigrationGuide,
+  getProductOverview,
+  getProductReleaseHighlights,
   getProductSeoDescription,
   getProductSeoTitle,
   getProductSummary,
@@ -37,6 +39,8 @@ const nearestEol = nearestUpcomingEol(product);
 const target = nearestEol ? recommendedTarget(product, nearestEol) : null;
 const migrationGuide = getProductMigrationGuide(product);
 const officialReview = getOfficialSourceReview(product);
+const productOverview = getProductOverview(product);
+const releaseHighlights = getProductReleaseHighlights(product);
 const supported = releases.filter((release) => statusFor(release) !== 'ended');
 const ended = releases.filter((release) => statusFor(release) === 'ended');
 const siteBase = Astro.site ?? Astro.url.origin;
@@ -101,6 +105,13 @@ const structured = {
     <div>
       <TrackedVersionPanel product={product} />
 
+      {productOverview && (
+        <section class="subsection" id="product-overview">
+          <h2>{product.label}とは</h2>
+          <p class="section-lead">{productOverview}</p>
+        </section>
+      )}
+
       <h2>バージョン別サポート状況</h2>
       <div class="table-wrap"><table id="version-support-table">
         <thead><tr><th>バージョン</th><th>状態</th><th>リリース日</th><th>通常サポート</th><th>EOL / セキュリティ終了</th><th>最新</th></tr></thead>
@@ -121,17 +132,33 @@ const structured = {
         <>
           <p class="section-note">最新 {INITIAL_RELEASE_LIMIT} 件を表示しています。全 {releases.length} 件。</p>
           <div class="hero-actions">
-            <button
-              class="button"
-              type="button"
-              data-version-more
-              aria-expanded="false"
-              aria-controls="version-support-table"
-            >
+            <button class="button" type="button" data-version-more aria-expanded="false" aria-controls="version-support-table">
               MORE（残り {hiddenReleaseCount} 件）
             </button>
           </div>
         </>
+      )}
+
+      {releaseHighlights.length > 0 && (
+        <section class="subsection" id="release-highlights">
+          <h2>主なリリース内容・変更点</h2>
+          <p class="section-lead">公式リリースノートをもとに、メジャーアップデートで確認したい主な変更点を簡潔に整理しています。網羅的な変更履歴ではないため、移行前には必ず公式情報を確認してください。</p>
+          <div class="version-list">
+            {releaseHighlights.map((release) => (
+              <article class="version-item">
+                <span class="eyebrow">RELEASE HIGHLIGHTS</span>
+                <h3>{product.label} {release.version}</h3>
+                <p>リリース日: <strong>{formatJaDate(release.releaseDate)}</strong></p>
+                <p>{release.summary}</p>
+                <ul class="compact-list">
+                  {release.highlights.map((highlight) => <li>{highlight}</li>)}
+                </ul>
+                <p><a href={release.sourceUrl} rel="external">{release.sourceLabel} →</a></p>
+                <p class="muted">公式情報確認日: {formatJaDate(release.checkedAt)}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       )}
 
       {supported.length > 0 && (
@@ -207,6 +234,7 @@ const structured = {
         </>
       ) : <p>現在のスナップショットでは、将来のEOL日が確定しているサポート中バージョンを特定できません。期限未定の系列を含め、公式のサポート方針を確認してください。</p>}
       <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
+      {releaseHighlights.length > 0 && <p><a href="#release-highlights">主なリリース変更点を見る →</a></p>}
       {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
       {migrationGuide && <>
         <h3>公式の移行・アップグレード資料</h3>

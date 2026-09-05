@@ -72,6 +72,9 @@ jobs:
       - name: Official source review tests
         run: npm run test:official-source-reviews
 
+      - name: Product content tests
+        run: npm run test:product-content
+
       - name: Astro check
         run: npm run check
 

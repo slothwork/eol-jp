@@ -1,5 +1,6 @@
 import snapshot from '@/data/eol-snapshot.json';
 import { resolvedOfficialSourceReviews } from '@/data/official-date-evidence';
+import { productOverviews, productReleaseHighlights } from '@/data/product-content';
 import { categoryLabels, featuredSlugs, productMigrationGuides, productSummaries } from '@/data/product-meta';
 import {
   officialComparisonStatusLabels,
@@ -65,6 +66,14 @@ export function getCategoryLabel(category: string): string {
 export function getProductSummary(product: Product): string {
   return productSummaries[product.slug]
     ?? `${product.label} のバージョン別サポート期限、EOL（End of Life）、最新リリースを日本語で確認できます。`;
+}
+
+export function getProductOverview(product: Product): string | null {
+  return productOverviews[product.slug] ?? null;
+}
+
+export function getProductReleaseHighlights(product: Product) {
+  return productReleaseHighlights[product.slug] ?? [];
 }
 
 export function getProductSeoTitle(product: Product): string {
