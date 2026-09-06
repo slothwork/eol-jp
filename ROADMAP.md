@@ -17,7 +17,7 @@
 - [x] 重要ユーザーフローのブラウザ smoke test（実Chromeで主要URL、マイEOL保存/表示、閲覧履歴、GitHub import入力検証、375pxモバイルナビをProduction buildに対して確認）
 - [x] HTTPセキュリティヘッダーの監査・強化と依存更新の定期運用（Static Assetsの`_headers` + Worker共通header、CSP、CI検証、npm / GitHub Actionsの月次Dependabot）
 - [x] パフォーマンス基準の計測と予算化（Production buildの全JS/CSS/最大JSチャンクと主要5ページのHTML・JS・CSS初期転送量をgzip相当でCI監視）
-- [ ] 肥大化したモジュールの段階的分割（通知UI、Worker runtime、GitHub import等。機能変更を伴わない保守性改善）
+- [x] 肥大化したモジュールの段階的分割（通知UIのDOM/API処理を`src/client/`へ分離、GitHub importを型/検出/系列解決/API clientへ分割、Worker entrypointを外部通知/public API runtimeへ分離。既存公開import・DOM・API契約は維持）
 - [ ] 運用Runbook整備（同期失敗、通知障害、APIトークン更新、Resend / Turnstile / Cloudflare障害時の確認手順）
 
 ## Phase 7 — Data-driven growth
