@@ -39,6 +39,12 @@ jobs:
       - name: Attention sync syntax check
         run: node --check scripts/sync-eol-attention.mjs
 
+      - name: Snapshot freshness tests
+        run: npm run test:snapshot-freshness
+
+      - name: Snapshot freshness check
+        run: npm run check:snapshot-freshness
+
       - name: Attention ranking tests
         run: npm run test:attention
 
