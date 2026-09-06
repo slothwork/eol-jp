@@ -14,7 +14,7 @@
 - [x] ROADMAP / AGENTS / ARCHITECTURE / README を現行実装へ同期
 - [x] EOL snapshot の鮮度監視（`generatedAt` が72時間超で警告、168時間超または不正時はCI/日次監視を失敗。サイト側もブラウザ実時刻でstale表示）
 - [x] 手動レビュー情報の鮮度ポリシー（公式ソース確認・公式日付比較・商用サポート・リリース変更点を180日でwarning、365日でCI/定期監視を失敗）
-- [ ] 重要ユーザーフローのブラウザ smoke test（主要URL、マイEOL、閲覧履歴、GitHub import の最低限のE2E回帰防止）
+- [x] 重要ユーザーフローのブラウザ smoke test（実Chromeで主要URL、マイEOL保存/表示、閲覧履歴、GitHub import入力検証、375pxモバイルナビをProduction buildに対して確認）
 - [ ] HTTPセキュリティヘッダーの監査・強化と、依存パッケージ更新の定期運用（Dependabot等の低コスト運用を含む）
 - [ ] パフォーマンス基準の計測と予算化（主要ページのJS量 / Lighthouseまたは同等指標を継続監視）
 - [ ] 肥大化したモジュールの段階的分割（通知UI、Worker runtime、GitHub import等。機能変更を伴わない保守性改善）
