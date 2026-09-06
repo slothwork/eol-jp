@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "global": {
+    "maxJsGzipBytes": 1048576,
+    "maxCssGzipBytes": 524288,
+    "maxLargestJsGzipBytes": 524288
+  },
+  "pages": [
+    {
+      "route": "/",
+      "html": "index.html",
+      "maxTotalGzipBytes": 1048576,
+      "maxJsGzipBytes": 524288,
+      "maxCssGzipBytes": 262144
+    },
+    {
+      "route": "/eol/",
+      "html": "eol/index.html",
+      "maxTotalGzipBytes": 1048576,
+      "maxJsGzipBytes": 524288,
+      "maxCssGzipBytes": 262144
+    },
+    {
+      "route": "/eol/nodejs/",
+      "html": "eol/nodejs/index.html",
+      "maxTotalGzipBytes": 1048576,
+      "maxJsGzipBytes": 524288,
+      "maxCssGzipBytes": 262144
+    },
+    {
+      "route": "/my-eol/",
+      "html": "my-eol/index.html",
+      "maxTotalGzipBytes": 1048576,
+      "maxJsGzipBytes": 524288,
+      "maxCssGzipBytes": 262144
+    },
+    {
+      "route": "/my-eol/github-import/",
+      "html": "my-eol/github-import/index.html",
+      "maxTotalGzipBytes": 1048576,
+      "maxJsGzipBytes": 524288,
+      "maxCssGzipBytes": 262144
+    }
+  ]
+}
