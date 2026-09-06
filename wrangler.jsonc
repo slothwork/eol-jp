@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "eol-jp",
-  "main": "./worker/index.ts",
+  "main": "./worker/security-runtime.ts",
   "compatibility_date": "2026-09-04",
   "keep_vars": true,
   "assets": {

@@ -194,5 +194,6 @@ Environment variable:
 - SEO方針: `docs/SEO.md`
 - Search Console運用: `docs/SEARCH_CONSOLE.md`
 - 通知運用: `docs/NOTIFICATIONS.md`
+- セキュリティ・依存更新運用: `docs/SECURITY_OPERATIONS.md`
 - 公式ソース照合: `docs/OFFICIAL_SOURCE_REVIEW.md`
 - GitHub/SBOM連携: `docs/GITHUB_SBOM.md`
