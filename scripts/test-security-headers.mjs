@@ -5,6 +5,8 @@ import { DYNAMIC_CONTENT_SECURITY_POLICY, DYNAMIC_SECURITY_HEADERS, withDynamicS
 const ROOT = process.cwd();
 const STATIC_HEADERS_PATH = path.join(ROOT, 'public', '_headers');
 const BUILT_HEADERS_PATH = path.join(ROOT, 'dist', '_headers');
+const WRANGLER_PATH = path.join(ROOT, 'wrangler.jsonc');
+const SECURITY_RUNTIME_PATH = path.join(ROOT, 'worker', 'security-runtime.ts');
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -29,6 +31,17 @@ function parseHeaderRule(text) {
 const sourceText = await readFile(STATIC_HEADERS_PATH, 'utf8');
 const builtText = await readFile(BUILT_HEADERS_PATH, 'utf8');
 assert(sourceText === builtText, 'dist/_headers must exactly match public/_headers after build');
+
+const wranglerConfig = JSON.parse(await readFile(WRANGLER_PATH, 'utf8'));
+assert(
+  wranglerConfig.main === './worker/security-runtime.ts',
+  'wrangler.jsonc must use worker/security-runtime.ts so dynamic responses are hardened'
+);
+const securityRuntimeText = await readFile(SECURITY_RUNTIME_PATH, 'utf8');
+assert(
+  securityRuntimeText.includes('withDynamicSecurityHeaders(await runtime.fetch(request, env))'),
+  'Worker security runtime must wrap fetch responses with common security headers'
+);
 
 const staticHeaders = parseHeaderRule(sourceText);
 const requiredStaticHeaders = {
