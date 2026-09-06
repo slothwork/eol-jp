@@ -102,6 +102,9 @@ jobs:
       - name: Responsive shell tests
         run: npm run test:responsive-shell
 
+      - name: Performance budget utility tests
+        run: npm run test:performance-budget
+
       - name: Astro check
         run: npm run check
 
@@ -112,6 +115,9 @@ jobs:
 
       - name: Security header tests
         run: npm run test:security-headers
+
+      - name: Performance budget check
+        run: npm run check:performance-budget
 
       - name: Browser smoke tests
         run: npm run test:browser-smoke
