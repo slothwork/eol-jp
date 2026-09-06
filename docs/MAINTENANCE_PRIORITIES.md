@@ -5,7 +5,7 @@
 ## P0 — trust / detection
 
 1. [x] EOL snapshot鮮度監視（72時間でwarning、168時間でfail、サイト側stale表示）
-2. [ ] 手動確認情報の再レビュー期限検出
+2. [x] 手動確認情報の再レビュー期限検出（180日でwarning、365日でfail。公式ソース・比較照合・商用サポート・リリース変更点を対象）
 3. [ ] 主要ユーザーフローのbrowser smoke test
 
 ## P1 — security / operations
