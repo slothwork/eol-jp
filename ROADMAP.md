@@ -4,10 +4,10 @@
 
 ## Current status
 
-- Phase 0〜5 は完了。
+- Phase 0〜6 は完了。
 - Search Console は登録済みだが、現時点ではインデックス/検索パフォーマンスデータの処理待ち。実データが出るまでは title / description の推測変更を行わない。
-- 次の優先テーマは、新機能追加よりも **安定化・運用・信頼性の底上げ**。
-- その後、Search Console / 閲覧データなどの実データを使って成長施策を選ぶ。
+- Phase 7 は Search Console / 閲覧データなどの実データを根拠に進める。
+- データ待ちの間に進められる次の実装候補は、アカウントやDBを増やさず端末移行を助ける「マイEOLのローカルバックアップ/復元」。
 
 ## Phase 6 — Stabilization & operations
 
@@ -18,7 +18,7 @@
 - [x] HTTPセキュリティヘッダーの監査・強化と依存更新の定期運用（Static Assetsの`_headers` + Worker共通header、CSP、CI検証、npm / GitHub Actionsの月次Dependabot）
 - [x] パフォーマンス基準の計測と予算化（Production buildの全JS/CSS/最大JSチャンクと主要5ページのHTML・JS・CSS初期転送量をgzip相当でCI監視）
 - [x] 肥大化したモジュールの段階的分割（通知UIのDOM/API処理を`src/client/`へ分離、GitHub importを型/検出/系列解決/API clientへ分割、Worker entrypointを外部通知/public API runtimeへ分離。既存公開import・DOM・API契約は維持）
-- [ ] 運用Runbook整備（同期失敗、通知障害、APIトークン更新、Resend / Turnstile / Cloudflare障害時の確認手順）
+- [x] 運用Runbook整備（`docs/RUNBOOK.md`。同期失敗、snapshot鮮度、通知障害、Worker/KV、GitHub Import、APIトークン更新、Resend / Turnstile / Cloudflare障害時の切り分け・復旧・確認手順）
 
 ## Phase 7 — Data-driven growth
 
