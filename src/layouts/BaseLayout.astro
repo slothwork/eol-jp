@@ -6,6 +6,7 @@ import ExternalNotificationSettings from '@/components/ExternalNotificationSetti
 import EmailNotificationSettings from '@/components/EmailNotificationSettings.astro';
 import RecentViewedProducts from '@/components/RecentViewedProducts.astro';
 import DataFreshnessNotice from '@/components/DataFreshnessNotice.astro';
+import MyEolBackupPanel from '@/components/MyEolBackupPanel.astro';
 interface Props {
   title: string;
   description: string;
@@ -19,6 +20,7 @@ const canonical = new URL(canonicalPath, siteBase).toString();
 const ogImage = new URL('/og-default.png', siteBase).toString();
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const showExternalNotificationSettings = canonicalPath === '/my-eol/';
+const showMyEolBackup = canonicalPath === '/my-eol/';
 const showRecentViewedProducts = canonicalPath === '/eol/' || canonicalPath === '/my-eol/';
 const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? null;
 ---
@@ -88,6 +90,13 @@ const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? nul
     <DataFreshnessNotice />
     <main>
       <slot />
+      {showMyEolBackup && (
+        <section class="section my-eol-backup-section">
+          <div class="container">
+            <MyEolBackupPanel />
+          </div>
+        </section>
+      )}
       {showRecentViewedProducts && <RecentViewedProducts />}
       {productHistorySlug && <span hidden data-view-history-recorder data-product-slug={productHistorySlug}></span>}
       {showExternalNotificationSettings && (
