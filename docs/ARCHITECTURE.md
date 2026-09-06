@@ -28,6 +28,43 @@ Workers KV
 
 アカウント、ユーザープロファイル、閲覧履歴、マイEOLの保存先としてKVやDBを利用しない。
 
+## Module boundaries
+
+ブラウザUIとWorkerでは、表示・純粋ロジック・外部I/Oを同じ巨大ファイルへ戻さない。
+
+```text
+src/components/
+  EmailNotificationSettings.astro       <- markup / component-local style
+  ExternalNotificationSettings.astro    <- markup
+
+src/client/
+  turnstile.ts                          <- Turnstile script loader
+  email-notification-settings.ts        <- email notification DOM / Worker API orchestration
+  external-notification-settings.ts     <- Slack/Discord DOM / Worker API orchestration
+  github-import.ts                      <- GitHub import page DOM / localStorage orchestration
+
+src/lib/
+  github-import.ts                      <- compatibility/public export barrel
+  github-import-types.ts                <- data contracts / limits
+  github-import-detection.ts            <- URL / manifest / SBOM pure detection
+  github-import-resolution.ts           <- detected version -> EOL series resolution
+  github-import-client.ts               <- GitHub REST / async SBOM I/O
+
+worker/
+  index.ts                              <- fetch/scheduled routing only
+  runtime-types.ts                      <- Worker env / KV shared types
+  catalog-runtime.ts                    <- committed catalog asset loading
+  external-notification-runtime.ts      <- Slack/Discord API + scheduled delivery
+  email-runtime.ts                      <- email API + scheduled delivery
+  public-api-runtime.ts                 <- JSON API / badge HTTP handling
+  notification-core.ts                  <- notification pure domain logic
+  public-api.ts                         <- public API / badge pure transformation
+```
+
+Astroコンポーネントやページ内へ大きなDOM/API処理を再び埋め込まず、ブラウザ実行コードは `src/client/` に置く。GitHub importの外向きimport pathは互換性のため `@/lib/github-import` を維持し、内部責務だけを分割する。
+
+Workerの `index.ts` には個別APIの入力検証・KV操作・通知送信を実装せず、各runtimeへ委譲する。`email-runtime.ts` は現時点でメールという単一ドメインに閉じているため、ファイルサイズだけを理由に追加分割しない。変更頻度や責務がさらに増えた時点で検討する。
+
 ## EOL data pipeline
 
 1. GitHub Actions scheduleが `scripts/sync-eol.mjs` を実行。
