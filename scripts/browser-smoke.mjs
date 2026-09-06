@@ -318,7 +318,7 @@ async function runBrowserFlow(client) {
 async function main() {
   const chrome = findChrome();
   const tempDir = await mkdtemp(path.join(os.tmpdir(), 'eol-jp-smoke-'));
-  const astroCli = path.resolve('node_modules/astro/astro.js');
+  const astroCli = path.resolve('node_modules', '.bin', process.platform === 'win32' ? 'astro.cmd' : 'astro');
   let preview = null;
   let browser = null;
   let client = null;
@@ -326,9 +326,9 @@ async function main() {
   let browserLog = '';
 
   try {
-    preview = spawn(process.execPath, [
-      astroCli, 'preview', '--host', HOST, '--port', String(PREVIEW_PORT)
-    ], { stdio: ['ignore', 'pipe', 'pipe'] });
+    preview = spawn(astroCli, [
+      'preview', '--host', HOST, '--port', String(PREVIEW_PORT)
+    ], { stdio: ['ignore', 'pipe', 'pipe'], shell: process.platform === 'win32' });
     preview.stdout?.on('data', (chunk) => { previewLog += String(chunk); });
     preview.stderr?.on('data', (chunk) => { previewLog += String(chunk); });
     await waitForHttp(`${BASE_URL}/`);
