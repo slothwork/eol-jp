@@ -45,6 +45,12 @@ jobs:
       - name: Snapshot freshness check
         run: npm run check:snapshot-freshness
 
+      - name: Manual review freshness tests
+        run: npm run test:manual-review-freshness
+
+      - name: Manual review freshness check
+        run: npm run check:manual-review-freshness
+
       - name: Attention ranking tests
         run: npm run test:attention
 
