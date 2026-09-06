@@ -110,6 +110,9 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://eol.slothwright.com
 
+      - name: Security header tests
+        run: npm run test:security-headers
+
       - name: Browser smoke tests
         run: npm run test:browser-smoke
 
