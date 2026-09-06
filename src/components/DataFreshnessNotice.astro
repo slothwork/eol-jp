@@ -1,0 +1,46 @@
+---
+import { generatedAt, sourceUrl } from '@/lib/eol';
+import {
+  SNAPSHOT_FRESHNESS_CRITICAL_HOURS,
+  SNAPSHOT_FRESHNESS_WARNING_HOURS,
+  getSnapshotFreshness,
+  snapshotFreshnessMessage
+} from '@/lib/snapshot-freshness';
+
+const initialFreshness = getSnapshotFreshness(generatedAt, new Date());
+const initialVisible = initialFreshness.status !== 'fresh';
+---
+
+<section
+  class="data-freshness-notice"
+  data-freshness-notice
+  data-generated-at={generatedAt}
+  data-warning-hours={SNAPSHOT_FRESHNESS_WARNING_HOURS}
+  data-critical-hours={SNAPSHOT_FRESHNESS_CRITICAL_HOURS}
+  data-freshness-status={initialFreshness.status}
+  hidden={!initialVisible}
+  aria-live="polite"
+>
+  <div class="container data-freshness-inner">
+    <strong>データ更新状況</strong>
+    <span data-freshness-message>{snapshotFreshnessMessage(initialFreshness)}</span>
+    <a href={sourceUrl} rel="external">取得元を確認</a>
+  </div>
+</section>
+
+<script>
+  import { getSnapshotFreshness, snapshotFreshnessMessage } from '@/lib/snapshot-freshness';
+
+  const notice = document.querySelector<HTMLElement>('[data-freshness-notice]');
+  if (notice) {
+    const generatedAt = notice.dataset.generatedAt ?? '';
+    const warningHours = Number(notice.dataset.warningHours);
+    const criticalHours = Number(notice.dataset.criticalHours);
+    const freshness = getSnapshotFreshness(generatedAt, new Date(), warningHours, criticalHours);
+    const message = notice.querySelector<HTMLElement>('[data-freshness-message]');
+
+    notice.dataset.freshnessStatus = freshness.status;
+    notice.hidden = freshness.status === 'fresh';
+    if (message) message.textContent = snapshotFreshnessMessage(freshness);
+  }
+</script>
