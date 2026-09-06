@@ -51,6 +51,35 @@ async function waitForHttp(url, timeoutMs = STEP_TIMEOUT_MS) {
   throw lastError ?? new Error(`Timed out waiting for ${url}`);
 }
 
+async function stopChild(child, label) {
+  if (!child || child.exitCode !== null || child.signalCode !== null) return;
+
+  const waitForExit = (timeoutMs) => new Promise((resolve) => {
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      child.off('exit', done);
+      resolve(true);
+    };
+    const timer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      child.off('exit', done);
+      resolve(false);
+    }, timeoutMs);
+    child.once('exit', done);
+  });
+
+  child.kill('SIGTERM');
+  if (await waitForExit(2_000)) return;
+
+  console.warn(`${label} did not exit after SIGTERM; sending SIGKILL.`);
+  child.kill('SIGKILL');
+  await waitForExit(1_000);
+}
+
 class CdpClient {
   constructor(url) {
     this.url = url;
@@ -315,9 +344,14 @@ async function main() {
     throw error;
   } finally {
     client?.close();
-    browser?.kill('SIGTERM');
-    preview?.kill('SIGTERM');
-    await rm(tempDir, { recursive: true, force: true });
+    await sleep(50);
+    await stopChild(browser, 'Chrome');
+    await stopChild(preview, 'Astro preview');
+    try {
+      await rm(tempDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+    } catch (error) {
+      console.warn(`Could not remove temporary Chrome profile: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
 }
 
