@@ -277,6 +277,47 @@ async function runBrowserFlow(client) {
   assert(dashboard.text.includes('Node.js'), 'My EOL dashboard does not render the saved Node.js entry');
   console.log('✓ My EOL dashboard — saved product is rendered');
 
+  await waitForExpression(client, `document.querySelector('[data-my-eol-backup-select]')?.disabled === false`, 'My EOL backup controls');
+  const backupPrepared = await evaluate(client, `(() => {
+    const input = document.querySelector('[data-my-eol-backup-file]');
+    const trackedProducts = JSON.parse(localStorage.getItem('eol-jp:tracked-products:v1') ?? '{"schemaVersion":1,"products":{}}');
+    if (!(input instanceof HTMLInputElement)) return false;
+    const backup = {
+      format: 'eol-jp-my-eol-backup',
+      schemaVersion: 1,
+      exportedAt: '2026-09-06T00:00:00.000Z',
+      trackedProducts,
+      reminders: { schemaVersion: 1, thresholds: [90], acknowledged: {} }
+    };
+    const file = new File([JSON.stringify(backup)], 'smoke-backup.json', { type: 'application/json' });
+    const transfer = new DataTransfer();
+    transfer.items.add(file);
+    input.files = transfer.files;
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  })()`);
+  assert(backupPrepared, 'My EOL backup file input could not be prepared');
+  await waitForExpression(client, `document.querySelector('[data-my-eol-backup-restore]')?.disabled === false`, 'My EOL backup preview');
+  assert(
+    await evaluate(client, `document.querySelector('[data-my-eol-backup-count]')?.textContent?.trim() === '1'`),
+    'My EOL backup preview did not report one tracked product'
+  );
+  await evaluate(client, `window.confirm = () => true`);
+  const restored = client.waitForEvent('Page.loadEventFired');
+  await evaluate(client, `document.querySelector('[data-my-eol-backup-restore]')?.click()`);
+  await restored;
+  await waitForExpression(client, `document.querySelector('[data-my-eol-loading]')?.hidden === true`, 'My EOL reload after restore');
+  const restoredState = await evaluate(client, `({
+    total: document.querySelector('[data-my-eol-total]')?.textContent?.trim(),
+    thresholds: Array.from(document.querySelectorAll('[data-reminder-threshold]'))
+      .filter((input) => input instanceof HTMLInputElement && input.checked)
+      .map((input) => input.value)
+      .sort()
+  })`);
+  assert(restoredState.total === '1', `My EOL restored dashboard expected total=1, got ${restoredState.total}`);
+  assert(JSON.stringify(restoredState.thresholds) === JSON.stringify(['90']), `My EOL restored thresholds mismatch: ${JSON.stringify(restoredState.thresholds)}`);
+  console.log('✓ My EOL backup — JSON import restores products and reminder settings');
+
   await navigate(client, '/eol/');
   await waitForExpression(client, `document.querySelector('[data-view-history-section]')?.hidden === false`, 'recently viewed section');
   const historyHasNode = await evaluate(client, `Boolean(document.querySelector('[data-view-history-list] a[href="/eol/nodejs/"]'))`);
