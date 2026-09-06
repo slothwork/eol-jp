@@ -191,6 +191,7 @@ Environment variable:
 - 実装ルール: `AGENTS.md`
 - ロードマップ: `ROADMAP.md`
 - アーキテクチャ: `docs/ARCHITECTURE.md`
+- 本番障害対応・復旧・資格情報更新: `docs/RUNBOOK.md`
 - SEO方針: `docs/SEO.md`
 - Search Console運用: `docs/SEARCH_CONSOLE.md`
 - 通知運用: `docs/NOTIFICATIONS.md`
