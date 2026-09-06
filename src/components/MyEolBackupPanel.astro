@@ -1,0 +1,217 @@
+<section class="panel my-eol-backup-panel" data-my-eol-backup-panel>
+  <div class="calendar-heading-row">
+    <div>
+      <span class="eyebrow">BACKUP</span>
+      <h2>バックアップ / 復元</h2>
+    </div>
+    <span class="eyebrow">このブラウザ内のみ</span>
+  </div>
+
+  <p class="section-lead">
+    利用中製品とローカルリマインダー設定をJSONファイルとして保存し、別のブラウザや端末へ復元できます。
+  </p>
+
+  <div class="hero-actions backup-actions">
+    <button class="button primary" type="button" data-my-eol-backup-export disabled>JSONバックアップを保存</button>
+    <button class="button" type="button" data-my-eol-backup-select disabled>バックアップを選択</button>
+    <input type="file" accept="application/json,.json" data-my-eol-backup-file hidden />
+  </div>
+
+  <div class="notice backup-status" data-my-eol-backup-status aria-live="polite">
+    ローカル保存を確認しています。
+  </div>
+
+  <div class="backup-preview" data-my-eol-backup-preview hidden>
+    <p><strong data-my-eol-backup-count>0</strong> 件の利用中製品を復元します。</p>
+    <p class="muted" data-my-eol-backup-thresholds></p>
+    <p class="section-note">復元すると、現在の利用中製品・リマインダー設定・確認済み状態をバックアップ内容で置き換えます。</p>
+    <button class="button primary" type="button" data-my-eol-backup-restore disabled>このバックアップで復元</button>
+  </div>
+
+  <p class="section-note">
+    バックアップに含まれるのは、マイEOLの利用中製品・リマインド時期・確認済み状態だけです。閲覧履歴、Slack / Discord / メール通知の管理tokenや送信先、GitHub ImportのURLは含みません。ファイルはEOL情報.jpのサーバーへ送信されません。
+  </p>
+</section>
+
+<script>
+  import {
+    EOL_REMINDER_STORAGE_KEY,
+    parseEolReminderState,
+    serializeEolReminderState
+  } from '@/lib/eol-reminders';
+  import {
+    MAX_MY_EOL_BACKUP_FILE_BYTES,
+    createMyEolBackup,
+    parseMyEolBackup,
+    serializeMyEolBackup,
+    type MyEolBackup
+  } from '@/lib/my-eol-backup';
+  import {
+    TRACKED_PRODUCTS_STORAGE_KEY,
+    parseTrackedProducts,
+    serializeTrackedProducts
+  } from '@/lib/tracked-products';
+
+  const exportButton = document.querySelector<HTMLButtonElement>('[data-my-eol-backup-export]');
+  const selectButton = document.querySelector<HTMLButtonElement>('[data-my-eol-backup-select]');
+  const fileInput = document.querySelector<HTMLInputElement>('[data-my-eol-backup-file]');
+  const status = document.querySelector<HTMLElement>('[data-my-eol-backup-status]');
+  const preview = document.querySelector<HTMLElement>('[data-my-eol-backup-preview]');
+  const countNode = document.querySelector<HTMLElement>('[data-my-eol-backup-count]');
+  const thresholdsNode = document.querySelector<HTMLElement>('[data-my-eol-backup-thresholds]');
+  const restoreButton = document.querySelector<HTMLButtonElement>('[data-my-eol-backup-restore]');
+
+  let pendingBackup: MyEolBackup | null = null;
+
+  const setStatus = (message: string) => {
+    if (status) status.textContent = message;
+  };
+
+  const resetPreview = () => {
+    pendingBackup = null;
+    if (preview) preview.hidden = true;
+    if (restoreButton) restoreButton.disabled = true;
+  };
+
+  const readCurrentBackup = () => {
+    const trackedProducts = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+    const reminders = parseEolReminderState(localStorage.getItem(EOL_REMINDER_STORAGE_KEY));
+    return createMyEolBackup(trackedProducts, reminders);
+  };
+
+  const restoreStorageValue = (key: string, value: string | null) => {
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
+  };
+
+  const enableControlsIfAvailable = () => {
+    if (!exportButton || !selectButton) return;
+
+    try {
+      localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY);
+      exportButton.disabled = false;
+      selectButton.disabled = false;
+      setStatus('バックアップを保存するか、以前保存したJSONファイルを選択できます。');
+    } catch {
+      setStatus('このブラウザではローカル保存を利用できないため、バックアップ機能を使用できません。');
+    }
+  };
+
+  exportButton?.addEventListener('click', () => {
+    try {
+      const backup = readCurrentBackup();
+      const blob = new Blob([serializeMyEolBackup(backup)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `eol-jp-my-eol-backup-${backup.exportedAt.slice(0, 10)}.json`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      const count = Object.keys(backup.trackedProducts.products).length;
+      setStatus(`${count}件の利用中製品を含むバックアップを作成しました。`);
+    } catch {
+      setStatus('バックアップを作成できませんでした。ローカル保存の利用可否を確認してください。');
+    }
+  });
+
+  selectButton?.addEventListener('click', () => {
+    fileInput?.click();
+  });
+
+  fileInput?.addEventListener('change', async () => {
+    resetPreview();
+    const file = fileInput.files?.[0];
+    if (!file) return;
+
+    if (file.size > MAX_MY_EOL_BACKUP_FILE_BYTES) {
+      setStatus('バックアップファイルが大きすぎます。');
+      fileInput.value = '';
+      return;
+    }
+
+    try {
+      const result = parseMyEolBackup(await file.text());
+      if (!result.ok) {
+        setStatus(result.error);
+        fileInput.value = '';
+        return;
+      }
+
+      pendingBackup = result.value;
+      const count = Object.keys(result.value.trackedProducts.products).length;
+      if (countNode) countNode.textContent = String(count);
+      if (thresholdsNode) {
+        thresholdsNode.textContent = result.value.reminders.thresholds.length > 0
+          ? `リマインド時期: ${result.value.reminders.thresholds.map((value) => `${value}日前`).join(' / ')}`
+          : 'リマインド時期: なし';
+      }
+      if (preview) preview.hidden = false;
+      if (restoreButton) restoreButton.disabled = false;
+      setStatus(`「${file.name}」を確認しました。内容を確認してから復元してください。`);
+    } catch {
+      setStatus('バックアップファイルを読み込めませんでした。');
+      fileInput.value = '';
+    }
+  });
+
+  restoreButton?.addEventListener('click', () => {
+    if (!pendingBackup) return;
+
+    const count = Object.keys(pendingBackup.trackedProducts.products).length;
+    const confirmed = window.confirm(`現在のマイEOLをバックアップの${count}件で置き換えます。復元してよいですか？`);
+    if (!confirmed) return;
+
+    let previousTracked: string | null = null;
+    let previousReminders: string | null = null;
+    try {
+      previousTracked = localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY);
+      previousReminders = localStorage.getItem(EOL_REMINDER_STORAGE_KEY);
+      localStorage.setItem(
+        TRACKED_PRODUCTS_STORAGE_KEY,
+        serializeTrackedProducts(pendingBackup.trackedProducts)
+      );
+      localStorage.setItem(
+        EOL_REMINDER_STORAGE_KEY,
+        serializeEolReminderState(pendingBackup.reminders)
+      );
+      setStatus('復元しました。画面を更新します。');
+      window.location.reload();
+    } catch {
+      try {
+        restoreStorageValue(TRACKED_PRODUCTS_STORAGE_KEY, previousTracked);
+        restoreStorageValue(EOL_REMINDER_STORAGE_KEY, previousReminders);
+      } catch {
+        // ロールバック自体が失敗してもUIを停止させない。
+      }
+      setStatus('復元できませんでした。現在のローカル保存内容は可能な範囲で元に戻しました。');
+    }
+  });
+
+  enableControlsIfAvailable();
+</script>
+
+<style>
+  .my-eol-backup-panel {
+    margin-top: 1.5rem;
+  }
+
+  .backup-actions {
+    margin-top: 1rem;
+  }
+
+  .backup-status {
+    margin-top: 1rem;
+  }
+
+  .backup-preview {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .backup-preview p {
+    margin: 0 0 0.65rem;
+  }
+</style>
