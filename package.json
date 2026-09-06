@@ -22,6 +22,7 @@
     "test:snapshot-freshness": "node --experimental-strip-types scripts/test-snapshot-freshness.mjs",
     "test:manual-review-freshness": "node --experimental-strip-types scripts/test-manual-review-freshness.mjs",
     "test:tracked-products": "node --experimental-strip-types scripts/test-tracked-products.mjs",
+    "test:my-eol-backup": "node --experimental-strip-types scripts/test-my-eol-backup.mjs",
     "test:view-history": "node --experimental-strip-types scripts/test-view-history.mjs",
     "test:github-import": "node --experimental-strip-types scripts/test-github-import.mjs",
     "test:eol-reminders": "node --experimental-strip-types scripts/test-eol-reminders.mjs",

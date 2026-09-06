@@ -15,7 +15,7 @@
 - 主要製品の公式ソース照合、移行ガイド、リリース変更点
 - EOLカレンダー、RSS、iCalendar
 - EOL変更履歴・変更監査ログ
-- マイEOL（利用中バージョンのブラウザ保存）
+- マイEOL（利用中バージョンのブラウザ保存 + JSONバックアップ/復元）
 - 30 / 90 / 180日前リマインダー
 - Slack / Discord / メール通知
 - 製品ページ閲覧履歴
@@ -177,6 +177,7 @@ Environment variable:
 
 - マイEOL、リマインダー設定、閲覧履歴はブラウザlocalStorageへ保存します。
 - これらはログイン情報やサーバー側アカウントへ紐づきません。
+- マイEOLのJSONバックアップはブラウザ内で生成・読み込みし、EOL情報.jpのサーバーへアップロードしません。通知の管理token、Webhook送信先、メールアドレス、閲覧履歴はバックアップ対象外です。
 - Public GitHub Repository Importは公開リポジトリのみを対象にし、GitHub tokenを要求・保存しません。
 - GitHub importのURL、SBOM、manifest内容、解析結果はEOL情報.jpのWorker/KVへ送信しない設計です。
 
