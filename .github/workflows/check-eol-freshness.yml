@@ -1,0 +1,33 @@
+name: Check EOL snapshot freshness
+
+on:
+  schedule:
+    - cron: '45 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-eol-snapshot-freshness
+  cancel-in-progress: true
+
+jobs:
+  freshness:
+    name: Check committed snapshot freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Check snapshot freshness
+        run: node --experimental-strip-types scripts/check-snapshot-freshness.mjs

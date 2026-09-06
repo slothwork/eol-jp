@@ -12,7 +12,7 @@
 ## Phase 6 — Stabilization & operations
 
 - [x] ROADMAP / AGENTS / ARCHITECTURE / README を現行実装へ同期
-- [ ] EOL snapshot の鮮度監視（最終同期から一定時間を超えた場合のCI警告/失敗と、必要に応じたサイト上の stale 表示）
+- [x] EOL snapshot の鮮度監視（`generatedAt` が72時間超で警告、168時間超または不正時はCI/日次監視を失敗。サイト側もブラウザ実時刻でstale表示）
 - [ ] 手動レビュー情報の鮮度ポリシー（公式ソース照合 / 商用サポート / リリース変更点の `checkedAt` を定期再確認し、期限超過をCIで検出）
 - [ ] 重要ユーザーフローのブラウザ smoke test（主要URL、マイEOL、閲覧履歴、GitHub import の最低限のE2E回帰防止）
 - [ ] HTTPセキュリティヘッダーの監査・強化と、依存パッケージ更新の定期運用（Dependabot等の低コスト運用を含む）
