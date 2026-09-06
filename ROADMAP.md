@@ -1,6 +1,39 @@
 # ROADMAP
 
-## Phase 0 — Foundation
+最終整理: 2026-09-06
+
+## Current status
+
+- Phase 0〜5 は完了。
+- Search Console は登録済みだが、現時点ではインデックス/検索パフォーマンスデータの処理待ち。実データが出るまでは title / description の推測変更を行わない。
+- 次の優先テーマは、新機能追加よりも **安定化・運用・信頼性の底上げ**。
+- その後、Search Console / 閲覧データなどの実データを使って成長施策を選ぶ。
+
+## Phase 6 — Stabilization & operations
+
+- [x] ROADMAP / AGENTS / ARCHITECTURE / README を現行実装へ同期
+- [ ] EOL snapshot の鮮度監視（最終同期から一定時間を超えた場合のCI警告/失敗と、必要に応じたサイト上の stale 表示）
+- [ ] 手動レビュー情報の鮮度ポリシー（公式ソース照合 / 商用サポート / リリース変更点の `checkedAt` を定期再確認し、期限超過をCIで検出）
+- [ ] 重要ユーザーフローのブラウザ smoke test（主要URL、マイEOL、閲覧履歴、GitHub import の最低限のE2E回帰防止）
+- [ ] HTTPセキュリティヘッダーの監査・強化と、依存パッケージ更新の定期運用（Dependabot等の低コスト運用を含む）
+- [ ] パフォーマンス基準の計測と予算化（主要ページのJS量 / Lighthouseまたは同等指標を継続監視）
+- [ ] 肥大化したモジュールの段階的分割（通知UI、Worker runtime、GitHub import等。機能変更を伴わない保守性改善）
+- [ ] 運用Runbook整備（同期失敗、通知障害、APIトークン更新、Resend / Turnstile / Cloudflare障害時の確認手順）
+
+## Phase 7 — Data-driven growth
+
+- [ ] Search Console実データに基づく title / description 改善と効果検証（Phase 2からの継続。Search Console処理完了後に開始）
+- [ ] 実クエリと閲覧データに基づく内部リンク改善（関連製品、同カテゴリ、移行先候補などを必要なページだけに追加）
+- [ ] 実需要に基づく独自コンテンツ拡張（主要20製品固定ではなく、表示回数・閲覧数・EOL接近度から優先順位を決める）
+- [ ] マイEOLのローカルバックアップ/復元（JSON export / import。アカウント・DBなしで端末移行を可能にする）
+- [ ] Public GitHub Repository Import の利用実績を見て対応範囲を拡張（monorepo / サブディレクトリ / 追加manifest）。利用実績がない段階では過剰実装しない
+- [ ] バージョン専用URL等のSEO拡張は、Search Consoleで十分な検索需要が確認できた場合のみ再検討
+
+---
+
+## Completed phases
+
+### Phase 0 — Foundation
 
 - [x] Astro静的サイト構成
 - [x] endoflife.date API v1 正規化スクリプト
@@ -10,7 +43,7 @@
 - [x] RSS / iCalendar / sitemap
 - [x] endoflife.date attribution / 免責事項
 
-## Phase 1 — Public MVP
+### Phase 1 — Public MVP
 
 - [x] GitHubリポジトリ作成・initial commit
 - [x] package-lock.json生成・CIをnpm ciへ移行
@@ -23,7 +56,7 @@
 - [x] OGP画像 / favicon
 - [x] 主要20製品の日本語summary手動整備
 
-## Phase 2 — Search growth
+### Phase 2 — Search growth
 
 - [x] 「30日以内 / 90日以内 / 半年以内」専用ランディング
 - [x] カテゴリ別ページ（言語 / OS / DB / インフラ等）
@@ -36,10 +69,9 @@
 - [x] 製品ページの最接近EOL判定・LTS優先の保守的な移行候補判定
 - [x] 製品ページの情報量に応じたindex / noindex方針とsitemap連動
 - [x] Search Console CSVのクエリ / ページ別CTR改善候補抽出基盤
-- [ ] Search Console実データに基づくtitle / description改善と効果検証
 - [x] 構造化データ検証
 
-## Phase 3 — Utility product
+### Phase 3 — Utility product
 
 - [x] 「利用中バージョン」ローカル保存
 - [x] マイEOLダッシュボード
@@ -50,7 +82,7 @@
 - [x] メール通知の本番有効化 + 登録/解除E2E確認
 - [x] 公開JSON API / embeddable badge
 
-## Phase 4 — Trust & expansion
+### Phase 4 — Trust & expansion
 
 - [x] 主要20製品の公式ソースレビュー台帳 + 公開照合状況ページ
 - [x] 主要20製品の公式日付との手動照合（比較可能な製品のみ。固定日付を比較できない製品は `not-comparable`、粒度/系列差がある製品は `partial` として明示）
@@ -58,10 +90,10 @@
 - [x] 製品ページへ公式ソース照合結果を表示（状態・公式ソース・確認日・構造化証跡）
 - [x] リリース変更点の対象製品を主要20製品へ段階拡大（20/20完了）
 - [x] 日本で利用できる商用サポート情報（一次情報と日本向け公式ページ/国内窓口を確認できた6製品: Ubuntu / MySQL / Java / Windows / Windows Server / nginx）
-- [x] GitHub package / SBOM連携による自動バージョン検出の検討（SBOM単独では主要製品の検出範囲が狭いため、将来は公開GitHubリポジトリを対象にSBOM + manifest/runtime検出を組み合わせる方針。private repo認証は初期対象外）
+- [x] GitHub package / SBOM連携による自動バージョン検出の検討
 - [x] 変更監査ログ（同期差分のSHA-256・変更件数・影響製品・同期元を記録し公開）
 
-## Phase 5 — UX & repository import
+### Phase 5 — UX & repository import
 
 - [x] サイト全体のレスポンシブUX監査・改善（アクセシブルなモバイルナビ、44px操作領域、狭幅フォーム/Turnstile保護、表スクロール案内、長文折返し、safe-area対応）
 - [x] 製品ページの閲覧履歴（localStorage、重複除外、最大20件、個別/全削除、外部送信なし。製品一覧/マイEOLで最近見た製品を表示）
