@@ -6,7 +6,7 @@
 
 1. [x] EOL snapshot鮮度監視（72時間でwarning、168時間でfail、サイト側stale表示）
 2. [x] 手動確認情報の再レビュー期限検出（180日でwarning、365日でfail。公式ソース・比較照合・商用サポート・リリース変更点を対象）
-3. [ ] 主要ユーザーフローのbrowser smoke test
+3. [x] 主要ユーザーフローのbrowser smoke test（Production buildを実Chromeで操作。主要URL、My EOL、閲覧履歴、GitHub Import入力検証、モバイルナビ）
 
 ## P1 — security / operations
 
