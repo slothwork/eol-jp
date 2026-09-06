@@ -87,6 +87,9 @@ jobs:
       - name: Public API tests
         run: npm run test:public-api
 
+      - name: Worker runtime routing tests
+        run: npm run test:worker-runtime-routing
+
       - name: JST date boundary tests
         run: npm run test:date-boundary
 
