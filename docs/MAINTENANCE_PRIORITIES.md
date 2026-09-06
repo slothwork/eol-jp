@@ -4,20 +4,20 @@
 
 ## P0 — trust / detection
 
-1. EOL snapshot鮮度監視
-2. 手動確認情報の再レビュー期限検出
-3. 主要ユーザーフローのbrowser smoke test
+1. [x] EOL snapshot鮮度監視（72時間でwarning、168時間でfail、サイト側stale表示）
+2. [ ] 手動確認情報の再レビュー期限検出
+3. [ ] 主要ユーザーフローのbrowser smoke test
 
 ## P1 — security / operations
 
-4. HTTPセキュリティヘッダー監査
-5. dependency update automation
-6. 障害・トークン更新Runbook
+4. [ ] HTTPセキュリティヘッダー監査
+5. [ ] dependency update automation
+6. [ ] 障害・トークン更新Runbook
 
 ## P2 — maintainability / performance
 
-7. performance baseline / budget
-8. 大型ファイルの責務分割
+7. [ ] performance baseline / budget
+8. [ ] 大型ファイルの責務分割
 
 ## Growth gate
 
