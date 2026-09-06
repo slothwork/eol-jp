@@ -51,8 +51,18 @@ async function waitForHttp(url, timeoutMs = STEP_TIMEOUT_MS) {
   throw lastError ?? new Error(`Timed out waiting for ${url}`);
 }
 
+function closeChildStreams(child) {
+  child?.stdin?.destroy();
+  child?.stdout?.destroy();
+  child?.stderr?.destroy();
+}
+
 async function stopChild(child, label) {
-  if (!child || child.exitCode !== null || child.signalCode !== null) return;
+  if (!child) return;
+  if (child.exitCode !== null || child.signalCode !== null) {
+    closeChildStreams(child);
+    return;
+  }
 
   const waitForExit = (timeoutMs) => new Promise((resolve) => {
     let settled = false;
@@ -73,11 +83,12 @@ async function stopChild(child, label) {
   });
 
   child.kill('SIGTERM');
-  if (await waitForExit(2_000)) return;
-
-  console.warn(`${label} did not exit after SIGTERM; sending SIGKILL.`);
-  child.kill('SIGKILL');
-  await waitForExit(1_000);
+  if (!(await waitForExit(2_000))) {
+    console.warn(`${label} did not exit after SIGTERM; sending SIGKILL.`);
+    child.kill('SIGKILL');
+    await waitForExit(1_000);
+  }
+  closeChildStreams(child);
 }
 
 class CdpClient {
@@ -307,6 +318,7 @@ async function runBrowserFlow(client) {
 async function main() {
   const chrome = findChrome();
   const tempDir = await mkdtemp(path.join(os.tmpdir(), 'eol-jp-smoke-'));
+  const astroCli = path.resolve('node_modules/astro/astro.js');
   let preview = null;
   let browser = null;
   let client = null;
@@ -314,8 +326,8 @@ async function main() {
   let browserLog = '';
 
   try {
-    preview = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', [
-      'run', 'preview', '--', '--host', HOST, '--port', String(PREVIEW_PORT)
+    preview = spawn(process.execPath, [
+      astroCli, 'preview', '--host', HOST, '--port', String(PREVIEW_PORT)
     ], { stdio: ['ignore', 'pipe', 'pipe'] });
     preview.stdout?.on('data', (chunk) => { previewLog += String(chunk); });
     preview.stderr?.on('data', (chunk) => { previewLog += String(chunk); });
