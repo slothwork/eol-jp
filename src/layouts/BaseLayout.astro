@@ -1,9 +1,11 @@
 ---
 import '@/styles.css';
 import '@/external-notifications.css';
+import '@/data-freshness.css';
 import ExternalNotificationSettings from '@/components/ExternalNotificationSettings.astro';
 import EmailNotificationSettings from '@/components/EmailNotificationSettings.astro';
 import RecentViewedProducts from '@/components/RecentViewedProducts.astro';
+import DataFreshnessNotice from '@/components/DataFreshnessNotice.astro';
 interface Props {
   title: string;
   description: string;
@@ -83,6 +85,7 @@ const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? nul
         </nav>
       </div>
     </header>
+    <DataFreshnessNotice />
     <main>
       <slot />
       {showRecentViewedProducts && <RecentViewedProducts />}
