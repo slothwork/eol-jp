@@ -57,6 +57,9 @@ jobs:
       - name: EOL decision tests
         run: npm run test:eol-decisions
 
+      - name: Latest release tests
+        run: npm run test:latest-releases
+
       - name: Search Console analysis tests
         run: npm run test:gsc-analysis
 
