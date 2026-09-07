@@ -134,6 +134,9 @@ jobs:
       - name: Performance budget check
         run: npm run check:performance-budget
 
+      - name: Release pagination browser smoke
+        run: npm run test:release-pagination-browser
+
       - name: Browser smoke tests
         run: npm run test:browser-smoke
 
