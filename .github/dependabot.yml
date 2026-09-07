@@ -7,6 +7,12 @@ updates:
       time: "09:00"
       timezone: Asia/Tokyo
     open-pull-requests-limit: 3
+    ignore:
+      # @astrojs/check 0.9.10 supports TypeScript 5.x / 6.x, but not 7.x yet.
+      # Remove this guard after Astro's checker officially accepts TypeScript 7.
+      - dependency-name: "typescript"
+        versions:
+          - ">=7.0.0"
     groups:
       npm-minor-patch:
         patterns:
