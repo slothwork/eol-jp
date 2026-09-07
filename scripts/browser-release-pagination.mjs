@@ -5,7 +5,7 @@ import path from 'node:path';
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.EOL_RELEASE_SMOKE_PORT ?? 4332);
 const BASE_URL = `http://${HOST}:${PORT}`;
-const TIMEOUT_MS = 15_000;
+const TIMEOUT_MS = 30_000;
 const STYLE_SMOKE_FILE = path.resolve('dist/releases/__pagination-style-smoke.html');
 const STYLE_SMOKE_PATH = '/releases/__pagination-style-smoke.html';
 
@@ -75,6 +75,7 @@ function styleSmokeDocument() {
             return;
           }
           root.dataset.testError = 'timed out waiting for dynamic page 2';
+          frame.remove();
           return;
         }
 
@@ -94,8 +95,10 @@ function styleSmokeDocument() {
         root.dataset.linksDisplay = linksStyle?.display ?? '';
         root.dataset.ready = 'true';
         document.getElementById('result').textContent = 'ready';
+        frame.remove();
       } catch (error) {
         root.dataset.testError = String(error);
+        frame.remove();
       }
     }
 
@@ -131,7 +134,7 @@ async function main() {
       '--disable-gpu',
       '--no-sandbox',
       '--disable-dev-shm-usage',
-      '--virtual-time-budget=7000',
+      '--virtual-time-budget=5000',
       '--dump-dom',
       `${BASE_URL}${STYLE_SMOKE_PATH}`
     ], {
