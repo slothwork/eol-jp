@@ -16,7 +16,7 @@ function externalLatestLink(value: string | null): string | null {
 
 export async function GET() {
   const entries = collectLatestReleaseEntries(products)
-    .filter((entry) => entry.ageDays > 30 && entry.ageDays <= 365)
+    .filter((entry) => entry.ageDays <= 365)
     .map((entry) => ({
       productSlug: entry.productSlug,
       productLabel: entry.productLabel,
@@ -35,7 +35,7 @@ export async function GET() {
     }));
 
   return new Response(JSON.stringify({
-    schemaVersion: 1,
+    schemaVersion: 2,
     maxAgeDays: 365,
     entries
   }), {
