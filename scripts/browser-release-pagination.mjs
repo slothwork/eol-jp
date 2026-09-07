@@ -80,6 +80,11 @@ function styleSmokeDocument() {
         }
 
         const item = items[0];
+        const list = doc.querySelector('[data-release-list]');
+        const cardButton = doc.querySelector('[data-release-view-button="card"]');
+        root.dataset.defaultView = list?.getAttribute('data-release-view') ?? '';
+        cardButton?.click();
+
         const date = item.querySelector('.release-item-date');
         const links = item.querySelector('.release-item-links');
         const itemStyle = getComputedStyle(item);
@@ -88,6 +93,8 @@ function styleSmokeDocument() {
 
         root.dataset.itemCount = String(items.length);
         root.dataset.pageStatus = status;
+        root.dataset.cardView = list?.getAttribute('data-release-view') ?? '';
+        root.dataset.storedView = frame.contentWindow?.localStorage.getItem('eol-release-view') ?? '';
         root.dataset.itemDisplay = itemStyle.display;
         root.dataset.itemBorderStyle = itemStyle.borderTopStyle;
         root.dataset.itemPaddingLeft = itemStyle.paddingLeft;
@@ -152,6 +159,9 @@ async function main() {
 
     const itemCount = Number(readDataAttribute(html, 'item-count') ?? '0');
     const pageStatus = readDataAttribute(html, 'page-status') ?? '';
+    const defaultView = readDataAttribute(html, 'default-view');
+    const cardView = readDataAttribute(html, 'card-view');
+    const storedView = readDataAttribute(html, 'stored-view');
     const itemDisplay = readDataAttribute(html, 'item-display');
     const borderStyle = readDataAttribute(html, 'item-border-style');
     const paddingLeft = readDataAttribute(html, 'item-padding-left') ?? '0px';
@@ -161,6 +171,9 @@ async function main() {
     assert(itemCount > 0, '365-day second page rendered no release items');
     assert(itemCount <= 20, `365-day second page rendered ${itemCount} release items; expected at most 20`);
     assert(/^2\s*\/\s*\d+ページ$/.test(pageStatus), `365-day query did not render page 2 status: ${pageStatus}`);
+    assert(defaultView === 'list', `release page default view should be list: view=${defaultView}`);
+    assert(cardView === 'card', `release view toggle did not switch to card: view=${cardView}`);
+    assert(storedView === 'card', `release view preference was not stored: stored=${storedView}`);
     assert(itemDisplay === 'grid', `dynamic release card lost grid layout: display=${itemDisplay}`);
     assert(borderStyle === 'solid', `dynamic release card lost border styling: border-style=${borderStyle}`);
     assert(Number.parseFloat(paddingLeft) > 0, `dynamic release card lost padding: padding-left=${paddingLeft}`);
