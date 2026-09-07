@@ -28,6 +28,13 @@
       "maxCssGzipBytes": 8192
     },
     {
+      "route": "/releases/",
+      "html": "releases/index.html",
+      "maxTotalGzipBytes": 65536,
+      "maxJsGzipBytes": 8192,
+      "maxCssGzipBytes": 8192
+    },
+    {
       "route": "/my-eol/",
       "html": "my-eol/index.html",
       "maxTotalGzipBytes": 32768,
