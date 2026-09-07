@@ -19,6 +19,7 @@
     "test:attention": "node scripts/test-attention-ranking.mjs",
     "test:eol-decisions": "node --experimental-strip-types scripts/test-eol-decision.mjs",
     "test:latest-releases": "node --experimental-strip-types scripts/test-latest-releases.mjs",
+    "test:release-pagination": "node scripts/test-release-pagination.mjs",
     "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
     "test:snapshot-freshness": "node --experimental-strip-types scripts/test-snapshot-freshness.mjs",
     "test:manual-review-freshness": "node --experimental-strip-types scripts/test-manual-review-freshness.mjs",
