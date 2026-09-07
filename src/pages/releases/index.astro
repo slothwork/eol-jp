@@ -6,15 +6,19 @@ import { collectLatestReleaseEntries, countLatestReleasesWithin } from '@/lib/la
 
 const MAX_RELEASE_AGE_DAYS = 365;
 const INITIAL_RELEASE_AGE_DAYS = 30;
+const PAGE_SIZE = 20;
 const allEntries = collectLatestReleaseEntries(products);
 const oneYearEntries = allEntries.filter((entry) => entry.ageDays <= MAX_RELEASE_AGE_DAYS);
 const entries = oneYearEntries.filter((entry) => entry.ageDays <= INITIAL_RELEASE_AGE_DAYS);
+const initialEntries = entries.slice(0, PAGE_SIZE);
 const categories = [...new Set(oneYearEntries.map((entry) => entry.category))]
   .map((category) => ({ category, label: getCategoryLabel(category) }))
   .sort((a, b) => a.label.localeCompare(b.label, 'ja'));
 const count7 = countLatestReleasesWithin(oneYearEntries, 7);
 const count30 = entries.length;
 const count90 = countLatestReleasesWithin(oneYearEntries, 90);
+const initialPageCount = Math.max(1, Math.ceil(count30 / PAGE_SIZE));
+const initialEnd = Math.min(PAGE_SIZE, count30);
 const updated = new Date(generatedAt).toLocaleString('ja-JP', {
   timeZone: 'Asia/Tokyo',
   dateStyle: 'long',
@@ -54,7 +58,7 @@ function externalLatestLink(value: string | null): string | null {
       <div class="notice release-notice">
         <strong>このページの「最新」について</strong>
         <p>endoflife.date の各サポート系列に記録された最新版（latest）を表示しています。「何が変更されたか」の網羅的なリリースノートではありません。重要な更新判断では、製品ページや最新版の参照先から公式情報を確認してください。</p>
-        <p>一覧は直近1年を対象としています。90日・1年を選んだ場合は同じサイト内の静的データを必要時だけ読み込みます。1年以上更新のないサポート系列は各製品ページで確認できます。データ最終更新: {updated}</p>
+        <p>一覧は直近1年を対象とし、1ページ20件ずつ表示します。期間を広げたり検索・ページ送りをした場合は、同じサイト内の静的データを必要時だけ読み込みます。1年以上更新のないサポート系列は各製品ページで確認できます。データ最終更新: {updated}</p>
       </div>
 
       <div class="release-toolbar" aria-label="最新リリースの絞り込み">
@@ -77,22 +81,19 @@ function externalLatestLink(value: string | null): string | null {
         <button class="filter-tab" type="button" data-release-period="90" aria-pressed="false">90日</button>
         <button class="filter-tab" type="button" data-release-period="365" aria-pressed="false">1年</button>
       </div>
-      <p class="muted" data-release-count>直近30日：{count30}件</p>
+      <p
+        class="muted"
+        data-release-count
+        data-initial-total={count30}
+      >直近30日：{count30}件{count30 > 0 && `（1〜${initialEnd}件を表示）`}</p>
       <p class="muted release-load-status" data-release-load-status aria-live="polite"></p>
 
       <div class="release-list" data-release-list>
-        {entries.map((entry) => {
+        {initialEntries.map((entry) => {
           const categoryLabel = getCategoryLabel(entry.category);
           const latestLink = externalLatestLink(entry.latestLink);
-          const searchText = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${categoryLabel}`.toLocaleLowerCase('ja-JP');
           return (
-            <article
-              class="release-item"
-              data-release-item
-              data-age-days={entry.ageDays}
-              data-category={entry.category}
-              data-search={searchText}
-            >
+            <article class="release-item" data-release-item>
               <div class="release-item-date">
                 <time datetime={entry.latestDate}>{formatJaDate(entry.latestDate)}</time>
                 <span class="muted">{entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`}</span>
@@ -115,55 +116,95 @@ function externalLatestLink(value: string | null): string | null {
         })}
       </div>
 
+      <nav
+        class="release-pagination"
+        data-release-pagination
+        aria-label="最新リリースのページ送り"
+        hidden={count30 <= PAGE_SIZE}
+      >
+        <button class="release-page-button" type="button" data-release-prev disabled>← 前へ</button>
+        <span class="release-page-status" data-release-page-status aria-live="polite">1 / {initialPageCount}ページ</span>
+        <button class="release-page-button" type="button" data-release-next disabled={count30 <= PAGE_SIZE}>次へ →</button>
+      </nav>
+
       <div class="notice release-empty" data-release-empty hidden>
         <strong>該当する最新リリースがありません。</strong>
         <p>期間、カテゴリ、検索語のいずれかを広げてください。</p>
       </div>
 
       <noscript>
-        <p class="section-note">JavaScriptが無効な場合は直近30日分を表示します。90日・1年の一覧は各製品ページから確認してください。</p>
+        <p class="section-note">JavaScriptが無効な場合は直近30日のうち最新20件を表示します。続きは各製品ページから確認してください。</p>
       </noscript>
     </div>
   </section>
 
   <script>
-    type ExpandedReleaseEntry = {
+    type ReleaseEntry = {
       productSlug: string;
       productLabel: string;
       category: string;
-      categoryLabel: string;
       cycle: string;
       isLts: boolean;
       eolFrom: string | null;
-      eolDisplay: string;
-      relativeEol: string;
+      eolDays: number | null;
       latestName: string;
       latestDate: string;
-      latestDateDisplay: string;
       latestLink: string | null;
       ageDays: number;
     };
 
+    const PAGE_SIZE = 20;
     const searchInput = document.querySelector<HTMLInputElement>('#release-search');
     const categorySelect = document.querySelector<HTMLSelectElement>('#release-category');
     const periodButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-release-period]')];
     const releaseList = document.querySelector<HTMLElement>('[data-release-list]');
-    let releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
     const countElement = document.querySelector<HTMLElement>('[data-release-count]');
     const loadStatus = document.querySelector<HTMLElement>('[data-release-load-status]');
     const emptyElement = document.querySelector<HTMLElement>('[data-release-empty]');
+    const pagination = document.querySelector<HTMLElement>('[data-release-pagination]');
+    const prevButton = document.querySelector<HTMLButtonElement>('[data-release-prev]');
+    const nextButton = document.querySelector<HTMLButtonElement>('[data-release-next]');
+    const pageStatus = document.querySelector<HTMLElement>('[data-release-page-status]');
     const validPeriods = new Set(['7', '30', '90', '365']);
+    const categoryLabels = new Map(
+      [...categorySelect?.options ?? []]
+        .filter((option) => option.value)
+        .map((option) => [option.value, option.textContent?.trim() || option.value] as const)
+    );
     const validCategories = new Set([...categorySelect?.options ?? []].map((option) => option.value));
     const params = new URLSearchParams(window.location.search);
+    const requestedPage = Number(params.get('page') ?? '1');
+    const initialTotal = Number(countElement?.dataset.initialTotal ?? '0');
     let activePeriod = validPeriods.has(params.get('days') ?? '') ? (params.get('days') ?? '30') : '30';
-    let expandedLoaded = false;
-    let expandedLoadPromise: Promise<void> | null = null;
+    let currentPage = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+    let allEntries: ReleaseEntry[] | null = null;
+    let dataLoadPromise: Promise<ReleaseEntry[]> | null = null;
+    let renderSequence = 0;
+    let searchTimer: ReturnType<typeof setTimeout> | null = null;
 
     const initialCategory = params.get('category') ?? '';
     if (categorySelect && validCategories.has(initialCategory)) categorySelect.value = initialCategory;
     if (searchInput) searchInput.value = params.get('q') ?? '';
 
     const periodLabel = (period: string) => period === '365' ? '直近1年' : `直近${period}日`;
+
+    function formatDateOnly(value: string | null): string {
+      if (!value) return '未定';
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+      if (!match) return value;
+      return `${Number(match[1])}年${Number(match[2])}月${Number(match[3])}日`;
+    }
+
+    function relativeEolFromDays(days: number | null): string {
+      if (days === null || !Number.isFinite(days)) return '期限未定';
+      if (days < 0) return `${Math.abs(days).toLocaleString('ja-JP')}日前にEOL`;
+      if (days === 0) return '本日EOL';
+      return `EOLまであと${days.toLocaleString('ja-JP')}日`;
+    }
+
+    function categoryLabel(category: string): string {
+      return categoryLabels.get(category) ?? category;
+    }
 
     function syncPeriodButtons() {
       for (const button of periodButtons) {
@@ -179,23 +220,21 @@ function externalLatestLink(value: string | null): string | null {
       if (categorySelect?.value) next.set('category', categorySelect.value);
       const query = searchInput?.value.trim() ?? '';
       if (query) next.set('q', query);
+      if (currentPage > 1) next.set('page', String(currentPage));
       const suffix = next.toString();
       history.replaceState(null, '', suffix ? `${location.pathname}?${suffix}` : location.pathname);
     }
 
-    function createExpandedItem(entry: ExpandedReleaseEntry): HTMLElement {
+    function createReleaseItem(entry: ReleaseEntry): HTMLElement {
       const article = document.createElement('article');
       article.className = 'release-item';
       article.dataset.releaseItem = '';
-      article.dataset.ageDays = String(entry.ageDays);
-      article.dataset.category = entry.category;
-      article.dataset.search = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${entry.categoryLabel}`.toLocaleLowerCase('ja-JP');
 
       const date = document.createElement('div');
       date.className = 'release-item-date';
       const time = document.createElement('time');
       time.dateTime = entry.latestDate;
-      time.textContent = entry.latestDateDisplay;
+      time.textContent = formatDateOnly(entry.latestDate);
       const ago = document.createElement('span');
       ago.className = 'muted';
       ago.textContent = entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`;
@@ -207,7 +246,7 @@ function externalLatestLink(value: string | null): string | null {
       meta.className = 'release-item-meta';
       const category = document.createElement('span');
       category.className = 'eyebrow';
-      category.textContent = entry.categoryLabel;
+      category.textContent = categoryLabel(entry.category);
       const cycle = document.createElement('span');
       cycle.textContent = `系列 ${entry.cycle}`;
       meta.append(category, cycle);
@@ -229,10 +268,10 @@ function externalLatestLink(value: string | null): string | null {
       const eol = document.createElement('p');
       eol.append(document.createTextNode('EOL / セキュリティ終了: '));
       const eolStrong = document.createElement('strong');
-      eolStrong.textContent = entry.eolDisplay;
+      eolStrong.textContent = formatDateOnly(entry.eolFrom);
       const eolRelative = document.createElement('span');
       eolRelative.className = 'muted';
-      eolRelative.textContent = `（${entry.relativeEol}）`;
+      eolRelative.textContent = `（${relativeEolFromDays(entry.eolDays)}）`;
       eol.append(eolStrong, document.createTextNode(' '), eolRelative);
 
       const links = document.createElement('div');
@@ -254,68 +293,127 @@ function externalLatestLink(value: string | null): string | null {
       return article;
     }
 
-    async function ensureExpandedEntries(): Promise<void> {
-      if (expandedLoaded || Number(activePeriod) <= 30) return;
-      if (!expandedLoadPromise) {
-        if (loadStatus) loadStatus.textContent = '過去の最新リリースを読み込んでいます…';
-        expandedLoadPromise = fetch('/releases/data.json', { headers: { Accept: 'application/json' } })
-          .then(async (response) => {
-            if (!response.ok) throw new Error(`release data returned ${response.status}`);
-            const data = await response.json() as { entries?: ExpandedReleaseEntry[] };
-            if (!Array.isArray(data.entries)) throw new Error('invalid release data');
-            if (releaseList) {
-              const fragment = document.createDocumentFragment();
-              for (const entry of data.entries) fragment.append(createExpandedItem(entry));
-              releaseList.append(fragment);
-              releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
-            }
-            expandedLoaded = true;
-            if (loadStatus) loadStatus.textContent = '';
-          })
-          .catch(() => {
-            if (loadStatus) loadStatus.textContent = '過去の最新リリースを読み込めませんでした。時間をおいて再度お試しください。';
-          })
-          .finally(() => {
-            expandedLoadPromise = null;
-          });
+    function updatePagination(total: number) {
+      const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      currentPage = Math.min(Math.max(1, currentPage), pageCount);
+      if (pagination) pagination.hidden = total <= PAGE_SIZE;
+      if (prevButton) prevButton.disabled = currentPage <= 1;
+      if (nextButton) nextButton.disabled = currentPage >= pageCount;
+      if (pageStatus) pageStatus.textContent = `${currentPage.toLocaleString('ja-JP')} / ${pageCount.toLocaleString('ja-JP')}ページ`;
+
+      if (countElement) {
+        if (total === 0) {
+          countElement.textContent = `${periodLabel(activePeriod)}：0件`;
+        } else {
+          const start = (currentPage - 1) * PAGE_SIZE + 1;
+          const end = Math.min(currentPage * PAGE_SIZE, total);
+          countElement.textContent = `${periodLabel(activePeriod)}：${total.toLocaleString('ja-JP')}件（${start.toLocaleString('ja-JP')}〜${end.toLocaleString('ja-JP')}件を表示）`;
+        }
       }
-      await expandedLoadPromise;
     }
 
-    async function applyFilters() {
-      syncPeriodButtons();
-      updateUrl();
-      await ensureExpandedEntries();
+    function renderPage(entries: ReleaseEntry[]) {
+      updatePagination(entries.length);
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageEntries = entries.slice(start, start + PAGE_SIZE);
+      if (releaseList) {
+        const fragment = document.createDocumentFragment();
+        for (const entry of pageEntries) fragment.append(createReleaseItem(entry));
+        releaseList.replaceChildren(fragment);
+      }
+      if (emptyElement) emptyElement.hidden = entries.length !== 0;
+    }
 
+    async function ensureAllEntries(): Promise<ReleaseEntry[]> {
+      if (allEntries) return allEntries;
+      if (!dataLoadPromise) {
+        if (loadStatus) loadStatus.textContent = '最新リリース一覧を読み込んでいます…';
+        dataLoadPromise = fetch('/releases/data.json', { headers: { Accept: 'application/json' } })
+          .then(async (response) => {
+            if (!response.ok) throw new Error(`release data returned ${response.status}`);
+            const data = await response.json() as { schemaVersion?: number; entries?: ReleaseEntry[] };
+            if (data.schemaVersion !== 2 || !Array.isArray(data.entries)) throw new Error('invalid release data');
+            allEntries = data.entries;
+            if (loadStatus) loadStatus.textContent = '';
+            return data.entries;
+          })
+          .catch((error) => {
+            if (loadStatus) loadStatus.textContent = '最新リリース一覧を読み込めませんでした。時間をおいて再度お試しください。';
+            throw error;
+          })
+          .finally(() => {
+            dataLoadPromise = null;
+          });
+      }
+      return dataLoadPromise;
+    }
+
+    function filterEntries(entries: ReleaseEntry[]): ReleaseEntry[] {
       const query = searchInput?.value.trim().toLocaleLowerCase('ja-JP') ?? '';
       const category = categorySelect?.value ?? '';
       const maxAge = Number(activePeriod);
-      let visible = 0;
+      return entries.filter((entry) => {
+        if (entry.ageDays > maxAge) return false;
+        if (category && entry.category !== category) return false;
+        if (!query) return true;
+        const searchText = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${categoryLabel(entry.category)}`.toLocaleLowerCase('ja-JP');
+        return searchText.includes(query);
+      });
+    }
 
-      for (const item of releaseItems) {
-        const age = Number(item.dataset.ageDays ?? Number.POSITIVE_INFINITY);
-        const matchesPeriod = age <= maxAge;
-        const matchesCategory = !category || item.dataset.category === category;
-        const matchesQuery = !query || (item.dataset.search ?? '').includes(query);
-        const show = matchesPeriod && matchesCategory && matchesQuery;
-        item.hidden = !show;
-        if (show) visible += 1;
+    async function applyFilters(resetPage = false) {
+      const sequence = ++renderSequence;
+      if (resetPage) currentPage = 1;
+      syncPeriodButtons();
+      try {
+        const entries = await ensureAllEntries();
+        if (sequence !== renderSequence) return;
+        renderPage(filterEntries(entries));
+        updateUrl();
+      } catch {
+        if (sequence !== renderSequence) return;
+        currentPage = 1;
+        updateUrl();
       }
+    }
 
-      if (countElement) countElement.textContent = `${periodLabel(activePeriod)}：${visible}件`;
-      if (emptyElement) emptyElement.hidden = visible !== 0;
+    function scrollToReleaseList() {
+      releaseList?.scrollIntoView({ block: 'start' });
     }
 
     for (const button of periodButtons) {
       button.addEventListener('click', () => {
         activePeriod = button.dataset.releasePeriod ?? '30';
-        void applyFilters();
+        void applyFilters(true);
       });
     }
-    categorySelect?.addEventListener('change', () => void applyFilters());
-    searchInput?.addEventListener('input', () => void applyFilters());
+    categorySelect?.addEventListener('change', () => void applyFilters(true));
+    searchInput?.addEventListener('input', () => {
+      if (searchTimer) clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => void applyFilters(true), 150);
+    });
+    prevButton?.addEventListener('click', () => {
+      if (currentPage <= 1) return;
+      currentPage -= 1;
+      void applyFilters(false).then(scrollToReleaseList);
+    });
+    nextButton?.addEventListener('click', () => {
+      if (nextButton.disabled) return;
+      currentPage += 1;
+      void applyFilters(false).then(scrollToReleaseList);
+    });
 
-    void applyFilters();
+    syncPeriodButtons();
+    const hasCustomState = activePeriod !== '30'
+      || Boolean(categorySelect?.value)
+      || Boolean(searchInput?.value.trim())
+      || currentPage !== 1;
+    if (hasCustomState) {
+      void applyFilters(false);
+    } else {
+      currentPage = 1;
+      updatePagination(initialTotal);
+    }
   </script>
 
   <style>
@@ -335,11 +433,18 @@ function externalLatestLink(value: string | null): string | null {
     .release-item h2 span { color:#3f4e65; font-weight:700; }
     .release-item p { margin:6px 0; }
     .release-item-links { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.92rem; }
+    .release-pagination { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:22px; }
+    .release-page-button { min-height:44px; padding:8px 16px; border:1px solid var(--border); border-radius:10px; background:#fff; color:inherit; font:inherit; font-weight:700; cursor:pointer; }
+    .release-page-button:hover:not(:disabled) { border-color:var(--primary); color:var(--primary); }
+    .release-page-button:disabled { opacity:.45; cursor:not-allowed; }
+    .release-page-status { min-width:110px; text-align:center; color:var(--muted); font-size:.92rem; }
     .release-empty { margin-top:18px; }
     @media (max-width: 700px) {
       .release-toolbar { grid-template-columns:1fr; }
       .release-item { grid-template-columns:1fr; gap:8px; padding:16px; }
       .release-item-date { flex-direction:row; flex-wrap:wrap; gap:6px 12px; }
+      .release-pagination { gap:8px; }
+      .release-page-button { padding-inline:12px; }
     }
   </style>
 </BaseLayout>

@@ -125,11 +125,17 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://eol.slothwright.com
 
+      - name: Release pagination tests
+        run: npm run test:release-pagination
+
       - name: Security header tests
         run: npm run test:security-headers
 
       - name: Performance budget check
         run: npm run check:performance-budget
+
+      - name: Release pagination browser smoke
+        run: npm run test:release-pagination-browser
 
       - name: Browser smoke tests
         run: npm run test:browser-smoke
