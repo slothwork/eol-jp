@@ -37,6 +37,7 @@
     "test:product-content": "node --experimental-strip-types scripts/test-product-content.mjs",
     "test:eol-audit": "node scripts/test-eol-audit.mjs",
     "test:responsive-shell": "node scripts/test-responsive-shell.mjs",
+    "test:ux-layout-improvements": "node scripts/test-ux-layout-improvements.mjs",
     "test:browser-smoke": "node scripts/browser-smoke.mjs",
     "test:security-headers": "node --experimental-strip-types scripts/test-security-headers.mjs",
     "test:performance-budget": "node scripts/test-performance-budget.mjs",
