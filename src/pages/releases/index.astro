@@ -5,15 +5,16 @@ import { generatedAt, getCategoryLabel, products } from '@/lib/eol';
 import { collectLatestReleaseEntries, countLatestReleasesWithin } from '@/lib/latest-releases';
 
 const MAX_RELEASE_AGE_DAYS = 365;
+const INITIAL_RELEASE_AGE_DAYS = 30;
 const allEntries = collectLatestReleaseEntries(products);
-const entries = allEntries.filter((entry) => entry.ageDays <= MAX_RELEASE_AGE_DAYS);
-const categories = [...new Set(entries.map((entry) => entry.category))]
+const oneYearEntries = allEntries.filter((entry) => entry.ageDays <= MAX_RELEASE_AGE_DAYS);
+const entries = oneYearEntries.filter((entry) => entry.ageDays <= INITIAL_RELEASE_AGE_DAYS);
+const categories = [...new Set(oneYearEntries.map((entry) => entry.category))]
   .map((category) => ({ category, label: getCategoryLabel(category) }))
   .sort((a, b) => a.label.localeCompare(b.label, 'ja'));
-const count7 = countLatestReleasesWithin(entries, 7);
-const count30 = countLatestReleasesWithin(entries, 30);
-const count90 = countLatestReleasesWithin(entries, 90);
-const count365 = entries.length;
+const count7 = countLatestReleasesWithin(oneYearEntries, 7);
+const count30 = entries.length;
+const count90 = countLatestReleasesWithin(oneYearEntries, 90);
 const updated = new Date(generatedAt).toLocaleString('ja-JP', {
   timeZone: 'Asia/Tokyo',
   dateStyle: 'long',
@@ -53,7 +54,7 @@ function externalLatestLink(value: string | null): string | null {
       <div class="notice release-notice">
         <strong>このページの「最新」について</strong>
         <p>endoflife.date の各サポート系列に記録された最新版（latest）を表示しています。「何が変更されたか」の網羅的なリリースノートではありません。重要な更新判断では、製品ページや最新版の参照先から公式情報を確認してください。</p>
-        <p>一覧は直近1年を対象としています。1年以上更新のないサポート系列は各製品ページで確認できます。データ最終更新: {updated}</p>
+        <p>一覧は直近1年を対象としています。90日・1年を選んだ場合は同じサイト内の静的データを必要時だけ読み込みます。1年以上更新のないサポート系列は各製品ページで確認できます。データ最終更新: {updated}</p>
       </div>
 
       <div class="release-toolbar" aria-label="最新リリースの絞り込み">
@@ -77,8 +78,9 @@ function externalLatestLink(value: string | null): string | null {
         <button class="filter-tab" type="button" data-release-period="365" aria-pressed="false">1年</button>
       </div>
       <p class="muted" data-release-count>直近30日：{count30}件</p>
+      <p class="muted release-load-status" data-release-load-status aria-live="polite"></p>
 
-      <div class="release-list" data-release-list data-release-total={count365}>
+      <div class="release-list" data-release-list>
         {entries.map((entry) => {
           const categoryLabel = getCategoryLabel(entry.category);
           const latestLink = externalLatestLink(entry.latestLink);
@@ -90,7 +92,6 @@ function externalLatestLink(value: string | null): string | null {
               data-age-days={entry.ageDays}
               data-category={entry.category}
               data-search={searchText}
-              data-initial-hidden={entry.ageDays > 30 ? 'true' : undefined}
             >
               <div class="release-item-date">
                 <time datetime={entry.latestDate}>{formatJaDate(entry.latestDate)}</time>
@@ -120,22 +121,43 @@ function externalLatestLink(value: string | null): string | null {
       </div>
 
       <noscript>
-        <p class="section-note">JavaScriptが無効な場合は、直近1年分を絞り込まず表示します。</p>
+        <p class="section-note">JavaScriptが無効な場合は直近30日分を表示します。90日・1年の一覧は各製品ページから確認してください。</p>
       </noscript>
     </div>
   </section>
 
   <script>
+    type ExpandedReleaseEntry = {
+      productSlug: string;
+      productLabel: string;
+      category: string;
+      categoryLabel: string;
+      cycle: string;
+      isLts: boolean;
+      eolFrom: string | null;
+      eolDisplay: string;
+      relativeEol: string;
+      latestName: string;
+      latestDate: string;
+      latestDateDisplay: string;
+      latestLink: string | null;
+      ageDays: number;
+    };
+
     const searchInput = document.querySelector<HTMLInputElement>('#release-search');
     const categorySelect = document.querySelector<HTMLSelectElement>('#release-category');
     const periodButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-release-period]')];
-    const releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
+    const releaseList = document.querySelector<HTMLElement>('[data-release-list]');
+    let releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
     const countElement = document.querySelector<HTMLElement>('[data-release-count]');
+    const loadStatus = document.querySelector<HTMLElement>('[data-release-load-status]');
     const emptyElement = document.querySelector<HTMLElement>('[data-release-empty]');
     const validPeriods = new Set(['7', '30', '90', '365']);
     const validCategories = new Set([...categorySelect?.options ?? []].map((option) => option.value));
     const params = new URLSearchParams(window.location.search);
     let activePeriod = validPeriods.has(params.get('days') ?? '') ? (params.get('days') ?? '30') : '30';
+    let expandedLoaded = false;
+    let expandedLoadPromise: Promise<void> | null = null;
 
     const initialCategory = params.get('category') ?? '';
     if (categorySelect && validCategories.has(initialCategory)) categorySelect.value = initialCategory;
@@ -161,14 +183,116 @@ function externalLatestLink(value: string | null): string | null {
       history.replaceState(null, '', suffix ? `${location.pathname}?${suffix}` : location.pathname);
     }
 
-    function applyFilters() {
+    function createExpandedItem(entry: ExpandedReleaseEntry): HTMLElement {
+      const article = document.createElement('article');
+      article.className = 'release-item';
+      article.dataset.releaseItem = '';
+      article.dataset.ageDays = String(entry.ageDays);
+      article.dataset.category = entry.category;
+      article.dataset.search = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${entry.categoryLabel}`.toLocaleLowerCase('ja-JP');
+
+      const date = document.createElement('div');
+      date.className = 'release-item-date';
+      const time = document.createElement('time');
+      time.dateTime = entry.latestDate;
+      time.textContent = entry.latestDateDisplay;
+      const ago = document.createElement('span');
+      ago.className = 'muted';
+      ago.textContent = entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`;
+      date.append(time, ago);
+
+      const main = document.createElement('div');
+      main.className = 'release-item-main';
+      const meta = document.createElement('div');
+      meta.className = 'release-item-meta';
+      const category = document.createElement('span');
+      category.className = 'eyebrow';
+      category.textContent = entry.categoryLabel;
+      const cycle = document.createElement('span');
+      cycle.textContent = `系列 ${entry.cycle}`;
+      meta.append(category, cycle);
+      if (entry.isLts) {
+        const lts = document.createElement('span');
+        lts.className = 'status-badge status-supported';
+        lts.textContent = 'LTS';
+        meta.append(lts);
+      }
+
+      const heading = document.createElement('h2');
+      const productLink = document.createElement('a');
+      productLink.href = `/eol/${encodeURIComponent(entry.productSlug)}/`;
+      productLink.textContent = entry.productLabel;
+      const latest = document.createElement('span');
+      latest.textContent = entry.latestName;
+      heading.append(productLink, document.createTextNode(' '), latest);
+
+      const eol = document.createElement('p');
+      eol.append(document.createTextNode('EOL / セキュリティ終了: '));
+      const eolStrong = document.createElement('strong');
+      eolStrong.textContent = entry.eolDisplay;
+      const eolRelative = document.createElement('span');
+      eolRelative.className = 'muted';
+      eolRelative.textContent = `（${entry.relativeEol}）`;
+      eol.append(eolStrong, document.createTextNode(' '), eolRelative);
+
+      const links = document.createElement('div');
+      links.className = 'release-item-links';
+      const eolLink = document.createElement('a');
+      eolLink.href = `/eol/${encodeURIComponent(entry.productSlug)}/`;
+      eolLink.textContent = 'EOL・サポート状況を見る →';
+      links.append(eolLink);
+      if (entry.latestLink) {
+        const latestLink = document.createElement('a');
+        latestLink.href = entry.latestLink;
+        latestLink.rel = 'external';
+        latestLink.textContent = '最新版の参照先 →';
+        links.append(latestLink);
+      }
+
+      main.append(meta, heading, eol, links);
+      article.append(date, main);
+      return article;
+    }
+
+    async function ensureExpandedEntries(): Promise<void> {
+      if (expandedLoaded || Number(activePeriod) <= 30) return;
+      if (!expandedLoadPromise) {
+        if (loadStatus) loadStatus.textContent = '過去の最新リリースを読み込んでいます…';
+        expandedLoadPromise = fetch('/releases/data.json', { headers: { Accept: 'application/json' } })
+          .then(async (response) => {
+            if (!response.ok) throw new Error(`release data returned ${response.status}`);
+            const data = await response.json() as { entries?: ExpandedReleaseEntry[] };
+            if (!Array.isArray(data.entries)) throw new Error('invalid release data');
+            if (releaseList) {
+              const fragment = document.createDocumentFragment();
+              for (const entry of data.entries) fragment.append(createExpandedItem(entry));
+              releaseList.append(fragment);
+              releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
+            }
+            expandedLoaded = true;
+            if (loadStatus) loadStatus.textContent = '';
+          })
+          .catch(() => {
+            if (loadStatus) loadStatus.textContent = '過去の最新リリースを読み込めませんでした。時間をおいて再度お試しください。';
+          })
+          .finally(() => {
+            expandedLoadPromise = null;
+          });
+      }
+      await expandedLoadPromise;
+    }
+
+    async function applyFilters() {
+      syncPeriodButtons();
+      updateUrl();
+      await ensureExpandedEntries();
+
       const query = searchInput?.value.trim().toLocaleLowerCase('ja-JP') ?? '';
       const category = categorySelect?.value ?? '';
       const maxAge = Number(activePeriod);
       let visible = 0;
 
       for (const item of releaseItems) {
-        item.removeAttribute('data-initial-hidden');
         const age = Number(item.dataset.ageDays ?? Number.POSITIVE_INFINITY);
         const matchesPeriod = age <= maxAge;
         const matchesCategory = !category || item.dataset.category === category;
@@ -180,20 +304,18 @@ function externalLatestLink(value: string | null): string | null {
 
       if (countElement) countElement.textContent = `${periodLabel(activePeriod)}：${visible}件`;
       if (emptyElement) emptyElement.hidden = visible !== 0;
-      syncPeriodButtons();
-      updateUrl();
     }
 
     for (const button of periodButtons) {
       button.addEventListener('click', () => {
         activePeriod = button.dataset.releasePeriod ?? '30';
-        applyFilters();
+        void applyFilters();
       });
     }
-    categorySelect?.addEventListener('change', applyFilters);
-    searchInput?.addEventListener('input', applyFilters);
+    categorySelect?.addEventListener('change', () => void applyFilters());
+    searchInput?.addEventListener('input', () => void applyFilters());
 
-    applyFilters();
+    void applyFilters();
   </script>
 
   <style>
@@ -203,6 +325,7 @@ function externalLatestLink(value: string | null): string | null {
     .release-search-field label, .release-category-field label { font-weight:700; }
     .release-search-field .search-box, .release-category-field .history-select { width:100%; max-width:none; }
     .release-period-tabs { margin-bottom:10px; }
+    .release-load-status:empty { display:none; }
     .release-list { display:grid; gap:12px; margin-top:18px; }
     .release-item { display:grid; grid-template-columns:minmax(150px,190px) minmax(0,1fr); gap:22px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 20px; min-width:0; }
     .release-item-date { display:flex; flex-direction:column; gap:3px; font-weight:700; }
@@ -213,7 +336,6 @@ function externalLatestLink(value: string | null): string | null {
     .release-item p { margin:6px 0; }
     .release-item-links { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.92rem; }
     .release-empty { margin-top:18px; }
-    .js [data-release-item][data-initial-hidden="true"] { display:none; }
     @media (max-width: 700px) {
       .release-toolbar { grid-template-columns:1fr; }
       .release-item { grid-template-columns:1fr; gap:8px; padding:16px; }
