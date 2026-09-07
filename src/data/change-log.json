@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-06T00:07:24+00:00",
+  "updatedAt": "2026-09-07T00:09:25+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -914,6 +914,464 @@
       "label": "Sylius",
       "release": "1.8",
       "eolFrom": "2022-01-14"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "eol-changed",
+      "product": "jquery",
+      "label": "jQuery",
+      "release": "3",
+      "from": "2026-01-17",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "support-changed",
+      "product": "jquery",
+      "label": "jQuery",
+      "release": "3",
+      "from": null,
+      "to": "2026-01-17"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.63",
+      "eolFrom": "2026-11-01"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.62",
+      "eolFrom": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.61",
+      "eolFrom": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.60",
+      "eolFrom": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.59",
+      "eolFrom": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.58",
+      "eolFrom": "2027-02-17"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.57",
+      "eolFrom": "2026-05-31"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.56",
+      "eolFrom": "2026-05-31"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.55",
+      "eolFrom": "2026-05-31"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.54",
+      "eolFrom": "2026-05-31"
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.53",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.52",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.51",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.50",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.49",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.48",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.47",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.46",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.45",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.44",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.43",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.42",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.41",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.40",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.39",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.38",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.37",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.36",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.35",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.34",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.33",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.32",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.31",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.30",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.29",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.28",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.26",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.25",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.24",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.23",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.22",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.21",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.20",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.19",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.18",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.17",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.16",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.15",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.14",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.13",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.11",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-07T00:09:25+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.9",
+      "eolFrom": null
     }
   ]
 }
