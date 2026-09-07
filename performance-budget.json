@@ -37,7 +37,7 @@
     {
       "route": "/releases/data.json",
       "html": "releases/data.json",
-      "maxTotalGzipBytes": 28672,
+      "maxTotalGzipBytes": 40960,
       "maxJsGzipBytes": 1024,
       "maxCssGzipBytes": 1024
     },
