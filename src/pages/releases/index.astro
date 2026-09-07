@@ -143,15 +143,12 @@ function externalLatestLink(value: string | null): string | null {
       productSlug: string;
       productLabel: string;
       category: string;
-      categoryLabel: string;
       cycle: string;
       isLts: boolean;
       eolFrom: string | null;
-      eolDisplay: string;
-      relativeEol: string;
+      eolDays: number | null;
       latestName: string;
       latestDate: string;
-      latestDateDisplay: string;
       latestLink: string | null;
       ageDays: number;
     };
@@ -169,6 +166,11 @@ function externalLatestLink(value: string | null): string | null {
     const nextButton = document.querySelector<HTMLButtonElement>('[data-release-next]');
     const pageStatus = document.querySelector<HTMLElement>('[data-release-page-status]');
     const validPeriods = new Set(['7', '30', '90', '365']);
+    const categoryLabels = new Map(
+      [...categorySelect?.options ?? []]
+        .filter((option) => option.value)
+        .map((option) => [option.value, option.textContent?.trim() || option.value] as const)
+    );
     const validCategories = new Set([...categorySelect?.options ?? []].map((option) => option.value));
     const params = new URLSearchParams(window.location.search);
     const requestedPage = Number(params.get('page') ?? '1');
@@ -185,6 +187,24 @@ function externalLatestLink(value: string | null): string | null {
     if (searchInput) searchInput.value = params.get('q') ?? '';
 
     const periodLabel = (period: string) => period === '365' ? '直近1年' : `直近${period}日`;
+
+    function formatDateOnly(value: string | null): string {
+      if (!value) return '未定';
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+      if (!match) return value;
+      return `${Number(match[1])}年${Number(match[2])}月${Number(match[3])}日`;
+    }
+
+    function relativeEolFromDays(days: number | null): string {
+      if (days === null || !Number.isFinite(days)) return '期限未定';
+      if (days < 0) return `${Math.abs(days).toLocaleString('ja-JP')}日前にEOL`;
+      if (days === 0) return '本日EOL';
+      return `EOLまであと${days.toLocaleString('ja-JP')}日`;
+    }
+
+    function categoryLabel(category: string): string {
+      return categoryLabels.get(category) ?? category;
+    }
 
     function syncPeriodButtons() {
       for (const button of periodButtons) {
@@ -214,7 +234,7 @@ function externalLatestLink(value: string | null): string | null {
       date.className = 'release-item-date';
       const time = document.createElement('time');
       time.dateTime = entry.latestDate;
-      time.textContent = entry.latestDateDisplay;
+      time.textContent = formatDateOnly(entry.latestDate);
       const ago = document.createElement('span');
       ago.className = 'muted';
       ago.textContent = entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`;
@@ -226,7 +246,7 @@ function externalLatestLink(value: string | null): string | null {
       meta.className = 'release-item-meta';
       const category = document.createElement('span');
       category.className = 'eyebrow';
-      category.textContent = entry.categoryLabel;
+      category.textContent = categoryLabel(entry.category);
       const cycle = document.createElement('span');
       cycle.textContent = `系列 ${entry.cycle}`;
       meta.append(category, cycle);
@@ -248,10 +268,10 @@ function externalLatestLink(value: string | null): string | null {
       const eol = document.createElement('p');
       eol.append(document.createTextNode('EOL / セキュリティ終了: '));
       const eolStrong = document.createElement('strong');
-      eolStrong.textContent = entry.eolDisplay;
+      eolStrong.textContent = formatDateOnly(entry.eolFrom);
       const eolRelative = document.createElement('span');
       eolRelative.className = 'muted';
-      eolRelative.textContent = `（${entry.relativeEol}）`;
+      eolRelative.textContent = `（${relativeEolFromDays(entry.eolDays)}）`;
       eol.append(eolStrong, document.createTextNode(' '), eolRelative);
 
       const links = document.createElement('div');
@@ -336,7 +356,7 @@ function externalLatestLink(value: string | null): string | null {
         if (entry.ageDays > maxAge) return false;
         if (category && entry.category !== category) return false;
         if (!query) return true;
-        const searchText = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${entry.categoryLabel}`.toLocaleLowerCase('ja-JP');
+        const searchText = `${entry.productLabel} ${entry.productSlug} ${entry.cycle} ${entry.latestName} ${categoryLabel(entry.category)}`.toLocaleLowerCase('ja-JP');
         return searchText.includes(query);
       });
     }
