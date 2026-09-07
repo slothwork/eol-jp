@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-05T00:07:19+00:00",
+  "updatedAt": "2026-09-06T00:07:24+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -11,6 +11,909 @@
       "release": "7.1",
       "from": null,
       "to": "2026-09-02"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "citrix-vad",
+      "label": "Citrix Virtual Apps and Desktops",
+      "release": "2607",
+      "eolFrom": "2029-08-17"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "cockroachdb",
+      "label": "CockroachDB",
+      "release": "26.3",
+      "eolFrom": "2027-02-19"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "eol-changed",
+      "product": "cockroachdb",
+      "label": "CockroachDB",
+      "release": "25.1",
+      "from": null,
+      "to": "2025-08-18"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.37",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "support-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.35",
+      "from": null,
+      "to": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "eol-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.34",
+      "from": null,
+      "to": "2026-09-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "hashicorp-vault",
+      "label": "Hashicorp Vault",
+      "release": "2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "eol-changed",
+      "product": "hashicorp-vault",
+      "label": "Hashicorp Vault",
+      "release": "2.0",
+      "from": null,
+      "to": "2026-08-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "kubernetes-csi-node-driver-registrar",
+      "label": "Kubernetes CSI Node Driver Registrar",
+      "release": "2.18",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "kubernetes-csi-node-driver-registrar",
+      "label": "Kubernetes CSI Node Driver Registrar",
+      "release": "2.17",
+      "eolFrom": "2026-09-03"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "eol-changed",
+      "product": "kubernetes-csi-node-driver-registrar",
+      "label": "Kubernetes CSI Node Driver Registrar",
+      "release": "2.16",
+      "from": null,
+      "to": "2026-05-21"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "mautic",
+      "label": "Mautic",
+      "release": "7.2",
+      "eolFrom": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "nexus",
+      "label": "Nexus Repository",
+      "release": "3.96",
+      "eolFrom": "2028-03-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6-astra",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.6-cyber",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-live-transcribe",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-transcribe",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.6-luna",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.6-terra",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.6-sol",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-2.1-mini",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-translate",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-whisper",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "chat-latest",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.5",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.5-pro",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-mini",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-nano",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-pro",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-chat-latest",
+      "eolFrom": "2026-08-10"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-audio-1.5",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-1.5",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-codex",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-audio",
+      "eolFrom": "2027-01-20"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-audio-mini",
+      "eolFrom": "2027-01-20"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.2-codex",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-1.5",
+      "eolFrom": "2026-12-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.2-chat-latest",
+      "eolFrom": "2026-08-10"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.2-pro",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1-codex-max",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1-codex",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1-codex-mini",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1-chat-latest",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-transcribe-diarize",
+      "eolFrom": "2027-02-26"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-1-mini",
+      "eolFrom": "2026-12-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime-mini",
+      "eolFrom": "2027-01-20"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "sora-2",
+      "eolFrom": "2026-09-24"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "sora-2-pro",
+      "eolFrom": "2026-09-24"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5-codex",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-realtime",
+      "eolFrom": "2027-01-20"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5-chat-latest",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5-mini",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5-nano",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5-pro",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-oss-120b",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-oss-20b",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "codex-mini-latest",
+      "eolFrom": "2026-02-12"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o3",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o3-pro",
+      "eolFrom": "2026-12-11"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o4-mini",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1-mini",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1-nano",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "chatgpt-image-latest",
+      "eolFrom": "2026-12-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-1",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-transcribe",
+      "eolFrom": "2027-02-26"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-tts",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-transcribe",
+      "eolFrom": "2027-02-26"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o1-pro",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o3-deep-research",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o4-mini-deep-research",
+      "eolFrom": "2026-07-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o3-mini",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o1",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "omni-moderation-latest",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "o1-mini",
+      "eolFrom": "2025-10-27"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "chatgpt-4o-latest",
+      "eolFrom": "2026-02-17"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "text-embedding-3-large",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "text-embedding-3-small",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4-turbo",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1-hd",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "babbage-002",
+      "eolFrom": "2026-09-28"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "davinci-002",
+      "eolFrom": "2026-09-28"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-3.5-turbo",
+      "eolFrom": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "whisper-1",
+      "eolFrom": "2027-02-26"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "text-moderation-latest",
+      "eolFrom": "2025-10-27"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "text-moderation-stable",
+      "eolFrom": "2025-10-27"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "text-embedding-ada-002",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "rtpengine",
+      "label": "rtpengine",
+      "release": "26.2",
+      "eolFrom": "2026-10-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "scala",
+      "label": "Scala",
+      "release": "3.9",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "eol-changed",
+      "product": "scala",
+      "label": "Scala",
+      "release": "3.8",
+      "from": null,
+      "to": "2026-09-03"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "support-changed",
+      "product": "scala",
+      "label": "Scala",
+      "release": "3.8",
+      "from": null,
+      "to": "2026-09-03"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.2",
+      "eolFrom": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.1",
+      "eolFrom": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.0",
+      "eolFrom": "2026-02-28"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.14",
+      "eolFrom": "2026-12-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.13",
+      "eolFrom": "2025-04-30"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.12",
+      "eolFrom": "2024-12-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.11",
+      "eolFrom": "2023-10-31"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.10",
+      "eolFrom": "2023-01-14"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.9",
+      "eolFrom": "2022-07-01"
+    },
+    {
+      "detectedAt": "2026-09-06T00:07:24+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "1.8",
+      "eolFrom": "2022-01-14"
     }
   ]
 }

@@ -1,6 +1,121 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": null,
-  "entries": []
+  "updatedAt": "2026-09-06T04:38:21.632Z",
+  "entries": [
+    {
+      "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
+      "syncedAt": "2026-09-06T04:38:21.632Z",
+      "sourceGeneratedAt": "2026-09-06T00:07:24+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "350ed317c647ce367c14b1fc54360b4ccc352b1f275e59518980457e1620bd9b",
+      "afterSha256": "426c2bf779b45cff2cbd32f20507caf36c71bb565e4b1d8af75a4bef31c1c1d4",
+      "productCount": 472,
+      "releaseCount": 8549,
+      "changes": {
+        "total": 134,
+        "releaseAdded": 105,
+        "releaseRemoved": 0,
+        "eolChanged": 5,
+        "supportChanged": 2,
+        "latestChanged": 16,
+        "releaseMetadataChanged": 6,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-rds-mariadb",
+          "label": "Amazon RDS for MariaDB"
+        },
+        {
+          "slug": "bun",
+          "label": "Bun"
+        },
+        {
+          "slug": "citrix-vad",
+          "label": "Citrix Virtual Apps and Desktops"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cockroachdb",
+          "label": "CockroachDB"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "hashicorp-vault",
+          "label": "Hashicorp Vault"
+        },
+        {
+          "slug": "kubernetes-csi-node-driver-registrar",
+          "label": "Kubernetes CSI Node Driver Registrar"
+        },
+        {
+          "slug": "mautic",
+          "label": "Mautic"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "openwrt",
+          "label": "OpenWrt"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "scala",
+          "label": "Scala"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "vmware-cloud-foundation",
+          "label": "VMware Cloud Foundation"
+        },
+        {
+          "slug": "esxi",
+          "label": "VMware ESXi"
+        },
+        {
+          "slug": "vcenter",
+          "label": "VMware vCenter Server"
+        },
+        {
+          "slug": "weechat",
+          "label": "WeeChat"
+        }
+      ]
+    }
+  ]
 }
