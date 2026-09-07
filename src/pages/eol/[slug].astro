@@ -26,7 +26,7 @@ export function getStaticPaths() {
   return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
 }
 
-const INITIAL_RELEASE_LIMIT = 20;
+const INITIAL_RELEASE_LIMIT = 10;
 const { product } = Astro.props;
 const releases = product.releases.slice().sort((a, b) => (b.releaseDate ?? '').localeCompare(a.releaseDate ?? ''));
 const hiddenReleaseCount = Math.max(0, releases.length - INITIAL_RELEASE_LIMIT);
@@ -101,8 +101,8 @@ const structured = {
     <p>{getProductSummary(product)}</p>
   </div></section>
 
-  <section class="section"><div class="container two-col">
-    <div>
+  <section class="section"><div class="container two-col product-detail-layout">
+    <div class="product-detail-main">
       <TrackedVersionPanel product={product} />
 
       {productOverview && (
@@ -133,34 +133,65 @@ const structured = {
           <p class="section-note">最新 {INITIAL_RELEASE_LIMIT} 件を表示しています。全 {releases.length} 件。</p>
           <div class="hero-actions">
             <button class="button" type="button" data-version-more aria-expanded="false" aria-controls="version-support-table">
-              MORE（残り {hiddenReleaseCount} 件）
+              すべて表示（残り {hiddenReleaseCount} 件）
             </button>
           </div>
         </>
       )}
+    </div>
 
-      {releaseHighlights.length > 0 && (
-        <section class="subsection" id="release-highlights">
-          <h2>主なリリース内容・変更点</h2>
-          <p class="section-lead">公式リリースノートをもとに、メジャーアップデートで確認したい主な変更点を簡潔に整理しています。網羅的な変更履歴ではないため、移行前には必ず公式情報を確認してください。</p>
-          <div class="version-list">
-            {releaseHighlights.map((release) => (
-              <article class="version-item">
-                <span class="eyebrow">RELEASE HIGHLIGHTS</span>
-                <h3>{product.label} {release.version}</h3>
-                <p>リリース日: <strong>{formatJaDate(release.releaseDate)}</strong></p>
-                <p>{release.summary}</p>
-                <ul class="compact-list">
-                  {release.highlights.map((highlight) => <li>{highlight}</li>)}
-                </ul>
-                <p><a href={release.sourceUrl} rel="external">{release.sourceLabel} →</a></p>
-                <p class="muted">公式情報確認日: {formatJaDate(release.checkedAt)}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+    <aside class="panel product-detail-aside">
+      <h2>どうすればいい？</h2>
+      {nearestEol ? (
+        <>
+          <p><strong>{product.label} {nearestEol.name}</strong> は、現在確認できるサポート中系列の中で最もEOLが近く、{relativeEol(nearestEol.eolFrom)} です。</p>
+          {target && <p>更新先の候補として、現在の系列より新しくサポート中の {target.isLts && <strong>LTS </strong>}<strong>{target.name}</strong> 系を確認してください。公式の移行手順・互換性情報を確認してから判断してください。</p>}
+        </>
+      ) : <p>現在のスナップショットでは、将来のEOL日が確定しているサポート中バージョンを特定できません。期限未定の系列を含め、公式のサポート方針を確認してください。</p>}
+      <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
+      {releaseHighlights.length > 0 && <p><a href="#release-highlights">主なリリース変更点を見る →</a></p>}
+      {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
+      {migrationGuide && <>
+        <h3>公式の移行・アップグレード資料</h3>
+        <p><a href={migrationGuide.url} rel="external">{migrationGuide.label} →</a></p>
+        {migrationGuide.note && <p class="muted">{migrationGuide.note}</p>}
+      </>}
+      {officialReview && <>
+        <h3>公式ソース照合</h3>
+        <p><strong>{officialComparisonStatusLabel(officialReview.comparisonStatus)}</strong><br/><small>照合: {formatJaDate(officialReview.comparisonCheckedAt ?? officialReview.sourceCheckedAt)}</small></p>
+        <p><a href="#official-source-review">照合内容を確認する →</a></p>
+      </>}
+      <h3>一次情報</h3>
+      <ul>
+        {product.links.releasePolicy && <li><a href={product.links.releasePolicy} rel="external">公式リリース / サポート方針</a></li>}
+        {product.links.html && <li><a href={product.links.html} rel="external">endoflife.date の {product.label} ページ</a></li>}
+        <li><a href={`/changes/?product=${product.slug}`}>{product.label} の変更履歴</a></li>
+      </ul>
+    </aside>
 
+    {releaseHighlights.length > 0 && (
+      <section class="subsection release-highlights-wide" id="release-highlights">
+        <h2>主なリリース内容・変更点</h2>
+        <p class="section-lead">公式リリースノートをもとに、メジャーアップデートで確認したい主な変更点を簡潔に整理しています。網羅的な変更履歴ではないため、移行前には必ず公式情報を確認してください。</p>
+        <div class="version-list">
+          {releaseHighlights.map((release) => (
+            <article class="version-item">
+              <span class="eyebrow">RELEASE HIGHLIGHTS</span>
+              <h3>{product.label} {release.version}</h3>
+              <p>リリース日: <strong>{formatJaDate(release.releaseDate)}</strong></p>
+              <p>{release.summary}</p>
+              <ul class="compact-list">
+                {release.highlights.map((highlight) => <li>{highlight}</li>)}
+              </ul>
+              <p><a href={release.sourceUrl} rel="external">{release.sourceLabel} →</a></p>
+              <p class="muted">公式情報確認日: {formatJaDate(release.checkedAt)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="product-detail-secondary">
       {supported.length > 0 && (
         <section class="subsection">
           <h2>現在サポート中の主なバージョン</h2>
@@ -225,34 +256,6 @@ const structured = {
         </section>
       )}
     </div>
-    <aside class="panel">
-      <h2>どうすればいい？</h2>
-      {nearestEol ? (
-        <>
-          <p><strong>{product.label} {nearestEol.name}</strong> は、現在確認できるサポート中系列の中で最もEOLが近く、{relativeEol(nearestEol.eolFrom)} です。</p>
-          {target && <p>更新先の候補として、現在の系列より新しくサポート中の {target.isLts && <strong>LTS </strong>}<strong>{target.name}</strong> 系を確認してください。公式の移行手順・互換性情報を確認してから判断してください。</p>}
-        </>
-      ) : <p>現在のスナップショットでは、将来のEOL日が確定しているサポート中バージョンを特定できません。期限未定の系列を含め、公式のサポート方針を確認してください。</p>}
-      <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
-      {releaseHighlights.length > 0 && <p><a href="#release-highlights">主なリリース変更点を見る →</a></p>}
-      {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
-      {migrationGuide && <>
-        <h3>公式の移行・アップグレード資料</h3>
-        <p><a href={migrationGuide.url} rel="external">{migrationGuide.label} →</a></p>
-        {migrationGuide.note && <p class="muted">{migrationGuide.note}</p>}
-      </>}
-      {officialReview && <>
-        <h3>公式ソース照合</h3>
-        <p><strong>{officialComparisonStatusLabel(officialReview.comparisonStatus)}</strong><br/><small>照合: {formatJaDate(officialReview.comparisonCheckedAt ?? officialReview.sourceCheckedAt)}</small></p>
-        <p><a href="#official-source-review">照合内容を確認する →</a></p>
-      </>}
-      <h3>一次情報</h3>
-      <ul>
-        {product.links.releasePolicy && <li><a href={product.links.releasePolicy} rel="external">公式リリース / サポート方針</a></li>}
-        {product.links.html && <li><a href={product.links.html} rel="external">endoflife.date の {product.label} ページ</a></li>}
-        <li><a href={`/changes/?product=${product.slug}`}>{product.label} の変更履歴</a></li>
-      </ul>
-    </aside>
   </div></section>
 
   <section class="section"><div class="container">
@@ -283,4 +286,13 @@ const structured = {
       });
     });
   </script>
+
+  <style>
+    .release-highlights-wide { grid-column:1 / -1; width:100%; margin-top:12px; }
+    .product-detail-secondary { grid-column:1; min-width:0; }
+    @media (max-width: 860px) {
+      .release-highlights-wide,
+      .product-detail-secondary { grid-column:auto; }
+    }
+  </style>
 </BaseLayout>
