@@ -53,7 +53,7 @@ const products = [
         eolFrom: null,
         isEol: false,
         isMaintained: true,
-        latest: { name: '10.2', date: '2026-08-10', link: null }
+        latest: { name: '10.2', date: '2026-07-20', link: null }
       },
       {
         name: '9',
