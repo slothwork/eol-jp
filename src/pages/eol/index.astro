@@ -48,6 +48,7 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
     <p>製品名、技術名、カテゴリから検索できます。通常表示は頭文字ごとに分け、初期表示を軽量化しています。</p>
     <input id="product-search" class="search-box" type="search" placeholder="例：Python / Ubuntu / PostgreSQL" autocomplete="off" />
   </div></section>
+
   <section class="section"><div class="container">
     <h2 id="categories">カテゴリから探す</h2>
     <p class="section-lead">製品種別ごとのEOL一覧から探せます。</p>
@@ -55,21 +56,26 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
       {categories.map((category) => <a class="filter-tab" href={`/category/${category}/`}>{getCategoryLabel(category)}</a>)}
     </div>
   </div></section>
-  <section class="section"><div class="container">
-    <h2>製品名から探す</h2>
-    <p class="section-lead">頭文字を選択すると、そのグループだけを表示します。検索欄を使うと全製品から検索します。</p>
-    <div class="filter-tabs" role="group" aria-label="製品名の頭文字">
-      {groups.map((group) => (
-        <button class:list={['filter-tab', group === initialGroup && 'active']} type="button" data-product-group={group} aria-pressed={group === initialGroup ? 'true' : 'false'}>{group}</button>
-      ))}
-      <button class="filter-tab" type="button" data-product-group="all" aria-pressed="false">すべて</button>
+
+  <section class="section product-browser-section"><div class="container product-browser-layout" data-product-browser-layout>
+    <div class="product-browser-main">
+      <h2>製品名から探す</h2>
+      <p class="section-lead">頭文字を選択すると、そのグループだけを表示します。検索欄を使うと全製品から検索します。</p>
+      <div class="filter-tabs" role="group" aria-label="製品名の頭文字">
+        {groups.map((group) => (
+          <button class:list={['filter-tab', group === initialGroup && 'active']} type="button" data-product-group={group} aria-pressed={group === initialGroup ? 'true' : 'false'}>{group}</button>
+        ))}
+        <button class="filter-tab" type="button" data-product-group="all" aria-pressed="false">すべて</button>
+      </div>
+      <p id="product-count" class="muted">{initialGroup}：{initialProducts.length}製品</p>
+      <div id="product-grid" class="grid" data-initial-group={initialGroup}>
+        {initialProducts.map((product) => <ProductCard product={product} />)}
+      </div>
+      <p id="no-results" hidden>該当する製品がありません。</p>
     </div>
-    <p id="product-count" class="muted">{initialGroup}：{initialProducts.length}製品</p>
-    <div id="product-grid" class="grid" data-initial-group={initialGroup}>
-      {initialProducts.map((product) => <ProductCard product={product} />)}
-    </div>
-    <p id="no-results" hidden>該当する製品がありません。</p>
+    <aside class="recent-products-rail" data-view-history-slot hidden aria-label="最近見た製品"></aside>
   </div></section>
+
   <script id="product-data" type="application/json" is:inline set:html={productDataJson}></script>
   <script>
     type ProductView = {
@@ -179,4 +185,19 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
       renderProducts(matches, '検索結果');
     });
   </script>
+
+  <style>
+    .product-browser-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; align-items:start; }
+    .recent-products-rail { min-width:0; }
+    @media (min-width: 981px) {
+      .product-browser-layout.has-recent-history { grid-template-columns:minmax(0,1fr) minmax(270px,310px); }
+      .product-browser-layout.has-recent-history .product-browser-main .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 980px) {
+      .recent-products-rail { order:2; }
+    }
+    @media (max-width: 620px) {
+      .product-browser-main .grid { grid-template-columns:1fr; }
+    }
+  </style>
 </BaseLayout>
