@@ -27,7 +27,8 @@
     type ViewHistoryState
   } from '@/lib/view-history';
 
-  const INITIAL_VISIBLE_ITEMS = 6;
+  const DEFAULT_VISIBLE_ITEMS = 6;
+  const SIDEBAR_VISIBLE_ITEMS = 4;
 
   document.querySelectorAll<HTMLElement>('[data-view-history-section]').forEach((section) => {
     const list = section.querySelector<HTMLElement>('[data-view-history-list]');
@@ -36,7 +37,25 @@
     const moreButton = section.querySelector<HTMLButtonElement>('[data-view-history-more]');
     if (!list || !clearButton || !moreRow || !moreButton) return;
 
+    const sidebarSlot = document.querySelector<HTMLElement>('[data-view-history-slot]');
+    const sidebarLayout = sidebarSlot?.parentElement ?? null;
+    const isSidebar = Boolean(sidebarSlot);
+    const initialVisibleItems = isSidebar ? SIDEBAR_VISIBLE_ITEMS : DEFAULT_VISIBLE_ITEMS;
     let expanded = false;
+
+    if (sidebarSlot) {
+      section.dataset.viewHistoryPlacement = 'sidebar';
+      sidebarSlot.append(section);
+    } else {
+      const pageHead = document.querySelector<HTMLElement>('main > .page-head');
+      pageHead?.after(section);
+    }
+
+    const updatePlacementVisibility = (hasItems: boolean) => {
+      if (!sidebarSlot) return;
+      sidebarSlot.hidden = !hasItems;
+      sidebarLayout?.classList.toggle('has-recent-history', hasItems);
+    };
 
     const load = (): ViewHistoryState => {
       try {
@@ -64,15 +83,17 @@
 
     const render = () => {
       const state = load();
-      const visibleItems = expanded ? state.items : state.items.slice(0, INITIAL_VISIBLE_ITEMS);
+      const visibleItems = expanded ? state.items : state.items.slice(0, initialVisibleItems);
       list.replaceChildren();
 
       if (state.items.length === 0) {
         section.hidden = true;
+        updatePlacementVisibility(false);
         return;
       }
 
       section.hidden = false;
+      updatePlacementVisibility(true);
       for (const item of visibleItems) {
         const article = document.createElement('article');
         article.className = 'history-item view-history-item';
@@ -107,7 +128,7 @@
         list.append(article);
       }
 
-      moreRow.hidden = state.items.length <= INITIAL_VISIBLE_ITEMS;
+      moreRow.hidden = state.items.length <= initialVisibleItems;
       moreButton.setAttribute('aria-expanded', String(expanded));
       moreButton.textContent = expanded ? '表示を減らす' : `すべて表示（${state.items.length}件）`;
     };
@@ -132,8 +153,6 @@
       if (event.key === VIEW_HISTORY_STORAGE_KEY) render();
     });
 
-    const pageHead = document.querySelector<HTMLElement>('main > .page-head');
-    pageHead?.after(section);
     render();
   });
 </script>
@@ -145,6 +164,16 @@
   .view-history-item { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .view-history-item h3 { margin: 0; font-size: 1.05rem; }
   .view-history-item p { margin-top: 4px; }
+
+  .recent-view-history[data-view-history-placement='sidebar'] { padding: 0; }
+  .recent-view-history[data-view-history-placement='sidebar'] > .container { width: 100%; }
+  .recent-view-history[data-view-history-placement='sidebar'] .view-history-heading,
+  .recent-view-history[data-view-history-placement='sidebar'] .view-history-item { align-items: stretch; flex-direction: column; }
+  .recent-view-history[data-view-history-placement='sidebar'] .view-history-heading > .button,
+  .recent-view-history[data-view-history-placement='sidebar'] .view-history-item > .button { width: 100%; justify-content: center; }
+  .recent-view-history[data-view-history-placement='sidebar'] .history-item { padding: 14px; }
+  .recent-view-history[data-view-history-placement='sidebar'] .view-history-item .muted { font-size: .8rem; }
+
   @media (max-width: 620px) {
     .view-history-heading,
     .view-history-item { align-items: stretch; flex-direction: column; }
