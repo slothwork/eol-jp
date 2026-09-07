@@ -4,13 +4,16 @@ import { formatJaDate, relativeEol } from '@/lib/date';
 import { generatedAt, getCategoryLabel, products } from '@/lib/eol';
 import { collectLatestReleaseEntries, countLatestReleasesWithin } from '@/lib/latest-releases';
 
-const entries = collectLatestReleaseEntries(products);
+const MAX_RELEASE_AGE_DAYS = 365;
+const allEntries = collectLatestReleaseEntries(products);
+const entries = allEntries.filter((entry) => entry.ageDays <= MAX_RELEASE_AGE_DAYS);
 const categories = [...new Set(entries.map((entry) => entry.category))]
   .map((category) => ({ category, label: getCategoryLabel(category) }))
   .sort((a, b) => a.label.localeCompare(b.label, 'ja'));
 const count7 = countLatestReleasesWithin(entries, 7);
 const count30 = countLatestReleasesWithin(entries, 30);
 const count90 = countLatestReleasesWithin(entries, 90);
+const count365 = entries.length;
 const updated = new Date(generatedAt).toLocaleString('ja-JP', {
   timeZone: 'Asia/Tokyo',
   dateStyle: 'long',
@@ -29,14 +32,14 @@ function externalLatestLink(value: string | null): string | null {
 ---
 <BaseLayout
   title="最新リリース情報"
-  description="Node.js、Python、Ubuntu、PostgreSQLなど、サポート中の製品系列について最新版のバージョンとリリース日を新しい順に確認できます。"
+  description="Node.js、Python、Ubuntu、PostgreSQLなど、サポート中の製品系列について直近1年の最新版バージョンとリリース日を新しい順に確認できます。"
   canonicalPath="/releases/"
 >
   <section class="page-head">
     <div class="container">
       <span class="eyebrow">LATEST RELEASES</span>
       <h1>最新リリース情報</h1>
-      <p>現在サポート継続中と判断できる製品系列について、確認できた最新版とリリース日を新しい順にまとめています。メジャーアップデートだけでなく、サポート中系列のpatch / minor更新も確認できます。</p>
+      <p>現在サポート継続中と判断できる製品系列について、直近1年に確認できた最新版とリリース日を新しい順にまとめています。メジャーアップデートだけでなく、サポート中系列のpatch / minor更新も確認できます。</p>
       <div class="stats release-stats">
         <div class="stat"><strong>{count7}</strong><span>直近7日の最新版更新</span></div>
         <div class="stat"><strong>{count30}</strong><span>直近30日の最新版更新</span></div>
@@ -50,7 +53,7 @@ function externalLatestLink(value: string | null): string | null {
       <div class="notice release-notice">
         <strong>このページの「最新」について</strong>
         <p>endoflife.date の各サポート系列に記録された最新版（latest）を表示しています。「何が変更されたか」の網羅的なリリースノートではありません。重要な更新判断では、製品ページや最新版の参照先から公式情報を確認してください。</p>
-        <p>データ最終更新: {updated}</p>
+        <p>一覧は直近1年を対象としています。1年以上更新のないサポート系列は各製品ページで確認できます。データ最終更新: {updated}</p>
       </div>
 
       <div class="release-toolbar" aria-label="最新リリースの絞り込み">
@@ -71,11 +74,11 @@ function externalLatestLink(value: string | null): string | null {
         <button class="filter-tab" type="button" data-release-period="7" aria-pressed="false">7日</button>
         <button class="filter-tab active" type="button" data-release-period="30" aria-pressed="true">30日</button>
         <button class="filter-tab" type="button" data-release-period="90" aria-pressed="false">90日</button>
-        <button class="filter-tab" type="button" data-release-period="all" aria-pressed="false">全期間</button>
+        <button class="filter-tab" type="button" data-release-period="365" aria-pressed="false">1年</button>
       </div>
       <p class="muted" data-release-count>直近30日：{count30}件</p>
 
-      <div class="release-list" data-release-list>
+      <div class="release-list" data-release-list data-release-total={count365}>
         {entries.map((entry) => {
           const categoryLabel = getCategoryLabel(entry.category);
           const latestLink = externalLatestLink(entry.latestLink);
@@ -117,7 +120,7 @@ function externalLatestLink(value: string | null): string | null {
       </div>
 
       <noscript>
-        <p class="section-note">JavaScriptが無効な場合は、期間・カテゴリ・検索の絞り込みを行わず全件を表示します。</p>
+        <p class="section-note">JavaScriptが無効な場合は、直近1年分を絞り込まず表示します。</p>
       </noscript>
     </div>
   </section>
@@ -129,7 +132,7 @@ function externalLatestLink(value: string | null): string | null {
     const releaseItems = [...document.querySelectorAll<HTMLElement>('[data-release-item]')];
     const countElement = document.querySelector<HTMLElement>('[data-release-count]');
     const emptyElement = document.querySelector<HTMLElement>('[data-release-empty]');
-    const validPeriods = new Set(['7', '30', '90', 'all']);
+    const validPeriods = new Set(['7', '30', '90', '365']);
     const validCategories = new Set([...categorySelect?.options ?? []].map((option) => option.value));
     const params = new URLSearchParams(window.location.search);
     let activePeriod = validPeriods.has(params.get('days') ?? '') ? (params.get('days') ?? '30') : '30';
@@ -138,7 +141,7 @@ function externalLatestLink(value: string | null): string | null {
     if (categorySelect && validCategories.has(initialCategory)) categorySelect.value = initialCategory;
     if (searchInput) searchInput.value = params.get('q') ?? '';
 
-    const periodLabel = (period: string) => period === 'all' ? '全期間' : `直近${period}日`;
+    const periodLabel = (period: string) => period === '365' ? '直近1年' : `直近${period}日`;
 
     function syncPeriodButtons() {
       for (const button of periodButtons) {
@@ -161,7 +164,7 @@ function externalLatestLink(value: string | null): string | null {
     function applyFilters() {
       const query = searchInput?.value.trim().toLocaleLowerCase('ja-JP') ?? '';
       const category = categorySelect?.value ?? '';
-      const maxAge = activePeriod === 'all' ? Infinity : Number(activePeriod);
+      const maxAge = Number(activePeriod);
       let visible = 0;
 
       for (const item of releaseItems) {
