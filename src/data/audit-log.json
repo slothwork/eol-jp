@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-06T04:38:21.632Z",
+  "updatedAt": "2026-09-07T04:40:54.986Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -114,6 +114,84 @@
         {
           "slug": "weechat",
           "label": "WeeChat"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-07T04:40:54.986Z-c316d5972842",
+      "syncedAt": "2026-09-07T04:40:54.986Z",
+      "sourceGeneratedAt": "2026-09-07T00:09:25+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "426c2bf779b45cff2cbd32f20507caf36c71bb565e4b1d8af75a4bef31c1c1d4",
+      "afterSha256": "c316d597284207f207d76ebe21a48396c4fd3cae5ff76e4a72af6862cb91d75f",
+      "productCount": 473,
+      "releaseCount": 8604,
+      "changes": {
+        "total": 80,
+        "releaseAdded": 55,
+        "releaseRemoved": 0,
+        "eolChanged": 1,
+        "supportChanged": 1,
+        "latestChanged": 21,
+        "releaseMetadataChanged": 1,
+        "productMetadataChanged": 1
+      },
+      "affectedProducts": [
+        {
+          "slug": "ant",
+          "label": "Apache Ant"
+        },
+        {
+          "slug": "hbase",
+          "label": "Apache HBase"
+        },
+        {
+          "slug": "cakephp",
+          "label": "CakePHP"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "jquery",
+          "label": "jQuery"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "mulesoft-runtime",
+          "label": "Mule Runtime"
+        },
+        {
+          "slug": "numpy",
+          "label": "NumPy"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "roundcube",
+          "label": "Roundcube Webmail"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
         }
       ]
     }
