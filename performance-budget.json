@@ -30,9 +30,16 @@
     {
       "route": "/releases/",
       "html": "releases/index.html",
-      "maxTotalGzipBytes": 65536,
-      "maxJsGzipBytes": 8192,
+      "maxTotalGzipBytes": 53248,
+      "maxJsGzipBytes": 6144,
       "maxCssGzipBytes": 8192
+    },
+    {
+      "route": "/releases/data.json",
+      "html": "releases/data.json",
+      "maxTotalGzipBytes": 98304,
+      "maxJsGzipBytes": 1024,
+      "maxCssGzipBytes": 1024
     },
     {
       "route": "/my-eol/",
