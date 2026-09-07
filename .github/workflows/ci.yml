@@ -108,6 +108,9 @@ jobs:
       - name: Responsive shell tests
         run: npm run test:responsive-shell
 
+      - name: UX layout improvement tests
+        run: npm run test:ux-layout-improvements
+
       - name: Performance budget utility tests
         run: npm run test:performance-budget
 
