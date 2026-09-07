@@ -1,5 +1,5 @@
-import { formatJaDate, relativeEol } from '@/lib/date';
-import { getCategoryLabel, products } from '@/lib/eol';
+import { daysUntil } from '@/lib/date';
+import { products } from '@/lib/eol';
 import { collectLatestReleaseEntries } from '@/lib/latest-releases';
 
 export const prerender = true;
@@ -21,15 +21,12 @@ export async function GET() {
       productSlug: entry.productSlug,
       productLabel: entry.productLabel,
       category: entry.category,
-      categoryLabel: getCategoryLabel(entry.category),
       cycle: entry.cycle,
       isLts: entry.isLts,
       eolFrom: entry.eolFrom,
-      eolDisplay: formatJaDate(entry.eolFrom),
-      relativeEol: relativeEol(entry.eolFrom),
+      eolDays: daysUntil(entry.eolFrom),
       latestName: entry.latestName,
       latestDate: entry.latestDate,
-      latestDateDisplay: formatJaDate(entry.latestDate),
       latestLink: externalLatestLink(entry.latestLink),
       ageDays: entry.ageDays
     }));
