@@ -74,20 +74,40 @@ assert(
   'Product detail must keep a stable version support table target for responsive behavior.'
 );
 assert(
+  productDetail.includes('バージョン<span class="version-support-heading-secondary">最新バージョン</span>'),
+  'Version and latest version must share the first support-table column.'
+);
+assert(
+  productDetail.includes('リリース日<span class="version-support-heading-secondary">最新リリース日</span>'),
+  'Release date and latest release date must share the same support-table column.'
+);
+assert(
+  productDetail.includes('<span class="version-support-secondary">{release.latest?.name ?? \'不明\'}</span>'),
+  'Latest version must be rendered as secondary information beneath the release series.'
+);
+assert(
+  productDetail.includes("release.latest?.date ? formatJaDate(release.latest.date) : '不明'"),
+  'Latest release date must remain visible in the release-date column.'
+);
+assert(
+  !productDetail.includes('<th scope="col">最新</th>'),
+  'Version support table must not keep the redundant standalone latest column.'
+);
+assert(
   trackedVersionPanel.includes("import '@/version-support-table.css';"),
   'Product detail must load version support responsive styles as a page CSS asset.'
 );
 assert(
-  versionSupportCss.includes('#version-support-table tbody tr:not([hidden])'),
-  'Visible version support rows must collapse into mobile grid rows without changing the expansion behavior.'
+  versionSupportCss.includes('table-layout: fixed'),
+  'Version support table must use fixed column sizing to fit the compact five-column layout.'
 );
 assert(
-  versionSupportCss.includes('grid-template-columns: minmax(0, 1fr) minmax(0, 38%)'),
-  'Version support rows must use the bounded two-column mobile layout.'
+  versionSupportCss.includes('.version-support-secondary'),
+  'Version support table must style secondary values consistently.'
 );
 assert(
-  versionSupportCss.includes("content: 'EOL / セキュリティ終了'"),
-  'Version support mobile rows must retain an explicit EOL label after hiding the table header.'
+  versionSupportCss.includes('#version-support-table th:nth-child(5)'),
+  'Version support table must define five bounded column widths.'
 );
 assert(
   versionSupportCss.includes('.table-wrap:has(> #version-support-table)::before'),
