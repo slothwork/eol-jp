@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import DeadlineTable from '@/components/DeadlineTable.astro';
 import ProductCard from '@/components/ProductCard.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import attentionRankingData from '@/data/eol-attention-ranking.json';
@@ -60,16 +61,7 @@ const attentionUpdated = attentionRanking.generatedAt
     <div class="container">
       <h2>まもなくEOL</h2>
       <p class="section-lead">期限が近いものから表示しています。移行・更新計画の優先順位付けに利用できます。</p>
-      <div class="deadline-list">
-        {upcoming365.slice(0, 8).map(({ product, release }) => (
-          <div class="deadline-row">
-            <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
-            <div><StatusBadge status={statusFor(release)} /></div>
-            <div>{relativeEol(release.eolFrom)}</div>
-            <div class="muted">{formatJaDate(release.eolFrom)}</div>
-          </div>
-        ))}
-      </div>
+      <DeadlineTable items={upcoming365.slice(0, 8)} ariaLabel="まもなくEOLを迎える製品" />
       <p><a href="/upcoming/">今後1年のEOLをすべて見る →</a></p>
     </div>
   </section>
@@ -112,16 +104,7 @@ const attentionUpdated = attentionRanking.generatedAt
     <section class="section">
       <div class="container">
         <h2>最近EOLになったバージョン</h2>
-        <div class="deadline-list">
-          {ended.slice(0, 5).map(({ product, release }) => (
-            <div class="deadline-row">
-              <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong></div>
-              <div>バージョン {release.name}</div>
-              <div><StatusBadge status="ended" /></div>
-              <div class="muted">{formatJaDate(release.eolFrom)}</div>
-            </div>
-          ))}
-        </div>
+        <DeadlineTable items={ended.slice(0, 5)} ariaLabel="最近EOLになったバージョン" />
       </div>
     </section>
   )}
