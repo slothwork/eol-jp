@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductTable from '@/components/ProductTable.astro';
-import { getCategoryLabel, getProductSummary, products, statusFor, statusLabel } from '@/lib/eol';
+import { getCategoryLabel, products, statusFor, statusLabel } from '@/lib/eol';
 import { daysUntil, relativeEol } from '@/lib/date';
 
 const categories = [...new Set(products.map((product) => product.category))]
@@ -31,7 +31,6 @@ const productData = products.map((product) => {
     slug: product.slug,
     label: product.label,
     category: categoryLabel,
-    summary: getProductSummary(product),
     group: groupForLabel(product.label),
     search: `${product.label} ${product.slug} ${categoryLabel}`.toLowerCase(),
     status: next ? statusFor(next.release) : null,
@@ -86,7 +85,6 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
       slug: string;
       label: string;
       category: string;
-      summary: string;
       group: string;
       search: string;
       status: string | null;
@@ -123,10 +121,7 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
       link.href = `/eol/${encodeURIComponent(item.slug)}/`;
       link.textContent = item.label;
       strong.append(link);
-      const summary = document.createElement('span');
-      summary.className = 'dense-table-secondary';
-      summary.textContent = item.summary;
-      product.append(strong, summary);
+      product.append(strong);
 
       const category = document.createElement('td');
       category.className = 'product-table-category';
