@@ -64,7 +64,8 @@ function smokeDocument() {
       { id: 'products', path: '/eol/', selector: '.dense-table--product' },
       { id: 'category', path: '/category/lang/', selector: '.dense-table--product' },
       { id: 'upcoming', path: '/upcoming/', selector: '.dense-table--deadline' },
-      { id: 'changes', path: '/changes/', selector: '.dense-table--change' }
+      { id: 'changes', path: '/changes/', selector: '.dense-table--change' },
+      { id: 'versionSupport', path: '/eol/nodejs/', selector: '#version-support-table', wrapSelector: '.table-wrap' }
     ];
     const root = document.documentElement;
     const deadline = Date.now() + 12000;
@@ -73,11 +74,11 @@ function smokeDocument() {
       try {
         const doc = frame.contentDocument;
         const table = doc?.querySelector(target.selector);
-        const wrap = table?.closest('.dense-table-wrap');
-        let row = table?.querySelector('tbody tr');
+        const wrap = table?.closest(target.wrapSelector ?? '.dense-table-wrap');
+        let row = table?.querySelector('tbody tr:not([hidden])');
         if (!table || !wrap) {
           if (Date.now() < deadline) return setTimeout(() => inspect(target, frame), 50);
-          root.dataset.testError = target.id + ': dense table not found';
+          root.dataset.testError = target.id + ': responsive table not found';
           frame.remove();
           return;
         }
@@ -163,12 +164,12 @@ async function main() {
     assert(!testError, `dense table smoke failed: ${testError}`);
     assert(readDataAttribute(html, 'ready') === 'true', 'dense table smoke page did not complete');
 
-    for (const id of ['products', 'category', 'upcoming', 'changes']) {
+    for (const id of ['products', 'category', 'upcoming', 'changes', 'versionSupport']) {
       assert(readDataAttribute(html, `${id}-display`) === 'grid', `${id}: mobile table row did not collapse to grid`);
-      assert(readDataAttribute(html, `${id}-fits`) === 'true', `${id}: mobile dense table requires horizontal scrolling`);
+      assert(readDataAttribute(html, `${id}-fits`) === 'true', `${id}: mobile table requires horizontal scrolling`);
     }
 
-    console.log('Dense table browser smoke passed for product, category, upcoming, and change-history views.');
+    console.log('Dense table browser smoke passed for list views and the product-detail version support table.');
   } catch (error) {
     if (previewLog.trim()) console.error(`\n--- Astro preview log ---\n${previewLog.trim()}`);
     throw error;
