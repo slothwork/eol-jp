@@ -65,7 +65,7 @@ function smokeDocument() {
       { id: 'category', path: '/category/lang/', selector: '.dense-table--product' },
       { id: 'upcoming', path: '/upcoming/', selector: '.dense-table--deadline' },
       { id: 'changes', path: '/changes/', selector: '.dense-table--change' },
-      { id: 'versionSupport', path: '/eol/nodejs/', selector: '#version-support-table', wrapSelector: '.table-wrap' }
+      { id: 'version', path: '/eol/nodejs/', selector: '#version-support-table', wrapSelector: '.table-wrap' }
     ];
     const root = document.documentElement;
     const deadline = Date.now() + 12000;
@@ -168,7 +168,7 @@ async function main() {
     assert(!testError, `dense table smoke failed: ${testError}`);
     assert(readDataAttribute(html, 'ready') === 'true', 'dense table smoke page did not complete');
 
-    for (const id of ['products', 'category', 'upcoming', 'changes', 'versionSupport']) {
+    for (const id of ['products', 'category', 'upcoming', 'changes', 'version']) {
       const display = readDataAttribute(html, `${id}-display`);
       const width = readDataAttribute(html, `${id}-width`);
       const media = readDataAttribute(html, `${id}-media`);
