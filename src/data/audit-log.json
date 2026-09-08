@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-07T04:40:54.986Z",
+  "updatedAt": "2026-09-08T04:35:20.159Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -192,6 +192,120 @@
         {
           "slug": "tails",
           "label": "Tails"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-08T04:35:20.159Z-17c7d978d021",
+      "syncedAt": "2026-09-08T04:35:20.159Z",
+      "sourceGeneratedAt": "2026-09-08T00:08:01+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "c316d597284207f207d76ebe21a48396c4fd3cae5ff76e4a72af6862cb91d75f",
+      "afterSha256": "17c7d978d02108d25b4f0fd2ae1e2c6fb97580be47115a80fc3af1ff034e069d",
+      "productCount": 473,
+      "releaseCount": 8605,
+      "changes": {
+        "total": 68,
+        "releaseAdded": 1,
+        "releaseRemoved": 0,
+        "eolChanged": 13,
+        "supportChanged": 18,
+        "latestChanged": 29,
+        "releaseMetadataChanged": 7,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "behat",
+          "label": "Behat"
+        },
+        {
+          "slug": "bitbucket",
+          "label": "Bitbucket"
+        },
+        {
+          "slug": "contour",
+          "label": "Contour"
+        },
+        {
+          "slug": "debian",
+          "label": "Debian"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "drush",
+          "label": "Drush"
+        },
+        {
+          "slug": "eclipse-jetty",
+          "label": "Eclipse Jetty"
+        },
+        {
+          "slug": "gstreamer",
+          "label": "GStreamer"
+        },
+        {
+          "slug": "kotlin",
+          "label": "Kotlin"
+        },
+        {
+          "slug": "looker",
+          "label": "Looker"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "netbsd",
+          "label": "NetBSD"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "openssl",
+          "label": "OpenSSL"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "redhat-satellite",
+          "label": "Red Hat Satellite"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "splunk",
+          "label": "Splunk"
+        },
+        {
+          "slug": "traefik",
+          "label": "Traefik"
         }
       ]
     }
