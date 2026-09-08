@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ProductCard from '@/components/ProductCard.astro';
+import ProductTable from '@/components/ProductTable.astro';
 import { getCategoryLabel, getProductSummary, products, statusFor, statusLabel } from '@/lib/eol';
 import { daysUntil, relativeEol } from '@/lib/date';
 
@@ -37,7 +37,8 @@ const productData = products.map((product) => {
     status: next ? statusFor(next.release) : null,
     statusLabel: next ? statusLabel(statusFor(next.release)) : null,
     version: next?.release.name ?? null,
-    relative: next ? relativeEol(next.release.eolFrom) : null
+    relative: next ? relativeEol(next.release.eolFrom) : null,
+    eolFrom: next?.release.eolFrom ?? null
   };
 });
 const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
@@ -45,7 +46,7 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
 <BaseLayout title="EOL・サポート期限 製品一覧" description="Node.js、Python、PHP、Ubuntu、PostgreSQL、KubernetesなどのEOL・サポート終了日を製品別に確認できます。">
   <section class="page-head"><div class="container">
     <h1>EOL・サポート期限 製品一覧</h1>
-    <p>製品名、技術名、カテゴリから検索できます。通常表示は頭文字ごとに分け、初期表示を軽量化しています。</p>
+    <p>製品名、技術名、カテゴリから検索できます。通常表示は頭文字ごとに分け、1画面で比較しやすいテーブルで表示します。</p>
     <input id="product-search" class="search-box" type="search" placeholder="例：Python / Ubuntu / PostgreSQL" autocomplete="off" />
   </div></section>
 
@@ -68,9 +69,12 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
         <button class="filter-tab" type="button" data-product-group="all" aria-pressed="false">すべて</button>
       </div>
       <p id="product-count" class="muted">{initialGroup}：{initialProducts.length}製品</p>
-      <div id="product-grid" class="grid" data-initial-group={initialGroup}>
-        {initialProducts.map((product) => <ProductCard product={product} />)}
-      </div>
+      <ProductTable
+        products={initialProducts}
+        ariaLabel="製品名から探す EOL・サポート期限一覧"
+        tbodyId="product-table-body"
+        tbodyAttributes={{ 'data-initial-group': initialGroup }}
+      />
       <p id="no-results" hidden>該当する製品がありません。</p>
     </div>
     <aside class="recent-products-rail" data-view-history-slot hidden aria-label="最近見た製品"></aside>
@@ -89,55 +93,86 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
       statusLabel: string | null;
       version: string | null;
       relative: string | null;
+      eolFrom: string | null;
     };
 
     const input = document.querySelector<HTMLInputElement>('#product-search');
-    const grid = document.querySelector<HTMLElement>('#product-grid');
+    const tableBody = document.querySelector<HTMLTableSectionElement>('#product-table-body');
     const count = document.querySelector<HTMLElement>('#product-count');
     const noResults = document.querySelector<HTMLElement>('#no-results');
     const dataElement = document.querySelector<HTMLScriptElement>('#product-data');
     const tabs = [...document.querySelectorAll<HTMLButtonElement>('[data-product-group]')];
     const productData = JSON.parse(dataElement?.textContent ?? '[]') as ProductView[];
-    let activeGroup = grid?.dataset.initialGroup ?? 'A';
+    let activeGroup = tableBody?.dataset.initialGroup ?? 'A';
 
-    function createProductCard(item: ProductView) {
-      const article = document.createElement('article');
-      article.className = 'product-card';
+    function formatDateOnly(value: string | null): string {
+      if (!value) return '未定';
+      const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+      if (!match) return value;
+      return `${Number(match[1])}年${Number(match[2])}月${Number(match[3])}日`;
+    }
 
-      const topline = document.createElement('div');
-      topline.className = 'card-topline';
-      const category = document.createElement('span');
-      category.className = 'eyebrow';
+    function createProductRow(item: ProductView) {
+      const row = document.createElement('tr');
+      row.dataset.productRow = '';
+
+      const product = document.createElement('td');
+      product.className = 'product-table-product';
+      const strong = document.createElement('strong');
+      const link = document.createElement('a');
+      link.href = `/eol/${encodeURIComponent(item.slug)}/`;
+      link.textContent = item.label;
+      strong.append(link);
+      const summary = document.createElement('span');
+      summary.className = 'dense-table-secondary';
+      summary.textContent = item.summary;
+      product.append(strong, summary);
+
+      const category = document.createElement('td');
+      category.className = 'product-table-category';
       category.textContent = item.category;
-      topline.append(category);
+
+      const status = document.createElement('td');
+      status.className = 'product-table-status';
       if (item.status && item.statusLabel) {
         const badge = document.createElement('span');
         badge.className = `status-badge status-${item.status}`;
         badge.textContent = item.statusLabel;
-        topline.append(badge);
-      }
-
-      const heading = document.createElement('h3');
-      const link = document.createElement('a');
-      link.href = `/eol/${item.slug}/`;
-      link.textContent = item.label;
-      heading.append(link);
-
-      const summary = document.createElement('p');
-      summary.textContent = item.summary;
-
-      const deadline = document.createElement('p');
-      deadline.className = 'card-deadline';
-      if (item.version && item.relative) {
-        const strong = document.createElement('strong');
-        strong.textContent = item.version;
-        deadline.append(strong, document.createTextNode(`：${item.relative}`));
+        status.append(badge);
       } else {
-        deadline.textContent = '今後のEOL日が登録されていません。';
+        const unknown = document.createElement('span');
+        unknown.className = 'muted';
+        unknown.textContent = '期限未定';
+        status.append(unknown);
       }
 
-      article.append(topline, heading, summary, deadline);
-      return article;
+      const version = document.createElement('td');
+      version.className = 'product-table-version';
+      if (item.version) {
+        const versionStrong = document.createElement('strong');
+        versionStrong.textContent = item.version;
+        version.append(versionStrong);
+      } else {
+        version.classList.add('muted');
+        version.textContent = '—';
+      }
+
+      const eol = document.createElement('td');
+      eol.className = 'product-table-eol';
+      if (item.relative) {
+        const relative = document.createElement('strong');
+        relative.textContent = item.relative;
+        const date = document.createElement('span');
+        date.className = 'dense-table-secondary';
+        date.textContent = formatDateOnly(item.eolFrom);
+        eol.append(relative, date);
+      } else {
+        eol.classList.add('muted');
+        eol.textContent = '今後のEOLなし';
+      }
+
+      row.append(product, category, status, version, eol);
+      return row;
     }
 
     function setActiveTab(group: string | null) {
@@ -149,10 +184,10 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
     }
 
     function renderProducts(items: ProductView[], label: string) {
-      if (!grid) return;
+      if (!tableBody) return;
       const fragment = document.createDocumentFragment();
-      items.forEach((item) => fragment.append(createProductCard(item)));
-      grid.replaceChildren(fragment);
+      items.forEach((item) => fragment.append(createProductRow(item)));
+      tableBody.replaceChildren(fragment);
       if (count) count.textContent = `${label}：${items.length}製品`;
       if (noResults) noResults.hidden = items.length !== 0;
     }
@@ -191,13 +226,9 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
     .recent-products-rail { min-width:0; }
     @media (min-width: 981px) {
       .product-browser-layout.has-recent-history { grid-template-columns:minmax(0,1fr) minmax(270px,310px); }
-      .product-browser-layout.has-recent-history .product-browser-main .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media (max-width: 980px) {
       .recent-products-rail { order:2; }
-    }
-    @media (max-width: 620px) {
-      .product-browser-main .grid { grid-template-columns:1fr; }
     }
   </style>
 </BaseLayout>
