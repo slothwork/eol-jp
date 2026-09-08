@@ -45,6 +45,7 @@
     "test:browser-smoke": "node scripts/browser-smoke.mjs",
     "test:security-headers": "node --experimental-strip-types scripts/test-security-headers.mjs",
     "test:performance-budget": "node scripts/test-performance-budget.mjs",
+    "test:sitemap": "node scripts/test-sitemap.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
