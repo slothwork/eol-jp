@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import StatusBadge from '@/components/StatusBadge.astro';
-import { statusFor, upcomingReleases } from '@/lib/eol';
-import { formatJaDate, relativeEol } from '@/lib/date';
+import DeadlineTable from '@/components/DeadlineTable.astro';
+import { upcomingReleases } from '@/lib/eol';
 
 const windows = {
   '30-days': { days: 30, title: '30日以内にEOLを迎える製品', lead: '今後30日以内にEOL・サポート終了を迎える製品です。優先度を上げて更新計画を確認してください。' },
@@ -33,16 +32,7 @@ const items = upcomingReleases(config.days);
   <section class="section"><div class="container">
     <p class="section-lead">該当件数: {items.length}件</p>
     {items.length > 0 ? (
-      <div class="deadline-list">
-        {items.map(({ product, release }) => (
-          <div class="deadline-row">
-            <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
-            <div><StatusBadge status={statusFor(release)} /></div>
-            <div>{relativeEol(release.eolFrom)}</div>
-            <div class="muted">{formatJaDate(release.eolFrom)}</div>
-          </div>
-        ))}
-      </div>
+      <DeadlineTable items={items} ariaLabel={config.title} />
     ) : <div class="notice">現在のデータでは、この期間内にEOLを迎える製品はありません。</div>}
   </div></section>
 </BaseLayout>
