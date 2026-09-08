@@ -1,0 +1,111 @@
+/* 製品詳細の6列表は、スマホでは横スクロールせず1系列ずつ確認できる配置にする。 */
+@media (max-width: 620px) {
+  .table-wrap:has(> #version-support-table) {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .table-wrap:has(> #version-support-table)::before {
+    display: none;
+  }
+  #version-support-table,
+  #version-support-table tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  #version-support-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  #version-support-table tbody {
+    border-top: 1px solid var(--border);
+  }
+  #version-support-table tbody tr:not([hidden]) {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 38%);
+    gap: 4px 10px;
+    padding: 10px 2px;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+  }
+  #version-support-table td {
+    display: block;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    font-size: .82rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  #version-support-table td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: .92rem;
+  }
+  #version-support-table td:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    text-align: right;
+  }
+  #version-support-table td:nth-child(5) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 0;
+  }
+  #version-support-table td:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #version-support-table td:nth-child(6) {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: right;
+  }
+  #version-support-table td:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-size: .76rem;
+  }
+  #version-support-table td:nth-child(3)::before,
+  #version-support-table td:nth-child(4)::before,
+  #version-support-table td:nth-child(5)::before,
+  #version-support-table td:nth-child(6)::before {
+    display: block;
+    color: var(--muted);
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  #version-support-table td:nth-child(3)::before { content: 'リリース日'; }
+  #version-support-table td:nth-child(4)::before { content: '通常サポート'; }
+  #version-support-table td:nth-child(5)::before { content: 'EOL / セキュリティ終了'; }
+  #version-support-table td:nth-child(6)::before { content: '最新'; }
+  #version-support-table .status-badge {
+    font-size: .7rem;
+  }
+}
