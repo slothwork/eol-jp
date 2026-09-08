@@ -73,6 +73,7 @@ function smokeDocument() {
     function inspect(target, frame) {
       try {
         const doc = frame.contentDocument;
+        const win = frame.contentWindow;
         const table = doc?.querySelector(target.selector);
         const wrap = table?.closest(target.wrapSelector ?? '.dense-table-wrap');
         let row = table?.querySelector('tbody tr:not([hidden])');
@@ -92,10 +93,13 @@ function smokeDocument() {
           table.querySelector('tbody')?.append(row);
         }
 
-        const display = getComputedStyle(row).display;
+        const display = win?.getComputedStyle(row).display ?? '';
         const fits = wrap.scrollWidth <= wrap.clientWidth + 1;
         root.dataset[target.id + 'Display'] = display;
         root.dataset[target.id + 'Fits'] = String(fits);
+        root.dataset[target.id + 'Width'] = String(win?.innerWidth ?? -1);
+        root.dataset[target.id + 'Media'] = String(win?.matchMedia('(max-width: 620px)').matches ?? false);
+        root.dataset[target.id + 'StyleSheets'] = String(doc?.styleSheets.length ?? -1);
         root.dataset[target.id + 'Ready'] = 'true';
         frame.remove();
 
@@ -165,7 +169,11 @@ async function main() {
     assert(readDataAttribute(html, 'ready') === 'true', 'dense table smoke page did not complete');
 
     for (const id of ['products', 'category', 'upcoming', 'changes', 'versionSupport']) {
-      assert(readDataAttribute(html, `${id}-display`) === 'grid', `${id}: mobile table row did not collapse to grid`);
+      const display = readDataAttribute(html, `${id}-display`);
+      const width = readDataAttribute(html, `${id}-width`);
+      const media = readDataAttribute(html, `${id}-media`);
+      const styleSheets = readDataAttribute(html, `${id}-style-sheets`);
+      assert(display === 'grid', `${id}: mobile table row did not collapse to grid (display=${display}, width=${width}, media620=${media}, stylesheets=${styleSheets})`);
       assert(readDataAttribute(html, `${id}-fits`) === 'true', `${id}: mobile table requires horizontal scrolling`);
     }
 
