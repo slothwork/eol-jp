@@ -2,7 +2,7 @@
 import DenseTable from '@/components/DenseTable.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import type { Product } from '@/lib/eol';
-import { getCategoryLabel, getProductSummary, statusFor } from '@/lib/eol';
+import { getCategoryLabel, statusFor } from '@/lib/eol';
 import { daysUntil, formatJaDate, relativeEol } from '@/lib/date';
 
 interface Props {
@@ -47,7 +47,6 @@ function nextRelease(product: Product) {
       <tr data-product-row>
         <td class="product-table-product">
           <strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong>
-          <span class="dense-table-secondary">{getProductSummary(product)}</span>
         </td>
         <td class="product-table-category">{getCategoryLabel(product.category)}</td>
         <td class="product-table-status">
