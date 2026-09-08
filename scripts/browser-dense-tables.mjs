@@ -100,6 +100,8 @@ function smokeDocument() {
         root.dataset[target.id + 'Width'] = String(win?.innerWidth ?? -1);
         root.dataset[target.id + 'Media'] = String(win?.matchMedia('(max-width: 620px)').matches ?? false);
         root.dataset[target.id + 'StyleSheets'] = String(doc?.styleSheets.length ?? -1);
+        root.dataset[target.id + 'Cells'] = String(row.cells?.length ?? -1);
+        root.dataset[target.id + 'Headers'] = String(table.querySelectorAll('thead th').length);
         root.dataset[target.id + 'Ready'] = 'true';
         frame.remove();
 
@@ -168,7 +170,7 @@ async function main() {
     assert(!testError, `dense table smoke failed: ${testError}`);
     assert(readDataAttribute(html, 'ready') === 'true', 'dense table smoke page did not complete');
 
-    for (const id of ['products', 'category', 'upcoming', 'changes', 'version']) {
+    for (const id of ['products', 'category', 'upcoming', 'changes']) {
       const display = readDataAttribute(html, `${id}-display`);
       const width = readDataAttribute(html, `${id}-width`);
       const media = readDataAttribute(html, `${id}-media`);
@@ -177,7 +179,15 @@ async function main() {
       assert(readDataAttribute(html, `${id}-fits`) === 'true', `${id}: mobile table requires horizontal scrolling`);
     }
 
-    console.log('Dense table browser smoke passed for list views and the product-detail version support table.');
+    const versionDisplay = readDataAttribute(html, 'version-display');
+    const versionWidth = readDataAttribute(html, 'version-width');
+    const versionMedia = readDataAttribute(html, 'version-media');
+    assert(versionDisplay === 'table-row', `version: compact five-column table must remain a table row on mobile (display=${versionDisplay}, width=${versionWidth}, media620=${versionMedia})`);
+    assert(readDataAttribute(html, 'version-cells') === '5', 'version: support row must contain exactly five cells');
+    assert(readDataAttribute(html, 'version-headers') === '5', 'version: support table must contain exactly five headers');
+    assert(readDataAttribute(html, 'version-fits') === 'true', 'version: compact five-column table requires horizontal scrolling');
+
+    console.log('Dense table browser smoke passed for list views and the compact five-column product-detail table.');
   } catch (error) {
     if (previewLog.trim()) console.error(`\n--- Astro preview log ---\n${previewLog.trim()}`);
     throw error;
