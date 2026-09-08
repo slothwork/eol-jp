@@ -82,13 +82,14 @@ assert(denseTable.includes("variant: 'product' | 'deadline' | 'change' | 'my-eol
 assert(denseTable.includes('<table class:list={[\'dense-table\''), 'DenseTable must render a semantic table.');
 assert(denseTable.includes('<th scope="col"'), 'DenseTable headers must expose column scope.');
 assert(productTable.includes('variant="product"'), 'ProductTable must use the shared product table variant.');
-assert(productTable.includes('getProductSummary(product)'), 'ProductTable must retain product summaries in compact form.');
+assert(!productTable.includes('getProductSummary'), 'ProductTable must omit repetitive product summary copy to keep rows compact.');
 assert(deadlineTable.includes('variant="deadline"'), 'DeadlineTable must use the shared deadline table variant.');
 assert(deadlineTable.includes('relativeEol(release.eolFrom)'), 'DeadlineTable must retain relative EOL information.');
 
 assert(productIndex.includes('<ProductTable'), 'Product index must default to ProductTable instead of product cards.');
 assert(productIndex.includes('createProductRow'), 'Product search/group filtering must render table rows dynamically.');
 assert(!productIndex.includes('createProductCard'), 'Product index dynamic filtering must not recreate the legacy card layout.');
+assert(!productIndex.includes('item.summary'), 'Dynamic product rows must omit repetitive product summary copy.');
 assert(categoryPage.includes('<ProductTable'), 'Category pages must use the same ProductTable as the product index.');
 assert(upcomingPage.includes('<DeadlineTable'), 'One-year upcoming page must use the shared deadline table.');
 assert(upcomingPage.includes('supported-eol-body'), 'Lazy supported EOL rows must render into the shared table structure.');
