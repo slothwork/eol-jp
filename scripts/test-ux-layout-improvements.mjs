@@ -8,6 +8,7 @@ const [
   productIndex,
   recentHistory,
   productDetail,
+  trackedVersionPanel,
   denseTable,
   productTable,
   deadlineTable,
@@ -21,6 +22,7 @@ const [
   readFile(new URL('../src/pages/eol/index.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/RecentViewedProducts.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/pages/eol/[slug].astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/components/TrackedVersionPanel.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/DenseTable.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/ProductTable.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/DeadlineTable.astro', import.meta.url), 'utf8'),
@@ -64,6 +66,30 @@ assert(
 assert(
   productDetail.includes('すべて表示（残り {hiddenReleaseCount} 件）'),
   'Version support table must provide an explicit expansion control.'
+);
+assert(
+  productDetail.includes('id="version-support-table"'),
+  'Product detail must keep a stable version support table target for responsive behavior.'
+);
+assert(
+  trackedVersionPanel.includes('<style is:global>'),
+  'Product detail support-table responsive styles must apply outside the tracked-version component scope.'
+);
+assert(
+  trackedVersionPanel.includes('#version-support-table tbody tr:not([hidden])'),
+  'Visible version support rows must collapse into mobile grid rows without changing the expansion behavior.'
+);
+assert(
+  trackedVersionPanel.includes('grid-template-columns: minmax(0, 1fr) minmax(0, 38%)'),
+  'Version support rows must use the bounded two-column mobile layout.'
+);
+assert(
+  trackedVersionPanel.includes("content: 'EOL / セキュリティ終了'"),
+  'Version support mobile rows must retain an explicit EOL label after hiding the table header.'
+);
+assert(
+  trackedVersionPanel.includes('.table-wrap:has(> #version-support-table)::before'),
+  'Version support mobile layout must suppress the obsolete horizontal-scroll hint.'
 );
 assert(
   productDetail.includes('class="subsection release-highlights-wide" id="release-highlights"'),
