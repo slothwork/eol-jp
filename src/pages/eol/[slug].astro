@@ -114,16 +114,33 @@ const structured = {
 
       <h2>バージョン別サポート状況</h2>
       <div class="table-wrap"><table id="version-support-table">
-        <thead><tr><th>バージョン</th><th>状態</th><th>リリース日</th><th>通常サポート</th><th>EOL / セキュリティ終了</th><th>最新</th></tr></thead>
+        <thead>
+          <tr>
+            <th scope="col">バージョン<span class="version-support-heading-secondary">最新バージョン</span></th>
+            <th scope="col">状態</th>
+            <th scope="col">リリース日<span class="version-support-heading-secondary">最新リリース日</span></th>
+            <th scope="col">通常サポート</th>
+            <th scope="col">EOL / セキュリティ終了</th>
+          </tr>
+        </thead>
         <tbody>
           {releases.map((release, index) => (
             <tr hidden={index >= INITIAL_RELEASE_LIMIT} data-version-extra={index >= INITIAL_RELEASE_LIMIT ? '' : undefined}>
-              <td><strong>{release.name}</strong>{release.isLts && <><br/><span class="eyebrow">LTS</span></>}</td>
-              <td><StatusBadge status={statusFor(release)} /><br/><small>{relativeEol(release.eolFrom)}</small></td>
-              <td>{formatJaDate(release.releaseDate)}</td>
+              <td>
+                <strong>{release.name}</strong>
+                {release.isLts && <span class="eyebrow version-support-lts">LTS</span>}
+                <span class="version-support-secondary">{release.latest?.name ?? '不明'}</span>
+              </td>
+              <td>
+                <StatusBadge status={statusFor(release)} />
+                <span class="version-support-secondary">{relativeEol(release.eolFrom)}</span>
+              </td>
+              <td>
+                {formatJaDate(release.releaseDate)}
+                <span class="version-support-secondary">{release.latest?.date ? formatJaDate(release.latest.date) : '不明'}</span>
+              </td>
               <td>{formatJaDate(release.eoasFrom)}</td>
               <td><strong>{formatJaDate(release.eolFrom)}</strong></td>
-              <td>{release.latest?.name ?? '不明'}{release.latest?.date && <><br/><small>{formatJaDate(release.latest.date)}</small></>}</td>
             </tr>
           ))}
         </tbody>
