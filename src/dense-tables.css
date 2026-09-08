@@ -1,0 +1,174 @@
+.dense-table-wrap {
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+.dense-table-wrap[hidden] { display: none; }
+.dense-table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+.dense-table th,
+.dense-table td {
+  min-width: 0;
+  padding: 9px 11px;
+  border-bottom: 1px solid #e8ecf2;
+  text-align: left;
+  vertical-align: middle;
+}
+.dense-table th {
+  background: #f8fafc;
+  color: #536174;
+  font-size: .8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dense-table tbody tr:last-child td { border-bottom: 0; }
+.dense-table tbody tr:hover { background: #fafcff; }
+.dense-table td { font-size: .9rem; }
+.dense-table td > strong:first-child { font-weight: 750; }
+.dense-table-secondary {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+.dense-table-inline-note {
+  display: inline-block;
+  margin-left: 7px;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.dense-table--product .product-table-product { width: 38%; }
+.dense-table--product .product-table-category { width: 14%; color: var(--muted); }
+.dense-table--product .product-table-status { width: 13%; }
+.dense-table--product .product-table-version { width: 14%; overflow-wrap: anywhere; }
+.dense-table--product .product-table-eol { width: 21%; }
+
+.dense-table--deadline .deadline-table-product { width: 30%; }
+.dense-table--deadline .deadline-table-version { width: 17%; overflow-wrap: anywhere; }
+.dense-table--deadline .deadline-table-status { width: 15%; }
+.dense-table--deadline .deadline-table-relative { width: 20%; }
+.dense-table--deadline .deadline-table-date { width: 18%; color: var(--muted); white-space: nowrap; }
+
+.dense-table--change .change-table-date { width: 13%; color: var(--muted); white-space: nowrap; }
+.dense-table--change .change-table-type { width: 14%; }
+.dense-table--change .change-table-product { width: 20%; font-weight: 700; }
+.dense-table--change .change-table-release { width: 17%; overflow-wrap: anywhere; }
+.dense-table--change .change-table-detail { width: 36%; overflow-wrap: anywhere; }
+
+.dense-table--my-eol .my-eol-table-product { width: 25%; font-weight: 700; }
+.dense-table--my-eol .my-eol-table-version { width: 18%; overflow-wrap: anywhere; }
+.dense-table--my-eol .my-eol-table-status { width: 14%; }
+.dense-table--my-eol .my-eol-table-eol { width: 23%; }
+.dense-table--my-eol .my-eol-table-actions { width: 20%; }
+.my-eol-table-actions-inner { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.table-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: #253047;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+.table-action:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.table-action:disabled { opacity: .45; cursor: not-allowed; }
+
+@media (max-width: 700px) {
+  .dense-table-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .dense-table,
+  .dense-table tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .dense-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .dense-table tbody { border-top: 1px solid var(--border); }
+  .dense-table tbody tr,
+  .dense-table tbody tr:last-child {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 38%);
+    gap: 3px 10px;
+    padding: 9px 2px;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+  }
+  .dense-table td {
+    display: block;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    font-size: .82rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .dense-table tbody tr:hover { background: transparent; }
+  .dense-table .status-badge { font-size: .7rem; }
+  .dense-table-secondary { font-size: .72rem; }
+
+  .dense-table--product .product-table-product { grid-column: 1; grid-row: 1; width: auto; }
+  .dense-table--product .product-table-status { grid-column: 2; grid-row: 1; width: auto; justify-self: end; }
+  .dense-table--product .product-table-eol { grid-column: 1; grid-row: 2; width: auto; }
+  .dense-table--product .product-table-version { grid-column: 2; grid-row: 2; width: auto; text-align: right; }
+  .dense-table--product .product-table-category { grid-column: 1 / -1; grid-row: 3; width: auto; font-size: .74rem; }
+
+  .dense-table--deadline .deadline-table-product { grid-column: 1; grid-row: 1; width: auto; }
+  .dense-table--deadline .deadline-table-status { grid-column: 2; grid-row: 1; width: auto; justify-self: end; }
+  .dense-table--deadline .deadline-table-version { grid-column: 1; grid-row: 2; width: auto; }
+  .dense-table--deadline .deadline-table-relative { grid-column: 2; grid-row: 2; width: auto; text-align: right; }
+  .dense-table--deadline .deadline-table-date { grid-column: 1 / -1; grid-row: 3; width: auto; font-size: .74rem; white-space: normal; }
+  .dense-table--deadline .deadline-table-version::before { content: '系列 '; color: var(--muted); font-weight: 400; }
+
+  .dense-table--change .change-table-product { grid-column: 1; grid-row: 1; width: auto; }
+  .dense-table--change .change-table-type { grid-column: 2; grid-row: 1; width: auto; justify-self: end; }
+  .dense-table--change .change-table-release { grid-column: 1; grid-row: 2; width: auto; }
+  .dense-table--change .change-table-date { grid-column: 2; grid-row: 2; width: auto; text-align: right; white-space: normal; }
+  .dense-table--change .change-table-detail { grid-column: 1 / -1; grid-row: 3; width: auto; color: #4f5c70; font-size: .76rem; }
+  .dense-table--change .change-table-release::before { content: '系列 '; color: var(--muted); font-weight: 400; }
+
+  .dense-table--my-eol .my-eol-table-product { grid-column: 1; grid-row: 1; width: auto; }
+  .dense-table--my-eol .my-eol-table-status { grid-column: 2; grid-row: 1; width: auto; justify-self: end; }
+  .dense-table--my-eol .my-eol-table-version { grid-column: 1; grid-row: 2; width: auto; }
+  .dense-table--my-eol .my-eol-table-eol { grid-column: 2; grid-row: 2; width: auto; text-align: right; }
+  .dense-table--my-eol .my-eol-table-actions { grid-column: 1 / -1; grid-row: 3; width: auto; margin-top: 3px; }
+  .my-eol-table-actions-inner { justify-content: flex-start; }
+  .table-action { min-height: 40px; padding: 6px 10px; }
+}
