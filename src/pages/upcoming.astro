@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import StatusBadge from '@/components/StatusBadge.astro';
+import DeadlineTable from '@/components/DeadlineTable.astro';
 import { statusFor, upcomingReleases } from '@/lib/eol';
 import { formatJaDate, relativeEol } from '@/lib/date';
 
@@ -12,6 +12,7 @@ const supportedItems = items
     productLabel: product.label,
     productSlug: product.slug,
     version: release.name,
+    isLts: release.isLts,
     relative: relativeEol(release.eolFrom),
     date: formatJaDate(release.eolFrom)
   }));
@@ -33,76 +34,89 @@ const supportedItemsJson = JSON.stringify(supportedItems).replace(/</g, '\\u003c
     </div>
   </div></section>
   <section class="section"><div class="container">
-    <div class="deadline-list">
-      {priorityItems.map(({ product, release }) => (
-        <div class="deadline-row">
-          <div><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong><div class="muted">バージョン {release.name}</div></div>
-          <div><StatusBadge status={statusFor(release)} /></div>
-          <div>{relativeEol(release.eolFrom)}</div>
-          <div class="muted">{formatJaDate(release.eolFrom)}</div>
-        </div>
-      ))}
-    </div>
-    <div id="supported-eol-list" class="deadline-list" hidden></div>
+    <DeadlineTable items={priorityItems} ariaLabel="今後1年のうち優先確認が必要なEOL一覧" />
+    <DeadlineTable
+      items={[]}
+      ariaLabel="今後1年のサポート中EOL一覧"
+      wrapperId="supported-eol-list"
+      tbodyId="supported-eol-body"
+      hidden
+    />
   </div></section>
   <script id="supported-eol-data" type="application/json" is:inline set:html={supportedItemsJson}></script>
   <script>
     const toggle = document.querySelector<HTMLButtonElement>('#toggle-supported');
-    const list = document.querySelector<HTMLElement>('#supported-eol-list');
+    const table = document.querySelector<HTMLElement>('#supported-eol-list');
+    const body = document.querySelector<HTMLTableSectionElement>('#supported-eol-body');
     const dataElement = document.querySelector<HTMLScriptElement>('#supported-eol-data');
     let rendered = false;
 
     function renderSupportedItems() {
-      if (rendered || !list || !dataElement) return;
+      if (rendered || !body || !dataElement) return;
       const items = JSON.parse(dataElement.textContent ?? '[]') as Array<{
         productLabel: string;
         productSlug: string;
         version: string;
+        isLts: boolean;
         relative: string;
         date: string;
       }>;
 
       const fragment = document.createDocumentFragment();
       items.forEach((item) => {
-        const row = document.createElement('div');
-        row.className = 'deadline-row';
+        const row = document.createElement('tr');
+        row.dataset.deadlineRow = '';
 
-        const productCell = document.createElement('div');
+        const product = document.createElement('td');
+        product.className = 'deadline-table-product';
         const strong = document.createElement('strong');
         const link = document.createElement('a');
-        link.href = `/eol/${item.productSlug}/`;
+        link.href = `/eol/${encodeURIComponent(item.productSlug)}/`;
         link.textContent = item.productLabel;
         strong.append(link);
-        const version = document.createElement('div');
-        version.className = 'muted';
-        version.textContent = `バージョン ${item.version}`;
-        productCell.append(strong, version);
+        product.append(strong);
 
-        const statusCell = document.createElement('div');
+        const version = document.createElement('td');
+        version.className = 'deadline-table-version';
+        const versionStrong = document.createElement('strong');
+        versionStrong.textContent = item.version;
+        version.append(versionStrong);
+        if (item.isLts) {
+          const lts = document.createElement('span');
+          lts.className = 'dense-table-inline-note';
+          lts.textContent = 'LTS';
+          version.append(lts);
+        }
+
+        const status = document.createElement('td');
+        status.className = 'deadline-table-status';
         const badge = document.createElement('span');
         badge.className = 'status-badge status-supported';
         badge.textContent = 'サポート中';
-        statusCell.append(badge);
+        status.append(badge);
 
-        const relativeCell = document.createElement('div');
-        relativeCell.textContent = item.relative;
+        const relative = document.createElement('td');
+        relative.className = 'deadline-table-relative';
+        const relativeStrong = document.createElement('strong');
+        relativeStrong.textContent = item.relative;
+        relative.append(relativeStrong);
 
-        const dateCell = document.createElement('div');
-        dateCell.className = 'muted';
-        dateCell.textContent = item.date;
+        const date = document.createElement('td');
+        date.className = 'deadline-table-date';
+        date.textContent = item.date;
 
-        row.append(productCell, statusCell, relativeCell, dateCell);
+        row.append(product, version, status, relative, date);
         fragment.append(row);
       });
-      list.append(fragment);
+      body.append(fragment);
       rendered = true;
     }
 
     toggle?.addEventListener('click', () => {
-      if (!list) return;
-      const shouldShow = list.hidden;
+      if (!table) return;
+      const shouldShow = table.hidden;
       if (shouldShow) renderSupportedItems();
-      list.hidden = !shouldShow;
+      table.hidden = !shouldShow;
       toggle.setAttribute('aria-expanded', String(shouldShow));
       const count = toggle.dataset.count ?? '0';
       toggle.textContent = shouldShow ? 'サポート中を隠す' : `サポート中も表示（${count}件）`;
