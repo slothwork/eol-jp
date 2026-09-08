@@ -594,20 +594,20 @@ function externalLatestLink(value: string | null): string | null {
       .release-toolbar { grid-template-columns:1fr; }
       .release-filter-row { align-items:flex-start; flex-direction:column; }
       .release-view-toggle { align-self:flex-end; }
-      .release-table-wrap { overflow:visible; border:0; border-radius:0; background:transparent; }
-      .release-table, .release-table tbody { display:block; width:100%; }
+      .release-table-wrap { max-width:100%; overflow:visible; border:0; border-radius:0; background:transparent; }
+      .release-table, .release-table tbody { display:block; width:100%; min-width:0; max-width:100%; }
       .release-table thead { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
       .release-table tbody { border-top:1px solid var(--border); }
       .release-table tbody tr,
-      .release-table tbody tr:last-child { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3px 12px; padding:10px 2px; border-bottom:1px solid var(--border); background:transparent; }
-      .release-table td { display:block; min-width:0; padding:0; border:0; }
+      .release-table tbody tr:last-child { display:grid; width:100%; min-width:0; box-sizing:border-box; grid-template-columns:minmax(0,1fr) minmax(88px,36%); gap:3px 12px; padding:10px 2px; border-bottom:1px solid var(--border); background:transparent; }
+      .release-table td { display:block; min-width:0; max-width:100%; padding:0; border:0; overflow-wrap:anywhere; }
       .release-table-product { grid-column:1; grid-row:1; font-size:1rem; overflow-wrap:anywhere; }
       .release-table-version { grid-column:1; grid-row:2; font-size:.92rem; }
-      .release-table-date { grid-column:2; grid-row:1 / span 2; min-width:0; text-align:right; font-size:.8rem; }
+      .release-table-date { grid-column:2; grid-row:1 / span 2; min-width:0; white-space:normal; text-align:right; font-size:.8rem; }
       .release-table-date .muted { font-size:.74rem; }
-      .release-table-series { grid-column:1; grid-row:3; min-width:0; color:var(--muted); font-size:.8rem; }
+      .release-table-series { grid-column:1; grid-row:3; min-width:0; white-space:normal; color:var(--muted); font-size:.8rem; }
       .release-table-series::before { content:'系列 '; }
-      .release-table-category { grid-column:2; grid-row:3; min-width:0; text-align:right; font-size:.78rem; }
+      .release-table-category { grid-column:2; grid-row:3; min-width:0; white-space:normal; text-align:right; font-size:.78rem; }
       .release-item { grid-template-columns:1fr; gap:8px; padding:16px; }
       .release-item-date { flex-direction:row; flex-wrap:wrap; gap:6px 12px; }
       .release-pagination { gap:8px; }
