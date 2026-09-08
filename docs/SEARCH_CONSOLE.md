@@ -6,6 +6,19 @@ Search Console の実クエリ・実ページデータを使って、表示回�
 
 推測だけで主要製品の `<title>` / meta description を一括変更しない。変更対象は Search Console で根拠を確認できたページに限定する。
 
+## インデックス登録前の確認
+
+Search Console の URL 検査が「クロール済み - インデックス未登録」の場合、まず技術的なブロックとサイトマップ認識を確認する。
+
+1. URL 検査で「クロールを許可」「ページの取得」「インデックス登録を許可」が正常であることを確認する。
+2. 正規 URL が検査対象 URL と一致していることを確認する。
+3. Search Console の「サイトマップ」で `https://eol.slothwright.com/sitemap.xml` を送信し、取得成功を確認する。
+4. `robots.txt` が同じ sitemap URL を案内していることを確認する。
+5. ホーム、`/eol/`、`/releases/`、主要製品ページなど少数の重要 URL だけ URL 検査からインデックス登録をリクエストする。
+6. リクエスト後に title / description を連日変更せず、クロール・インデックス状況の推移を確認する。
+
+ビルド後の sitemap は `npm run test:sitemap` で検証する。indexable な canonical URL が sitemap に含まれ、`noindex` URL が含まれないこと、`robots.txt` の sitemap 指定と一致することを自動確認する。
+
 ## Recommended review window
 
 初期は直近28日を基本とする。
