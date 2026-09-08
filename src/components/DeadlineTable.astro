@@ -1,0 +1,57 @@
+---
+import DenseTable from '@/components/DenseTable.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import type { Product } from '@/lib/eol';
+import { statusFor } from '@/lib/eol';
+import { formatJaDate, relativeEol } from '@/lib/date';
+
+type DeadlineItem = {
+  product: Product;
+  release: Product['releases'][number];
+};
+
+interface Props {
+  items: DeadlineItem[];
+  ariaLabel?: string;
+  wrapperId?: string;
+  tbodyId?: string;
+  hidden?: boolean;
+  tbodyAttributes?: Record<string, string>;
+}
+
+const {
+  items,
+  ariaLabel = 'EOL・サポート終了期限一覧',
+  wrapperId,
+  tbodyId,
+  hidden = false,
+  tbodyAttributes
+} = Astro.props;
+
+const headers = [
+  { label: '製品' },
+  { label: '対象系列' },
+  { label: '状態' },
+  { label: '残り期間' },
+  { label: 'EOL日' }
+];
+---
+<DenseTable
+  headers={headers}
+  variant="deadline"
+  ariaLabel={ariaLabel}
+  wrapperId={wrapperId}
+  tbodyId={tbodyId}
+  hidden={hidden}
+  tbodyAttributes={tbodyAttributes}
+>
+  {items.map(({ product, release }) => (
+    <tr data-deadline-row>
+      <td class="deadline-table-product"><strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong></td>
+      <td class="deadline-table-version"><strong>{release.name}</strong>{release.isLts && <span class="dense-table-inline-note">LTS</span>}</td>
+      <td class="deadline-table-status"><StatusBadge status={statusFor(release)} /></td>
+      <td class="deadline-table-relative"><strong>{relativeEol(release.eolFrom)}</strong></td>
+      <td class="deadline-table-date">{formatJaDate(release.eolFrom)}</td>
+    </tr>
+  ))}
+</DenseTable>

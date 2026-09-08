@@ -1,0 +1,44 @@
+---
+import '@/dense-tables.css';
+
+interface Header {
+  label: string;
+  className?: string;
+}
+
+interface Props {
+  headers: Header[];
+  variant: 'product' | 'deadline' | 'change' | 'my-eol';
+  ariaLabel: string;
+  wrapperId?: string;
+  tbodyId?: string;
+  hidden?: boolean;
+  tbodyAttributes?: Record<string, string>;
+}
+
+const {
+  headers,
+  variant,
+  ariaLabel,
+  wrapperId,
+  tbodyId,
+  hidden = false,
+  tbodyAttributes = {}
+} = Astro.props;
+---
+<div
+  id={wrapperId}
+  class:list={['dense-table-wrap', `dense-table-wrap--${variant}`]}
+  hidden={hidden}
+>
+  <table class:list={['dense-table', `dense-table--${variant}`]} aria-label={ariaLabel}>
+    <thead>
+      <tr>
+        {headers.map((header) => <th scope="col" class={header.className}>{header.label}</th>)}
+      </tr>
+    </thead>
+    <tbody id={tbodyId} {...tbodyAttributes}>
+      <slot />
+    </tbody>
+  </table>
+</div>

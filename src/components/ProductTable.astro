@@ -1,0 +1,69 @@
+---
+import DenseTable from '@/components/DenseTable.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import type { Product } from '@/lib/eol';
+import { getCategoryLabel, statusFor } from '@/lib/eol';
+import { daysUntil, formatJaDate, relativeEol } from '@/lib/date';
+
+interface Props {
+  products: Product[];
+  ariaLabel?: string;
+  tbodyId?: string;
+  tbodyAttributes?: Record<string, string>;
+}
+
+const {
+  products,
+  ariaLabel = 'EOL・サポート期限の製品一覧',
+  tbodyId,
+  tbodyAttributes
+} = Astro.props;
+
+const headers = [
+  { label: '製品' },
+  { label: 'カテゴリ' },
+  { label: '状態' },
+  { label: '対象系列' },
+  { label: 'EOL' }
+];
+
+function nextRelease(product: Product) {
+  return product.releases
+    .map((release) => ({ release, days: daysUntil(release.eolFrom) }))
+    .filter((item) => item.days !== null && item.days >= 0)
+    .sort((a, b) => (a.days ?? Infinity) - (b.days ?? Infinity))[0];
+}
+---
+<DenseTable
+  headers={headers}
+  variant="product"
+  ariaLabel={ariaLabel}
+  tbodyId={tbodyId}
+  tbodyAttributes={tbodyAttributes}
+>
+  {products.map((product) => {
+    const next = nextRelease(product);
+    return (
+      <tr data-product-row>
+        <td class="product-table-product">
+          <strong><a href={`/eol/${product.slug}/`}>{product.label}</a></strong>
+        </td>
+        <td class="product-table-category">{getCategoryLabel(product.category)}</td>
+        <td class="product-table-status">
+          {next ? <StatusBadge status={statusFor(next.release)} /> : <span class="muted">期限未定</span>}
+        </td>
+        <td class="product-table-version">
+          {next ? <strong>{next.release.name}</strong> : <span class="muted">—</span>}
+        </td>
+        <td class="product-table-eol">
+          {next ? (
+            <>
+              <strong>{relativeEol(next.release.eolFrom)}</strong>
+              <span class="dense-table-secondary">{formatJaDate(next.release.eolFrom)}</span>
+            </>
+          ) : <span class="muted">今後のEOLなし</span>}
+        </td>
+      </tr>
+    );
+  })}
+</DenseTable>

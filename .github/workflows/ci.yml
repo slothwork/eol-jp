@@ -137,6 +137,9 @@ jobs:
       - name: Release pagination browser smoke
         run: npm run test:release-pagination-browser
 
+      - name: Dense table browser smoke
+        run: npm run test:dense-tables-browser
+
       - name: Browser smoke tests
         run: npm run test:browser-smoke
 

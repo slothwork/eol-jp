@@ -21,6 +21,7 @@
     "test:latest-releases": "node --experimental-strip-types scripts/test-latest-releases.mjs",
     "test:release-pagination": "node scripts/test-release-pagination.mjs",
     "test:release-pagination-browser": "node scripts/browser-release-pagination.mjs",
+    "test:dense-tables-browser": "node scripts/browser-dense-tables.mjs",
     "test:gsc-analysis": "node scripts/test-search-console-analysis.mjs",
     "test:snapshot-freshness": "node --experimental-strip-types scripts/test-snapshot-freshness.mjs",
     "test:manual-review-freshness": "node --experimental-strip-types scripts/test-manual-review-freshness.mjs",

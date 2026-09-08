@@ -1,0 +1,96 @@
+/* 製品詳細のサポート表は、関連情報を同じセルへまとめてPC/スマホとも同じ5列で比較できるようにする。 */
+#version-support-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#version-support-table th,
+#version-support-table td {
+  vertical-align: top;
+}
+
+#version-support-table th:nth-child(1),
+#version-support-table td:nth-child(1) { width: 20%; }
+#version-support-table th:nth-child(2),
+#version-support-table td:nth-child(2) { width: 18%; }
+#version-support-table th:nth-child(3),
+#version-support-table td:nth-child(3) { width: 23%; }
+#version-support-table th:nth-child(4),
+#version-support-table td:nth-child(4) { width: 17%; }
+#version-support-table th:nth-child(5),
+#version-support-table td:nth-child(5) { width: 22%; }
+
+.version-support-heading-secondary,
+.version-support-secondary {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: .78em;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.version-support-lts {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: 1px;
+}
+
+@media (max-width: 620px) {
+  .table-wrap:has(> #version-support-table) {
+    overflow: visible;
+  }
+
+  .table-wrap:has(> #version-support-table)::before {
+    display: none;
+  }
+
+  #version-support-table {
+    min-width: 0;
+    font-size: .72rem;
+  }
+
+  #version-support-table th,
+  #version-support-table td {
+    min-width: 0;
+    padding: 8px 4px;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  #version-support-table th {
+    font-size: .68rem;
+    line-height: 1.3;
+  }
+
+  #version-support-table th:nth-child(1),
+  #version-support-table td:nth-child(1) { width: 19%; }
+  #version-support-table th:nth-child(2),
+  #version-support-table td:nth-child(2) { width: 18%; }
+  #version-support-table th:nth-child(3),
+  #version-support-table td:nth-child(3) { width: 24%; }
+  #version-support-table th:nth-child(4),
+  #version-support-table td:nth-child(4) { width: 17%; }
+  #version-support-table th:nth-child(5),
+  #version-support-table td:nth-child(5) { width: 22%; }
+
+  .version-support-heading-secondary,
+  .version-support-secondary {
+    margin-top: 2px;
+    font-size: .88em;
+  }
+
+  #version-support-table .status-badge {
+    max-width: 100%;
+    padding: 2px 5px;
+    font-size: .66rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  #version-support-table .eyebrow.version-support-lts {
+    margin-left: 3px;
+    font-size: .58rem;
+  }
+}

@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import DenseTable from '@/components/DenseTable.astro';
+
+const myEolHeaders = [
+  { label: '製品' },
+  { label: '利用中バージョン' },
+  { label: '状態' },
+  { label: 'EOL' },
+  { label: '操作' }
+];
 ---
 
 <BaseLayout
@@ -60,11 +69,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <div class="calendar-heading-row">
           <div>
             <h2>利用中バージョン</h2>
-            <p class="section-lead">EOL済み・期限が近い製品から順に表示します。</p>
+            <p class="section-lead">EOL済み・期限が近い製品から順に、比較しやすいテーブルで表示します。</p>
           </div>
           <span class="eyebrow">このブラウザ内のみ</span>
         </div>
-        <div class="history-list" data-my-eol-list></div>
+        <DenseTable
+          headers={myEolHeaders}
+          variant="my-eol"
+          ariaLabel="マイEOL 利用中バージョン一覧"
+          tbodyAttributes={{ 'data-my-eol-list': '' }}
+        />
       </div>
 
       <p class="section-note">保存内容はログイン情報やサーバーには紐づきません。別のブラウザや端末には自動同期されません。</p>
@@ -147,7 +161,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     const loading = document.querySelector<HTMLElement>('[data-my-eol-loading]');
     const empty = document.querySelector<HTMLElement>('[data-my-eol-empty]');
     const content = document.querySelector<HTMLElement>('[data-my-eol-content]');
-    const list = document.querySelector<HTMLElement>('[data-my-eol-list]');
+    const list = document.querySelector<HTMLTableSectionElement>('[data-my-eol-list]');
     const stats = document.querySelector<HTMLElement>('[data-my-eol-stats]');
     const totalNode = document.querySelector<HTMLElement>('[data-my-eol-total]');
     const urgentNode = document.querySelector<HTMLElement>('[data-my-eol-urgent]');
@@ -299,57 +313,66 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       renderReminders(entries);
 
       for (const entry of entries) {
-        const article = document.createElement('article');
-        article.className = 'history-item';
+        const row = document.createElement('tr');
+        row.dataset.myEolRow = '';
 
-        const main = document.createElement('div');
+        const product = document.createElement('td');
+        product.className = 'my-eol-table-product';
+        const productLink = document.createElement('a');
+        productLink.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+        productLink.textContent = entry.label;
+        product.append(productLink);
 
-        const titleRow = document.createElement('div');
-        titleRow.className = 'card-topline';
+        const version = document.createElement('td');
+        version.className = 'my-eol-table-version';
+        const versionStrong = document.createElement('strong');
+        versionStrong.textContent = entry.version;
+        version.append(versionStrong);
+        if (entry.release?.isLts) {
+          const lts = document.createElement('span');
+          lts.className = 'dense-table-inline-note';
+          lts.textContent = 'LTS';
+          version.append(lts);
+        }
 
-        const title = document.createElement('h2');
-        const link = document.createElement('a');
-        link.href = `/eol/${encodeURIComponent(entry.slug)}/`;
-        link.textContent = entry.label;
-        title.append(link);
-
+        const status = document.createElement('td');
+        status.className = 'my-eol-table-status';
         const badge = document.createElement('span');
         badge.className = `status-badge status-${entry.status}`;
         badge.textContent = statusLabels[entry.status];
-        titleRow.append(title, badge);
+        status.append(badge);
 
-        const version = document.createElement('p');
-        version.className = 'muted';
-        version.textContent = `利用中: ${entry.version}${entry.release?.isLts ? ' (LTS)' : ''}`;
-
-        const meta = document.createElement('div');
-        meta.className = 'history-meta';
+        const eol = document.createElement('td');
+        eol.className = 'my-eol-table-eol';
         if (entry.release) {
-          const eol = document.createElement('span');
-          eol.textContent = `EOL: ${formatJaDate(entry.release.eolFrom)}`;
           const relative = document.createElement('strong');
           relative.textContent = relativeEol(entry.release.eolFrom);
-          meta.append(eol, relative);
+          const date = document.createElement('span');
+          date.className = 'dense-table-secondary';
+          date.textContent = formatJaDate(entry.release.eolFrom);
+          eol.append(relative, date);
         } else {
           const missing = document.createElement('span');
-          missing.textContent = '保存済みバージョンが現在のデータに見つかりません。製品ページで再選択してください。';
-          meta.append(missing);
+          missing.className = 'muted';
+          missing.textContent = 'データ未検出';
+          missing.title = '保存済みバージョンが現在のデータに見つかりません。製品ページで再選択してください。';
+          eol.append(missing);
         }
 
-        main.append(titleRow, version, meta);
-
-        const actions = document.createElement('div');
-        actions.className = 'hero-actions';
+        const actions = document.createElement('td');
+        actions.className = 'my-eol-table-actions';
+        const actionInner = document.createElement('div');
+        actionInner.className = 'my-eol-table-actions-inner';
 
         const details = document.createElement('a');
-        details.className = 'button';
+        details.className = 'table-action';
         details.href = `/eol/${encodeURIComponent(entry.slug)}/`;
-        details.textContent = '詳細を見る';
+        details.textContent = '詳細';
 
         const remove = document.createElement('button');
-        remove.className = 'button';
+        remove.className = 'table-action';
         remove.type = 'button';
-        remove.textContent = '保存を解除';
+        remove.textContent = '保存解除';
         remove.addEventListener('click', () => {
           try {
             state = removeTrackedProduct(state, entry.slug);
@@ -357,13 +380,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             render();
           } catch {
             remove.disabled = true;
-            remove.textContent = '解除できません';
+            remove.textContent = '解除不可';
           }
         });
 
-        actions.append(details, remove);
-        article.append(main, actions);
-        list.append(article);
+        actionInner.append(details, remove);
+        actions.append(actionInner);
+        row.append(product, version, status, eol, actions);
+        list.append(row);
       }
     };
 

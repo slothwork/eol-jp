@@ -4,10 +4,36 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-const [productIndex, recentHistory, productDetail] = await Promise.all([
+const [
+  productIndex,
+  recentHistory,
+  productDetail,
+  trackedVersionPanel,
+  versionSupportCss,
+  denseTable,
+  productTable,
+  deadlineTable,
+  categoryPage,
+  upcomingPage,
+  upcomingWindow,
+  changesPage,
+  myEolPage,
+  denseTableCss
+] = await Promise.all([
   readFile(new URL('../src/pages/eol/index.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/RecentViewedProducts.astro', import.meta.url), 'utf8'),
-  readFile(new URL('../src/pages/eol/[slug].astro', import.meta.url), 'utf8')
+  readFile(new URL('../src/pages/eol/[slug].astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/components/TrackedVersionPanel.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/version-support-table.css', import.meta.url), 'utf8'),
+  readFile(new URL('../src/components/DenseTable.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/components/ProductTable.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/components/DeadlineTable.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/pages/category/[category].astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/pages/upcoming.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/pages/upcoming/[window].astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/pages/changes.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/pages/my-eol.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/dense-tables.css', import.meta.url), 'utf8')
 ]);
 
 assert(
@@ -27,7 +53,7 @@ assert(
   'Recently viewed component must mount into the product-index sidebar slot when available.'
 );
 assert(
-  recentHistory.includes('sidebarLayout?.classList.toggle(\'has-recent-history\', hasItems)'),
+  recentHistory.includes("sidebarLayout?.classList.toggle('has-recent-history', hasItems)"),
   'Recently viewed component must release sidebar width when history is empty.'
 );
 assert(
@@ -44,6 +70,50 @@ assert(
   'Version support table must provide an explicit expansion control.'
 );
 assert(
+  productDetail.includes('id="version-support-table"'),
+  'Product detail must keep a stable version support table target for responsive behavior.'
+);
+assert(
+  productDetail.includes('バージョン<span class="version-support-heading-secondary">最新バージョン</span>'),
+  'Version and latest version must share the first support-table column.'
+);
+assert(
+  productDetail.includes('リリース日<span class="version-support-heading-secondary">最新リリース日</span>'),
+  'Release date and latest release date must share the same support-table column.'
+);
+assert(
+  productDetail.includes('<span class="version-support-secondary">{release.latest?.name ?? \'不明\'}</span>'),
+  'Latest version must be rendered as secondary information beneath the release series.'
+);
+assert(
+  productDetail.includes("release.latest?.date ? formatJaDate(release.latest.date) : '不明'"),
+  'Latest release date must remain visible in the release-date column.'
+);
+assert(
+  !productDetail.includes('<th scope="col">最新</th>'),
+  'Version support table must not keep the redundant standalone latest column.'
+);
+assert(
+  trackedVersionPanel.includes("import '@/version-support-table.css';"),
+  'Product detail must load version support responsive styles as a page CSS asset.'
+);
+assert(
+  versionSupportCss.includes('table-layout: fixed'),
+  'Version support table must use fixed column sizing to fit the compact five-column layout.'
+);
+assert(
+  versionSupportCss.includes('.version-support-secondary'),
+  'Version support table must style secondary values consistently.'
+);
+assert(
+  versionSupportCss.includes('#version-support-table th:nth-child(5)'),
+  'Version support table must define five bounded column widths.'
+);
+assert(
+  versionSupportCss.includes('.table-wrap:has(> #version-support-table)::before'),
+  'Version support mobile layout must suppress the obsolete horizontal-scroll hint.'
+);
+assert(
   productDetail.includes('class="subsection release-highlights-wide" id="release-highlights"'),
   'Release highlights must use the full-width layout class.'
 );
@@ -55,5 +125,31 @@ assert(
 const asidePosition = productDetail.indexOf('class="panel product-detail-aside"');
 const highlightsPosition = productDetail.indexOf('class="subsection release-highlights-wide"');
 assert(asidePosition >= 0 && highlightsPosition > asidePosition, 'Release highlights must be a direct full-width sibling after the primary detail columns.');
+
+assert(denseTable.includes("variant: 'product' | 'deadline' | 'change' | 'my-eol'"), 'DenseTable must define the supported shared table variants.');
+assert(denseTable.includes('<table class:list={[\'dense-table\''), 'DenseTable must render a semantic table.');
+assert(denseTable.includes('<th scope="col"'), 'DenseTable headers must expose column scope.');
+assert(productTable.includes('variant="product"'), 'ProductTable must use the shared product table variant.');
+assert(!productTable.includes('getProductSummary'), 'ProductTable must omit repetitive product summary copy to keep rows compact.');
+assert(deadlineTable.includes('variant="deadline"'), 'DeadlineTable must use the shared deadline table variant.');
+assert(deadlineTable.includes('relativeEol(release.eolFrom)'), 'DeadlineTable must retain relative EOL information.');
+
+assert(productIndex.includes('<ProductTable'), 'Product index must default to ProductTable instead of product cards.');
+assert(productIndex.includes('createProductRow'), 'Product search/group filtering must render table rows dynamically.');
+assert(!productIndex.includes('createProductCard'), 'Product index dynamic filtering must not recreate the legacy card layout.');
+assert(!productIndex.includes('item.summary'), 'Dynamic product rows must omit repetitive product summary copy.');
+assert(categoryPage.includes('<ProductTable'), 'Category pages must use the same ProductTable as the product index.');
+assert(upcomingPage.includes('<DeadlineTable'), 'One-year upcoming page must use the shared deadline table.');
+assert(upcomingPage.includes('supported-eol-body'), 'Lazy supported EOL rows must render into the shared table structure.');
+assert(upcomingWindow.includes('<DeadlineTable'), '30/90/180-day upcoming pages must use the shared deadline table.');
+assert(changesPage.includes('variant="change"'), 'Change history must use the shared dense table foundation.');
+assert(myEolPage.includes('variant="my-eol"'), 'My EOL tracked versions must use the shared dense table foundation.');
+assert(myEolPage.includes('row.dataset.myEolRow'), 'My EOL client rendering must create table rows.');
+assert(myEolPage.includes('history-list reminder-list'), 'Action-oriented reminder cards must remain separate from the dense tracked-version table.');
+
+assert(denseTableCss.includes('@media (max-width: 700px)'), 'Dense tables must define a mobile transformation breakpoint.');
+assert(denseTableCss.includes('grid-template-columns: minmax(0, 1fr) minmax(0, 38%)'), 'Dense tables must collapse into bounded mobile grid rows.');
+assert(denseTableCss.includes('.dense-table thead'), 'Dense table headings must be visually hidden rather than forcing horizontal scrolling on mobile.');
+assert(denseTableCss.includes('white-space: normal'), 'Dense table mobile cells must allow wrapping to prevent horizontal overflow.');
 
 console.log('UX layout improvement tests passed.');
