@@ -9,6 +9,7 @@ const [
   recentHistory,
   productDetail,
   trackedVersionPanel,
+  versionSupportCss,
   denseTable,
   productTable,
   deadlineTable,
@@ -23,6 +24,7 @@ const [
   readFile(new URL('../src/components/RecentViewedProducts.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/pages/eol/[slug].astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/TrackedVersionPanel.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/version-support-table.css', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/DenseTable.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/ProductTable.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/DeadlineTable.astro', import.meta.url), 'utf8'),
@@ -72,23 +74,23 @@ assert(
   'Product detail must keep a stable version support table target for responsive behavior.'
 );
 assert(
-  trackedVersionPanel.includes('<style is:global>'),
-  'Product detail support-table responsive styles must apply outside the tracked-version component scope.'
+  trackedVersionPanel.includes("import '@/version-support-table.css';"),
+  'Product detail must load version support responsive styles as a page CSS asset.'
 );
 assert(
-  trackedVersionPanel.includes('#version-support-table tbody tr:not([hidden])'),
+  versionSupportCss.includes('#version-support-table tbody tr:not([hidden])'),
   'Visible version support rows must collapse into mobile grid rows without changing the expansion behavior.'
 );
 assert(
-  trackedVersionPanel.includes('grid-template-columns: minmax(0, 1fr) minmax(0, 38%)'),
+  versionSupportCss.includes('grid-template-columns: minmax(0, 1fr) minmax(0, 38%)'),
   'Version support rows must use the bounded two-column mobile layout.'
 );
 assert(
-  trackedVersionPanel.includes("content: 'EOL / セキュリティ終了'"),
+  versionSupportCss.includes("content: 'EOL / セキュリティ終了'"),
   'Version support mobile rows must retain an explicit EOL label after hiding the table header.'
 );
 assert(
-  trackedVersionPanel.includes('.table-wrap:has(> #version-support-table)::before'),
+  versionSupportCss.includes('.table-wrap:has(> #version-support-table)::before'),
   'Version support mobile layout must suppress the obsolete horizontal-scroll hint.'
 );
 assert(
