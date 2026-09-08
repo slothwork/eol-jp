@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { formatJaDate, relativeEol } from '@/lib/date';
+import { formatJaDate } from '@/lib/date';
 import { generatedAt, getCategoryLabel, products } from '@/lib/eol';
 import { collectLatestReleaseEntries, countLatestReleasesWithin } from '@/lib/latest-releases';
 
@@ -75,11 +75,18 @@ function externalLatestLink(value: string | null): string | null {
         </div>
       </div>
 
-      <div class="filter-tabs release-period-tabs" role="group" aria-label="最新版リリース日の期間">
-        <button class="filter-tab" type="button" data-release-period="7" aria-pressed="false">7日</button>
-        <button class="filter-tab active" type="button" data-release-period="30" aria-pressed="true">30日</button>
-        <button class="filter-tab" type="button" data-release-period="90" aria-pressed="false">90日</button>
-        <button class="filter-tab" type="button" data-release-period="365" aria-pressed="false">1年</button>
+      <div class="release-filter-row">
+        <div class="filter-tabs release-period-tabs" role="group" aria-label="最新版リリース日の期間">
+          <button class="filter-tab" type="button" data-release-period="7" aria-pressed="false">7日</button>
+          <button class="filter-tab active" type="button" data-release-period="30" aria-pressed="true">30日</button>
+          <button class="filter-tab" type="button" data-release-period="90" aria-pressed="false">90日</button>
+          <button class="filter-tab" type="button" data-release-period="365" aria-pressed="false">1年</button>
+        </div>
+        <div class="release-view-toggle" role="group" aria-label="最新リリースの表示形式">
+          <span class="release-view-label">表示</span>
+          <button class="release-view-button active" type="button" data-release-view-button="table" aria-pressed="true">テーブル</button>
+          <button class="release-view-button" type="button" data-release-view-button="card" aria-pressed="false">カード</button>
+        </div>
       </div>
       <p
         class="muted"
@@ -88,32 +95,46 @@ function externalLatestLink(value: string | null): string | null {
       >直近30日：{count30}件{count30 > 0 && `（1〜${initialEnd}件を表示）`}</p>
       <p class="muted release-load-status" data-release-load-status aria-live="polite"></p>
 
-      <div class="release-list" data-release-list>
-        {initialEntries.map((entry) => {
-          const categoryLabel = getCategoryLabel(entry.category);
-          const latestLink = externalLatestLink(entry.latestLink);
-          return (
-            <article class="release-item" data-release-item>
-              <div class="release-item-date">
-                <time datetime={entry.latestDate}>{formatJaDate(entry.latestDate)}</time>
-                <span class="muted">{entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`}</span>
-              </div>
-              <div class="release-item-main">
-                <div class="release-item-meta">
-                  <span class="eyebrow">{categoryLabel}</span>
-                  <span>系列 {entry.cycle}</span>
-                  {entry.isLts && <span class="status-badge status-supported">LTS</span>}
-                </div>
-                <h2><a href={`/eol/${entry.productSlug}/`}>{entry.productLabel}</a> <span>{entry.latestName}</span></h2>
-                <p>EOL / セキュリティ終了: <strong>{formatJaDate(entry.eolFrom)}</strong> <span class="muted">（{relativeEol(entry.eolFrom)}）</span></p>
-                <div class="release-item-links">
-                  <a href={`/eol/${entry.productSlug}/`}>EOL・サポート状況を見る →</a>
-                  {latestLink && <a href={latestLink} rel="external">最新版の参照先 →</a>}
-                </div>
-              </div>
-            </article>
-          );
-        })}
+      <div class="release-results" data-release-results data-release-view="table">
+        <div class="release-table-wrap" data-release-table-wrap>
+          <table class="release-table">
+            <thead>
+              <tr>
+                <th scope="col">リリース日</th>
+                <th scope="col">製品</th>
+                <th scope="col">最新版</th>
+                <th scope="col">系列</th>
+                <th scope="col">カテゴリ</th>
+              </tr>
+            </thead>
+            <tbody data-release-table-body>
+              {initialEntries.map((entry) => {
+                const categoryLabel = getCategoryLabel(entry.category);
+                const latestLink = externalLatestLink(entry.latestLink);
+                return (
+                  <tr data-release-item>
+                    <td class="release-table-date">
+                      <time datetime={entry.latestDate}>{formatJaDate(entry.latestDate)}</time>
+                      <span class="muted">{entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`}</span>
+                    </td>
+                    <td class="release-table-product"><a href={`/eol/${entry.productSlug}/`}>{entry.productLabel}</a></td>
+                    <td class="release-table-version">
+                      {latestLink
+                        ? <a href={latestLink} rel="external">{entry.latestName}</a>
+                        : <span>{entry.latestName}</span>}
+                    </td>
+                    <td class="release-table-series">
+                      <span>{entry.cycle}</span>
+                      {entry.isLts && <span class="status-badge status-supported">LTS</span>}
+                    </td>
+                    <td class="release-table-category">{categoryLabel}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div class="release-card-list" data-release-card-list hidden></div>
       </div>
 
       <nav
@@ -133,7 +154,7 @@ function externalLatestLink(value: string | null): string | null {
       </div>
 
       <noscript>
-        <p class="section-note">JavaScriptが無効な場合は直近30日のうち最新20件を表示します。続きは各製品ページから確認してください。</p>
+        <p class="section-note">JavaScriptが無効な場合は直近30日のうち最新20件をテーブル表示します。続きは各製品ページから確認してください。</p>
       </noscript>
     </div>
   </section>
@@ -153,11 +174,18 @@ function externalLatestLink(value: string | null): string | null {
       ageDays: number;
     };
 
+    type ReleaseView = 'table' | 'card';
+
     const PAGE_SIZE = 20;
+    const VIEW_STORAGE_KEY = 'eol-release-view';
     const searchInput = document.querySelector<HTMLInputElement>('#release-search');
     const categorySelect = document.querySelector<HTMLSelectElement>('#release-category');
     const periodButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-release-period]')];
-    const releaseList = document.querySelector<HTMLElement>('[data-release-list]');
+    const viewButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-release-view-button]')];
+    const releaseResults = document.querySelector<HTMLElement>('[data-release-results]');
+    const tableWrap = document.querySelector<HTMLElement>('[data-release-table-wrap]');
+    const tableBody = document.querySelector<HTMLTableSectionElement>('[data-release-table-body]');
+    const cardList = document.querySelector<HTMLElement>('[data-release-card-list]');
     const countElement = document.querySelector<HTMLElement>('[data-release-count]');
     const loadStatus = document.querySelector<HTMLElement>('[data-release-load-status]');
     const emptyElement = document.querySelector<HTMLElement>('[data-release-empty]');
@@ -177,10 +205,38 @@ function externalLatestLink(value: string | null): string | null {
     const initialTotal = Number(countElement?.dataset.initialTotal ?? '0');
     let activePeriod = validPeriods.has(params.get('days') ?? '') ? (params.get('days') ?? '30') : '30';
     let currentPage = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+    let activeView: ReleaseView = 'table';
     let allEntries: ReleaseEntry[] | null = null;
     let dataLoadPromise: Promise<ReleaseEntry[]> | null = null;
     let renderSequence = 0;
     let searchTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function storedView(): ReleaseView {
+      try {
+        return localStorage.getItem(VIEW_STORAGE_KEY) === 'card' ? 'card' : 'table';
+      } catch {
+        return 'table';
+      }
+    }
+
+    function setReleaseView(view: ReleaseView, persist = true) {
+      activeView = view;
+      releaseResults?.setAttribute('data-release-view', view);
+      if (tableWrap) tableWrap.hidden = view !== 'table';
+      if (cardList) cardList.hidden = view !== 'card';
+      for (const button of viewButtons) {
+        const active = button.dataset.releaseViewButton === view;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      }
+      if (persist) {
+        try {
+          localStorage.setItem(VIEW_STORAGE_KEY, view);
+        } catch {
+          // 表示切替は保存できなくても利用可能にする。
+        }
+      }
+    }
 
     const initialCategory = params.get('category') ?? '';
     if (categorySelect && validCategories.has(initialCategory)) categorySelect.value = initialCategory;
@@ -225,7 +281,60 @@ function externalLatestLink(value: string | null): string | null {
       history.replaceState(null, '', suffix ? `${location.pathname}?${suffix}` : location.pathname);
     }
 
-    function createReleaseItem(entry: ReleaseEntry): HTMLElement {
+    function createReleaseTableRow(entry: ReleaseEntry): HTMLTableRowElement {
+      const row = document.createElement('tr');
+      row.dataset.releaseItem = '';
+
+      const date = document.createElement('td');
+      date.className = 'release-table-date';
+      const time = document.createElement('time');
+      time.dateTime = entry.latestDate;
+      time.textContent = formatDateOnly(entry.latestDate);
+      const ago = document.createElement('span');
+      ago.className = 'muted';
+      ago.textContent = entry.ageDays === 0 ? '本日' : `${entry.ageDays.toLocaleString('ja-JP')}日前`;
+      date.append(time, ago);
+
+      const product = document.createElement('td');
+      product.className = 'release-table-product';
+      const productLink = document.createElement('a');
+      productLink.href = `/eol/${encodeURIComponent(entry.productSlug)}/`;
+      productLink.textContent = entry.productLabel;
+      product.append(productLink);
+
+      const version = document.createElement('td');
+      version.className = 'release-table-version';
+      if (entry.latestLink) {
+        const latestLink = document.createElement('a');
+        latestLink.href = entry.latestLink;
+        latestLink.rel = 'external';
+        latestLink.textContent = entry.latestName;
+        version.append(latestLink);
+      } else {
+        version.textContent = entry.latestName;
+      }
+
+      const series = document.createElement('td');
+      series.className = 'release-table-series';
+      const cycle = document.createElement('span');
+      cycle.textContent = entry.cycle;
+      series.append(cycle);
+      if (entry.isLts) {
+        const lts = document.createElement('span');
+        lts.className = 'status-badge status-supported';
+        lts.textContent = 'LTS';
+        series.append(lts);
+      }
+
+      const category = document.createElement('td');
+      category.className = 'release-table-category';
+      category.textContent = categoryLabel(entry.category);
+
+      row.append(date, product, version, series, category);
+      return row;
+    }
+
+    function createReleaseCard(entry: ReleaseEntry): HTMLElement {
       const article = document.createElement('article');
       article.className = 'release-item';
       article.dataset.releaseItem = '';
@@ -316,11 +425,20 @@ function externalLatestLink(value: string | null): string | null {
       updatePagination(entries.length);
       const start = (currentPage - 1) * PAGE_SIZE;
       const pageEntries = entries.slice(start, start + PAGE_SIZE);
-      if (releaseList) {
+
+      if (activeView === 'table' && tableBody) {
         const fragment = document.createDocumentFragment();
-        for (const entry of pageEntries) fragment.append(createReleaseItem(entry));
-        releaseList.replaceChildren(fragment);
+        for (const entry of pageEntries) fragment.append(createReleaseTableRow(entry));
+        tableBody.replaceChildren(fragment);
+        cardList?.replaceChildren();
+      } else if (cardList) {
+        const fragment = document.createDocumentFragment();
+        for (const entry of pageEntries) fragment.append(createReleaseCard(entry));
+        cardList.replaceChildren(fragment);
+        tableBody?.replaceChildren();
       }
+
+      if (releaseResults) releaseResults.hidden = entries.length === 0;
       if (emptyElement) emptyElement.hidden = entries.length !== 0;
     }
 
@@ -377,14 +495,22 @@ function externalLatestLink(value: string | null): string | null {
       }
     }
 
-    function scrollToReleaseList() {
-      releaseList?.scrollIntoView({ block: 'start' });
+    function scrollToReleaseResults() {
+      releaseResults?.scrollIntoView({ block: 'start' });
     }
 
     for (const button of periodButtons) {
       button.addEventListener('click', () => {
         activePeriod = button.dataset.releasePeriod ?? '30';
         void applyFilters(true);
+      });
+    }
+    for (const button of viewButtons) {
+      button.addEventListener('click', () => {
+        const view = button.dataset.releaseViewButton;
+        if ((view !== 'table' && view !== 'card') || view === activeView) return;
+        setReleaseView(view);
+        void applyFilters(false);
       });
     }
     categorySelect?.addEventListener('change', () => void applyFilters(true));
@@ -395,19 +521,21 @@ function externalLatestLink(value: string | null): string | null {
     prevButton?.addEventListener('click', () => {
       if (currentPage <= 1) return;
       currentPage -= 1;
-      void applyFilters(false).then(scrollToReleaseList);
+      void applyFilters(false).then(scrollToReleaseResults);
     });
     nextButton?.addEventListener('click', () => {
       if (nextButton.disabled) return;
       currentPage += 1;
-      void applyFilters(false).then(scrollToReleaseList);
+      void applyFilters(false).then(scrollToReleaseResults);
     });
 
+    setReleaseView(storedView(), false);
     syncPeriodButtons();
     const hasCustomState = activePeriod !== '30'
       || Boolean(categorySelect?.value)
       || Boolean(searchInput?.value.trim())
-      || currentPage !== 1;
+      || currentPage !== 1
+      || activeView !== 'table';
     if (hasCustomState) {
       void applyFilters(false);
     } else {
@@ -422,9 +550,31 @@ function externalLatestLink(value: string | null): string | null {
     .release-search-field, .release-category-field { display:grid; gap:6px; }
     .release-search-field label, .release-category-field label { font-weight:700; }
     .release-search-field .search-box, .release-category-field .history-select { width:100%; max-width:none; }
-    .release-period-tabs { margin-bottom:10px; }
+    .release-filter-row { display:flex; justify-content:space-between; align-items:center; gap:12px 20px; margin-bottom:10px; }
+    .release-period-tabs { margin-bottom:0; }
+    .release-view-toggle { display:flex; align-items:center; gap:6px; flex:0 0 auto; }
+    .release-view-label { color:var(--muted); font-size:.88rem; margin-right:2px; }
+    .release-view-button { min-height:38px; padding:6px 11px; border:1px solid var(--border); border-radius:9px; background:#fff; color:inherit; font:inherit; font-size:.9rem; font-weight:700; cursor:pointer; }
+    .release-view-button:hover { border-color:var(--primary); color:var(--primary); }
+    .release-view-button.active { border-color:var(--primary); background:var(--primary); color:#fff; }
     .release-load-status:empty { display:none; }
-    .release-list { display:grid; gap:12px; margin-top:18px; }
+    .release-results { margin-top:18px; }
+    .release-table-wrap { overflow:hidden; border:1px solid var(--border); border-radius:12px; background:#fff; }
+    .release-table { width:100%; border-collapse:collapse; }
+    .release-table th, .release-table td { padding:11px 12px; border-bottom:1px solid var(--border); text-align:left; vertical-align:middle; }
+    .release-table th { background:#f7f9fc; color:var(--muted); font-size:.82rem; font-weight:700; white-space:nowrap; }
+    .release-table tbody tr:last-child td { border-bottom:0; }
+    .release-table tbody tr:hover { background:#fafcff; }
+    .release-table-date { min-width:145px; white-space:nowrap; }
+    .release-table-date time, .release-table-date .muted { display:block; }
+    .release-table-date .muted { margin-top:1px; font-size:.78rem; }
+    .release-table-product { min-width:140px; font-weight:700; }
+    .release-table-version { min-width:125px; font-weight:700; overflow-wrap:anywhere; }
+    .release-table-series { min-width:100px; white-space:nowrap; }
+    .release-table-series .status-badge { margin-left:7px; }
+    .release-table-category { min-width:110px; color:var(--muted); font-size:.88rem; white-space:nowrap; }
+
+    .release-card-list { display:grid; gap:12px; }
     .release-item { display:grid; grid-template-columns:minmax(150px,190px) minmax(0,1fr); gap:22px; background:#fff; border:1px solid var(--border); border-radius:14px; padding:18px 20px; min-width:0; }
     .release-item-date { display:flex; flex-direction:column; gap:3px; font-weight:700; }
     .release-item-main { min-width:0; }
@@ -439,8 +589,25 @@ function externalLatestLink(value: string | null): string | null {
     .release-page-button:disabled { opacity:.45; cursor:not-allowed; }
     .release-page-status { min-width:110px; text-align:center; color:var(--muted); font-size:.92rem; }
     .release-empty { margin-top:18px; }
+
     @media (max-width: 700px) {
       .release-toolbar { grid-template-columns:1fr; }
+      .release-filter-row { align-items:flex-start; flex-direction:column; }
+      .release-view-toggle { align-self:flex-end; }
+      .release-table-wrap { max-width:100%; overflow:visible; border:0; border-radius:0; background:transparent; }
+      .release-table, .release-table tbody { display:block; width:100%; min-width:0; max-width:100%; }
+      .release-table thead { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+      .release-table tbody { border-top:1px solid var(--border); }
+      .release-table tbody tr,
+      .release-table tbody tr:last-child { display:grid; width:100%; min-width:0; box-sizing:border-box; grid-template-columns:minmax(0,1fr) minmax(88px,36%); gap:3px 12px; padding:10px 2px; border-bottom:1px solid var(--border); background:transparent; }
+      .release-table td { display:block; min-width:0; max-width:100%; padding:0; border:0; overflow-wrap:anywhere; }
+      .release-table-product { grid-column:1; grid-row:1; font-size:1rem; overflow-wrap:anywhere; }
+      .release-table-version { grid-column:1; grid-row:2; font-size:.92rem; }
+      .release-table-date { grid-column:2; grid-row:1 / span 2; min-width:0; white-space:normal; text-align:right; font-size:.8rem; }
+      .release-table-date .muted { font-size:.74rem; }
+      .release-table-series { grid-column:1; grid-row:3; min-width:0; white-space:normal; color:var(--muted); font-size:.8rem; }
+      .release-table-series::before { content:'系列 '; }
+      .release-table-category { grid-column:2; grid-row:3; min-width:0; white-space:normal; text-align:right; font-size:.78rem; }
       .release-item { grid-template-columns:1fr; gap:8px; padding:16px; }
       .release-item-date { flex-direction:row; flex-wrap:wrap; gap:6px 12px; }
       .release-pagination { gap:8px; }
