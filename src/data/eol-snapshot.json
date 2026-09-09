@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-09T00:08:08+00:00",
+  "generatedAt": "2026-09-09T06:54:28+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -29218,8 +29218,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2025.0.12.331922",
-            "date": "2026-08-11",
+            "name": "2025.0.13.331960",
+            "date": "2026-09-08",
             "link": "https://helpx.adobe.com/coldfusion/kb/coldfusion-2025-updates.html"
           }
         },
@@ -29235,8 +29235,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2023.0.23.330940",
-            "date": "2026-08-11",
+            "name": "2023.0.24.330957",
+            "date": "2026-09-08",
             "link": "https://helpx.adobe.com/coldfusion/kb/coldfusion-2023-updates.html"
           }
         },
@@ -29419,7 +29419,7 @@
           "latest": {
             "name": "11.38.37",
             "date": "2025-06-17",
-            "link": "https://documentation.commvault.com/v11/software/list_of_innovation_update_releases_in_11_38.html"
+            "link": "https://documentation.commvault.com/11.40/software/changes_in_innovation_release_11_38.html"
           }
         },
         {
@@ -29453,7 +29453,7 @@
           "latest": {
             "name": "11.32.143",
             "date": "2026-06-02",
-            "link": "https://documentation.commvault.com/v11/software/list_of_maintenance_releases_for_commvault_platform_release_2023e.html"
+            "link": "https://documentation.commvault.com/11.40/software/changes_in_commvault_platform_release_2023e.html"
           }
         }
       ]
@@ -34344,9 +34344,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "10.0.11",
-            "date": "2026-08-11",
-            "link": "https://github.com/dotnet/core/blob/main/release-notes/10.0/10.0.11/10.0.11.md"
+            "name": "10.0.12",
+            "date": "2026-09-08",
+            "link": "https://github.com/dotnet/core/blob/main/release-notes/10.0/10.0.12/10.0.12.md"
           }
         },
         {
@@ -34361,9 +34361,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.0.19",
-            "date": "2026-08-11",
-            "link": "https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.19/9.0.19.md"
+            "name": "9.0.20",
+            "date": "2026-09-08",
+            "link": "https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.20/9.0.20.md"
           }
         },
         {
@@ -34378,9 +34378,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.0.30",
-            "date": "2026-08-11",
-            "link": "https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.30/8.0.30.md"
+            "name": "8.0.31",
+            "date": "2026-09-08",
+            "link": "https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.31/8.0.31.md"
           }
         },
         {
@@ -50427,8 +50427,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "1.36.4-gke.1082000",
-            "date": "2026-09-02",
+            "name": "1.36.4-gke.1247000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -50444,8 +50444,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "1.35.8-gke.1225000",
-            "date": "2026-09-02",
+            "name": "1.35.8-gke.1380000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -50461,8 +50461,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "1.34.11-gke.1044000",
-            "date": "2026-09-02",
+            "name": "1.34.11-gke.1056000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -50478,8 +50478,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "1.33.13-gke.1613000",
-            "date": "2026-09-02",
+            "name": "1.33.13-gke.1636000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -50495,8 +50495,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "1.32.13-gke.2393000",
-            "date": "2026-09-02",
+            "name": "1.32.13-gke.2411000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -50512,8 +50512,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "1.31.14-gke.2667000",
-            "date": "2026-09-02",
+            "name": "1.31.14-gke.2689000",
+            "date": "2026-09-08",
             "link": "https://cloud.google.com/kubernetes-engine/docs/release-notes-nochannel"
           }
         },
@@ -77670,9 +77670,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.63.16.7",
-            "date": "2026-09-07",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.16.7"
+            "name": "0.63.16.9",
+            "date": "2026-09-08",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.16.9"
           }
         },
         {
@@ -77755,9 +77755,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.58.32.2",
-            "date": "2026-09-04",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.58.32.2"
+            "name": "0.58.33",
+            "date": "2026-09-07",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.58.33"
           }
         },
         {
@@ -78874,8 +78874,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.3.8",
-            "date": "2026-08-11",
+            "name": "8.3.9",
+            "date": "2026-09-08",
             "link": "https://www.mongodb.com/docs/manual/release-notes/8.3/"
           }
         },
@@ -78925,8 +78925,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.0.29",
-            "date": "2026-08-11",
+            "name": "8.0.30",
+            "date": "2026-09-08",
             "link": "https://www.mongodb.com/docs/v8.0/release-notes/8.0/"
           }
         },
@@ -78993,8 +78993,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.0.40",
-            "date": "2026-08-11",
+            "name": "7.0.41",
+            "date": "2026-09-08",
             "link": "https://www.mongodb.com/docs/v7.0/release-notes/7.0/"
           }
         },
@@ -89115,9 +89115,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "24.20.0",
-            "date": "2026-08-26",
-            "link": "https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V24.md#24.20.0"
+            "name": "24.21.0",
+            "date": "2026-09-08",
+            "link": "https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V24.md#24.21.0"
           }
         },
         {
@@ -114001,9 +114001,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.69.11",
-            "date": "2026-09-08",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.69.11"
+            "name": "44.69.13",
+            "date": "2026-09-09",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.69.13"
           }
         },
         {
@@ -138448,6 +138448,23 @@
       },
       "releases": [
         {
+          "name": "1.40",
+          "label": "1.40",
+          "codename": null,
+          "releaseDate": "2026-09-07",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "1.40.0",
+            "date": "2026-09-07",
+            "link": "https://github.com/influxdata/telegraf/releases/tag/v1.40.0"
+          }
+        },
+        {
           "name": "1.39",
           "label": "1.39",
           "codename": null,
@@ -138472,9 +138489,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-07",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "1.38.4",
             "date": "2026-05-11",
@@ -143404,6 +143421,23 @@
       },
       "releases": [
         {
+          "name": "18.10",
+          "label": "2026 - 18.10",
+          "codename": "2026",
+          "releaseDate": "2026-09-08",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "18.10.0",
+            "date": "2026-09-08",
+            "link": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes#18.10.0"
+          }
+        },
+        {
           "name": "18.9",
           "label": "2026 - 18.9",
           "codename": "2026",
@@ -143411,9 +143445,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-08",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "18.9.3",
             "date": "2026-09-08",

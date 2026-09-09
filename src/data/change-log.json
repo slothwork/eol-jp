@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-09T00:08:08+00:00",
+  "updatedAt": "2026-09-09T06:54:28+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -1691,6 +1691,40 @@
       "product": "samsung-mobile",
       "label": "Samsung Mobile",
       "release": "galaxy-z-flip3-5g",
+      "from": null,
+      "to": "2026-09-08"
+    },
+    {
+      "detectedAt": "2026-09-09T06:54:28+00:00",
+      "type": "release-added",
+      "product": "telegraf",
+      "label": "Telegraf",
+      "release": "1.40",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-09T06:54:28+00:00",
+      "type": "eol-changed",
+      "product": "telegraf",
+      "label": "Telegraf",
+      "release": "1.38",
+      "from": null,
+      "to": "2026-09-07"
+    },
+    {
+      "detectedAt": "2026-09-09T06:54:28+00:00",
+      "type": "release-added",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-09T06:54:28+00:00",
+      "type": "eol-changed",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.9",
       "from": null,
       "to": "2026-09-08"
     }
