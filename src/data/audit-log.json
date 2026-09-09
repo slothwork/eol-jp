@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-08T04:35:20.159Z",
+  "updatedAt": "2026-09-09T04:41:38.651Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -306,6 +306,136 @@
         {
           "slug": "traefik",
           "label": "Traefik"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-09T04:41:38.651Z-c51167b54af9",
+      "syncedAt": "2026-09-09T04:41:38.651Z",
+      "sourceGeneratedAt": "2026-09-09T00:08:08+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "17c7d978d02108d25b4f0fd2ae1e2c6fb97580be47115a80fc3af1ff034e069d",
+      "afterSha256": "c51167b54af999b32670d87a9dc3fc67dce44a375fc07e5088986850de86854c",
+      "productCount": 473,
+      "releaseCount": 8607,
+      "changes": {
+        "total": 62,
+        "releaseAdded": 2,
+        "releaseRemoved": 0,
+        "eolChanged": 2,
+        "supportChanged": 0,
+        "latestChanged": 54,
+        "releaseMetadataChanged": 4,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "ansible",
+          "label": "Ansible"
+        },
+        {
+          "slug": "ansible-core",
+          "label": "Ansible-core"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "artifactory",
+          "label": "Artifactory"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "concrete-cms",
+          "label": "Concrete CMS"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "dbt-core",
+          "label": "dbt Core"
+        },
+        {
+          "slug": "drush",
+          "label": "Drush"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "freebsd",
+          "label": "FreeBSD"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "chrome",
+          "label": "Google Chrome"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "kde-plasma",
+          "label": "KDE Plasma"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "powershell",
+          "label": "Microsoft PowerShell"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "postfix",
+          "label": "Postfix"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "samsung-mobile",
+          "label": "Samsung Mobile"
+        },
+        {
+          "slug": "typo3",
+          "label": "TYPO3"
         }
       ]
     }

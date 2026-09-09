@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-08T00:08:01+00:00",
+  "updatedAt": "2026-09-09T00:08:08+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -1659,6 +1659,40 @@
       "release": "8.2",
       "from": "2023-05-12",
       "to": "2023-09-30"
+    },
+    {
+      "detectedAt": "2026-09-09T00:08:08+00:00",
+      "type": "release-added",
+      "product": "chrome",
+      "label": "Google Chrome",
+      "release": "153",
+      "eolFrom": "2026-09-22"
+    },
+    {
+      "detectedAt": "2026-09-09T00:08:08+00:00",
+      "type": "release-added",
+      "product": "freebsd",
+      "label": "FreeBSD",
+      "release": "14.5",
+      "eolFrom": "2027-06-30"
+    },
+    {
+      "detectedAt": "2026-09-09T00:08:08+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-z-fold3-5g",
+      "from": null,
+      "to": "2026-09-08"
+    },
+    {
+      "detectedAt": "2026-09-09T00:08:08+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-z-flip3-5g",
+      "from": null,
+      "to": "2026-09-08"
     }
   ]
 }
