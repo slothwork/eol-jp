@@ -221,5 +221,44 @@ const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? nul
 
       updateBackToTop();
     </script>
+    <script>
+      const prepareExternalLink = (link: HTMLAnchorElement) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        let url: URL;
+        try {
+          url = new URL(href, window.location.href);
+        } catch {
+          return;
+        }
+
+        const isHttp = url.protocol === 'http:' || url.protocol === 'https:';
+        if (!isHttp || url.origin === window.location.origin) return;
+
+        link.target = '_blank';
+        const rel = new Set(link.rel.split(/\s+/).filter(Boolean));
+        rel.add('external');
+        rel.add('noopener');
+        rel.add('noreferrer');
+        link.rel = Array.from(rel).join(' ');
+      };
+
+      const prepareExternalLinks = (root: ParentNode) => {
+        root.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(prepareExternalLink);
+      };
+
+      prepareExternalLinks(document);
+
+      const externalLinkObserver = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          for (const node of mutation.addedNodes) {
+            if (node instanceof HTMLAnchorElement) prepareExternalLink(node);
+            if (node instanceof Element) prepareExternalLinks(node);
+          }
+        }
+      });
+      externalLinkObserver.observe(document.body, { childList: true, subtree: true });
+    </script>
   </body>
 </html>
