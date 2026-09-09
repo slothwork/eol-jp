@@ -14,6 +14,11 @@ assert.match(layout, /aria-expanded="false"/, 'Mobile menu toggle must expose co
 assert.match(layout, /classList\.add\('js'\)/, 'JS enhancement marker is required for no-JS navigation fallback');
 assert.match(layout, /event\.key !== 'Escape'/, 'Mobile navigation must support Escape to close');
 assert.match(layout, /dataset\.open = String\(open\)/, 'Mobile navigation open state must be reflected in markup');
+assert.match(layout, /url\.origin === window\.location\.origin/, 'Same-origin links must stay in the current tab');
+assert.match(layout, /link\.target = '_blank'/, 'External links must open in a new tab');
+assert.match(layout, /rel\.add\('noopener'\)/, 'External links must include noopener');
+assert.match(layout, /rel\.add\('noreferrer'\)/, 'External links must include noreferrer');
+assert.match(layout, /new MutationObserver/, 'Dynamically added external links must receive the same behavior');
 
 assert.match(styles, /@media \(max-width: 620px\)/, 'Narrow-screen breakpoint is required');
 assert.match(styles, /\.js \.main-nav \{ display:none; \}/, 'JS-enhanced mobile navigation must collapse by default');
