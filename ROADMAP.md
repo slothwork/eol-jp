@@ -1,102 +1,149 @@
 # ROADMAP
 
-最終整理: 2026-09-07
+最終整理: 2026-09-10
+
+この文書は「次に何をするか」の正本とする。チャット間の現在地・作業上の合意は `docs/PROJECT_HANDOFF.md`、過去の判断記録は `docs/ROADMAP_REVIEW_2026-09.md` を参照する。
+
+## Strategy
+
+Phase 0〜6で、公開サイト、通知、マイEOL、信頼性情報、GitHub import、運用・テスト・性能・セキュリティの基盤は一通り完成した。
+
+今後は機能数を増やすこと自体を目標にせず、次のサイクルを基本とする。
+
+1. 観測する
+2. 実需要がある改善対象を少数選ぶ
+3. 仮説を1つずつ実装する
+4. Search Console / 閲覧実績で効果を測る
+5. 効果が確認できたものだけ横展開する
 
 ## Current status
 
-- Phase 0〜6 は完了。
-- Search Console は登録済みだが、現時点ではインデックス/検索パフォーマンスデータの処理待ち。実データが出るまでは title / description の推測変更を行わない。
-- Phase 7 は Search Console / 閲覧データなどの実データを根拠に進める。
-- データ待ちの間に独立して進められる「マイEOLのローカルバックアップ/復元」は完了。
-- ユーザー要望と既存snapshotの再利用だけで実現できる独立機能として、サポート中系列の最新版を横断確認する「最新リリース情報」MVPを追加。新規外部API・Worker・KV・DBは追加しない。
+- Phase 0〜6は完了。
+- `/releases/`、マイEOLのJSONバックアップ/復元、高密度テーブルUI、sitemap整合性検証、外部リンクの別タブ化まで反映済み。
+- Search Consoleではsitemap送信と主要URLのインデックス登録リクエストを実施済み。
+- 2026-09-10時点で検証開始の通知は届いているが、インデックス登録状況・検索パフォーマンスへの反映は待機中。
+- Search Consoleの実データが出るまでは、title / description、内部リンク、ページ生成範囲を推測で変更しない。
 
-## Phase 6 — Stabilization & operations
+## Waiting / Growth gate
 
-- [x] ROADMAP / AGENTS / ARCHITECTURE / README を現行実装へ同期
-- [x] EOL snapshot の鮮度監視（`generatedAt` が72時間超で警告、168時間超または不正時はCI/日次監視を失敗。サイト側もブラウザ実時刻でstale表示）
-- [x] 手動レビュー情報の鮮度ポリシー（公式ソース確認・公式日付比較・商用サポート・リリース変更点を180日でwarning、365日でCI/定期監視を失敗）
-- [x] 重要ユーザーフローのブラウザ smoke test（実Chromeで主要URL、マイEOL保存/表示、閲覧履歴、GitHub import入力検証、375pxモバイルナビをProduction buildに対して確認）
-- [x] HTTPセキュリティヘッダーの監査・強化と依存更新の定期運用（Static Assetsの`_headers` + Worker共通header、CSP、CI検証、npm / GitHub Actionsの月次Dependabot）
-- [x] パフォーマンス基準の計測と予算化（Production buildの全JS/CSS/最大JSチャンクと主要5ページのHTML・JS・CSS初期転送量をgzip相当でCI監視）
-- [x] 肥大化したモジュールの段階的分割（通知UIのDOM/API処理を`src/client/`へ分離、GitHub importを型/検出/系列解決/API clientへ分割、Worker entrypointを外部通知/public API runtimeへ分離。既存公開import・DOM・API契約は維持）
-- [x] 運用Runbook整備（`docs/RUNBOOK.md`。同期失敗、snapshot鮮度、通知障害、Worker/KV、GitHub Import、APIトークン更新、Resend / Turnstile / Cloudflare障害時の切り分け・復旧・確認手順）
+Phase 7の検索成長施策は、次の情報が実際に確認できるまで待つ。
 
-## Phase 7 — Data-driven growth
+- 主要URLのインデックス状態がSearch Consoleへ反映される
+- 「検索パフォーマンス」のQueries / Pagesに、改善対象を比較できる程度の実データが出る
+- sitemapやcanonical、noindex等の技術的な異常がないことを確認できる
 
-- [ ] Search Console実データに基づく title / description 改善と効果検証（Phase 2からの継続。Search Console処理完了後に開始）
-- [ ] 実クエリと閲覧データに基づく内部リンク改善（関連製品、同カテゴリ、移行先候補などを必要なページだけに追加）
-- [ ] 実需要に基づく独自コンテンツ拡張（主要20製品固定ではなく、表示回数・閲覧数・EOL接近度から優先順位を決める）
-- [x] マイEOLのローカルバックアップ/復元（利用中製品 + ローカルリマインダー設定/確認済み状態をversioned JSONでexport/import。通知管理token・送信先・閲覧履歴等は含めず、サーバー送信なし）
-- [x] 最新リリース情報MVP（`/releases/`。既存snapshotの`latest`を使い、サポート中系列の直近1年の最新版をリリース日の新しい順に表示。7/30/90/365日、カテゴリ、検索で絞り込み。追加外部サービスなし）
-- [ ] Public GitHub Repository Import の利用実績を見て対応範囲を拡張（monorepo / サブディレクトリ / 追加manifest）。利用実績がない段階では過剰実装しない
-- [ ] バージョン専用URL等のSEO拡張は、Search Consoleで十分な検索需要が確認できた場合のみ再検討
+固定の日数だけを理由に施策を開始しない。データ量が少ない場合は追加で待ち、無理に結論を出さない。
 
----
+## Now — gate期間中に進めること
 
-## Completed phases
+Search Console待ちの間は、新しい大規模機能を作るのではなく次を優先する。
+
+- 日次EOL同期、snapshot鮮度、手動レビュー鮮度、CI、Dependabot等の既存運用を維持する
+- CI / browser smoke / performance budget / security headerで検出された不具合を修正する
+- ユーザーが実際に使って気づいた小規模UX改善を行う
+- ドキュメントと実装のdriftを防ぐ
+- Search Consoleの検証状態に変化があれば `docs/PROJECT_HANDOFF.md` のCurrent stateを更新する
+
+次は原則として行わない。
+
+- 根拠のないtitle / descriptionの一括変更
+- バージョン専用URLなどindexableページの大量追加
+- 利用実績のないGitHub Import対応範囲の先回り拡張
+- アカウント、恒久DB、private GitHub認証など運用負荷の大きい基盤追加
+
+## Next — Phase 7: Data-driven growth
+
+Growth gateを満たしたら、以下の順序で進める。
+
+### 1. Baselineを作る
+
+- Search ConsoleからQueries / Pagesをエクスポートする
+- 利用可能な期間が短ければ、その時点で取得できる全期間を使う
+- インデックス済み / 未登録の傾向、表示回数、掲載順位、CTRをページ種別ごとに確認する
+- Cloudflare Web Analytics等の既存閲覧データと、必要な範囲で突き合わせる
+
+### 2. 改善対象を3〜5ページに絞る
+
+優先候補は次のようなページとする。
+
+- 表示回数が多いのにCTRが相対的に弱い
+- 4〜20位付近で、検索意図に対して内容改善の余地がある
+- 実クエリに対して必要な情報や内部導線が不足している
+- 同種ページと比べてインデックス状況が不自然に弱い
+
+固定の主要20製品だからという理由だけで対象を選ばない。
+
+### 3. 仮説ごとに小さく改善する
+
+原因に応じて、必要なものだけを変更する。
+
+- title / description
+- 関連製品・同カテゴリ・移行先候補などの内部リンク
+- 製品固有の概要、公式移行情報、変更点、EOL判断材料
+- 検索意図に合っていない見出しや情報配置
+
+複数要因を一度に大きく変更せず、何が効いたか追える単位を優先する。
+
+### 4. 効果を測る
+
+- 改善前後で表示回数、CTR、掲載順位、対象ページ閲覧を比較する
+- Search Consoleの反映遅延を考慮し、短期間の変動だけで成功・失敗を決めない
+- 効果が確認できた施策だけ類似ページへ横展開する
+
+### 5. 独自コンテンツを需要順に拡張する
+
+主要20製品固定ではなく、次を組み合わせて優先順位を決める。
+
+- Search Consoleの表示回数・実クエリ
+- サイト内の閲覧実績
+- EOL接近度
+- 公式情報を用いて日本語で独自価値を追加できるか
+
+## Later / Conditional
+
+次の項目は、需要または利用実績が確認できた場合のみ再検討する。
+
+- Public GitHub Repository Importのmonorepo / サブディレクトリ / 追加manifest対応
+- バージョン専用URLなどのSEO拡張
+- マイEOLのアカウント同期・クラウドバックアップ
+- 追加の通知チャネルや恒久データ基盤
+- 大規模な製品固有コンテンツ拡張
+
+## Completed milestones
 
 ### Phase 0 — Foundation
 
-- [x] Astro静的サイト構成
-- [x] endoflife.date API v1 正規化スクリプト
-- [x] GitHub Actions日次同期
-- [x] EOLまでの日数・状態分類
-- [x] 製品一覧 / 個別ページ / Upcoming / Calendar
-- [x] RSS / iCalendar / sitemap
-- [x] endoflife.date attribution / 免責事項
+Astro静的サイト、endoflife.date API v1正規化、日次snapshot同期、EOL判定、製品一覧・個別・Upcoming・Calendar、RSS / iCalendar / sitemapを整備。
 
 ### Phase 1 — Public MVP
 
-- [x] GitHubリポジトリ作成・initial commit
-- [x] package-lock.json生成・CIをnpm ciへ移行
-- [x] `npm run sync:eol` で全製品を取得
-- [x] `npm run check && npm run build`
-- [x] Cloudflare Workers接続
-- [x] 独自ドメイン確定
-- [x] robots.txtのSitemap URL確定
-- [x] Google Search Console登録・sitemap送信
-- [x] OGP画像 / favicon
-- [x] 主要20製品の日本語summary手動整備
+Cloudflare Workers + Static Assets、独自ドメイン、Search Console、robots、OGP / favicon、主要製品の日本語説明まで公開基盤を完成。
 
-### Phase 2 — Search growth
+### Phase 2 — Search foundation
 
-- [x] 「30日以内 / 90日以内 / 半年以内」専用ランディング
-- [x] カテゴリ別ページ（言語 / OS / DB / インフラ等）
-- [x] バージョン単位の見出し・FAQ強化
-- [x] EOL変更履歴ページ
-- [x] 主要製品の公式移行ガイドへの導線
-- [x] 主要20製品に「製品とは何か」の簡潔な日本語概要を表示
-- [x] 主要5製品のメジャーリリース変更点を公式一次情報付きで表示（拡張可能なデータ構造）
-- [x] 「注目されているEOL情報」表示基盤（180日以内 × 直近30日閲覧）
-- [x] 製品ページの最接近EOL判定・LTS優先の保守的な移行候補判定
-- [x] 製品ページの情報量に応じたindex / noindex方針とsitemap連動
-- [x] Search Console CSVのクエリ / ページ別CTR改善候補抽出基盤
-- [x] 構造化データ検証
+期限別・カテゴリ別LP、FAQ、変更履歴、公式移行導線、独自概要、リリース変更点、注目EOL、index/noindex方針、Search Console CSV分析基盤、構造化データ検証を整備。
 
 ### Phase 3 — Utility product
 
-- [x] 「利用中バージョン」ローカル保存
-- [x] マイEOLダッシュボード
-- [x] 30/90/180日前リマインダー（マイEOL閲覧時のローカル判定）
-- [x] Slack / Discord外部通知のWorker・Cron・Webhook判定基盤
-- [x] Slack / Discord通知設定UI + Workers KV本番binding
-- [x] メール通知実装（Resend Free + Turnstile + メールアドレス確認）
-- [x] メール通知の本番有効化 + 登録/解除E2E確認
-- [x] 公開JSON API / embeddable badge
+利用中バージョン保存、マイEOL、ローカルリマインダー、Slack / Discord / メール通知、公開JSON API、badgeを実装。
 
 ### Phase 4 — Trust & expansion
 
-- [x] 主要20製品の公式ソースレビュー台帳 + 公開照合状況ページ
-- [x] 主要20製品の公式日付との手動照合（比較可能な製品のみ。固定日付を比較できない製品は `not-comparable`、粒度/系列差がある製品は `partial` として明示）
-- [x] 公式日付証跡とコミット済みsnapshotのCI照合（構造化証跡30件以上 + pending 0件）
-- [x] 製品ページへ公式ソース照合結果を表示（状態・公式ソース・確認日・構造化証跡）
-- [x] リリース変更点の対象製品を主要20製品へ段階拡大（20/20完了）
-- [x] 日本で利用できる商用サポート情報（一次情報と日本向け公式ページ/国内窓口を確認できた6製品: Ubuntu / MySQL / Java / Windows / Windows Server / nginx）
-- [x] GitHub package / SBOM連携による自動バージョン検出の検討
-- [x] 変更監査ログ（同期差分のSHA-256・変更件数・影響製品・同期元を記録し公開）
+公式ソースレビュー、公式日付証跡、照合状況表示、日本向け商用サポート情報、監査ログ、GitHub package / SBOM連携方針を整備。
 
 ### Phase 5 — UX & repository import
 
-- [x] サイト全体のレスポンシブUX監査・改善（アクセシブルなモバイルナビ、44px操作領域、狭幅フォーム/Turnstile保護、表スクロール案内、長文折返し、safe-area対応）
-- [x] 製品ページの閲覧履歴（localStorage、重複除外、最大20件、個別/全削除、外部送信なし。製品一覧/マイEOLで最近見た製品を表示）
-- [x] Public GitHub Repository Import MVP（ブラウザからGitHub REST APIへ直接接続。非同期SBOM + ルートmanifest/runtime補完を解析し、高信頼度候補のみユーザー確認後にマイEOLへ保存。private repo / token保存なし）
+レスポンシブUX、閲覧履歴、Public GitHub Repository Import MVPを実装。
+
+### Phase 6 — Stabilization & operations
+
+snapshot / 手動レビュー鮮度監視、実Chrome browser smoke、HTTPセキュリティヘッダー、Dependabot、performance budget、大型モジュール分割、運用Runbookを整備。
+
+### Completed independent improvements
+
+- マイEOLのversioned JSONバックアップ / 復元
+- 最新リリース情報 `/releases/` と20件ページング・テーブル表示
+- サイト全体の比較・一覧UIを高密度テーブルへ統一
+- 製品詳細のバージョンサポート表を5列へ整理
+- sitemapと全indexable canonical HTMLのCI整合性検証
+- 外部リンクを別タブで開く共通処理
