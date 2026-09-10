@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-09T15:18:27.683Z",
+  "updatedAt": "2026-09-10T04:42:30.470Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -498,6 +498,124 @@
         {
           "slug": "telegraf",
           "label": "Telegraf"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-10T04:42:30.470Z-9cbe9385915c",
+      "syncedAt": "2026-09-10T04:42:30.470Z",
+      "sourceGeneratedAt": "2026-09-10T00:09:26+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "a658e5e5013bec0875b2792cbe23d71653bd8e155dc37469f958d14261f162bc",
+      "afterSha256": "9cbe9385915c20e6e5938225449f38a384d4648b1eda994de3e06ccf308c91ae",
+      "productCount": 473,
+      "releaseCount": 8609,
+      "changes": {
+        "total": 38,
+        "releaseAdded": 0,
+        "releaseRemoved": 0,
+        "eolChanged": 1,
+        "supportChanged": 0,
+        "latestChanged": 32,
+        "releaseMetadataChanged": 5,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "cakephp",
+          "label": "CakePHP"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "greenlight",
+          "label": "Greenlight"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "looker",
+          "label": "Looker"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "msexchange",
+          "label": "Microsoft Exchange"
+        },
+        {
+          "slug": "sharepoint",
+          "label": "Microsoft SharePoint"
+        },
+        {
+          "slug": "mssqlserver",
+          "label": "Microsoft SQL Server"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "nomad",
+          "label": "Nomad"
+        },
+        {
+          "slug": "react",
+          "label": "React"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
         }
       ]
     }
