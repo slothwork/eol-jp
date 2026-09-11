@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-10T00:09:26+00:00",
+  "updatedAt": "2026-09-11T05:59:55+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -1736,6 +1736,86 @@
       "release": "26.16",
       "from": "2026-11-30",
       "to": "2026-12-31"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.1.2",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.1.1",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.1.0",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.0.2",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.0.1",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.2.0.0",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.1.1.0",
+      "from": "2026-11-30",
+      "to": "2026-12-04"
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "release-added",
+      "product": "apache-artemis",
+      "label": "Apache Artemis",
+      "release": "2.57",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-11T05:59:55+00:00",
+      "type": "eol-changed",
+      "product": "apache-artemis",
+      "label": "Apache Artemis",
+      "release": "2.56",
+      "from": null,
+      "to": "2026-09-09"
     }
   ]
 }

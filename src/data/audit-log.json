@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-11T01:06:00.796Z",
+  "updatedAt": "2026-09-11T11:43:40.980Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -722,6 +722,60 @@
         {
           "slug": "unity",
           "label": "Unity"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-11T11:43:40.980Z-e9217dd84651",
+      "syncedAt": "2026-09-11T11:43:40.980Z",
+      "sourceGeneratedAt": "2026-09-11T05:59:55+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "bb5d11921a532ae6d7817265ab9e48ed7e333190b95212e69ad8100eefeda29f",
+      "afterSha256": "e9217dd846515a336449bb7b1aeb4cf0d0f8dd02bfb7bd581bbd54ce43c170d8",
+      "productCount": 473,
+      "releaseCount": 8610,
+      "changes": {
+        "total": 19,
+        "releaseAdded": 1,
+        "releaseRemoved": 0,
+        "eolChanged": 8,
+        "supportChanged": 0,
+        "latestChanged": 9,
+        "releaseMetadataChanged": 1,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-neptune",
+          "label": "Amazon Neptune"
+        },
+        {
+          "slug": "apache-artemis",
+          "label": "Apache Artemis"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "plone",
+          "label": "Plone"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
         }
       ]
     }
