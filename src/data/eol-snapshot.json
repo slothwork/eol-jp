@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-11T00:08:19+00:00",
+  "generatedAt": "2026-09-11T05:59:55+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -1583,9 +1583,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.268.0",
-            "date": "2026-09-02",
-            "link": "https://github.com/aws/aws-cdk/releases/tag/v2.268.0"
+            "name": "2.269.0",
+            "date": "2026-09-10",
+            "link": "https://github.com/aws/aws-cdk/releases/tag/v2.269.0"
           }
         }
       ]
@@ -3904,7 +3904,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -3955,7 +3955,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -4006,7 +4006,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -4023,7 +4023,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -4040,7 +4040,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -4057,7 +4057,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -4074,7 +4074,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-11-30",
+          "eolFrom": "2026-12-04",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -8441,6 +8441,23 @@
       },
       "releases": [
         {
+          "name": "2.57",
+          "label": "2.57",
+          "codename": null,
+          "releaseDate": "2026-09-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.57.0",
+            "date": "2026-09-09",
+            "link": "https://artemis.apache.org/components/artemis/documentation/latest/versions.html#2-57-0"
+          }
+        },
+        {
           "name": "2.56",
           "label": "2.56",
           "codename": null,
@@ -8448,9 +8465,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-09",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "2.56.0",
             "date": "2026-08-21",
@@ -48293,8 +48310,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.3.1",
-            "date": "2026-08-25",
+            "name": "19.3.2",
+            "date": "2026-09-10",
             "link": "https://docs.gitlab.com/releases/19/gitlab-19-3-released/"
           }
         },
@@ -48310,8 +48327,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.2.5",
-            "date": "2026-08-25",
+            "name": "19.2.6",
+            "date": "2026-09-10",
             "link": "https://docs.gitlab.com/releases/19/gitlab-19-2-released/"
           }
         },
@@ -48327,8 +48344,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.1.7",
-            "date": "2026-08-25",
+            "name": "19.1.8",
+            "date": "2026-09-10",
             "link": "https://docs.gitlab.com/releases/19/gitlab-19-1-released/"
           }
         },
@@ -68586,9 +68603,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "2.12.14",
-            "date": "2026-08-01",
-            "link": "https://github.com/kumahq/kuma/releases/tag/v2.12.14"
+            "name": "2.12.15",
+            "date": "2026-09-10",
+            "link": "https://github.com/kumahq/kuma/releases/tag/v2.12.15"
           }
         },
         {
@@ -68603,9 +68620,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.11.18",
-            "date": "2026-08-01",
-            "link": "https://github.com/kumahq/kuma/releases/tag/v2.11.18"
+            "name": "2.11.19",
+            "date": "2026-09-10",
+            "link": "https://github.com/kumahq/kuma/releases/tag/v2.11.19"
           }
         },
         {
@@ -77670,9 +77687,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.63.17",
-            "date": "2026-09-09",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.17"
+            "name": "0.63.17.1",
+            "date": "2026-09-10",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.17.1"
           }
         },
         {
@@ -105547,9 +105564,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.2.1",
-            "date": "2026-06-26",
-            "link": "https://plone.org/download/releases/6.2.1"
+            "name": "6.2.2",
+            "date": "2026-09-10",
+            "link": "https://plone.org/download/releases/6.2.2"
           }
         },
         {
@@ -114001,9 +114018,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.79.2",
-            "date": "2026-09-10",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.79.2"
+            "name": "44.79.6",
+            "date": "2026-09-11",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.79.6"
           }
         },
         {
