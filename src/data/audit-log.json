@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-11T11:43:40.980Z",
+  "updatedAt": "2026-09-11T15:51:14.866Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -772,6 +772,52 @@
         {
           "slug": "plone",
           "label": "Plone"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-11T15:51:14.866Z-f284309e89ce",
+      "syncedAt": "2026-09-11T15:51:14.866Z",
+      "sourceGeneratedAt": "2026-09-11T14:51:02+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "e9217dd846515a336449bb7b1aeb4cf0d0f8dd02bfb7bd581bbd54ce43c170d8",
+      "afterSha256": "f284309e89ce22c16a9627235863a472299d25c405925c41b2bf8e80c29d35a1",
+      "productCount": 473,
+      "releaseCount": 8610,
+      "changes": {
+        "total": 9,
+        "releaseAdded": 0,
+        "releaseRemoved": 0,
+        "eolChanged": 1,
+        "supportChanged": 0,
+        "latestChanged": 8,
+        "releaseMetadataChanged": 0,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "argo-workflows",
+          "label": "Argo Workflows"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
         },
         {
           "slug": "renovate",
