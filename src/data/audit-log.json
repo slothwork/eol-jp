@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-10T04:42:30.470Z",
+  "updatedAt": "2026-09-11T01:06:00.796Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -616,6 +616,112 @@
         {
           "slug": "vuetify",
           "label": "Vuetify"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-11T01:06:00.796Z-bb5d11921a53",
+      "syncedAt": "2026-09-11T01:06:00.796Z",
+      "sourceGeneratedAt": "2026-09-11T00:08:19+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "9cbe9385915c20e6e5938225449f38a384d4648b1eda994de3e06ccf308c91ae",
+      "afterSha256": "bb5d11921a532ae6d7817265ab9e48ed7e333190b95212e69ad8100eefeda29f",
+      "productCount": 473,
+      "releaseCount": 8609,
+      "changes": {
+        "total": 32,
+        "releaseAdded": 0,
+        "releaseRemoved": 0,
+        "eolChanged": 0,
+        "supportChanged": 0,
+        "latestChanged": 32,
+        "releaseMetadataChanged": 0,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "tomcat",
+          "label": "Apache Tomcat"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "cert-manager",
+          "label": "cert-manager"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "forgejo",
+          "label": "Forgejo"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "consul",
+          "label": "Hashicorp Consul"
+        },
+        {
+          "slug": "kyverno",
+          "label": "Kyverno"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "nextcloud",
+          "label": "Nextcloud"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "quarkus-framework",
+          "label": "Quarkus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "teleport",
+          "label": "Teleport"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
         }
       ]
     }
