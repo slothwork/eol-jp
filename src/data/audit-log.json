@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-11T15:51:14.866Z",
+  "updatedAt": "2026-09-12T04:33:42.140Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -822,6 +822,52 @@
         {
           "slug": "renovate",
           "label": "Renovate CLI"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-12T04:33:42.140Z-e31403de2ad2",
+      "syncedAt": "2026-09-12T04:33:42.140Z",
+      "sourceGeneratedAt": "2026-09-12T00:07:21+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "f284309e89ce22c16a9627235863a472299d25c405925c41b2bf8e80c29d35a1",
+      "afterSha256": "e31403de2ad296fb93c85023624c39aa6aa779d7de80724a841ef3de0d775e74",
+      "productCount": 473,
+      "releaseCount": 8610,
+      "changes": {
+        "total": 12,
+        "releaseAdded": 0,
+        "releaseRemoved": 0,
+        "eolChanged": 0,
+        "supportChanged": 0,
+        "latestChanged": 11,
+        "releaseMetadataChanged": 1,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "mongodb",
+          "label": "MongoDB Server"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
         }
       ]
     }
