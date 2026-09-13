@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-13T00:07:57+00:00",
+  "generatedAt": "2026-09-13T15:53:15+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -7242,14 +7242,31 @@
       },
       "releases": [
         {
+          "name": "26",
+          "label": "26 (Stephen Kapos)",
+          "codename": "Stephen Kapos",
+          "releaseDate": "2026-03-21",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2028-08-09",
+          "eolFrom": "2030-07-30",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "26",
+            "date": "2026-03-21",
+            "link": "https://antixlinux.com/antix-26-released/"
+          }
+        },
+        {
           "name": "23",
           "label": "23 (Arditi del Popolo)",
           "codename": "Arditi del Popolo",
           "releaseDate": "2023-08-28",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": "2026-06-10",
-          "eolFrom": "2028-06-10",
+          "eoasFrom": "2026-07-11",
+          "eolFrom": "2028-06-30",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -7265,8 +7282,8 @@
           "releaseDate": "2021-10-31",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": "2024-06-30",
-          "eolFrom": "2026-06-30",
+          "eoasFrom": "2024-08-14",
+          "eolFrom": "2026-08-31",
           "isEol": true,
           "isMaintained": false,
           "latest": {
@@ -32475,9 +32492,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.6",
-            "date": "2026-07-11",
-            "link": "https://www.debian.org/News/2025/20250809"
+            "name": "13.7",
+            "date": "2026-09-12",
+            "link": "https://www.debian.org/News/2026/20260912"
           }
         },
         {
@@ -44002,6 +44019,23 @@
       },
       "releases": [
         {
+          "name": "5.0",
+          "label": "5.0",
+          "codename": null,
+          "releaseDate": "2026-09-08",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "5.0.0",
+            "date": "2026-09-08",
+            "link": "https://theforeman.org/manuals/5.0/index.html#Releasenotesfor5.0"
+          }
+        },
+        {
           "name": "3.19",
           "label": "3.19",
           "codename": null,
@@ -44026,9 +44060,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-08",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "3.18.2",
             "date": "2026-07-01",
@@ -55048,9 +55082,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.4.7",
-            "date": "2026-08-30",
-            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/7.4.7"
+            "name": "7.4.8",
+            "date": "2026-09-13",
+            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/7.4.8"
           }
         },
         {
@@ -55133,9 +55167,9 @@
           "isEol": true,
           "isMaintained": true,
           "latest": {
-            "name": "6.6.56",
-            "date": "2026-08-23",
-            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/6.6.56"
+            "name": "6.6.57",
+            "date": "2026-09-13",
+            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/6.6.57"
           }
         },
         {
@@ -64038,6 +64072,23 @@
       },
       "releases": [
         {
+          "name": "1.13",
+          "label": "1.13",
+          "codename": null,
+          "releaseDate": "2026-09-10",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "1.13.0",
+            "date": "2026-09-09",
+            "link": "https://github.com/JuliaLang/julia/blob/v1.13.0/NEWS.md"
+          }
+        },
+        {
           "name": "1.12",
           "label": "1.12",
           "codename": null,
@@ -64045,9 +64096,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-10",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "1.12.7",
             "date": "2026-08-15",
@@ -79447,9 +79498,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.2.2",
-            "date": "2026-08-08",
-            "link": "https://moodledev.io/general/releases/5.2/5.2.2"
+            "name": "5.2.3",
+            "date": "2026-09-13",
+            "link": "https://moodledev.io/general/releases/5.2/5.2.3"
           }
         },
         {
@@ -79464,9 +79515,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.1.6",
-            "date": "2026-08-08",
-            "link": "https://moodledev.io/general/releases/5.1/5.1.6"
+            "name": "5.1.7",
+            "date": "2026-09-13",
+            "link": "https://moodledev.io/general/releases/5.1/5.1.7"
           }
         },
         {
@@ -79481,9 +79532,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.0.9",
-            "date": "2026-08-08",
-            "link": "https://moodledev.io/general/releases/5.0/5.0.9"
+            "name": "5.0.10",
+            "date": "2026-09-13",
+            "link": "https://moodledev.io/general/releases/5.0/5.0.10"
           }
         },
         {
@@ -79498,9 +79549,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.5.13",
-            "date": "2026-08-08",
-            "link": "https://moodledev.io/general/releases/4.5/4.5.13"
+            "name": "4.5.14",
+            "date": "2026-09-13",
+            "link": "https://moodledev.io/general/releases/4.5/4.5.14"
           }
         },
         {
@@ -83872,6 +83923,23 @@
       },
       "releases": [
         {
+          "name": "2026.08",
+          "label": "2026.08",
+          "codename": null,
+          "releaseDate": "2026-09-10",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2026.08.1",
+            "date": "2026-09-07",
+            "link": "https://neo4j.com/release-notes/database/neo4j-2026-08/"
+          }
+        },
+        {
           "name": "2026.07",
           "label": "2026.07",
           "codename": null,
@@ -83879,9 +83947,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-09-10",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "2026.07.1",
             "date": "2026-08-06",
@@ -105712,9 +105780,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "11.26.0",
-            "date": "2026-09-06",
-            "link": "https://github.com/pnpm/pnpm/releases/tag/v11.26.0"
+            "name": "11.27.0",
+            "date": "2026-09-12",
+            "link": "https://github.com/pnpm/pnpm/releases/tag/v11.27.0"
           }
         },
         {
@@ -114018,9 +114086,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.82.4",
-            "date": "2026-09-12",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.82.4"
+            "name": "44.83.0",
+            "date": "2026-09-13",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.83.0"
           }
         },
         {
@@ -116212,15 +116280,15 @@
         },
         {
           "name": "7.23",
-          "label": "RouterOS 7.23",
+          "label": "RouterOS 7.23 (LT)",
           "codename": null,
           "releaseDate": "2026-05-26",
-          "isLts": false,
+          "isLts": true,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2026-08-17",
-          "isEol": true,
-          "isMaintained": false,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
           "latest": {
             "name": "7.23.5",
             "date": "2026-09-04",
@@ -116252,9 +116320,9 @@
           "isLts": true,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-05-26",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "7.21.5",
             "date": "2026-07-06",
@@ -116613,9 +116681,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.49.20",
-            "date": "2026-07-06",
-            "link": "https://mikrotik.com/download/changelogs?versionFilter=6.49.20&channelFilter="
+            "name": "6.49.21",
+            "date": "2026-09-03",
+            "link": "https://mikrotik.com/download/changelogs?versionFilter=6.49.21&channelFilter="
           }
         },
         {

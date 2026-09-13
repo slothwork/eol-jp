@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-13T00:07:57+00:00",
+  "updatedAt": "2026-09-13T15:53:15+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -1834,6 +1834,119 @@
       "release": "8.0",
       "from": "2026-12-31",
       "to": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "release-added",
+      "product": "antix",
+      "label": "antiX Linux",
+      "release": "26",
+      "eolFrom": "2030-07-30"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "antix",
+      "label": "antiX Linux",
+      "release": "23",
+      "from": "2028-06-10",
+      "to": "2028-06-30"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "support-changed",
+      "product": "antix",
+      "label": "antiX Linux",
+      "release": "23",
+      "from": "2026-06-10",
+      "to": "2026-07-11"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "antix",
+      "label": "antiX Linux",
+      "release": "21",
+      "from": "2026-06-30",
+      "to": "2026-08-31"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "support-changed",
+      "product": "antix",
+      "label": "antiX Linux",
+      "release": "21",
+      "from": "2024-06-30",
+      "to": "2024-08-14"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "release-added",
+      "product": "foreman",
+      "label": "Foreman",
+      "release": "5.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "foreman",
+      "label": "Foreman",
+      "release": "3.18",
+      "from": null,
+      "to": "2026-09-08"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "release-added",
+      "product": "julia",
+      "label": "Julia",
+      "release": "1.13",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "julia",
+      "label": "Julia",
+      "release": "1.12",
+      "from": null,
+      "to": "2026-09-10"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "release-added",
+      "product": "neo4j",
+      "label": "Neo4j",
+      "release": "2026.08",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "neo4j",
+      "label": "Neo4j",
+      "release": "2026.07",
+      "from": null,
+      "to": "2026-09-10"
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "routeros",
+      "label": "RouterOS",
+      "release": "7.23",
+      "from": "2026-08-17",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-09-13T15:53:15+00:00",
+      "type": "eol-changed",
+      "product": "routeros",
+      "label": "RouterOS",
+      "release": "7.21",
+      "from": null,
+      "to": "2026-05-26"
     }
   ]
 }

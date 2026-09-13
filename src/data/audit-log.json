@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-13T04:46:57.622Z",
+  "updatedAt": "2026-09-13T22:52:05.771Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -926,6 +926,68 @@
         {
           "slug": "unrealircd",
           "label": "UnrealIRCd"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-13T22:52:05.771Z-4aa7482e3b43",
+      "syncedAt": "2026-09-13T22:52:05.771Z",
+      "sourceGeneratedAt": "2026-09-13T15:53:15+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "7ac2d31aaa985c72caa24e920017b7502e8500370b05d55140804756fa9777cf",
+      "afterSha256": "4aa7482e3b43afb7c5566a6d79038f0415f5e6c6215de0c82568ff5e9bbb2665",
+      "productCount": 473,
+      "releaseCount": 8614,
+      "changes": {
+        "total": 28,
+        "releaseAdded": 4,
+        "releaseRemoved": 0,
+        "eolChanged": 7,
+        "supportChanged": 2,
+        "latestChanged": 10,
+        "releaseMetadataChanged": 5,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "antix",
+          "label": "antiX Linux"
+        },
+        {
+          "slug": "debian",
+          "label": "Debian"
+        },
+        {
+          "slug": "foreman",
+          "label": "Foreman"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "julia",
+          "label": "Julia"
+        },
+        {
+          "slug": "moodle",
+          "label": "Moodle"
+        },
+        {
+          "slug": "neo4j",
+          "label": "Neo4j"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
         }
       ]
     }
