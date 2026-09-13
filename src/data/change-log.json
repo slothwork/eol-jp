@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-11T14:51:02+00:00",
+  "updatedAt": "2026-09-13T00:07:57+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -1825,6 +1825,15 @@
       "release": "4",
       "from": "2027-06-23",
       "to": "2026-11-28"
+    },
+    {
+      "detectedAt": "2026-09-13T00:07:57+00:00",
+      "type": "eol-changed",
+      "product": "azure-database-for-mysql",
+      "label": "Azure Database for MySQL",
+      "release": "8.0",
+      "from": "2026-12-31",
+      "to": "2027-01-31"
     }
   ]
 }
