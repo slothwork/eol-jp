@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-13T15:53:15+00:00",
+  "generatedAt": "2026-09-14T00:08:28+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -9484,9 +9484,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.22.0",
-            "date": "2026-08-07",
-            "link": "https://camel.apache.org/releases/release-4.22.0/"
+            "name": "4.22.1",
+            "date": "2026-09-13",
+            "link": "https://camel.apache.org/releases/release-4.22.1/"
           }
         },
         {
@@ -27747,8 +27747,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.8.2.7",
-            "date": "2026-09-01",
+            "name": "26.8.3.105",
+            "date": "2026-09-13",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -27764,8 +27764,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.7.6.57",
-            "date": "2026-09-01",
+            "name": "26.7.7.92",
+            "date": "2026-09-13",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -27781,8 +27781,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.6.4.55",
-            "date": "2026-09-01",
+            "name": "26.6.5.120",
+            "date": "2026-09-13",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
