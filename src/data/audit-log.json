@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-14T15:16:56.332Z",
+  "updatedAt": "2026-09-15T04:53:59.106Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1052,6 +1052,124 @@
         {
           "slug": "renovate",
           "label": "Renovate CLI"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-15T04:53:59.106Z-ca74452393fc",
+      "syncedAt": "2026-09-15T04:53:59.106Z",
+      "sourceGeneratedAt": "2026-09-15T00:08:39+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "ea7c71180daaf59878596f78dcc1b0d8f11544cf911d87a19c3bbe43f9119fe1",
+      "afterSha256": "ca74452393fc20fb0871de87938fd6b3fd961347f7e60cd3e0aab1fd51593dda",
+      "productCount": 475,
+      "releaseCount": 8654,
+      "changes": {
+        "total": 74,
+        "releaseAdded": 40,
+        "releaseRemoved": 0,
+        "eolChanged": 1,
+        "supportChanged": 0,
+        "latestChanged": 32,
+        "releaseMetadataChanged": 1,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "zookeeper",
+          "label": "Apache ZooKeeper"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "macos",
+          "label": "Apple macOS"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "bind-9",
+          "label": "BIND 9"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "dce",
+          "label": "DaoCloud Enterprise"
+        },
+        {
+          "slug": "dependency-track",
+          "label": "Dependency-Track"
+        },
+        {
+          "slug": "express",
+          "label": "Express"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "kiali",
+          "label": "Kiali"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "sharepoint",
+          "label": "Microsoft SharePoint"
+        },
+        {
+          "slug": "nvidia",
+          "label": "NVIDIA Driver"
+        },
+        {
+          "slug": "openzfs",
+          "label": "OpenZFS"
+        },
+        {
+          "slug": "phoenix-framework",
+          "label": "Phoenix Framework"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "rabbitmq",
+          "label": "RabbitMQ"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "umbraco",
+          "label": "Umbraco CMS"
+        },
+        {
+          "slug": "veeam-backup-for-microsoft-365",
+          "label": "Veeam Backup for Microsoft 365"
         }
       ]
     }

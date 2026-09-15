@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-14T05:30:26+00:00",
+  "generatedAt": "2026-09-15T00:08:39+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -14904,9 +14904,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.5.2",
-            "date": "2026-08-26",
-            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.2"
+            "name": "3.5.3",
+            "date": "2026-09-14",
+            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.3"
           }
         },
         {
@@ -14921,9 +14921,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.4.8",
-            "date": "2026-08-26",
-            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.4.8"
+            "name": "3.4.9",
+            "date": "2026-09-14",
+            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.4.9"
           }
         },
         {
@@ -20075,6 +20075,86 @@
             "name": "2.5.20",
             "date": "2024-05-11",
             "link": "https://github.com/bigbluebutton/bigbluebutton/releases/tag/v2.5.20"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "bind-9",
+      "label": "BIND 9",
+      "category": "server-app",
+      "versionCommand": null,
+      "links": {
+        "html": "https://endoflife.date/bind-9",
+        "releasePolicy": "https://kb.isc.org/docs/aa-00896"
+      },
+      "releases": [
+        {
+          "name": "9.21",
+          "label": "9.21 (Development)",
+          "codename": null,
+          "releaseDate": "2024-08-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "9.21.25",
+            "date": "2026-08-05",
+            "link": "https://bind9.readthedocs.io/en/v9.21.25/notes.html"
+          }
+        },
+        {
+          "name": "9.20",
+          "label": "9.20 (Stable) (LTS)",
+          "codename": null,
+          "releaseDate": "2024-07-08",
+          "isLts": true,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2028-07-08",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "9.20.27",
+            "date": "2026-08-05",
+            "link": "https://bind9.readthedocs.io/en/v9.20.27/notes.html"
+          }
+        },
+        {
+          "name": "9.18",
+          "label": "9.18 (ESV) (LTS)",
+          "codename": null,
+          "releaseDate": "2022-01-24",
+          "isLts": true,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-06-30",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "9.18.50",
+            "date": "2026-06-08",
+            "link": "https://bind9.readthedocs.io/en/v9.18.50/notes.html"
+          }
+        },
+        {
+          "name": "9.16",
+          "label": "9.16 (LTS)",
+          "codename": null,
+          "releaseDate": "2020-02-12",
+          "isLts": true,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2024-03-31",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "9.16.50",
+            "date": "2024-04-03",
+            "link": "https://bind9.readthedocs.io/en/v9.16.50/notes.html"
           }
         }
       ]
@@ -27747,8 +27827,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.8.3.105",
-            "date": "2026-09-13",
+            "name": "26.8.4.11",
+            "date": "2026-09-14",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -27764,8 +27844,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.7.7.92",
-            "date": "2026-09-13",
+            "name": "26.7.8.15",
+            "date": "2026-09-14",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -27781,8 +27861,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.6.5.120",
-            "date": "2026-09-13",
+            "name": "26.6.6.15",
+            "date": "2026-09-14",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -32429,9 +32509,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.0-20260131",
-            "date": "2026-01-31",
-            "link": "https://docs.daocloud.io/en/dce/dce-rn/20260131/"
+            "name": "5.0-20260731",
+            "date": "2026-07-31",
+            "link": "https://docs.daocloud.io/en/dce/dce-rn/20260731/"
           }
         },
         {
@@ -33043,8 +33123,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.14.3",
-            "date": "2026-07-20",
+            "name": "4.14.4",
+            "date": "2026-09-14",
             "link": "https://docs.dependencytrack.org/changelog/"
           }
         },
@@ -40250,9 +40330,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.22.2",
-            "date": "2026-05-11",
-            "link": "https://github.com/expressjs/express/releases/tag/v4.22.2"
+            "name": "4.22.3",
+            "date": "2026-09-14",
+            "link": "https://github.com/expressjs/express/releases/tag/v4.22.3"
           }
         },
         {
@@ -48077,9 +48157,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.2.4",
-            "date": "2026-09-10",
-            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.2.4"
+            "name": "19.2.5",
+            "date": "2026-09-14",
+            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.2.5"
           }
         },
         {
@@ -48094,9 +48174,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.1.3",
-            "date": "2026-09-10",
-            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.1.3"
+            "name": "19.1.4",
+            "date": "2026-09-14",
+            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.1.4"
           }
         },
         {
@@ -58536,8 +58616,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.6.2",
-            "date": "2026-09-08",
+            "name": "26.7",
+            "date": "2026-09-14",
             "link": "https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-26-release-notes"
           }
         },
@@ -59580,8 +59660,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.6.2",
-            "date": "2026-09-08",
+            "name": "26.7",
+            "date": "2026-09-14",
             "link": "https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-26-release-notes"
           }
         },
@@ -65550,6 +65630,596 @@
       ]
     },
     {
+      "slug": "kiali",
+      "label": "Kiali",
+      "category": "server-app",
+      "versionCommand": "kiali version",
+      "links": {
+        "html": "https://endoflife.date/kiali",
+        "releasePolicy": "https://github.com/kiali/kiali?tab=security-ov-file#supported-versions"
+      },
+      "releases": [
+        {
+          "name": "2.31",
+          "label": "2.31",
+          "codename": null,
+          "releaseDate": "2026-08-23",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.31.0",
+            "date": "2026-08-23",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.31.0"
+          }
+        },
+        {
+          "name": "2.30",
+          "label": "2.30",
+          "codename": null,
+          "releaseDate": "2026-08-02",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.30.0",
+            "date": "2026-08-02",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.30.0"
+          }
+        },
+        {
+          "name": "2.29",
+          "label": "2.29",
+          "codename": null,
+          "releaseDate": "2026-07-12",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.29.0",
+            "date": "2026-07-12",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.29.0"
+          }
+        },
+        {
+          "name": "2.28",
+          "label": "2.28",
+          "codename": null,
+          "releaseDate": "2026-06-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.28.0",
+            "date": "2026-06-22",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.28.0"
+          }
+        },
+        {
+          "name": "2.27",
+          "label": "2.27",
+          "codename": null,
+          "releaseDate": "2026-06-01",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.27.3",
+            "date": "2026-08-26",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.27.3"
+          }
+        },
+        {
+          "name": "2.26",
+          "label": "2.26",
+          "codename": null,
+          "releaseDate": "2026-05-11",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-12-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.26.1",
+            "date": "2026-05-27",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.26.1"
+          }
+        },
+        {
+          "name": "2.25",
+          "label": "2.25",
+          "codename": null,
+          "releaseDate": "2026-04-20",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.25.0",
+            "date": "2026-04-20",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.25.0"
+          }
+        },
+        {
+          "name": "2.24",
+          "label": "2.24",
+          "codename": null,
+          "releaseDate": "2026-03-30",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.24.0",
+            "date": "2026-03-30",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.24.0"
+          }
+        },
+        {
+          "name": "2.23",
+          "label": "2.23",
+          "codename": null,
+          "releaseDate": "2026-03-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.23.0",
+            "date": "2026-03-09",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.23.0"
+          }
+        },
+        {
+          "name": "2.22",
+          "label": "2.22",
+          "codename": null,
+          "releaseDate": "2026-02-16",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.22.9",
+            "date": "2026-08-26",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.22.9"
+          }
+        },
+        {
+          "name": "2.21",
+          "label": "2.21",
+          "codename": null,
+          "releaseDate": "2026-01-26",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.21.0",
+            "date": "2026-01-26",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.21.0"
+          }
+        },
+        {
+          "name": "2.20",
+          "label": "2.20",
+          "codename": null,
+          "releaseDate": "2025-12-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-07-01",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.20.0",
+            "date": "2025-12-22",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.20.0"
+          }
+        },
+        {
+          "name": "2.19",
+          "label": "2.19",
+          "codename": null,
+          "releaseDate": "2025-11-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-07-01",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.19.0",
+            "date": "2025-11-24",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.19.0"
+          }
+        },
+        {
+          "name": "2.18",
+          "label": "2.18",
+          "codename": null,
+          "releaseDate": "2025-11-03",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-07-01",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.18.0",
+            "date": "2025-11-03",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.18.0"
+          }
+        },
+        {
+          "name": "2.17",
+          "label": "2.17",
+          "codename": null,
+          "releaseDate": "2025-10-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-07-01",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.17.13",
+            "date": "2026-08-18",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.17.13"
+          }
+        },
+        {
+          "name": "2.16",
+          "label": "2.16",
+          "codename": null,
+          "releaseDate": "2025-09-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-04-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.16.0",
+            "date": "2025-09-22",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.16.0"
+          }
+        },
+        {
+          "name": "2.15",
+          "label": "2.15",
+          "codename": null,
+          "releaseDate": "2025-09-02",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-04-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.15.0",
+            "date": "2025-09-02",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.15.0"
+          }
+        },
+        {
+          "name": "2.14",
+          "label": "2.14",
+          "codename": null,
+          "releaseDate": "2025-08-11",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-04-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.14.0",
+            "date": "2025-08-11",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.14.0"
+          }
+        },
+        {
+          "name": "2.13",
+          "label": "2.13",
+          "codename": null,
+          "releaseDate": "2025-07-21",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-04-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.13.0",
+            "date": "2025-07-21",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.13.0"
+          }
+        },
+        {
+          "name": "2.12",
+          "label": "2.12",
+          "codename": null,
+          "releaseDate": "2025-06-30",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-04-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.12.0",
+            "date": "2025-06-30",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.12.0"
+          }
+        },
+        {
+          "name": "2.11",
+          "label": "2.11",
+          "codename": null,
+          "releaseDate": "2025-06-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-12-22",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.11.16",
+            "date": "2026-08-18",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.11.16"
+          }
+        },
+        {
+          "name": "2.10",
+          "label": "2.10",
+          "codename": null,
+          "releaseDate": "2025-05-19",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-12-22",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.10.0",
+            "date": "2025-05-19",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.10.0"
+          }
+        },
+        {
+          "name": "2.9",
+          "label": "2.9",
+          "codename": null,
+          "releaseDate": "2025-04-28",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-12-22",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.9.0",
+            "date": "2025-04-28",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.9.0"
+          }
+        },
+        {
+          "name": "2.8",
+          "label": "2.8",
+          "codename": null,
+          "releaseDate": "2025-04-07",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-09-30",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.8.0",
+            "date": "2025-04-07",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.8.0"
+          }
+        },
+        {
+          "name": "2.7",
+          "label": "2.7",
+          "codename": null,
+          "releaseDate": "2025-03-17",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-09-30",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.7.1",
+            "date": "2025-03-18",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.7.1"
+          }
+        },
+        {
+          "name": "2.6",
+          "label": "2.6",
+          "codename": null,
+          "releaseDate": "2025-02-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-09-30",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.6.0",
+            "date": "2025-02-24",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.6.0"
+          }
+        },
+        {
+          "name": "2.5",
+          "label": "2.5",
+          "codename": null,
+          "releaseDate": "2025-02-03",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-09-30",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.5.0",
+            "date": "2025-02-03",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.5.0"
+          }
+        },
+        {
+          "name": "2.4",
+          "label": "2.4",
+          "codename": null,
+          "releaseDate": "2025-01-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-06-24",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.4.22",
+            "date": "2026-08-18",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.4.22"
+          }
+        },
+        {
+          "name": "2.3",
+          "label": "2.3",
+          "codename": null,
+          "releaseDate": "2024-12-23",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-06-24",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.3.0",
+            "date": "2024-12-23",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.3.0"
+          }
+        },
+        {
+          "name": "2.2",
+          "label": "2.2",
+          "codename": null,
+          "releaseDate": "2024-12-02",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-06-24",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.2.0",
+            "date": "2024-12-02",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.2.0"
+          }
+        },
+        {
+          "name": "2.1",
+          "label": "2.1",
+          "codename": null,
+          "releaseDate": "2024-11-11",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-06-24",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.1.1",
+            "date": "2024-12-04",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.1.1"
+          }
+        },
+        {
+          "name": "2.0",
+          "label": "2.0",
+          "codename": null,
+          "releaseDate": "2024-10-21",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2025-06-24",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "2.0.0",
+            "date": "2024-10-21",
+            "link": "https://github.com/kiali/kiali/releases/tag/v2.0.0"
+          }
+        },
+        {
+          "name": "1.89",
+          "label": "1.89",
+          "codename": null,
+          "releaseDate": "2024-08-19",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "1.89.8",
+            "date": "2024-11-05",
+            "link": "https://github.com/kiali/kiali/releases/tag/v1.89.8"
+          }
+        },
+        {
+          "name": "1.73",
+          "label": "1.73 (LTS)",
+          "codename": null,
+          "releaseDate": "2023-08-28",
+          "isLts": true,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "1.73.33",
+            "date": "2026-06-18",
+            "link": "https://github.com/kiali/kiali/releases/tag/v1.73.33"
+          }
+        }
+      ]
+    },
+    {
       "slug": "kibana",
       "label": "Kibana",
       "category": "server-app",
@@ -70035,8 +70705,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.2.5",
-            "date": "2026-09-11",
+            "name": "7.2.6",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_7.2"
           }
         },
@@ -70103,8 +70773,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.18.51",
-            "date": "2026-09-11",
+            "name": "6.18.52",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_6.18"
           }
         },
@@ -70205,8 +70875,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.12.109",
-            "date": "2026-09-07",
+            "name": "6.12.110",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_6.12"
           }
         },
@@ -70307,8 +70977,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.6.156",
-            "date": "2026-09-02",
+            "name": "6.6.157",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_6.6"
           }
         },
@@ -70392,8 +71062,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.1.187",
-            "date": "2026-09-02",
+            "name": "6.1.188",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_6.1"
           }
         },
@@ -70494,8 +71164,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.15.220",
-            "date": "2026-09-02",
+            "name": "5.15.221",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_5.15"
           }
         },
@@ -70579,8 +71249,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.10.269",
-            "date": "2026-09-02",
+            "name": "5.10.270",
+            "date": "2026-09-14",
             "link": "https://kernelnewbies.org/Linux_5.10"
           }
         },
@@ -73004,8 +73674,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.6.2",
-            "date": "2026-08-17",
+            "name": "26.7",
+            "date": "2026-09-14",
             "link": "https://developer.apple.com/documentation/macos-release-notes/macos-26-release-notes"
           }
         },
@@ -73021,8 +73691,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "15.7.9",
-            "date": "2026-08-06",
+            "name": "15.8",
+            "date": "2026-09-14",
             "link": "https://developer.apple.com/documentation/macos-release-notes/macos-15-release-notes"
           }
         },
@@ -77738,9 +78408,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.63.17.2",
-            "date": "2026-09-11",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.17.2"
+            "name": "0.63.17.3",
+            "date": "2026-09-14",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.63.17.3"
           }
         },
         {
@@ -78765,9 +79435,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.2.1",
-            "date": "2026-09-11",
-            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v5.2.1"
+            "name": "5.2.2",
+            "date": "2026-09-14",
+            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v5.2.2"
           }
         },
         {
@@ -92714,6 +93384,40 @@
       },
       "releases": [
         {
+          "name": "r615-windows",
+          "label": "R615-Windows (NFB)",
+          "codename": null,
+          "releaseDate": "2026-09-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2027-09-09",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "616.92",
+            "date": "2026-09-09",
+            "link": "https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-615-71-09/index.html"
+          }
+        },
+        {
+          "name": "r615-linux",
+          "label": "R615-Windows (NFB)",
+          "codename": null,
+          "releaseDate": "2026-09-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2027-09-09",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "615.71.09",
+            "date": "2026-09-09",
+            "link": "https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-615-71-09/index.html"
+          }
+        },
+        {
           "name": "r610-windows",
           "label": "R610-Windows (NFB)",
           "codename": null,
@@ -99725,9 +100429,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": "2025-01-13",
-          "eolFrom": "2025-12-18",
-          "isEol": true,
-          "isMaintained": false,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
           "latest": {
             "name": "2.2.11",
             "date": "2026-08-21",
@@ -103377,9 +104081,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "1.8.13",
-            "date": "2026-08-25",
-            "link": "https://github.com/phoenixframework/phoenix/releases/tag/v1.8.13"
+            "name": "1.8.14",
+            "date": "2026-09-14",
+            "link": "https://github.com/phoenixframework/phoenix/releases/tag/v1.8.14"
           }
         },
         {
@@ -110989,9 +111693,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.32.2",
-            "date": "2026-09-11",
-            "link": "https://github.com/quasarframework/quasar/releases/tag/quasar-v2.32.2"
+            "name": "2.32.3",
+            "date": "2026-09-14",
+            "link": "https://github.com/quasarframework/quasar/releases/tag/quasar-v2.32.3"
           }
         },
         {
@@ -111035,9 +111739,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.3.5",
-            "date": "2026-08-13",
-            "link": "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.5"
+            "name": "4.3.6",
+            "date": "2026-09-14",
+            "link": "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.6"
           }
         },
         {
@@ -114086,9 +114790,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.83.2",
+            "name": "44.90.0",
             "date": "2026-09-14",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.83.2"
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.90.0"
           }
         },
         {
@@ -129988,7 +130692,7 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "16.0.20326.20124",
+            "name": "16.0.20326.20136",
             "date": "2026-09-08",
             "link": "https://support.microsoft.com/help/5002908"
           }
@@ -141549,9 +142253,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.16.1",
-            "date": "2026-08-25",
-            "link": "https://github.com/umbraco/Umbraco-CMS/releases/tag/release-13.16.1"
+            "name": "13.16.2",
+            "date": "2026-09-14",
+            "link": "https://github.com/umbraco/Umbraco-CMS/releases/tag/release-13.16.2"
           }
         },
         {
@@ -142510,8 +143214,8 @@
           "isEol": true,
           "isMaintained": true,
           "latest": {
-            "name": "8.5.0.1014",
-            "date": "2026-06-29",
+            "name": "8.6.0.1102",
+            "date": "2026-09-14",
             "link": null
           }
         },
@@ -152025,9 +152729,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.9.5",
-            "date": "2026-03-05",
-            "link": "https://zookeeper.apache.org/doc/r3.9.5/releasenotes.html"
+            "name": "3.9.6",
+            "date": "2026-09-14",
+            "link": "https://zookeeper.apache.org/doc/r3.9.6/releasenotes.html"
           }
         },
         {
@@ -152042,9 +152746,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.8.6",
-            "date": "2026-02-11",
-            "link": "https://zookeeper.apache.org/doc/r3.8.6/releasenotes.html"
+            "name": "3.8.7",
+            "date": "2026-09-14",
+            "link": "https://zookeeper.apache.org/doc/r3.8.7/releasenotes.html"
           }
         },
         {
