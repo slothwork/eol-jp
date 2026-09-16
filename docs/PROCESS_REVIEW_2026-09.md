@@ -1,13 +1,13 @@
 # 開発プロセス標準化の振り返り
 
 実施日: 2026-09-16
-対象: [PR #90](https://github.com/slothwork/eol-jp/pull/90)、[PR #91](https://github.com/slothwork/eol-jp/pull/91)、本書を追加する文書更新PR
+対象: [PR #90](https://github.com/slothwork/eol-jp/pull/90)、[PR #91](https://github.com/slothwork/eol-jp/pull/91)、[PR #92](https://github.com/slothwork/eol-jp/pull/92)
 
 ## 目的と判定
 
 公開済みのEOL情報.jpへ `project-planning-template` の進め方を適用し、別セッションでも判断理由と次の作業を復元できること、変更リスクに応じて検証量を選べることを確認する。
 
-`PASS` — 企画・判断・現在地の整理と、通常変更での品質gate維持を確認した。文書のみの実PRでのCI省略は、本書を追加するPRの最終確認項目とする。結果はPR説明欄へ記録し、期待と異なる場合は `FIX` として同じ目的の範囲で修正する。
+`PASS` — 企画・判断・現在地の整理、通常変更での品質gate維持、文書専用の実PRでの重いCI省略まで確認した。PR #92では `Classify changes` がsuccessとなり、文書専用経路が選択され、`Check, build and SEO validate` はskippedになった。
 
 プロダクトの成長判断は引き続き `未判定`。今回のCI・文書整備を、検索流入や継続利用の改善が確認できた証拠とはしない。
 
@@ -15,14 +15,14 @@
 
 | 観点 | 適用前に見つかったこと | 変更と確認結果 |
 | --- | --- | --- |
-| 引き継ぎ | 企画方針、判断理由、現在地がREADME・ROADMAP・旧handoff等へ分散していた | PR #90でPROJECT / DECISIONS / CURRENT_STATEの役割を分離。今回の引き継ぎでは、最新main・open PRとこれらの文書からPR #91の確認作業を復元できた |
-| 現在地の鮮度 | マージ直後も、コミット済み文書には対象PRが作業中と残ることがある | 文書だけでマージ状態を決めず、GitHubの最新状態を照合した。本PRで標準化・CI軽量化の完了を同期する |
+| 引き継ぎ | 企画方針、判断理由、現在地がREADME・ROADMAP・旧handoff等へ分散していた | PR #90でPROJECT / DECISIONS / CURRENT_STATEの役割を分離。後続セッションでは最新main・open PRとこれらの文書から作業状態を復元できた |
+| 現在地の鮮度 | マージ直後も、コミット済み文書には対象PRが作業中と残ることがある | 文書だけでマージ状態を決めず、GitHubの最新状態を照合する運用を明文化した。PR #92後の現在地は `CURRENT_STATE.md` へ同期する |
 | 通常変更の品質 | 文書だけのPRでも依存installからbuild・browser smokeまでフル実行していた | PR #91はworkflow変更としてフルCIを実行し、変更分類と既存gateが成功。マージ後のmain pushでも両jobが成功 |
 | 分類の境界 | 文書範囲を広げすぎるとbuild入力も省略対象になり得る | `docs/**` とルートMarkdownだけを対象とし、`src/` のMarkdown・workflow・コード変更はフルCIに保つ |
 | 差分取得失敗 | SHA欠落やdiff失敗時に検証を省略すると変更の安全性を判断できない | 実際のBash判定処理を一時Gitリポジトリで実行し、空diff・取得できないcommit等を含む12ケースが期待どおりであることを確認 |
-| 文書のみの軽量経路 | PR #91自体はworkflowを変更するため、この経路の実PR確認にはならない | 本PRを文書だけの変更に限定し、変更分類success・重いjob skippedを最終確認する |
+| 文書のみの軽量経路 | PR #91自体はworkflowを変更するため、この経路の実PR確認にはならない | PR #92を文書4ファイルだけの変更に限定し、変更分類success・重いjob skippedを実案件で確認 |
 
-通常変更の実行証跡: [PR #91のCI](https://github.com/slothwork/eol-jp/actions/runs/35058542979)、[マージ後mainのCI](https://github.com/slothwork/eol-jp/actions/runs/35069446390)。12ケースの内訳はPR #91説明欄を参照する。
+通常変更の実行証跡: [PR #91のCI](https://github.com/slothwork/eol-jp/actions/runs/35058542979)、[マージ後mainのCI](https://github.com/slothwork/eol-jp/actions/runs/35069446390)。文書専用経路の実行証跡: [PR #92のCI](https://github.com/slothwork/eol-jp/actions/runs/35069872385)。12ケースの内訳はPR #91説明欄を参照する。
 
 ## 学びの扱い
 
@@ -36,15 +36,17 @@
 | テンプレート改善候補 | 既存案件への適用時は、不足している役割だけを補う | 別案件でも有効か確認してからテンプレートへ反映する。文書一式のコピーを必須化しない |
 | テンプレート改善候補 | CI削減効果を、実測した範囲に限定して説明する | 通常経路と軽量経路の証跡を対で残し、未計測の短縮率や費用削減額を断定しない |
 
-テンプレートへの反映は候補の記録までとし、このPRでは別リポジトリの変更や新しい共通基盤の導入は行わない。
+テンプレートへの反映は候補の記録までとし、この区切りでは別リポジトリの変更や新しい共通基盤の導入は行わない。
 
-## 文書更新PRの完了条件
+## 文書更新PRの完了結果
 
-- 差分が文書だけで、アプリケーション・データ・workflowを変更していない。
-- `Classify changes` がsuccessになり、`run_full=false` を出力する。
-- `Check, build and SEO validate` がskippedになり、失敗・cancel・未実行待ちと区別できる。
-- 現在地・ロードマップ・AI作業ルールの優先順位が一致する。
-- 最新mainからbehindしておらず、mergeableである。
+PR #92で次を確認した。
+
+- 差分は `AGENTS.md` / `ROADMAP.md` / `docs/CURRENT_STATE.md` / `docs/PROCESS_REVIEW_2026-09.md` の文書4ファイルだけで、アプリケーション・データ・workflowは変更していない。
+- `Classify changes` はsuccess。
+- 文書専用経路が選択され、`Check, build and SEO validate` はskipped。
+- 現在地・ロードマップ・AI作業ルールの優先順位は一致。
+- PR #92は最新mainをbaseとしてmergeableな状態で確認し、Cloudflare preview deploymentもsuccess。
 
 GitHub Actionsの軽量化とCloudflareのGit連携buildは別の仕組みである。Cloudflareのbuild省略は今回の対象に含めない。削減率や月額費用への効果は未計測とし、実行jobの省略を確認した範囲だけを結果にする。
 
