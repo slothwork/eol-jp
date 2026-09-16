@@ -16,8 +16,81 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    name: Classify changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      run_full: ${{ steps.classify.outputs.run_full }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Decide validation scope
+        id: classify
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
+          PUSH_HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base_sha="$PR_BASE_SHA"
+            head_sha="$PR_HEAD_SHA"
+          else
+            base_sha="$PUSH_BASE_SHA"
+            head_sha="$PUSH_HEAD_SHA"
+          fi
+
+          run_full=true
+          changed_files=""
+
+          if [[ -n "$base_sha" && -n "$head_sha" && ! "$base_sha" =~ ^0+$ ]]; then
+            if changed_files="$(git diff --no-renames --name-only "$base_sha" "$head_sha")"; then
+              if [[ -n "$changed_files" ]]; then
+                run_full=false
+                while IFS= read -r file; do
+                  if [[ "$file" == docs/* ]] || [[ "$file" != */* && "$file" == *.md ]]; then
+                    continue
+                  fi
+
+                  run_full=true
+                  break
+                done <<< "$changed_files"
+              fi
+            fi
+          fi
+
+          echo "run_full=$run_full" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### CI validation scope"
+            if [[ -n "$changed_files" ]]; then
+              echo '```text'
+              printf '%s\n' "$changed_files"
+              echo '```'
+            else
+              echo "変更ファイルを安全に判定できなかったため、フルCIを実行します。"
+            fi
+
+            if [[ "$run_full" == "true" ]]; then
+              echo "フルCIを実行します。"
+            else
+              echo "リポジトリ直下のMarkdownと docs/ 配下だけの変更のため、重いbuild / browser smoke等を省略します。"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
   validate:
     name: Check, build and SEO validate
+    needs: changes
+    if: needs.changes.outputs.run_full == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
