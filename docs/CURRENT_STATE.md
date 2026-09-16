@@ -20,14 +20,13 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 - sitemapと全indexable canonical HTMLのCI整合性検証を追加
 - Search Consoleへsitemap送信、主要URLのインデックス登録リクエストを実施
 - 外部HTTP/HTTPSリンクを別タブで開く共通処理を追加
-- 新しいチャットでもリポジトリから復元できるhandoff方針を整備
-- `project-planning-template` と現行実装を照合し、企画・判断・現在地の標準化不足とdocs-only CI過剰を確認
+- PR #90で `PROJECT / DECISIONS / CURRENT_STATE` を導入し、`project-planning-template` に沿う標準開発プロセスをリポジトリへ反映
 
 ## 直近の検証結果
 
-`PASS` — Phase 0〜6の既存品質gateは維持されており、直近のマージ済み変更までCIでcheck / build / sitemap / SEO / security / performance / browser smokeを通過している。
+`PASS` — PR #90は既存のフルCIでcheck / build / sitemap / SEO / security / performance / browser smokeをすべて通過してマージ済み。プロセス標準化後も公開実装・品質gateに変更はない。
 
-今回のプロセス標準化レビューでは、実装・品質・運用基盤に重大な不足は見つからなかった。改善対象は主に、企画判断の保存形式とCI実行量である。
+現在は、標準化レビューで見つかった「文書だけの変更にもフルCIを実行している」過剰を解消するため、変更リスクに応じたCI分類を実装・検証している。
 
 ## 本番確認・公開後の判断
 
@@ -37,25 +36,25 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 ## 作業中のこと
 
-- PR #90で `project-planning-template` に合わせ、`PROJECT / DECISIONS / CURRENT_STATE` の役割へ文書構造を整理中
+- `ci/risk-based-validation` でCIの変更分類を追加し、`docs/` 配下とリポジトリ直下Markdownだけの変更では重い検証をskipする構成を検証中
 - 日次EOLデータ同期は既存自動化で継続中
 
 ## 次に行うこと
 
-1. **企画・判断・現在地の標準化を完了する** — PR #90のdiff / CIを確認し、問題がなければマージ可否を判断する。
-2. **CIの実行量を変更リスクに合わせて見直す** — docs-only変更でフルbuild / browser smoke等を毎回実行している現状について、必要な品質を落とさずpath単位で軽量化できるかを別Pull Requestで検証する。
+1. **変更リスク別CIを検証する** — workflow変更を含む今回のPRでは従来のフルCIが実行され、変更分類jobと既存品質gateが両方通ることを確認する。
+2. **実案件パイロットの振り返りを行う** — 標準化とCI軽量化で得た事実を、プロジェクト固有 / 再利用候補 / テンプレート改善候補に整理する。形式的に毎PRでは行わず、今回の標準化区切りで実施する。
 3. **Search ConsoleのGrowth gateを監視する** — 主要URLのindex状態とQueries / Pagesが比較可能になったらBaselineを作成し、3〜5ページのPhase 7実験へ進む。
 
 ## ブロッカー・重要リスク
 
 - Phase 7の検索改善はSearch Consoleの比較可能な実データ待ち
-- docs-only CI軽量化では、文書変更にコード生成やbuild依存がないことを確認してからgateを分ける必要がある
-- 新しいプロセス文書を増やしすぎて、管理負荷を実開発より重くしないこと
+- CI軽量化は文書パスの判定範囲を広げすぎず、build入力になり得る `src/` 等のMarkdownを将来自動skipしないこと
+- 新しいプロセス文書やCIロジックを増やしすぎて、管理負荷を実開発より重くしないこと
 
 ## 関連するPull Request / Issue
 
-- PR #90 `docs: 企画・判断・現在地を標準開発プロセスへ整理` — 現在のプロセス標準化作業
-- PR #89 `chore(data): sync endoflife.date` — 自動日次データ同期。今回のプロセス標準化とは独立
+- PR #90 `docs: 企画・判断・現在地を標準開発プロセスへ整理` — マージ済み
+- 現在のCI軽量化は `ci/risk-based-validation` ブランチで作業中
 
 ## 最終更新時の補足
 
