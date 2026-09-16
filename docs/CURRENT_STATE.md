@@ -37,12 +37,12 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 ## 作業中のこと
 
-- `project-planning-template` に合わせ、`PROJECT / DECISIONS / CURRENT_STATE` の役割へ文書構造を整理中
+- PR #90で `project-planning-template` に合わせ、`PROJECT / DECISIONS / CURRENT_STATE` の役割へ文書構造を整理中
 - 日次EOLデータ同期は既存自動化で継続中
 
 ## 次に行うこと
 
-1. **企画・判断・現在地の標準化を完了する** — `AGENTS.md` と既存handoff/roadmapの参照関係を整理し、チャットだけに残っていた1年方針・KPI・収益化・編集方針をリポジトリへ固定する。
+1. **企画・判断・現在地の標準化を完了する** — PR #90のdiff / CIを確認し、問題がなければマージ可否を判断する。
 2. **CIの実行量を変更リスクに合わせて見直す** — docs-only変更でフルbuild / browser smoke等を毎回実行している現状について、必要な品質を落とさずpath単位で軽量化できるかを別Pull Requestで検証する。
 3. **Search ConsoleのGrowth gateを監視する** — 主要URLのindex状態とQueries / Pagesが比較可能になったらBaselineを作成し、3〜5ページのPhase 7実験へ進む。
 
@@ -54,8 +54,8 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 ## 関連するPull Request / Issue
 
+- PR #90 `docs: 企画・判断・現在地を標準開発プロセスへ整理` — 現在のプロセス標準化作業
 - PR #89 `chore(data): sync endoflife.date` — 自動日次データ同期。今回のプロセス標準化とは独立
-- プロセス標準化のPull Requestは本ブランチ `docs/planning-process-standardization` から作成する
 
 ## 最終更新時の補足
 
