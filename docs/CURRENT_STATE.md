@@ -24,10 +24,11 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 - PR #91で文書専用変更のCI軽量化を導入。通常変更と差分判定失敗時は既存のフルCIを維持
 - PR #92で標準化の振り返りを追加し、文書専用の実PRで軽量CI経路を確認
 - PR #93で標準化・CI軽量化完了後の現在地を確定
+- PR #94でSearch ConsoleのGrowth gate観測結果を現在地へ反映
 
 ## 直近の検証結果
 
-`PASS` — PR #90〜#93はマージ済み。PR #91ではworkflow変更とマージ後mainで既存のcheck / build / sitemap / SEO / security / performance / browser smoke等が成功し、PR #92では文書専用変更として `Classify changes` が成功し、重い `Check, build and SEO validate` がskippedになった。
+`PASS` — PR #90〜#94はマージ済み。PR #91ではworkflow変更とマージ後mainで既存のcheck / build / sitemap / SEO / security / performance / browser smoke等が成功し、PR #92とPR #94では文書専用変更として `Classify changes` が成功し、重い `Check, build and SEO validate` がskippedになった。
 
 2026-09-16時点の既存運用も正常。直近のmain CI、日次EOLデータ同期、snapshot鮮度チェックに未解決の失敗は確認していない。標準化やCI軽量化を目的とした追加実装は行わない。
 
@@ -42,20 +43,21 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 - `https://eol.slothwright.com/sitemap.xml` は正常取得され、462 URL submitted、0 indexed、warning 0、error 0
 - ホーム、`/eol/`、`/releases/`、`/eol/nodejs/` はいずれも「クロール済み - インデックス未登録」。robots.txtは許可、indexingも許可、ページ取得は成功
 - 共通レイアウトは通常ページへself-canonicalを生成し、`noindex` は明示指定時だけ出す。`Astro.site` の既定値も本番originと一致している
+- 上記4URLをSearch Console連携のIndexing Trackerへ登録し、即時確認でも4件とも `not_indexed` / `INDEXING_ALLOWED`、警告なしであることを確認した
 
 Googleがページを取得できない技術ブロックは今回の確認では見つからなかった。現時点では、推測でtitle / description、内部リンク、indexableページ範囲を大きく変更せず、初期インデックス反映を待つ。
 
 ## 作業中のこと
 
 - 日次EOLデータ同期・snapshot鮮度・手動レビュー鮮度の既存運用を継続する
-- Search Consoleでsitemapのindexed件数またはQueries / Pagesの表示回数が発生するかを確認する
+- Indexing Trackerで主要4URLの状態変化を追い、Search Consoleでsitemapのindexed件数またはQueries / Pagesの表示回数が発生するかを確認する
 
 検索実データがない間は、SEO変更を作ること自体を目的にしない。
 
 ## 次に行うこと
 
 1. **既存運用の異常に対応する** — 日次同期、鮮度監視、CI等に未解決の異常があれば優先する。異常や実利用上の課題がない場合は、追加実装を目的化しない。
-2. **Growth gateを再確認する** — sitemapのindexed件数が0から変化する、またはQueries / Pagesに表示回数が出た時点でSearch Consoleを再確認する。毎日のSEO変更や一括再設計は行わない。
+2. **Growth gateを再確認する** — 主要4URLのindex状態、sitemapのindexed件数が0から変化する、またはQueries / Pagesに表示回数が出た時点でSearch Consoleを再確認する。毎日のSEO変更や一括再設計は行わない。
 3. **実データに基づく最小実験へ進む** — 比較可能なデータが得られたら `docs/SEARCH_CONSOLE.md` に従ってBaselineを作成し、ROADMAPの条件に沿って3〜5ページ程度のPhase 7実験を設計する。
 
 ## ブロッカー・重要リスク
@@ -71,6 +73,7 @@ Googleがページを取得できない技術ブロックは今回の確認で�
 - [PR #91](https://github.com/slothwork/eol-jp/pull/91) — 文書専用変更のCI軽量化。マージ済み
 - [PR #92](https://github.com/slothwork/eol-jp/pull/92) — 標準化の振り返りと文書専用軽量CIの実案件確認。マージ済み
 - [PR #93](https://github.com/slothwork/eol-jp/pull/93) — 標準化完了後の現在地確定。マージ済み
+- [PR #94](https://github.com/slothwork/eol-jp/pull/94) — Search ConsoleのGrowth gate観測結果記録。マージ済み
 
 ## 最終更新時の補足
 
