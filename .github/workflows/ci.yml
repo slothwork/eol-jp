@@ -41,6 +41,23 @@ jobs:
         run: |
           set -euo pipefail
 
+          is_documentation_path() {
+            local file="$1"
+            [[ "$file" == docs/* ]] || [[ "$file" != */* && "$file" == *.md ]]
+          }
+
+          # docs-only判定を広げすぎて、将来のbuild入力Markdownまでskipしないことを確認する。
+          is_documentation_path "docs/PROJECT.md"
+          is_documentation_path "README.md"
+          if is_documentation_path "src/content/example.md"; then
+            echo "src/ 配下のMarkdownをdocs-only扱いしてはいけません。" >&2
+            exit 1
+          fi
+          if is_documentation_path ".github/workflows/ci.yml"; then
+            echo "workflow変更をdocs-only扱いしてはいけません。" >&2
+            exit 1
+          fi
+
           if [[ "$EVENT_NAME" == "pull_request" ]]; then
             base_sha="$PR_BASE_SHA"
             head_sha="$PR_HEAD_SHA"
@@ -57,7 +74,7 @@ jobs:
               if [[ -n "$changed_files" ]]; then
                 run_full=false
                 while IFS= read -r file; do
-                  if [[ "$file" == docs/* ]] || [[ "$file" != */* && "$file" == *.md ]]; then
+                  if is_documentation_path "$file"; then
                     continue
                   fi
 
