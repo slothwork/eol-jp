@@ -189,8 +189,14 @@ Environment variable:
 
 ## 開発・運用ドキュメント
 
-- 実装ルール: `AGENTS.md`
-- ロードマップ: `ROADMAP.md`
+企画・開発プロセスは `slothwright/project-planning-template` の考え方を標準とし、長期的な情報源はチャットではなくこのリポジトリに置きます。
+
+- AI作業ルール: `AGENTS.md`
+- 企画の基準点: `docs/PROJECT.md`
+- 重要な意思決定: `docs/DECISIONS.md`
+- 現在地・次の1〜3件: `docs/CURRENT_STATE.md`
+- 中期ロードマップ: `ROADMAP.md`
+- 旧handoffからの互換導線: `docs/PROJECT_HANDOFF.md`
 - アーキテクチャ: `docs/ARCHITECTURE.md`
 - 本番障害対応・復旧・資格情報更新: `docs/RUNBOOK.md`
 - SEO方針: `docs/SEO.md`
