@@ -2,6 +2,26 @@
 
 この文書には、後から理由を失うと困る長期的な判断だけを記録する。細かな実装判断はPull Requestやコードへ残し、ここには増やしすぎない。
 
+## 2026-09-16 — CIは文書専用変更を軽量化する
+
+**決定**
+
+Pull Request / `main` pushの変更ファイルを最初に分類し、`docs/` 配下とリポジトリ直下のMarkdownだけが変更された場合は、変更分類jobだけを実行してフルCIを省略する。
+
+それ以外のファイルが1つでも含まれる場合、または差分を安全に判定できない場合は、従来どおりcheck / test / build / sitemap / security / performance / browser smoke / SEO validationをすべて実行する。
+
+文書判定は `docs/**` とリポジトリ直下の `*.md` に限定する。将来 `src/` 等にbuild入力となるMarkdownが追加されても、自動的にdocs-only扱いしない。
+
+**理由**
+
+プロセス標準化の文書変更PRでも、依存installから3種類のbrowser smokeまでフル実行しており、変更リスクに対して過剰だった。`project-planning-template` の「変更内容に必要な検証だけを選ぶ」方針に合わせ、品質gateを緩めずにCI時間と無駄な実行を減らすため。
+
+**代替案・補足**
+
+workflow自体を `paths-ignore` で起動しない方式は採用しない。CI workflowは常に起動し、軽量な変更分類jobを成功させた上で重いjobだけをskipする。これにより、将来required checkを設定する場合も「CIが全く作られない」状態を避けやすくする。
+
+外部のchanged-files Actionは追加せず、checkout済みGit履歴の差分だけで保守的に判定する。
+
 ## 2026-09-16 — project-planning-templateの開発プロセスを採用する
 
 **決定**
