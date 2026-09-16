@@ -1,105 +1,42 @@
 # Project handoff
 
-最終更新: 2026-09-10
+最終更新: 2026-09-16
 
-この文書は、ChatGPTのメッセージ上限到達や新規チャットへの切り替え後でも、GitHub上の情報だけで作業文脈を復元するための引き継ぎメモである。優先順位の正本は `ROADMAP.md`、恒久ルールは `AGENTS.md` とする。
+この文書は、旧handoff運用から `project-planning-template` 準拠の文書構成へ移行した後も、既存リンクや過去チャットから迷わず現在地へ到達できるように残す互換導線です。
 
-## New session checklist
+現在地の正本ではありません。
 
-新しいチャットでは、過去会話の記憶や古いコミットSHAを前提にせず、次を順に確認する。
+## 新しい正本
 
-1. GitHubの最新 `main` を取得する
-2. open PR / open Issue を確認する
-3. `AGENTS.md` を読む
-4. この `docs/PROJECT_HANDOFF.md` を読む
-5. `ROADMAP.md` の Current / Waiting / Next / Later を確認する
-6. 関連PRがある場合はdiffとCIを確認する
-7. 本番運用なら `docs/RUNBOOK.md`、構成変更なら `docs/ARCHITECTURE.md` を確認する
+新しいチャットや作業セッションでは、次の順で確認します。
 
-日次データ同期で `main` は継続的に進むため、この文書に「最新mainのSHA」は固定しない。
+1. GitHubの最新 `main` と open PR / open Issue
+2. `README.md`
+3. `AGENTS.md`
+4. `docs/PROJECT.md` — 目的、対象ユーザー、提供価値、優先順位、制約、非目標
+5. `docs/DECISIONS.md` — 長期的に効く重要な判断と理由
+6. `docs/CURRENT_STATE.md` — 現在フェーズ、直近の検証、本番判断、次の1〜3件、ブロッカー
+7. `ROADMAP.md` — 中期の順序とGrowth gate
+8. 必要に応じて `docs/ARCHITECTURE.md` / `docs/RUNBOOK.md` 等の専門文書
 
-## Current state
+日次データ同期で `main` は継続的に進むため、最新commit SHAや一時的なCI run番号は文書へ固定しません。
 
-2026-09-10時点の主要状態は次のとおり。
+## 役割を変更した理由
 
-- Phase 0〜6は完了済みで、サイトの主要機能・信頼性情報・通知・運用・テスト基盤は揃っている。
-- Search Consoleへ `https://eol.slothwright.com/sitemap.xml` を送信済み。
-- 主要URLのインデックス登録リクエストも実施済み。
-- Search Consoleでは検証開始の通知が届いているが、インデックス登録状況と検索パフォーマンスへの反映はまだ待機中。
-- この待機中は、title / descriptionや内部リンク、indexableページ範囲を推測で変更しない。
-- sitemapは静的生成され、CIで全indexable canonical HTMLとの整合性を検証している。
-- 一覧・比較画面は高密度テーブル中心へ整理済み。製品詳細のバージョンサポート表は5列構成。
-- 外部 `http` / `https` リンクは別タブ、内部リンクは同一タブで開く共通処理を導入済み。
-- Search Console待ちの間は、運用維持、バグ修正、ユーザーから具体的に挙がった小規模UX改善、ドキュメント整備を優先する。
+従来のこの文書には、現在地、重要判断、作業ルール、中期計画が混在していました。新しいチャットからの復元には役立った一方、`ROADMAP.md` や `AGENTS.md` と重複し、時間経過でdriftしやすい構造でした。
 
-## Working agreement for ChatGPT sessions
+2026-09-16から、情報を次の役割へ分けます。
 
-- Codexは使わず、GitHub integrationを直接使って作業する。
-- 変更前に前回の関連PRがマージ済みか、最新 `main` がどこまで進んでいるか確認する。
-- 最新 `main` から作業ブランチを作る。
-- GitHub上で編集し、PRを作成する。
-- PR説明と `.md` は原則日本語。
-- diff、CI、`main` からのbehind、mergeable状態を確認してからマージ可否を報告する。
-- ユーザーが明示的に依頼しない限り、PRをマージしない。
-- 運用費はほぼ0円を維持する。新しいWorker / KV / DB / 外部API・有料サービス依存を安易に追加しない。
-- build時にlive endoflife.date APIへ依存せず、コミット済み `src/data/eol-snapshot.json` を使う。
+- 恒久的な企画方針: `docs/PROJECT.md`
+- 後から理由を失うと困る判断: `docs/DECISIONS.md`
+- 今だけ必要な現在地: `docs/CURRENT_STATE.md`
+- 中期計画: `ROADMAP.md`
+- AIの作業ルール: `AGENTS.md`
 
-## Recent decisions that should carry across chats
+この文書へ新しいcurrent stateや判断履歴を追記しません。
 
-### UI density
+## 作業途中でチャットが切り替わった場合
 
-比較・一覧が目的のページでは、一画面あたりの情報量と比較しやすさを優先し、高密度テーブルを基本とする。カードは探索、説明、確認操作に向く箇所へ限定する。
+一時情報をこの文書へ無理に書き込まず、まずopen Pull Requestを確認し、PR本文・diff・CIから作業途中の状態を復元します。
 
-製品詳細の「バージョン別サポート状況」は、バージョンと最新版、リリース日と最新リリース日をそれぞれ同一セルにまとめた5列テーブルをPC / スマホで共通利用する。
-
-### Search Console / SEO
-
-ホームを含むページが「クロール済み - インデックス未登録」だったため調査した結果、robots / noindex / canonicalによるブロックは確認されていない。sitemap自体は既存実装で生成されていたが `/releases/` の漏れが見つかり修正し、現在はCIでindexable HTMLとの完全整合を検証している。
-
-sitemap送信とインデックス登録リクエスト後、Search Consoleの検証が進行中。反映待ちの間にSEO要素を何度も変更しない。検索実データが出たら `ROADMAP.md` のPhase 7手順へ進む。
-
-### External links
-
-外部originの `http` / `https` リンクには `target="_blank"` と `rel="external noopener noreferrer"` を付与する。内部リンク、`mailto:`、`tel:` は従来の挙動を維持する。
-
-## Key recent PRs
-
-背景を確認する必要がある場合はGitHubで次を参照する。
-
-- PR #72 `feat(ui): 一覧UIを高密度テーブルへ統一`
-- PR #73 `fix(seo): sitemapの検出性と整合性を強化`
-- PR #76 `fix(ui): 外部リンクを別タブで開く`
-
-日次データ更新PRは通常この一覧へ記録しない。
-
-## Next trigger
-
-Search Consoleに反映が出たら、まず次を行う。
-
-1. 主要URLのインデックス状態を確認する
-2. Queries / Pagesをエクスポートする
-3. インデックス異常と検索需要を分けて分析する
-4. 改善対象を3〜5ページへ絞る
-5. `ROADMAP.md` のPhase 7に沿って、小さく変更して効果を測る
-
-Search Consoleの反映前でも、本番不具合、CI失敗、freshness警告、ユーザーから明示されたUX修正は独立して進めてよい。
-
-## Keeping this handoff useful
-
-この文書はチャットログの代替ではなく、「次のセッションが判断を再開するために必要な状態」だけを書く。
-
-更新するタイミング:
-
-- Search Consoleの待ち状態が解消した
-- RoadmapのCurrent / Nextが変わった
-- アーキテクチャやコスト方針に重要な変更があった
-- チャットをまたいで維持すべき重要な設計判断が追加された
-
-原則として記録しないもの:
-
-- 日次同期ごとのcommit SHA
-- 完了済みCI run番号
-- 一時的な作業ログ
-- すでにマージ済みの細かな修正履歴
-
-作業途中でチャットが切り替わった場合は、この文書へ一時情報を無理に書き込むのではなく、新しいチャットでopen PRを取得し、PR本文・diff・CIから続きの状態を復元する。
+PRが存在しない状態で現在地が変わっている場合は `docs/CURRENT_STATE.md` を更新します。目的・制約が変わった場合は `docs/PROJECT.md`、重要な判断理由が増えた場合は `docs/DECISIONS.md` へ記録します。
