@@ -25,7 +25,7 @@ Phase 0〜6で、公開サイト、通知、マイEOL、信頼性情報、GitHub
 - sitemap送信と主要URLのインデックス登録リクエストは実施済み。
 - Search Consoleは検証開始後の反映待ちで、検索パフォーマンスを比較できるだけのデータはまだ不足している。
 - Search Consoleの実データが出るまでは、title / description、内部リンク、ページ生成範囲を推測で大きく変更しない。
-- 企画・判断・現在地を `PROJECT / DECISIONS / CURRENT_STATE` へ分離する開発プロセス標準化を進めている。
+- PR #90で `PROJECT / DECISIONS / CURRENT_STATE` による開発プロセス標準化を完了し、PR #91で文書専用変更のCI軽量化を導入した。振り返りと軽量CIの最終確認は [docs/PROCESS_REVIEW_2026-09.md](docs/PROCESS_REVIEW_2026-09.md) を参照する。
 
 ## Waiting / Growth gate
 
@@ -43,7 +43,7 @@ Phase 7の検索成長施策は、次の情報が実際に確認できるまで�
 - CI / browser smoke / performance budget / security headerで検出された不具合を修正する
 - ユーザーが実際に使って気づいた小規模UX改善を行う
 - `PROJECT / DECISIONS / CURRENT_STATE` を中心に文書driftを防ぐ
-- 現在のCIが変更リスクに対して過剰でないかを検証し、品質を落とさず軽量化できる箇所を別PRで整理する
+- 文書専用変更は軽量CI、コード・データ・workflow変更や差分判定失敗時は既存のフルCIを維持する。追加のCI変更は実行実績や具体的な問題を根拠に行う
 - Search Consoleの検証状態に変化があれば `docs/CURRENT_STATE.md` を更新する
 
 次は原則として行わない。
@@ -181,3 +181,4 @@ snapshot / 手動レビュー鮮度監視、実Chrome browser smoke、HTTPセキ
 - 製品詳細のバージョンサポート表を5列へ整理
 - sitemapと全indexable canonical HTMLのCI整合性検証
 - 外部リンクを別タブで開く共通処理
+- 企画・判断・現在地の標準化と、文書専用変更のCI軽量化
