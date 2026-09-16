@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-15T00:08:39+00:00",
+  "updatedAt": "2026-09-16T00:08:43+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2276,6 +2276,133 @@
       "release": "2.2",
       "from": "2025-12-18",
       "to": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "tvos",
+      "label": "Apple tvOS",
+      "release": "27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "eol-changed",
+      "product": "tvos",
+      "label": "Apple tvOS",
+      "release": "26",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "eol-changed",
+      "product": "azure-database-for-mysql",
+      "label": "Azure Database for MySQL",
+      "release": "5.7",
+      "from": "2026-07-31",
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "156",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "eol-changed",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "155",
+      "from": null,
+      "to": "2026-09-15"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "ios",
+      "label": "Apple iOS",
+      "release": "27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "support-changed",
+      "product": "ios",
+      "label": "Apple iOS",
+      "release": "26",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "ipados",
+      "label": "Apple iPadOS",
+      "release": "27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "macos",
+      "label": "Apple macOS",
+      "release": "27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "mariadb",
+      "label": "MariaDB",
+      "release": "13.0",
+      "eolFrom": "2026-12-31"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "eol-changed",
+      "product": "rancher",
+      "label": "Rancher",
+      "release": "2.15",
+      "from": null,
+      "to": "2028-02-27"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "support-changed",
+      "product": "rancher",
+      "label": "Rancher",
+      "release": "2.15",
+      "from": null,
+      "to": "2027-02-27"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "visionos",
+      "label": "Apple visionOS",
+      "release": "27",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "eol-changed",
+      "product": "visionos",
+      "label": "Apple visionOS",
+      "release": "26",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-16T00:08:43+00:00",
+      "type": "release-added",
+      "product": "watchos",
+      "label": "Apple watchOS",
+      "release": "27",
+      "eolFrom": null
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-15T04:53:59.106Z",
+  "updatedAt": "2026-09-16T04:48:42.187Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1170,6 +1170,212 @@
         {
           "slug": "veeam-backup-for-microsoft-365",
           "label": "Veeam Backup for Microsoft 365"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-16T04:48:42.187Z-d9804ffa7d41",
+      "syncedAt": "2026-09-16T04:48:42.187Z",
+      "sourceGeneratedAt": "2026-09-16T00:08:43+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "ca74452393fc20fb0871de87938fd6b3fd961347f7e60cd3e0aab1fd51593dda",
+      "afterSha256": "d9804ffa7d4186d424d5924279f4cb2a23aa01deebc55cf04197f868640416b2",
+      "productCount": 475,
+      "releaseCount": 8662,
+      "changes": {
+        "total": 87,
+        "releaseAdded": 8,
+        "releaseRemoved": 0,
+        "eolChanged": 5,
+        "supportChanged": 2,
+        "latestChanged": 63,
+        "releaseMetadataChanged": 9,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "macos",
+          "label": "Apple macOS"
+        },
+        {
+          "slug": "tvos",
+          "label": "Apple tvOS"
+        },
+        {
+          "slug": "visionos",
+          "label": "Apple visionOS"
+        },
+        {
+          "slug": "watchos",
+          "label": "Apple watchOS"
+        },
+        {
+          "slug": "azure-database-for-mysql",
+          "label": "Azure Database for MySQL"
+        },
+        {
+          "slug": "backdrop",
+          "label": "Backdrop"
+        },
+        {
+          "slug": "blender",
+          "label": "Blender"
+        },
+        {
+          "slug": "cilium",
+          "label": "Cilium"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "dbt-core",
+          "label": "dbt Core"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "beats",
+          "label": "Elastic Beats"
+        },
+        {
+          "slug": "elasticsearch",
+          "label": "Elasticsearch"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "grafana",
+          "label": "Grafana"
+        },
+        {
+          "slug": "jaeger",
+          "label": "Jaeger"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "kibana",
+          "label": "Kibana"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "logstash",
+          "label": "Logstash"
+        },
+        {
+          "slug": "mariadb",
+          "label": "MariaDB"
+        },
+        {
+          "slug": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "nginx",
+          "label": "nginx"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "rancher",
+          "label": "Rancher"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "ruby",
+          "label": "Ruby"
+        },
+        {
+          "slug": "sapmachine",
+          "label": "SapMachine"
+        },
+        {
+          "slug": "symfony",
+          "label": "Symfony"
+        },
+        {
+          "slug": "vinyl-cache",
+          "label": "Vinyl Cache"
+        },
+        {
+          "slug": "virtualbox",
+          "label": "VirtualBox"
+        },
+        {
+          "slug": "yocto",
+          "label": "Yocto Project"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
         }
       ]
     }
