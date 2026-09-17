@@ -1,12 +1,65 @@
 :root {
   --color-canvas: #f6f8fb;
   --color-surface: #ffffff;
+  --color-surface-subtle: #f8fafc;
+  --color-surface-hover: #f3f6fa;
+  --color-surface-translucent: rgba(255, 255, 255, .96);
+
   --color-text-primary: #172033;
+  --color-text-heading: #15203a;
+  --color-text-control: #253047;
   --color-text-secondary: #637083;
+  --color-text-subtle: #566376;
+  --color-text-eyebrow: #66758b;
+  --color-text-table: #536174;
+  --color-text-detail: #4f5c70;
+  --color-text-emphasis: #43516a;
+
   --color-border-default: #dce3ec;
+  --color-border-control: #bcc7d6;
+  --color-border-hover: #aebbd0;
+  --color-border-subtle: #e8ecf2;
+  --color-border-divider: #edf0f5;
+
   --color-action-primary: #2457d6;
+  --color-action-primary-soft: #edf3ff;
+  --color-action-primary-strong: #234fb5;
   --color-link: #174dbf;
   --color-focus-ring: rgba(36, 87, 214, .28);
+
+  --color-info-surface: #f8fbff;
+  --color-info-border: #cbd6e6;
+  --color-warning-surface: #fff9ea;
+  --color-warning-border: #f0d29d;
+
+  --color-code-surface: #111827;
+  --color-code-text: #eef2ff;
+
+  --color-status-ended-surface: #f1f2f4;
+  --color-status-ended-text: #5d6673;
+  --color-status-critical-surface: #ffe8e8;
+  --color-status-critical-text: #a51e1e;
+  --color-status-warning-surface: #fff0d9;
+  --color-status-warning-text: #895100;
+  --color-status-planning-surface: #fff8cf;
+  --color-status-planning-text: #715d00;
+  --color-status-supported-surface: #e6f6ed;
+  --color-status-supported-text: #1d6a3e;
+  --color-status-unknown-surface: #eef1f5;
+  --color-status-unknown-text: #536070;
+
+  --color-feedback-success-surface: #f2fbf5;
+  --color-feedback-success-border: #b9d7c4;
+  --color-feedback-error-surface: #fff5f5;
+  --color-feedback-error-border: #e2b8b8;
+  --color-feedback-error-text: #8a2525;
+
+  --color-freshness-warning-surface: #fff8e8;
+  --color-freshness-warning-border: #e9d6a8;
+  --color-freshness-warning-text: #654d12;
+  --color-freshness-critical-surface: #fff1f1;
+  --color-freshness-critical-border: #e7b8b8;
+  --color-freshness-critical-text: #7a2525;
 
   --radius-control: 10px;
   --radius-content: 12px;
@@ -15,7 +68,7 @@
 
   --shadow-floating: 0 8px 24px rgba(23, 32, 51, .16);
 
-  /* Transitional aliases used by the existing presentation layer. */
+  /* Transitional aliases used by presentation code during the migration. */
   --border: var(--color-border-default);
   --muted: var(--color-text-secondary);
   --surface: var(--color-surface);
