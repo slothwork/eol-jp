@@ -1,6 +1,6 @@
 # デザイン方針
 
-この文書は、`ai-design-template` を EOL情報.jp へ適用するための初期 Design Baseline です。
+この文書は、`ai-design-template` を EOL情報.jp へ適用した Design Baseline と、現在採用しているデザイン判断をまとめる正本です。
 
 デザイン履歴をすべて保存する場所ではなく、現在採用している方向性、維持する要素、改善対象、デザイン実装上の境界を短時間で把握するために使います。
 
@@ -40,22 +40,41 @@ EOL・サポート期限という判断性の高い情報を、短時間で正�
 - Astroの静的生成を中心にした軽量なページ構成
 - 外部UI frameworkへ依存せず、現在の規模に対して比較的単純なCSS構成
 - localStorageや外部機能が失敗しても基本情報閲覧を妨げない設計
+- System fontを使い、情報密度を保つ抑制したTypography hierarchy
+- `aria-current` と非Color依存の強調を組み合わせた現在位置表現
+- Header / Navigation / Footerが共通semantic roleへ追従する構成
 
 ### Improve
 
-- Color、Border、Radius、Surface、Focus等のVisual valueが一部CSS custom propertyへ集約されている一方、直接値も多数存在するため、semantic tokenへ段階的に整理する
-- Button、Panel、Card、Form control、Status等で似たVisual ruleが分散しており、差し替え時の変更箇所を減らす
-- Typography hierarchyを役割ベースで整理し、個別selectorごとの微調整依存を減らす
+- Button、Panel、Card、Form control等で似たVisual ruleが複数箇所へ実際に波及すると確認できた場合に、共通化範囲を追加で見直す
 - Status colorが情報上重要なため、色だけに依存しない表現とContrastを継続確認する
-- High-density tableとCard UIの境界を明確にし、情報量の多い箇所でCard分割を増やしすぎない
-- Header / Navigation / FooterのVisual definitionを、将来の全体テーマ変更時に追いやすくする
-- CSSが複数ファイルへ分かれているため、責務を維持しつつ共通Visual tokenの参照元を一本化する
+- High-density tableとCard UIの境界を維持し、情報量の多い箇所でCard分割を増やしすぎない
+- Page固有・Component固有の直接値は、変更波及が確認できたものから段階的にsemantic roleへ昇格する
+- CSSが複数ファイルへ分かれているため、責務を崩さず共通Visual tokenの参照元を `src/design-tokens.css` に保つ
 
 ### Replace
 
 現時点では大規模なUI構造の置換は行わない。
 
-主要導線と情報構造はプロダクト目的に合致しており、まずDesign foundationsと実装上の差し替え容易性を改善する方が変更リスクに対して合理的と判断する。
+主要導線と情報構造はプロダクト目的に合致しており、初回Design Refinementでも全面置換を必要とする問題は確認されなかった。
+
+## 初回Design Refinement結果
+
+`ai-design-template` の初回パイロットとして、2026-09-17に次を実施した。
+
+- PR #97: Design Baselineを作成し、semantic design tokenの基盤を導入
+- PR #98: 共通UIとEOL Statusを中心にsemantic tokenへ移行
+- PR #99: 主要Navigationへ現在位置を追加し、`aria-current` と非Color依存表現を導入
+- PR #100: 高密度な情報設計に合わせてTypography hierarchyを抑制
+- PR #101: Header / Footerを既存semantic roleへ寄せ、共通Shellの差し替え容易性を改善
+
+この過程で、全てのVisual valueをglobal token化するとCSS Performance budgetを超えることを確認した。品質gateは緩和せず、通知や鮮度表示など単一Component内で完結する値をlocalへ戻し、global tokenを次へ限定した。
+
+- 全体Theme変更へ波及するColor / Surface / Border / Radius / Focus等
+- 複数箇所で共有するVisual role
+- EOL StatusのようにDomain meaningとPresentationの境界として重要なrole
+
+結果として、Design replaceabilityを高めつつ既存Performance budgetを維持できた。
 
 ## デザイン方向性
 
@@ -94,17 +113,17 @@ EOL・サポート期限という判断性の高い情報を、短時間で正�
 
 ### Color
 
-現在のBlue系Primaryと明るいNeutral surfaceは、信頼性・技術情報サイトとして大きな不整合はないため当面維持する。
+現在のBlue系Primaryと明るいNeutral surfaceは、信頼性・技術情報サイトとして大きな不整合がないため維持する。
 
-今後は具体的なhex値を画面要素ごとに増やさず、少なくとも次のsemantic roleへ整理する。
+共通Visual valueは `src/design-tokens.css` のsemantic roleへ集約する。
 
-- Background
-- Surface
+- Canvas / Surface
 - Text primary / secondary
 - Border
-- Primary action
-- Focus
+- Primary action / Link / Focus
 - Success / Warning / Critical / Ended / Unknown
+- Radius
+- Shared shadow
 
 Statusは意味をColorだけへ依存させない。
 
@@ -112,9 +131,11 @@ Statusは意味をColorだけへ依存させない。
 
 日本語本文の可読性を最優先する。
 
-現在のSystem font中心の構成はPerformanceと日本語fallbackの点で合理的なため、外部Web fontは明確なVisual benefitがある場合だけ導入する。
+System font中心の構成はPerformanceと日本語fallbackの点で合理的なため継続する。外部Web fontは明確なVisual benefitがある場合だけ導入する。
 
-Heading、Body、Caption、Table heading、Status、Actionなど役割単位でscaleとweightを整理する。
+見出しは `Display > Page title > Section title > Card title > Compact title` の階層を保ち、Marketing siteのような大きなDisplay typographyで主要情報を押し下げない。
+
+Body、Caption、Table heading、Status、Actionも情報密度と可読性を優先して扱う。
 
 ### Layout / Spacing
 
@@ -126,7 +147,7 @@ Heading、Body、Caption、Table heading、Status、Actionなど役割単位でs
 
 Borderと軽いSurface差を基本とし、ShadowやBlurは階層理解に必要な場合へ限定する。
 
-Card、Panel、Button等のRadiusはtoken化し、用途ごとに無秩序な値を増やさない。
+Card、Panel、Button等の共有Radiusはsemantic tokenを利用し、用途ごとに無秩序な値を増やさない。
 
 ### Iconography
 
@@ -150,6 +171,8 @@ MotionはMenu、State transition、Feedback等の理解補助に限定し、`pre
 
 Desktopの高密度性をそのままMobileへ押し込まず、優先情報を保ちながら必要に応じてscrollやlayout変更を利用する。
 
+主要Navigationでは現在routeを意味的に `aria-current` で示し、視覚上もColorだけに依存しない強調を維持する。
+
 ## Responsive / Accessibility
 
 - 主要viewportで横方向の破綻を起こさない
@@ -159,6 +182,7 @@ Desktopの高密度性をそのままMobileへ押し込まず、優先情報を�
 - ContrastとStatus識別を確認する
 - Reduced motionを尊重する
 - 長い日本語・英数字・製品名でもlayoutが破綻しないことを確認する
+- 現在位置や状態をColorだけで伝えない
 
 ## State設計
 
@@ -190,9 +214,9 @@ UI文言では、操作後の結果が分かる具体的な表現を優先する
 
 ### CSS strategy
 
-当面は既存のCSSを継続利用する。
+既存のCSSを継続利用する。
 
-現在の規模ではTailwind CSS等の新規framework導入による利益より移行コストが大きいと判断する。Visual directionの変更に必要な共通値・Component ruleの整理を既存CSS上で先に行う。
+現在の規模ではTailwind CSS等の新規framework導入による利益より移行コストが大きい。Visual directionの変更に必要な共通値・Component ruleを既存CSS上で必要な範囲だけ整理する。
 
 ### UI / Component library
 
@@ -214,9 +238,15 @@ System font stackを継続する。
 
 ### Design tokens / CSS variables
 
-現在の `--border`、`--muted`、`--surface`、`--primary` を起点として、段階的にsemantic tokenを拡張する。
+`src/design-tokens.css` を共通Visual roleの参照元とする。
 
-ただし、全CSSを一度にDesign System化しない。Design refinementで触れる箇所から共通化し、同じ意味の直接値が重複する場合にtokenへ昇格する。
+ただし、全CSSを一度にDesign System化しない。global semantic tokenへ昇格するのは、原則として次のいずれかを満たす値とする。
+
+- Theme全体の変更時に複数箇所へ波及する
+- 複数Componentで同じ意味として共有する
+- Domain meaningとPresentationの境界として重要である
+
+単一Component内で完結し、変更が外へ波及しないVisual valueはlocal管理を許容する。抽象化そのものを目的にしない。
 
 ### Motion / Asset
 
@@ -228,7 +258,7 @@ Brand asset生成の既存方式を尊重する。
 
 Visual directionは将来変更される可能性があるものとして扱う。
 
-将来の変更では、主に次を差し替えることで全体の印象を変更できる状態を目指す。
+将来の変更では、主に次を差し替えることで全体の印象を変更できる状態を維持する。
 
 1. Semantic design tokens
 2. Typography role
@@ -252,6 +282,7 @@ Business / Domain logicは、Color、Radius、Font、Shadow等のVisual valueを
 - Web fontは利益が明確な場合だけ導入する
 - 大画像、重いBlur、Shadow、Animationを増やさない
 - Design refinement後も既存Performance checkを通す
+- Design abstractionでCSS sizeが増える場合も、品質gateを後から緩めず抽象化範囲を見直す
 
 ## 意図的に採用しない表現
 
@@ -267,21 +298,24 @@ Business / Domain logicは、Color、Radius、Font、Shadow等のVisual valueを
 
 ## Design QA結果
 
-`FIX` — 現在の情報設計・主要UX・Accessibility方針は概ね維持可能だが、Design replaceabilityの観点では改善余地がある。
+`PASS` — 初回Design Refinementで予定した改善を完了し、既存の情報設計・主要UX・Accessibility・Performanceを維持したままDesign replaceabilityを改善できた。
 
-初期確認で特に改善対象とする。
+確認済み事項:
 
-- Visual valueの直接指定をsemantic tokenへ段階的に寄せる
-- 類似ComponentのVisual ruleを整理する
-- Domain meaningとVisual presentationの境界を維持する
-- Design refinement後もResponsive / Accessibility / Performanceを回帰確認する
+- semantic design tokenの共通基盤を導入した
+- global tokenとComponent-local valueの境界をPerformance budgetと実際の変更波及から調整した
+- Domain meaningとVisual presentationの境界を維持した
+- Navigation現在位置をsemanticかつ非Color依存で表現した
+- 高密度UIに合わせてTypography hierarchyを抑制した
+- Header / Navigation / Footerをsemantic roleへ寄せた
+- 各実装PRでResponsive / Accessibility / Astro check / build / Performance / browser smoke / SEOの既存品質gateを通過した
 
-全面再設計を必要とする問題は現時点では確認していない。
+全面再設計を必要とする問題は確認されていない。今後のVisual refinementは、新しい課題・Reference design・利用データ等の根拠がある場合に小さい単位で行う。
 
 ## 未確定事項
 
 - 外部Reference designを利用するか
-- 現在のBlue / Neutral方向をどの程度維持するか
-- Visual refinementでブランド性をどの程度強めるか
+- 現在のBlue / Neutral方向から変更する根拠が生じるか
+- ブランド性をさらに強める必要が生じるか
 
-これらは実際のデザイン改善へ入る時点で、必要に応じてGuided Design Decisionとして確認する。
+現時点では追加変更を目的化せず、必要になった時点でGuided Design Decisionとして判断する。
