@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-16T04:48:42.187Z",
+  "updatedAt": "2026-09-17T00:59:40.354Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1376,6 +1376,168 @@
         {
           "slug": "youtrack",
           "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-17T00:59:40.354Z-7b81eff497b0",
+      "syncedAt": "2026-09-17T00:59:40.354Z",
+      "sourceGeneratedAt": "2026-09-17T00:09:09+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "d9804ffa7d4186d424d5924279f4cb2a23aa01deebc55cf04197f868640416b2",
+      "afterSha256": "7b81eff497b009e1653376b47b639731b3c43f3c2d439164c1f2d63769674f01",
+      "productCount": 475,
+      "releaseCount": 8665,
+      "changes": {
+        "total": 53,
+        "releaseAdded": 3,
+        "releaseRemoved": 0,
+        "eolChanged": 2,
+        "supportChanged": 3,
+        "latestChanged": 42,
+        "releaseMetadataChanged": 3,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "watchos",
+          "label": "Apple watchOS"
+        },
+        {
+          "slug": "cert-manager",
+          "label": "cert-manager"
+        },
+        {
+          "slug": "cilium",
+          "label": "Cilium"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "deno",
+          "label": "Deno"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "duckdb",
+          "label": "DuckDB"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "emberjs",
+          "label": "Ember"
+        },
+        {
+          "slug": "erlang",
+          "label": "Erlang"
+        },
+        {
+          "slug": "goaccess",
+          "label": "GoAccess"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "hashicorp-vault",
+          "label": "Hashicorp Vault"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "keycloak",
+          "label": "Keycloak"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "otobo",
+          "label": "OTOBO"
+        },
+        {
+          "slug": "podman",
+          "label": "Podman"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "sapmachine",
+          "label": "SapMachine"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
+        },
+        {
+          "slug": "teleport",
+          "label": "Teleport"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "vinyl-cache",
+          "label": "Vinyl Cache"
         }
       ]
     }
