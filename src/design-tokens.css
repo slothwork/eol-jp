@@ -1,0 +1,26 @@
+:root {
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-text-primary: #172033;
+  --color-text-secondary: #637083;
+  --color-border-default: #dce3ec;
+  --color-action-primary: #2457d6;
+  --color-link: #174dbf;
+  --color-focus-ring: rgba(36, 87, 214, .28);
+
+  --radius-control: 10px;
+  --radius-content: 12px;
+  --radius-panel: 14px;
+  --radius-pill: 999px;
+
+  --shadow-floating: 0 8px 24px rgba(23, 32, 51, .16);
+
+  /* Transitional aliases used by the existing presentation layer. */
+  --border: var(--color-border-default);
+  --muted: var(--color-text-secondary);
+  --surface: var(--color-surface);
+  --primary: var(--color-action-primary);
+
+  color: var(--color-text-primary);
+  background: var(--color-canvas);
+}
