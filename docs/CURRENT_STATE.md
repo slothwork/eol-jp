@@ -1,6 +1,6 @@
 # 現在の状態
 
-最終更新: 2026-09-16
+最終更新: 2026-09-17
 
 この文書は履歴保管ではなく、プロジェクトの「今」を短時間で把握するために使う。目的・制約は `docs/PROJECT.md`、重要な判断理由は `docs/DECISIONS.md`、中期計画は `ROADMAP.md` を参照する。
 
@@ -9,6 +9,8 @@
 公開後改善 / Growth gate。
 
 Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テスト基盤は完了済み。現在はSearch Consoleのインデックス反映と検索実データを待ち、Phase 7のデータ駆動改善へ入る条件を確認している。
+
+`ai-design-template` の初回パイロットも完了し、既存UXを大きく変えずにDesign replaceabilityを改善できることを確認した。デザイン改善自体を次の作業目的にはせず、新しい課題・Reference design・利用データ等の根拠が生じた場合に再開する。
 
 ## 完了したこと
 
@@ -25,12 +27,19 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 - PR #92で標準化の振り返りを追加し、文書専用の実PRで軽量CI経路を確認
 - PR #93で標準化・CI軽量化完了後の現在地を確定
 - PR #94でSearch ConsoleのGrowth gate観測結果を現在地へ反映
+- PR #97で `ai-design-template` のDesign Baselineとsemantic design token基盤を導入
+- PR #98でglobal semantic tokenの適用範囲をPerformance budgetと実際の変更波及から調整
+- PR #99で主要Navigationへsemanticかつ非Color依存の現在位置表現を追加
+- PR #100で高密度な情報設計に合わせてTypography hierarchyを調整
+- PR #101でHeader / Footerをsemantic roleへ寄せ、共通Shellの差し替え容易性を改善
 
 ## 直近の検証結果
 
-`PASS` — PR #90〜#94はマージ済み。PR #91ではworkflow変更とマージ後mainで既存のcheck / build / sitemap / SEO / security / performance / browser smoke等が成功し、PR #92とPR #94では文書専用変更として `Classify changes` が成功し、重い `Check, build and SEO validate` がskippedになった。
+`PASS` — 初回Design Refinementは完了。PR #97〜#101では、既存のResponsive / Accessibility / Astro check / production build / Performance budget / browser smoke / SEO等の品質gateを維持したまま改善を行った。
 
-2026-09-16時点の既存運用も正常。直近のmain CI、日次EOLデータ同期、snapshot鮮度チェックに未解決の失敗は確認していない。標準化やCI軽量化を目的とした追加実装は行わない。
+特にPR #98では、global token化を広げすぎた段階でCSS Performance budget超過を検出した。budgetを緩和せず、Component内で完結するVisual valueをlocalへ戻し、Theme全体・複数Component・Domain meaningとの境界に関係する値だけをglobal semantic tokenとして残すことでPASSへ戻した。この結果を `docs/DESIGN.md` に反映済み。
+
+2026-09-17時点で、直近のmain CI、日次EOLデータ同期、snapshot鮮度チェックに未解決の失敗は確認していない。デザイン改善や標準化を目的とした追加実装は行わない。
 
 ## 本番確認・公開後の判断
 
@@ -66,6 +75,7 @@ Googleがページを取得できない技術ブロックは今回の確認で�
 - インデックス反映待ちの段階で大規模なSEO変更を重ねると、何が効いたか比較できなくなる
 - 文書パスが将来build / test入力になる場合は、同じ変更でCI分類を再検討する
 - 新しいプロセス文書やCIロジックを増やしすぎて、管理負荷を実開発より重くしないこと
+- Design replaceabilityを理由に、Component-localで十分なVisual valueまでglobal abstractionへ押し上げないこと
 
 ## 関連するPull Request / Issue
 
@@ -74,6 +84,11 @@ Googleがページを取得できない技術ブロックは今回の確認で�
 - [PR #92](https://github.com/slothwork/eol-jp/pull/92) — 標準化の振り返りと文書専用軽量CIの実案件確認。マージ済み
 - [PR #93](https://github.com/slothwork/eol-jp/pull/93) — 標準化完了後の現在地確定。マージ済み
 - [PR #94](https://github.com/slothwork/eol-jp/pull/94) — Search ConsoleのGrowth gate観測結果記録。マージ済み
+- [PR #97](https://github.com/slothwork/eol-jp/pull/97) — `ai-design-template` 初回適用とsemantic token基盤。マージ済み
+- [PR #98](https://github.com/slothwork/eol-jp/pull/98) — semantic tokenの適用範囲調整。マージ済み
+- [PR #99](https://github.com/slothwork/eol-jp/pull/99) — 主要Navigationの現在位置表現。マージ済み
+- [PR #100](https://github.com/slothwork/eol-jp/pull/100) — Typography hierarchy調整。マージ済み
+- [PR #101](https://github.com/slothwork/eol-jp/pull/101) — Header / Footer Presentation整理。マージ済み
 
 ## 最終更新時の補足
 
