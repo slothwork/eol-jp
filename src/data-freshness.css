@@ -1,7 +1,7 @@
 .data-freshness-notice {
-  border-bottom: 1px solid var(--color-freshness-warning-border);
-  background: var(--color-freshness-warning-surface);
-  color: var(--color-freshness-warning-text);
+  border-bottom: 1px solid #e9d6a8;
+  background: #fff8e8;
+  color: #654d12;
 }
 
 .data-freshness-notice[hidden] {
@@ -10,9 +10,9 @@
 
 .data-freshness-notice[data-freshness-status="critical"],
 .data-freshness-notice[data-freshness-status="invalid"] {
-  border-bottom-color: var(--color-freshness-critical-border);
-  background: var(--color-freshness-critical-surface);
-  color: var(--color-freshness-critical-text);
+  border-bottom-color: #e7b8b8;
+  background: #fff1f1;
+  color: #7a2525;
 }
 
 .data-freshness-inner {
