@@ -6,8 +6,8 @@
 .external-notification-form label { display: grid; gap: 7px; font-weight: 700; }
 .external-notification-form .history-select,
 .external-notification-form .search-box { width: 100%; max-width: 760px; }
-.external-notification-message { border-color: var(--color-feedback-success-border); background: var(--color-feedback-success-surface); }
-.external-notification-message.external-notification-error { border-color: var(--color-feedback-error-border); background: var(--color-feedback-error-surface); color: var(--color-feedback-error-text); }
+.external-notification-message { border-color: #b9d7c4; background: #f2fbf5; }
+.external-notification-message.external-notification-error { border-color: #e2b8b8; background: #fff5f5; color: #8a2525; }
 .external-notification-status-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .external-notification-status-row p { margin: 4px 0 0; }
 @media (max-width: 620px) {
