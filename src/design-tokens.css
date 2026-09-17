@@ -18,6 +18,11 @@
   --color-link: #174dbf;
   --color-focus-ring: rgba(36, 87, 214, .28);
 
+  --color-info-surface: #f8fbff;
+  --color-info-border: #cbd6e6;
+  --color-warning-surface: #fff9ea;
+  --color-warning-border: #f0d29d;
+
   --color-status-ended-surface: #f1f2f4;
   --color-status-ended-text: #5d6673;
   --color-status-critical-surface: #ffe8e8;
