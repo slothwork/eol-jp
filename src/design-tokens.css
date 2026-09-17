@@ -1,12 +1,40 @@
 :root {
   --color-canvas: #f6f8fb;
   --color-surface: #ffffff;
+  --color-surface-subtle: #f8fafc;
+  --color-surface-hover: #f3f6fa;
+  --color-surface-translucent: rgba(255, 255, 255, .96);
+
   --color-text-primary: #172033;
   --color-text-secondary: #637083;
+
   --color-border-default: #dce3ec;
+  --color-border-control: #bcc7d6;
+  --color-border-hover: #aebbd0;
+  --color-border-subtle: #e8ecf2;
+  --color-border-divider: #edf0f5;
+
   --color-action-primary: #2457d6;
   --color-link: #174dbf;
   --color-focus-ring: rgba(36, 87, 214, .28);
+
+  --color-info-surface: #f8fbff;
+  --color-info-border: #cbd6e6;
+  --color-warning-surface: #fff9ea;
+  --color-warning-border: #f0d29d;
+
+  --color-status-ended-surface: #f1f2f4;
+  --color-status-ended-text: #5d6673;
+  --color-status-critical-surface: #ffe8e8;
+  --color-status-critical-text: #a51e1e;
+  --color-status-warning-surface: #fff0d9;
+  --color-status-warning-text: #895100;
+  --color-status-planning-surface: #fff8cf;
+  --color-status-planning-text: #715d00;
+  --color-status-supported-surface: #e6f6ed;
+  --color-status-supported-text: #1d6a3e;
+  --color-status-unknown-surface: #eef1f5;
+  --color-status-unknown-text: #536070;
 
   --radius-control: 10px;
   --radius-content: 12px;
@@ -15,7 +43,7 @@
 
   --shadow-floating: 0 8px 24px rgba(23, 32, 51, .16);
 
-  /* Transitional aliases used by the existing presentation layer. */
+  /* Transitional aliases used by presentation code during the migration. */
   --border: var(--color-border-default);
   --muted: var(--color-text-secondary);
   --surface: var(--color-surface);
