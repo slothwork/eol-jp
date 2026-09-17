@@ -44,4 +44,11 @@ assert.match(styles, /\.section h2 \{[^}]*font-size:clamp\(1\.45rem,3vw,1\.9rem\
 assert.match(styles, /\.product-card h3 \{[^}]*font-size:1\.2rem/, 'Card titles must stay compact for information-dense layouts');
 assert.match(styles, /\.history-item h2 \{[^}]*font-size:1\.1rem/, 'Compact history titles must remain subordinate to card titles');
 
+assert.match(styles, /\.brand \{[^}]*color: var\(--color-text-primary\)/, 'Header brand color must follow the semantic text token');
+assert.match(styles, /\.main-nav a \{[^}]*color: var\(--color-text-secondary\)[^}]*font-weight: 600/, 'Primary navigation must use the shared secondary text role with stable emphasis');
+assert.match(styles, /\.mobile-nav-toggle \{[^}]*color: var\(--color-text-primary\)/, 'Mobile navigation control must follow the semantic text token');
+assert.match(styles, /\.site-footer \{[^}]*background:var\(--color-surface-subtle\)[^}]*color:var\(--color-text-secondary\)/, 'Footer presentation must follow semantic surface and text roles');
+assert.match(styles, /\.footer-grid \{[^}]*grid-template-columns:minmax\(0,\.85fr\) minmax\(0,1\.15fr\)/, 'Desktop footer must reserve more space for navigation links');
+assert.match(styles, /\.copyright \{[^}]*color:var\(--color-text-secondary\)/, 'Footer copyright must follow the shared secondary text role');
+
 console.log('Responsive shell tests passed.');
