@@ -38,4 +38,10 @@ assert.match(styles, /\.table-wrap::before/, 'Mobile tables must expose a horizo
 assert.match(styles, /\.email-turnstile \{ max-width:100%; overflow-x:auto;/, 'Turnstile containers must not force page-level horizontal overflow');
 assert.match(styles, /main a, \.site-footer a \{ overflow-wrap: anywhere; \}/, 'Long URLs must wrap instead of widening the page');
 
+assert.match(styles, /\.hero h1 \{[^}]*font-size: clamp\(2rem,5vw,3\.4rem\)/, 'Hero title must keep the restrained display scale');
+assert.match(styles, /\.page-head h1 \{[^}]*font-size:clamp\(1\.9rem,4vw,2\.8rem\)/, 'Page titles must remain below the hero display scale');
+assert.match(styles, /\.section h2 \{[^}]*font-size:clamp\(1\.45rem,3vw,1\.9rem\)/, 'Section titles must remain below page titles');
+assert.match(styles, /\.product-card h3 \{[^}]*font-size:1\.2rem/, 'Card titles must stay compact for information-dense layouts');
+assert.match(styles, /\.history-item h2 \{[^}]*font-size:1\.1rem/, 'Compact history titles must remain subordinate to card titles');
+
 console.log('Responsive shell tests passed.');
