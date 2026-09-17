@@ -20,6 +20,18 @@ const siteBase = Astro.site ?? Astro.url.origin;
 const canonical = new URL(canonicalPath, siteBase).toString();
 const ogImage = new URL('/og-default.png', siteBase).toString();
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const navItems = [
+  { href: '/eol/', label: '製品一覧', prefixes: ['/eol/', '/category/'] },
+  { href: '/releases/', label: '最新リリース', prefixes: ['/releases/'] },
+  { href: '/upcoming/', label: 'まもなくEOL', prefixes: ['/upcoming/'] },
+  { href: '/calendar/', label: 'カレンダー', prefixes: ['/calendar/'] },
+  { href: '/my-eol/', label: 'マイEOL', prefixes: ['/my-eol/'] },
+  { href: '/about/', label: 'このサイトについて', prefixes: ['/about/'] }
+];
+const navCurrent = (href: string, prefixes: string[]) => {
+  if (canonicalPath === href) return 'page' as const;
+  return prefixes.some((prefix) => canonicalPath.startsWith(prefix)) ? 'location' as const : undefined;
+};
 const showExternalNotificationSettings = canonicalPath === '/my-eol/';
 const showMyEolBackup = canonicalPath === '/my-eol/';
 const showRecentViewedProducts = canonicalPath === '/eol/' || canonicalPath === '/my-eol/';
@@ -79,12 +91,15 @@ const productHistorySlug = canonicalPath.match(/^\/eol\/([^/]+)\/$/)?.[1] ?? nul
           <span class="mobile-nav-icon" aria-hidden="true">☰</span>
         </button>
         <nav id="site-main-nav" class="main-nav" aria-label="メインナビゲーション" data-main-nav>
-          <a href="/eol/">製品一覧</a>
-          <a href="/releases/">最新リリース</a>
-          <a href="/upcoming/">まもなくEOL</a>
-          <a href="/calendar/">カレンダー</a>
-          <a href="/my-eol/">マイEOL</a>
-          <a href="/about/">このサイトについて</a>
+          {navItems.map((item) => {
+            const current = navCurrent(item.href, item.prefixes);
+            return (
+              <a href={item.href} aria-current={current}>
+                {current && <span aria-hidden="true">• </span>}
+                {current ? <strong>{item.label}</strong> : item.label}
+              </a>
+            );
+          })}
         </nav>
       </div>
     </header>
