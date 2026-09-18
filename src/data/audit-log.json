@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-17T00:59:40.354Z",
+  "updatedAt": "2026-09-18T04:43:11.527Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1538,6 +1538,148 @@
         {
           "slug": "vinyl-cache",
           "label": "Vinyl Cache"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-18T04:43:11.527Z-0eca32ce48ac",
+      "syncedAt": "2026-09-18T04:43:11.527Z",
+      "sourceGeneratedAt": "2026-09-18T00:08:39+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "7b81eff497b009e1653376b47b639731b3c43f3c2d439164c1f2d63769674f01",
+      "afterSha256": "0eca32ce48ac666c6f0d03af6b93f8c3bbc9436c48c14d5c5a540eb399789879",
+      "productCount": 475,
+      "releaseCount": 8671,
+      "changes": {
+        "total": 55,
+        "releaseAdded": 6,
+        "releaseRemoved": 0,
+        "eolChanged": 2,
+        "supportChanged": 0,
+        "latestChanged": 41,
+        "releaseMetadataChanged": 6,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "alpine-linux",
+          "label": "Alpine Linux"
+        },
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "apache-airflow",
+          "label": "Apache Airflow"
+        },
+        {
+          "slug": "apache-nifi",
+          "label": "Apache NiFi"
+        },
+        {
+          "slug": "apache-struts",
+          "label": "Apache Struts"
+        },
+        {
+          "slug": "ipad",
+          "label": "Apple iPad"
+        },
+        {
+          "slug": "macos",
+          "label": "Apple macOS"
+        },
+        {
+          "slug": "ckeditor",
+          "label": "CKEditor"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "forgejo",
+          "label": "Forgejo"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "mssqlserver",
+          "label": "Microsoft SQL Server"
+        },
+        {
+          "slug": "nextcloud",
+          "label": "Nextcloud"
+        },
+        {
+          "slug": "oracle-graalvm",
+          "label": "Oracle GraalVM"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "quarkus-framework",
+          "label": "Quarkus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "redis",
+          "label": "Redis"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "umbraco",
+          "label": "Umbraco CMS"
+        },
+        {
+          "slug": "vinyl-cache",
+          "label": "Vinyl Cache"
+        },
+        {
+          "slug": "vue",
+          "label": "Vue"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
         }
       ]
     }
