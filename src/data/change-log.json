@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-17T00:09:09+00:00",
+  "updatedAt": "2026-09-18T00:08:39+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2472,6 +2472,72 @@
       "release": "26",
       "from": null,
       "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "apache-nifi",
+      "label": "Apache NiFi",
+      "release": "2.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "eol-changed",
+      "product": "apache-nifi",
+      "label": "Apache NiFi",
+      "release": "2.11",
+      "from": null,
+      "to": "2026-09-13"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "containerd",
+      "label": "containerd",
+      "release": "2.4",
+      "eolFrom": "2027-05-16"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "eol-changed",
+      "product": "macos",
+      "label": "Apple macOS",
+      "release": "14",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "mattermost",
+      "label": "Mattermost",
+      "release": "11.11",
+      "eolFrom": "2026-12-15"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "nextcloud",
+      "label": "Nextcloud",
+      "release": "35",
+      "eolFrom": "2027-09-30"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "plesk",
+      "label": "Plesk",
+      "release": "18.0.81",
+      "eolFrom": "2026-12-08"
+    },
+    {
+      "detectedAt": "2026-09-18T00:08:39+00:00",
+      "type": "release-added",
+      "product": "vinyl-cache",
+      "label": "Vinyl Cache",
+      "release": "9.1",
+      "eolFrom": "2027-09-16"
     }
   ]
 }
