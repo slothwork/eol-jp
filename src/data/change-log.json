@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-18T00:08:39+00:00",
+  "updatedAt": "2026-09-19T00:08:10+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2538,6 +2538,40 @@
       "label": "Vinyl Cache",
       "release": "9.1",
       "eolFrom": "2027-09-16"
+    },
+    {
+      "detectedAt": "2026-09-19T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-mythos-5-1",
+      "from": null,
+      "to": "2027-09-01"
+    },
+    {
+      "detectedAt": "2026-09-19T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-mythos-5",
+      "from": null,
+      "to": "2027-06-09"
+    },
+    {
+      "detectedAt": "2026-09-19T00:08:10+00:00",
+      "type": "release-added",
+      "product": "gitlab-runner",
+      "label": "GitLab Runner",
+      "release": "19.4",
+      "eolFrom": "2026-12-17"
+    },
+    {
+      "detectedAt": "2026-09-19T00:08:10+00:00",
+      "type": "release-added",
+      "product": "gitlab",
+      "label": "GitLab",
+      "release": "19.4",
+      "eolFrom": "2026-12-17"
     }
   ]
 }

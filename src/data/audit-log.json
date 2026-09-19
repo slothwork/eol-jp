@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-18T04:43:11.527Z",
+  "updatedAt": "2026-09-19T04:37:02.948Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1676,6 +1676,148 @@
         {
           "slug": "vue",
           "label": "Vue"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-19T04:37:02.948Z-92aea7796314",
+      "syncedAt": "2026-09-19T04:37:02.948Z",
+      "sourceGeneratedAt": "2026-09-19T00:08:10+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "0eca32ce48ac666c6f0d03af6b93f8c3bbc9436c48c14d5c5a540eb399789879",
+      "afterSha256": "92aea7796314c78bc3d76e7adc49a84a2213352d6c6585329586a50a24130182",
+      "productCount": 475,
+      "releaseCount": 8673,
+      "changes": {
+        "total": 57,
+        "releaseAdded": 2,
+        "releaseRemoved": 0,
+        "eolChanged": 2,
+        "supportChanged": 0,
+        "latestChanged": 50,
+        "releaseMetadataChanged": 3,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "alibaba-dragonwell",
+          "label": "Alibaba Dragonwell"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "argo-workflows",
+          "label": "Argo Workflows"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "azure-devops-server",
+          "label": "Azure DevOps Server"
+        },
+        {
+          "slug": "bellsoft-liberica",
+          "label": "Bellsoft Liberica JDK"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "commvault",
+          "label": "Commvault"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "ffmpeg",
+          "label": "FFmpeg"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "hashicorp-packer",
+          "label": "Hashicorp Packer"
+        },
+        {
+          "slug": "jhipster",
+          "label": "JHipster"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nomad",
+          "label": "Nomad"
+        },
+        {
+          "slug": "openjdk-builds-from-oracle",
+          "label": "OpenJDK builds from Oracle"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "twig",
+          "label": "Twig"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
         },
         {
           "slug": "wordpress",
