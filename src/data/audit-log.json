@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-18T04:43:11.527Z",
+  "updatedAt": "2026-09-20T04:53:24.363Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1676,6 +1676,224 @@
         {
           "slug": "vue",
           "label": "Vue"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-20T04:53:24.363Z-807b78d416c0",
+      "syncedAt": "2026-09-20T04:53:24.363Z",
+      "sourceGeneratedAt": "2026-09-20T00:08:10+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "0eca32ce48ac666c6f0d03af6b93f8c3bbc9436c48c14d5c5a540eb399789879",
+      "afterSha256": "807b78d416c01f18ff4fdba5ffb73c0ee661350d476474caedece8a08f2992b9",
+      "productCount": 477,
+      "releaseCount": 8711,
+      "changes": {
+        "total": 145,
+        "releaseAdded": 40,
+        "releaseRemoved": 0,
+        "eolChanged": 7,
+        "supportChanged": 2,
+        "latestChanged": 83,
+        "releaseMetadataChanged": 13,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "alibaba-dragonwell",
+          "label": "Alibaba Dragonwell"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "kindle",
+          "label": "Amazon Kindle"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "amazon-neptune",
+          "label": "Amazon Neptune"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "apache-groovy",
+          "label": "Apache Groovy"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "argo-workflows",
+          "label": "Argo Workflows"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "azul-zulu",
+          "label": "Azul Zulu"
+        },
+        {
+          "slug": "azure-devops-server",
+          "label": "Azure DevOps Server"
+        },
+        {
+          "slug": "backdrop",
+          "label": "Backdrop"
+        },
+        {
+          "slug": "bellsoft-liberica",
+          "label": "Bellsoft Liberica JDK"
+        },
+        {
+          "slug": "ceph",
+          "label": "Ceph"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "commvault",
+          "label": "Commvault"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "dbt-core",
+          "label": "dbt Core"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "ffmpeg",
+          "label": "FFmpeg"
+        },
+        {
+          "slug": "github-actions-runner-images",
+          "label": "GitHub Actions Runner Images"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "chromecast",
+          "label": "Google Chromecast"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "hashicorp-packer",
+          "label": "Hashicorp Packer"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "jhipster",
+          "label": "JHipster"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nomad",
+          "label": "Nomad"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "openjdk-builds-from-oracle",
+          "label": "OpenJDK builds from Oracle"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "samsung-mobile",
+          "label": "Samsung Mobile"
+        },
+        {
+          "slug": "sourcegraph",
+          "label": "Sourcegraph"
+        },
+        {
+          "slug": "svelte",
+          "label": "Svelte"
+        },
+        {
+          "slug": "twig",
+          "label": "Twig"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "wireshark",
+          "label": "Wireshark"
         },
         {
           "slug": "wordpress",
