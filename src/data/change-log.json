@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-18T00:08:39+00:00",
+  "updatedAt": "2026-09-20T00:08:10+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2538,6 +2538,407 @@
       "label": "Vinyl Cache",
       "release": "9.1",
       "eolFrom": "2027-09-16"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "amazon-corretto",
+      "label": "Amazon Corretto",
+      "release": "27",
+      "eolFrom": "2027-04-30"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.4.7.1",
+      "eolFrom": "2027-06-03"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-mythos-5-1",
+      "from": null,
+      "to": "2027-09-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-mythos-5",
+      "from": null,
+      "to": "2027-06-09"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "api-platform",
+      "label": "API Platform",
+      "release": "5.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "api-platform",
+      "label": "API Platform",
+      "release": "4.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "support-changed",
+      "product": "api-platform",
+      "label": "API Platform",
+      "release": "4.3",
+      "from": null,
+      "to": "2026-09-16"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "api-platform",
+      "label": "API Platform",
+      "release": "4.2",
+      "from": null,
+      "to": "2026-09-16"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "azul-zulu",
+      "label": "Azul Zulu",
+      "release": "27",
+      "eolFrom": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "backdrop",
+      "label": "Backdrop",
+      "release": "1.35",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "backdrop",
+      "label": "Backdrop",
+      "release": "1.33",
+      "from": null,
+      "to": "2026-09-15"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "bellsoft-liberica",
+      "label": "Bellsoft Liberica JDK",
+      "release": "27",
+      "eolFrom": "2027-03-23"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "bellsoft-liberica",
+      "label": "Bellsoft Liberica JDK",
+      "release": "26",
+      "from": "2026-09-18",
+      "to": "2026-09-16"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "20",
+      "eolFrom": "2027-06-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "19",
+      "eolFrom": "2026-10-31"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "18",
+      "eolFrom": "2025-03-20"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "17",
+      "eolFrom": "2025-01-13"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "16",
+      "eolFrom": "2024-03-04"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "15",
+      "eolFrom": "2022-08-09"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "14",
+      "eolFrom": "2021-06-30"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "13",
+      "eolFrom": "2020-07-22"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "12",
+      "eolFrom": "2020-03-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "11",
+      "eolFrom": "2017-08-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "10",
+      "eolFrom": "2018-07-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "9",
+      "eolFrom": "2016-04-01"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-google-tv-streamer",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-google-tv-hd",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-google-tv-4k",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-ultra",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-audio",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "chromecast",
+      "label": "Google Chromecast",
+      "release": "chromecast-1",
+      "eolFrom": "2023-05-31"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "dbt-core",
+      "label": "dbt Core",
+      "release": "2.0",
+      "eolFrom": "2027-09-14"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "support-changed",
+      "product": "dbt-core",
+      "label": "dbt Core",
+      "release": "1.12",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "github-actions-runner-images",
+      "label": "GitHub Actions Runner Images",
+      "release": "ubuntu-26.04-arm64",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "github-actions-runner-images",
+      "label": "GitHub Actions Runner Images",
+      "release": "ubuntu-26.04",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "gitlab-runner",
+      "label": "GitLab Runner",
+      "release": "19.4",
+      "eolFrom": "2026-12-17"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "gitlab",
+      "label": "GitLab",
+      "release": "19.4",
+      "eolFrom": "2026-12-17"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "ibm-semeru-runtime",
+      "label": "IBM Semeru Runtime",
+      "release": "27",
+      "eolFrom": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2.5-sunburst",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2.5-flare",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-live-1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "openjdk-builds-from-oracle",
+      "label": "OpenJDK builds from Oracle",
+      "release": "27",
+      "eolFrom": "2027-03-23"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "openjdk-builds-from-oracle",
+      "label": "OpenJDK builds from Oracle",
+      "release": "26",
+      "from": "2026-09-18",
+      "to": "2026-09-15"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-s26-fe",
+      "eolFrom": "2033-09-04"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-f70-pro-5g",
+      "eolFrom": "2032-07-31"
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "release-added",
+      "product": "sourcegraph",
+      "label": "Sourcegraph",
+      "release": "8",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-20T00:08:10+00:00",
+      "type": "eol-changed",
+      "product": "sourcegraph",
+      "label": "Sourcegraph",
+      "release": "7",
+      "from": null,
+      "to": "2026-09-17"
     }
   ]
 }
