@@ -7,6 +7,7 @@ function assert(condition, message) {
 const [
   productIndex,
   recentHistory,
+  recentHistoryClient,
   productDetail,
   trackedVersionPanel,
   versionSupportCss,
@@ -23,6 +24,7 @@ const [
 ] = await Promise.all([
   readFile(new URL('../src/pages/eol/index.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/RecentViewedProducts.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/client/recent-viewed-products.ts', import.meta.url), 'utf8'),
   readFile(new URL('../src/pages/eol/[slug].astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/TrackedVersionPanel.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/version-support-table.css', import.meta.url), 'utf8'),
@@ -51,15 +53,19 @@ assert(
   'Recently-viewed sidebar must be limited to sufficiently wide desktop layouts.'
 );
 assert(
-  recentHistory.includes('sidebarSlot.append(section)'),
-  'Recently viewed component must mount into the product-index sidebar slot when available.'
+  recentHistory.includes("import '@/client/recent-viewed-products';"),
+  'Recently viewed component must delegate browser behavior to the client module.'
 );
 assert(
-  recentHistory.includes("sidebarLayout?.classList.toggle('has-recent-history', hasItems)"),
-  'Recently viewed component must release sidebar width when history is empty.'
+  recentHistoryClient.includes('sidebarSlot.append(section)'),
+  'Recently viewed client must mount into the product-index sidebar slot when available.'
 );
 assert(
-  recentHistory.includes('const SIDEBAR_VISIBLE_ITEMS = 4;'),
+  recentHistoryClient.includes("sidebarLayout?.classList.toggle('has-recent-history', hasItems)"),
+  'Recently viewed client must release sidebar width when history is empty.'
+);
+assert(
+  recentHistoryClient.includes('const SIDEBAR_VISIBLE_ITEMS = 4;'),
   'Desktop sidebar should remain compact by default.'
 );
 
