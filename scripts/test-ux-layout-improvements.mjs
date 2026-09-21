@@ -18,6 +18,7 @@ const [
   upcomingWindow,
   changesPage,
   myEolPage,
+  myEolClient,
   denseTableCss
 ] = await Promise.all([
   readFile(new URL('../src/pages/eol/index.astro', import.meta.url), 'utf8'),
@@ -33,6 +34,7 @@ const [
   readFile(new URL('../src/pages/upcoming/[window].astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/pages/changes.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/pages/my-eol.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/client/my-eol-dashboard.ts', import.meta.url), 'utf8'),
   readFile(new URL('../src/dense-tables.css', import.meta.url), 'utf8')
 ]);
 
@@ -144,7 +146,8 @@ assert(upcomingPage.includes('supported-eol-body'), 'Lazy supported EOL rows mus
 assert(upcomingWindow.includes('<DeadlineTable'), '30/90/180-day upcoming pages must use the shared deadline table.');
 assert(changesPage.includes('variant="change"'), 'Change history must use the shared dense table foundation.');
 assert(myEolPage.includes('variant="my-eol"'), 'My EOL tracked versions must use the shared dense table foundation.');
-assert(myEolPage.includes('row.dataset.myEolRow'), 'My EOL client rendering must create table rows.');
+assert(myEolPage.includes("import '@/client/my-eol-dashboard';"), 'My EOL page must delegate browser rendering to the client module.');
+assert(myEolClient.includes('row.dataset.myEolRow'), 'My EOL client rendering must create table rows.');
 assert(myEolPage.includes('history-list reminder-list'), 'Action-oriented reminder cards must remain separate from the dense tracked-version table.');
 
 assert(denseTableCss.includes('@media (max-width: 700px)'), 'Dense tables must define a mobile transformation breakpoint.');
