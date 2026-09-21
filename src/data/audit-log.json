@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-20T04:53:24.363Z",
+  "updatedAt": "2026-09-21T04:55:16.825Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -1898,6 +1898,76 @@
         {
           "slug": "wordpress",
           "label": "WordPress"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-21T04:55:16.825Z-31af6957b631",
+      "syncedAt": "2026-09-21T04:55:16.825Z",
+      "sourceGeneratedAt": "2026-09-21T00:08:32+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "807b78d416c01f18ff4fdba5ffb73c0ee661350d476474caedece8a08f2992b9",
+      "afterSha256": "31af6957b631921c7341f0341b9d45a6fea3eb06739366e55515ca99a8e40fe3",
+      "productCount": 477,
+      "releaseCount": 8712,
+      "changes": {
+        "total": 77,
+        "releaseAdded": 1,
+        "releaseRemoved": 0,
+        "eolChanged": 0,
+        "supportChanged": 0,
+        "latestChanged": 64,
+        "releaseMetadataChanged": 12,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-mq-rabbitmq",
+          "label": "Amazon MQ for RabbitMQ"
+        },
+        {
+          "slug": "bamboo",
+          "label": "Bamboo"
+        },
+        {
+          "slug": "bind-9",
+          "label": "BIND 9"
+        },
+        {
+          "slug": "ceph",
+          "label": "Ceph"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "dependency-track",
+          "label": "Dependency-Track"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "haproxy-ingress",
+          "label": "HAProxy Ingress"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "jira-software",
+          "label": "Jira Software"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
         }
       ]
     }
