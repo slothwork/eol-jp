@@ -39,6 +39,7 @@ src/components/
 
 src/client/
   turnstile.ts                          <- Turnstile script loader
+  my-eol-dashboard.ts                   <- My EOL dashboard / reminder DOM / localStorage orchestration
   email-notification-settings.ts        <- email notification DOM / Worker API orchestration
   external-notification-settings.ts     <- Slack/Discord DOM / Worker API orchestration
   github-import.ts                      <- GitHub import page DOM / localStorage orchestration
