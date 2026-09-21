@@ -1,0 +1,342 @@
+import { daysUntil, formatJaDate, relativeEol } from '@/lib/date';
+import { statusForRelease, type DecisionStatus } from '@/lib/eol-decision';
+import {
+  EOL_REMINDER_STORAGE_KEY,
+  acknowledgeReminder,
+  defaultEolReminderState,
+  isReminderAcknowledged,
+  parseEolReminderState,
+  reminderAcknowledgementKey,
+  reminderThresholdForDays,
+  serializeEolReminderState,
+  setReminderThresholdEnabled,
+  type EolReminderState,
+  type ReminderThreshold
+} from '@/lib/eol-reminders';
+import {
+  TRACKED_PRODUCTS_STORAGE_KEY,
+  parseTrackedProducts,
+  removeTrackedProduct,
+  serializeTrackedProducts,
+  type TrackedProductsState
+} from '@/lib/tracked-products';
+
+type CatalogRelease = {
+  name: string;
+  releaseDate: string | null;
+  eolFrom: string | null;
+  isLts: boolean;
+  isEol: boolean;
+  isMaintained: boolean;
+};
+
+type CatalogProduct = {
+  slug: string;
+  label: string;
+  releases: CatalogRelease[];
+};
+
+type DashboardEntry = {
+  slug: string;
+  label: string;
+  version: string;
+  release: CatalogRelease | null;
+  status: DecisionStatus;
+  savedAt: string;
+};
+
+type ReminderEntry = {
+  entry: DashboardEntry;
+  threshold: ReminderThreshold;
+  key: string;
+  days: number;
+};
+
+const statusLabels: Record<DecisionStatus, string> = {
+  ended: 'EOL済み',
+  critical: '30日以内',
+  warning: '90日以内',
+  planning: '180日以内',
+  supported: 'サポート中',
+  unknown: '期限未定'
+};
+
+const priority: Record<DecisionStatus, number> = {
+  ended: 0,
+  critical: 1,
+  warning: 2,
+  planning: 3,
+  supported: 4,
+  unknown: 5
+};
+
+const loading = document.querySelector<HTMLElement>('[data-my-eol-loading]');
+const empty = document.querySelector<HTMLElement>('[data-my-eol-empty]');
+const content = document.querySelector<HTMLElement>('[data-my-eol-content]');
+const list = document.querySelector<HTMLTableSectionElement>('[data-my-eol-list]');
+const stats = document.querySelector<HTMLElement>('[data-my-eol-stats]');
+const totalNode = document.querySelector<HTMLElement>('[data-my-eol-total]');
+const urgentNode = document.querySelector<HTMLElement>('[data-my-eol-urgent]');
+const endedNode = document.querySelector<HTMLElement>('[data-my-eol-ended]');
+const reminderPanel = document.querySelector<HTMLElement>('[data-eol-reminder-panel]');
+const reminderList = document.querySelector<HTMLElement>('[data-reminder-list]');
+const reminderEmpty = document.querySelector<HTMLElement>('[data-reminder-empty]');
+const reminderThresholdInputs = Array.from(document.querySelectorAll<HTMLInputElement>('[data-reminder-threshold]'));
+
+let state: TrackedProductsState = parseTrackedProducts(null);
+let reminderState: EolReminderState = defaultEolReminderState();
+let catalog = new Map<string, CatalogProduct>();
+
+const persist = () => {
+  localStorage.setItem(TRACKED_PRODUCTS_STORAGE_KEY, serializeTrackedProducts(state));
+};
+
+const persistReminderState = () => {
+  localStorage.setItem(EOL_REMINDER_STORAGE_KEY, serializeEolReminderState(reminderState));
+};
+
+const buildEntries = (): DashboardEntry[] => {
+  return Object.entries(state.products)
+    .map(([slug, tracked]) => {
+      const product = catalog.get(slug);
+      const release = product?.releases.find((item) => item.name === tracked.version) ?? null;
+      return {
+        slug,
+        label: product?.label ?? slug,
+        version: tracked.version,
+        release,
+        status: release ? statusForRelease(release) : 'unknown',
+        savedAt: tracked.savedAt
+      } satisfies DashboardEntry;
+    })
+    .sort((a, b) => {
+      const byPriority = priority[a.status] - priority[b.status];
+      if (byPriority !== 0) return byPriority;
+
+      const aDays = a.release ? daysUntil(a.release.eolFrom) : null;
+      const bDays = b.release ? daysUntil(b.release.eolFrom) : null;
+      if (aDays !== null || bDays !== null) {
+        if (aDays === null) return 1;
+        if (bDays === null) return -1;
+        if (aDays !== bDays) return aDays - bDays;
+      }
+
+      return a.label.localeCompare(b.label, 'ja');
+    });
+};
+
+const buildReminderEntries = (entries: DashboardEntry[]): ReminderEntry[] => {
+  return entries
+    .flatMap((entry) => {
+      const eolFrom = entry.release?.eolFrom;
+      if (!eolFrom) return [];
+
+      const days = daysUntil(eolFrom);
+      const threshold = reminderThresholdForDays(days, reminderState.thresholds);
+      if (days === null || threshold === null) return [];
+
+      const key = reminderAcknowledgementKey(entry.slug, entry.version, eolFrom, threshold);
+      if (isReminderAcknowledged(reminderState, key)) return [];
+
+      return [{ entry, threshold, key, days } satisfies ReminderEntry];
+    })
+    .sort((a, b) => a.days - b.days || a.entry.label.localeCompare(b.entry.label, 'ja'));
+};
+
+const renderReminders = (entries: DashboardEntry[]) => {
+  if (!reminderPanel || !reminderList || !reminderEmpty) return;
+
+  reminderPanel.hidden = entries.length === 0;
+  if (entries.length === 0) return;
+
+  for (const input of reminderThresholdInputs) {
+    const threshold = Number(input.value) as ReminderThreshold;
+    input.checked = reminderState.thresholds.includes(threshold);
+  }
+
+  const reminders = buildReminderEntries(entries);
+  reminderList.replaceChildren();
+  reminderEmpty.hidden = reminders.length !== 0;
+
+  for (const reminder of reminders) {
+    const { entry, threshold, key } = reminder;
+    const article = document.createElement('article');
+    article.className = 'history-item reminder-item';
+
+    const titleRow = document.createElement('div');
+    titleRow.className = 'card-topline';
+
+    const title = document.createElement('h2');
+    const link = document.createElement('a');
+    link.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+    link.textContent = `${entry.label} ${entry.version}`;
+    title.append(link);
+
+    const badge = document.createElement('span');
+    badge.className = `status-badge ${threshold === 30 ? 'status-critical' : threshold === 90 ? 'status-warning' : 'status-planning'}`;
+    badge.textContent = `${threshold}日前リマインダー`;
+    titleRow.append(title, badge);
+
+    const text = document.createElement('p');
+    text.textContent = entry.release
+      ? `EOL: ${formatJaDate(entry.release.eolFrom)}（${relativeEol(entry.release.eolFrom)}）`
+      : 'EOL期限を確認できません。';
+
+    const actions = document.createElement('div');
+    actions.className = 'hero-actions';
+
+    const details = document.createElement('a');
+    details.className = 'button';
+    details.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+    details.textContent = '詳細を見る';
+
+    const acknowledge = document.createElement('button');
+    acknowledge.className = 'button primary';
+    acknowledge.type = 'button';
+    acknowledge.textContent = '確認済みにする';
+    acknowledge.addEventListener('click', () => {
+      try {
+        reminderState = acknowledgeReminder(reminderState, key);
+        persistReminderState();
+        renderReminders(buildEntries());
+      } catch {
+        acknowledge.disabled = true;
+        acknowledge.textContent = '保存できません';
+      }
+    });
+
+    actions.append(details, acknowledge);
+    article.append(titleRow, text, actions);
+    reminderList.append(article);
+  }
+};
+
+const render = () => {
+  if (!list || !empty || !content || !stats || !totalNode || !urgentNode || !endedNode) return;
+
+  const entries = buildEntries();
+  list.replaceChildren();
+  totalNode.textContent = String(entries.length);
+  urgentNode.textContent = String(entries.filter((entry) => entry.status === 'critical' || entry.status === 'warning').length);
+  endedNode.textContent = String(entries.filter((entry) => entry.status === 'ended').length);
+  stats.hidden = entries.length === 0;
+  empty.hidden = entries.length !== 0;
+  content.hidden = entries.length === 0;
+  renderReminders(entries);
+
+  for (const entry of entries) {
+    const row = document.createElement('tr');
+    row.dataset.myEolRow = '';
+
+    const product = document.createElement('td');
+    product.className = 'my-eol-table-product';
+    const productLink = document.createElement('a');
+    productLink.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+    productLink.textContent = entry.label;
+    product.append(productLink);
+
+    const version = document.createElement('td');
+    version.className = 'my-eol-table-version';
+    const versionStrong = document.createElement('strong');
+    versionStrong.textContent = entry.version;
+    version.append(versionStrong);
+    if (entry.release?.isLts) {
+      const lts = document.createElement('span');
+      lts.className = 'dense-table-inline-note';
+      lts.textContent = 'LTS';
+      version.append(lts);
+    }
+
+    const status = document.createElement('td');
+    status.className = 'my-eol-table-status';
+    const badge = document.createElement('span');
+    badge.className = `status-badge status-${entry.status}`;
+    badge.textContent = statusLabels[entry.status];
+    status.append(badge);
+
+    const eol = document.createElement('td');
+    eol.className = 'my-eol-table-eol';
+    if (entry.release) {
+      const relative = document.createElement('strong');
+      relative.textContent = relativeEol(entry.release.eolFrom);
+      const date = document.createElement('span');
+      date.className = 'dense-table-secondary';
+      date.textContent = formatJaDate(entry.release.eolFrom);
+      eol.append(relative, date);
+    } else {
+      const missing = document.createElement('span');
+      missing.className = 'muted';
+      missing.textContent = 'データ未検出';
+      missing.title = '保存済みバージョンが現在のデータに見つかりません。製品ページで再選択してください。';
+      eol.append(missing);
+    }
+
+    const actions = document.createElement('td');
+    actions.className = 'my-eol-table-actions';
+    const actionInner = document.createElement('div');
+    actionInner.className = 'my-eol-table-actions-inner';
+
+    const details = document.createElement('a');
+    details.className = 'table-action';
+    details.href = `/eol/${encodeURIComponent(entry.slug)}/`;
+    details.textContent = '詳細';
+
+    const remove = document.createElement('button');
+    remove.className = 'table-action';
+    remove.type = 'button';
+    remove.textContent = '保存解除';
+    remove.addEventListener('click', () => {
+      try {
+        state = removeTrackedProduct(state, entry.slug);
+        persist();
+        render();
+      } catch {
+        remove.disabled = true;
+        remove.textContent = '解除不可';
+      }
+    });
+
+    actionInner.append(details, remove);
+    actions.append(actionInner);
+    row.append(product, version, status, eol, actions);
+    list.append(row);
+  }
+};
+
+for (const input of reminderThresholdInputs) {
+  input.addEventListener('change', () => {
+    try {
+      const threshold = Number(input.value) as ReminderThreshold;
+      reminderState = setReminderThresholdEnabled(reminderState, threshold, input.checked);
+      persistReminderState();
+      renderReminders(buildEntries());
+    } catch {
+      input.checked = !input.checked;
+    }
+  });
+}
+
+const initialize = async () => {
+  if (!loading || !empty || !content) return;
+
+  try {
+    state = parseTrackedProducts(localStorage.getItem(TRACKED_PRODUCTS_STORAGE_KEY));
+    reminderState = parseEolReminderState(localStorage.getItem(EOL_REMINDER_STORAGE_KEY));
+  } catch {
+    loading.textContent = 'このブラウザではローカル保存を利用できません。';
+    return;
+  }
+
+  try {
+    const response = await fetch('/my-eol-data.json');
+    if (!response.ok) throw new Error('catalog fetch failed');
+    const data = await response.json() as { products?: CatalogProduct[] };
+    catalog = new Map((data.products ?? []).map((product) => [product.slug, product]));
+    loading.hidden = true;
+    render();
+  } catch {
+    loading.textContent = 'EOL情報を読み込めませんでした。ページを再読み込みしてください。';
+  }
+};
+
+void initialize();
