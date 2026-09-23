@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-21T00:08:32+00:00",
+  "updatedAt": "2026-09-22T02:43:45+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2947,6 +2947,33 @@
       "label": "Amazon MQ for RabbitMQ",
       "release": "4.3",
       "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-22T02:43:45+00:00",
+      "type": "eol-changed",
+      "product": "ceph",
+      "label": "Ceph",
+      "release": "18",
+      "from": "2025-03-20",
+      "to": "2026-03-20"
+    },
+    {
+      "detectedAt": "2026-09-22T02:43:45+00:00",
+      "type": "eol-changed",
+      "product": "composer",
+      "label": "Composer",
+      "release": "2.2",
+      "from": null,
+      "to": "2026-12-31"
+    },
+    {
+      "detectedAt": "2026-09-22T02:43:45+00:00",
+      "type": "eol-changed",
+      "product": "composer",
+      "label": "Composer",
+      "release": "1",
+      "from": "2020-10-24",
+      "to": "2026-05-30"
     }
   ]
 }
