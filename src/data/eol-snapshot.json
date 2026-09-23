@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-22T02:43:45+00:00",
+  "generatedAt": "2026-09-23T00:08:37+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -7452,9 +7452,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.2.9",
-            "date": "2026-08-06",
-            "link": "https://github.com/apache/activemq/releases/tag/activemq-6.2.9"
+            "name": "6.2.10",
+            "date": "2026-09-22",
+            "link": "https://github.com/apache/activemq/releases/tag/activemq-6.2.10"
           }
         },
         {
@@ -13921,9 +13921,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.4.0",
-            "date": "2026-09-16",
-            "link": "https://github.com/api-platform/core/releases/tag/v4.4.0"
+            "name": "4.4.1",
+            "date": "2026-09-22",
+            "link": "https://github.com/api-platform/core/releases/tag/v4.4.1"
           }
         },
         {
@@ -24463,6 +24463,23 @@
       },
       "releases": [
         {
+          "name": "154",
+          "label": "154",
+          "codename": null,
+          "releaseDate": "2026-09-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2026-10-06",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": null,
+            "date": null,
+            "link": null
+          }
+        },
+        {
           "name": "153",
           "label": "153",
           "codename": null,
@@ -24471,8 +24488,8 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-09-22",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": null,
             "date": null,
@@ -28361,8 +28378,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.8.10.6",
-            "date": "2026-09-21",
+            "name": "26.8.11.7",
+            "date": "2026-09-22",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -29327,9 +29344,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.37.2",
-            "date": "2026-09-18",
-            "link": "https://github.com/coder/coder/releases/tag/v2.37.2"
+            "name": "2.37.3",
+            "date": "2026-09-22",
+            "link": "https://github.com/coder/coder/releases/tag/v2.37.3"
           }
         },
         {
@@ -33953,9 +33970,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2026.8.0",
-            "date": "2026-08-25",
-            "link": "https://releases.discourse.org/changelog/v2026.8.0"
+            "name": "2026.8.1",
+            "date": "2026-09-22",
+            "link": "https://releases.discourse.org/changelog/v2026.8.1"
           }
         },
         {
@@ -33970,9 +33987,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2026.7.2",
-            "date": "2026-08-25",
-            "link": "https://releases.discourse.org/changelog/v2026.7.2"
+            "name": "2026.7.3",
+            "date": "2026-09-22",
+            "link": "https://releases.discourse.org/changelog/v2026.7.3"
           }
         },
         {
@@ -34072,9 +34089,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2026.1.8",
-            "date": "2026-08-25",
-            "link": "https://releases.discourse.org/changelog/v2026.1.8"
+            "name": "2026.1.9",
+            "date": "2026-09-22",
+            "link": "https://releases.discourse.org/changelog/v2026.1.9"
           }
         },
         {
@@ -37050,9 +37067,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.4.3",
-            "date": "2026-09-18",
-            "link": "https://releases.electronjs.org/release/v44.4.3"
+            "name": "44.4.4",
+            "date": "2026-09-22",
+            "link": "https://releases.electronjs.org/release/v44.4.4"
           }
         },
         {
@@ -37067,9 +37084,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "43.7.3",
-            "date": "2026-09-18",
-            "link": "https://releases.electronjs.org/release/v43.7.3"
+            "name": "43.7.4",
+            "date": "2026-09-22",
+            "link": "https://releases.electronjs.org/release/v43.7.4"
           }
         },
         {
@@ -39546,9 +39563,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "29.1",
-            "date": "2026-09-15",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-29.1"
+            "name": "29.1.1",
+            "date": "2026-09-21",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-29.1.1"
           }
         },
         {
@@ -39563,9 +39580,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "28.5.0.6",
-            "date": "2026-09-01",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-28.5.0.6"
+            "name": "28.5.0.7",
+            "date": "2026-09-21",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-28.5.0.7"
           }
         },
         {
@@ -39580,9 +39597,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "27.3.4.17",
-            "date": "2026-09-01",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-27.3.4.17"
+            "name": "27.3.4.18",
+            "date": "2026-09-21",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-27.3.4.18"
           }
         },
         {
@@ -39961,9 +39978,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.7.1",
-            "date": "2026-07-23",
-            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.7.1"
+            "name": "3.7.2",
+            "date": "2026-09-22",
+            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.7.2"
           }
         },
         {
@@ -39978,9 +39995,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.6.14",
-            "date": "2026-07-23",
-            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.6.14"
+            "name": "3.6.15",
+            "date": "2026-09-22",
+            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.6.15"
           }
         },
         {
@@ -39995,9 +40012,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.5.33",
-            "date": "2026-07-23",
-            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.5.33"
+            "name": "3.5.34",
+            "date": "2026-09-22",
+            "link": "https://github.com/etcd-io/etcd/releases/tag/v3.5.34"
           }
         },
         {
@@ -42947,9 +42964,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "156.0",
-            "date": "2026-09-15",
-            "link": "https://www.mozilla.org/firefox/156.0/releasenotes/"
+            "name": "156.0.1",
+            "date": "2026-09-22",
+            "link": "https://www.mozilla.org/firefox/156.0.1/releasenotes/"
           }
         },
         {
@@ -47839,9 +47856,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.14.2",
-            "date": "2026-07-13",
-            "link": "https://www.gerritcodereview.com/3.14.html#3142"
+            "name": "3.14.3",
+            "date": "2026-09-05",
+            "link": "https://www.gerritcodereview.com/3.14.html#3143"
           }
         },
         {
@@ -47856,9 +47873,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.13.8",
-            "date": "2026-07-13",
-            "link": "https://www.gerritcodereview.com/3.13.html#3138"
+            "name": "3.13.9",
+            "date": "2026-09-04",
+            "link": "https://www.gerritcodereview.com/3.13.html#3139"
           }
         },
         {
@@ -47873,9 +47890,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.12.9",
-            "date": "2026-07-13",
-            "link": "https://www.gerritcodereview.com/3.12.html#3129"
+            "name": "3.12.10",
+            "date": "2026-09-04",
+            "link": "https://www.gerritcodereview.com/3.12.html#31210"
           }
         },
         {
@@ -49145,8 +49162,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "19.0.8",
-            "date": "2026-08-14",
+            "name": "19.0.9",
+            "date": "2026-09-22",
             "link": "https://docs.gitlab.com/releases/19/gitlab-19-0-released/"
           }
         },
@@ -49162,8 +49179,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "18.11.11",
-            "date": "2026-08-14",
+            "name": "18.11.12",
+            "date": "2026-09-22",
             "link": "https://docs.gitlab.com/releases/18/gitlab-18-11-released/"
           }
         },
@@ -51808,8 +51825,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "25.3.4.1",
-            "date": "2026-08-25",
+            "name": "25.4.4.1.1",
+            "date": "2026-09-22",
             "link": "https://www.graalvm.org/release-notes/JDK_25/"
           }
         },
@@ -53046,9 +53063,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.2.3",
-            "date": "2026-08-23",
-            "link": "https://github.com/apache/grails-core/releases/tag/v7.2.3"
+            "name": "7.2.4",
+            "date": "2026-09-22",
+            "link": "https://github.com/apache/grails-core/releases/tag/v7.2.4"
           }
         },
         {
@@ -57180,7 +57197,7 @@
           "isLts": true,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2030-09-30",
+          "eolFrom": "2031-09-30",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -62085,9 +62102,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.582",
-            "date": "2026-09-15",
-            "link": "https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.582"
+            "name": "2.583",
+            "date": "2026-09-22",
+            "link": "https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.583"
           }
         },
         {
@@ -64770,9 +64787,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "10.0.6.0",
-            "date": "2026-06-11",
-            "link": "https://github.com/jruby/jruby/releases/tag/10.0.6.0"
+            "name": "10.0.7.0",
+            "date": "2026-09-21",
+            "link": "https://github.com/jruby/jruby/releases/tag/10.0.7.0"
           }
         },
         {
@@ -70613,8 +70630,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.32.0",
-            "date": "2026-09-15",
+            "name": "13.33.0",
+            "date": "2026-09-22",
             "link": "https://laravel.com/docs/13.x/releases"
           }
         },
@@ -71426,8 +71443,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.2.6",
-            "date": "2026-09-14",
+            "name": "7.2.7",
+            "date": "2026-09-21",
             "link": "https://kernelnewbies.org/Linux_7.2"
           }
         },
@@ -71494,8 +71511,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.18.52",
-            "date": "2026-09-14",
+            "name": "6.18.53",
+            "date": "2026-09-21",
             "link": "https://kernelnewbies.org/Linux_6.18"
           }
         },
@@ -71596,8 +71613,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.12.110",
-            "date": "2026-09-14",
+            "name": "6.12.111",
+            "date": "2026-09-21",
             "link": "https://kernelnewbies.org/Linux_6.12"
           }
         },
@@ -76507,9 +76524,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.13.0",
-            "date": "2026-08-17",
-            "link": "https://github.com/matomo-org/matomo/releases/tag/5.13.0"
+            "name": "5.14.0",
+            "date": "2026-09-22",
+            "link": "https://github.com/matomo-org/matomo/releases/tag/5.14.0"
           }
         },
         {
@@ -80224,9 +80241,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.10.28",
-            "date": "2026-09-11",
-            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v4.10.28"
+            "name": "4.10.29",
+            "date": "2026-09-22",
+            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v4.10.29"
           }
         },
         {
@@ -85716,8 +85733,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.26.30",
-            "date": "2026-08-21",
+            "name": "5.26.31",
+            "date": "2026-09-21",
             "link": "https://neo4j.com/release-notes/database/neo4j-5/"
           }
         },
@@ -87811,9 +87828,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "16.3.5",
-            "date": "2026-09-11",
-            "link": "https://github.com/vercel/next.js/releases/tag/v16.3.5"
+            "name": "16.3.6",
+            "date": "2026-09-22",
+            "link": "https://github.com/vercel/next.js/releases/tag/v16.3.6"
           }
         },
         {
@@ -87828,9 +87845,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "15.5.25",
-            "date": "2026-08-31",
-            "link": "https://github.com/vercel/next.js/releases/tag/v15.5.25"
+            "name": "15.5.26",
+            "date": "2026-09-22",
+            "link": "https://github.com/vercel/next.js/releases/tag/v15.5.26"
           }
         },
         {
@@ -87959,8 +87976,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.96.2-01",
-            "date": "2026-09-18",
+            "name": "3.96.3-01",
+            "date": "2026-09-22",
             "link": "https://help.sonatype.com/en/sonatype-nexus-repository-3-96-0-release-notes.html"
           }
         },
@@ -90625,9 +90642,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.9.0",
-            "date": "2026-09-16",
-            "link": "https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V26.md#26.9.0"
+            "name": "26.10.0",
+            "date": "2026-09-22",
+            "link": "https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V26.md#26.10.0"
           }
         },
         {
@@ -107358,9 +107375,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "12.5.1",
-            "date": "2026-09-18",
-            "link": "https://github.com/pnpm/pnpm/releases/tag/v12.5.1"
+            "name": "12.6.0",
+            "date": "2026-09-22",
+            "link": "https://github.com/pnpm/pnpm/releases/tag/v12.6.0"
           }
         },
         {
@@ -111231,7 +111248,7 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-09-22",
-          "isEol": false,
+          "isEol": true,
           "isMaintained": true,
           "latest": {
             "name": "6.11.2",
@@ -111671,8 +111688,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.33.3.2",
-            "date": "2026-09-03",
+            "name": "3.33.3.3",
+            "date": "2026-09-22",
             "link": "https://quarkus.io/blog/quarkus-3-33-released/"
           }
         },
@@ -111773,9 +111790,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.27.5.2",
-            "date": "2026-09-04",
-            "link": "https://github.com/quarkusio/quarkus/releases/tag/3.27.5.2"
+            "name": "3.27.5.3",
+            "date": "2026-09-22",
+            "link": "https://github.com/quarkusio/quarkus/releases/tag/3.27.5.3"
           }
         },
         {
@@ -112584,9 +112601,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.33.0",
-            "date": "2026-09-17",
-            "link": "https://github.com/quasarframework/quasar/releases/tag/quasar-v2.33.0"
+            "name": "2.33.1",
+            "date": "2026-09-22",
+            "link": "https://github.com/quasarframework/quasar/releases/tag/quasar-v2.33.1"
           }
         },
         {
@@ -114465,8 +114482,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.1.7",
-            "date": "2026-07-07",
+            "name": "8.1.8",
+            "date": "2026-09-22",
             "link": "https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/8.1"
           }
         },
@@ -115681,9 +115698,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.106.0",
-            "date": "2026-09-21",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.106.0"
+            "name": "44.107.3",
+            "date": "2026-09-22",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.107.3"
           }
         },
         {
@@ -144702,8 +144719,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.2.18",
-            "date": "2026-09-15",
+            "name": "7.2.20",
+            "date": "2026-09-22",
             "link": "https://www.virtualbox.org/wiki/Changelog-7.2"
           }
         },
@@ -145214,9 +145231,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "18.10.1",
-            "date": "2026-09-15",
-            "link": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes#18.10.1"
+            "name": "18.10.2",
+            "date": "2026-09-22",
+            "link": "https://learn.microsoft.com/visualstudio/releases/2026/release-notes#18.10.2"
           }
         },
         {
@@ -151518,9 +151535,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.1.1",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-7-1-1/"
+            "name": "7.1.2",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-7-1-2/"
           }
         },
         {
@@ -151535,9 +151552,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "7.0.5",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-7-0-5/"
+            "name": "7.0.6",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-7-0-6/"
           }
         },
         {
@@ -151552,9 +151569,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.9.8",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-9-8/"
+            "name": "6.9.9",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-9-9/"
           }
         },
         {
@@ -151569,9 +151586,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.8.9",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-8-9/"
+            "name": "6.8.10",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-8-10/"
           }
         },
         {
@@ -151586,9 +151603,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.7.8",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-7-8/"
+            "name": "6.7.9",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-7-9/"
           }
         },
         {
@@ -151603,9 +151620,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.6.8",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-6-8/"
+            "name": "6.6.9",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-6-9/"
           }
         },
         {
@@ -151620,9 +151637,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.5.11",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-5-11/"
+            "name": "6.5.12",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-5-12/"
           }
         },
         {
@@ -151637,9 +151654,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.4.11",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-4-11/"
+            "name": "6.4.12",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-4-12/"
           }
         },
         {
@@ -151654,9 +151671,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.3.11",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-3-11/"
+            "name": "6.3.12",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-3-12/"
           }
         },
         {
@@ -151671,9 +151688,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.2.12",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-2-12/"
+            "name": "6.2.13",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-2-13/"
           }
         },
         {
@@ -151688,9 +151705,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.1.13",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-1-13/"
+            "name": "6.1.14",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-1-14/"
           }
         },
         {
@@ -151705,9 +151722,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "6.0.15",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-6-0-15/"
+            "name": "6.0.16",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-6-0-16/"
           }
         },
         {
@@ -151722,9 +151739,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.9.17",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-9-17/"
+            "name": "5.9.18",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-9-18/"
           }
         },
         {
@@ -151739,9 +151756,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.8.16",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-8-16/"
+            "name": "5.8.17",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-8-17/"
           }
         },
         {
@@ -151756,9 +151773,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.7.18",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-7-18/"
+            "name": "5.7.19",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-7-19/"
           }
         },
         {
@@ -151773,9 +151790,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.6.20",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-6-20/"
+            "name": "5.6.21",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-6-21/"
           }
         },
         {
@@ -151790,9 +151807,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.5.21",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-5-21/"
+            "name": "5.5.22",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-5-22/"
           }
         },
         {
@@ -151807,9 +151824,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.4.22",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-4-22/"
+            "name": "5.4.23",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-4-23/"
           }
         },
         {
@@ -151824,9 +151841,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.3.24",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-3-24/"
+            "name": "5.3.25",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-3-25/"
           }
         },
         {
@@ -151841,9 +151858,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.2.27",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-2-27/"
+            "name": "5.2.28",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-2-28/"
           }
         },
         {
@@ -151858,9 +151875,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.1.25",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-1-25/"
+            "name": "5.1.26",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-1-26/"
           }
         },
         {
@@ -151875,9 +151892,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.0.28",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-5-0-28/"
+            "name": "5.0.29",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-5-0-29/"
           }
         },
         {
@@ -151892,9 +151909,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "4.9.32",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-4-9-32/"
+            "name": "4.9.33",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-4-9-33/"
           }
         },
         {
@@ -151909,9 +151926,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "4.8.31",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-4-8-31/"
+            "name": "4.8.32",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-4-8-32/"
           }
         },
         {
@@ -151926,9 +151943,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "4.7.36",
-            "date": "2026-09-17",
-            "link": "https://wordpress.org/documentation/wordpress-version/version-4-7-36/"
+            "name": "4.7.37",
+            "date": "2026-09-22",
+            "link": "https://wordpress.org/documentation/wordpress-version/version-4-7-37/"
           }
         },
         {
@@ -153074,9 +153091,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.0.30",
-            "date": "2026-08-25",
-            "link": "https://www.zabbix.com/rn/rn7.0.30"
+            "name": "7.0.31",
+            "date": "2026-09-22",
+            "link": "https://www.zabbix.com/rn/rn7.0.31"
           }
         },
         {

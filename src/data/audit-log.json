@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-22T04:55:31.661Z",
+  "updatedAt": "2026-09-23T04:44:45.096Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -2078,6 +2078,168 @@
         {
           "slug": "telegraf",
           "label": "Telegraf"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-23T04:44:45.096Z-73bd0c02f9e4",
+      "syncedAt": "2026-09-23T04:44:45.096Z",
+      "sourceGeneratedAt": "2026-09-23T00:08:37+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "0e1669a57fed52fe80ee16e196d39b006a6da6bd4eabf559c3459794063e4d52",
+      "afterSha256": "73bd0c02f9e4530b5608fa9f769449f0d0f4a184f144086b8f9be67241109069",
+      "productCount": 477,
+      "releaseCount": 8713,
+      "changes": {
+        "total": 74,
+        "releaseAdded": 1,
+        "releaseRemoved": 0,
+        "eolChanged": 1,
+        "supportChanged": 0,
+        "latestChanged": 70,
+        "releaseMetadataChanged": 2,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "apache-activemq",
+          "label": "Apache ActiveMQ Classic"
+        },
+        {
+          "slug": "grails",
+          "label": "Apache Grails Framework"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "discourse",
+          "label": "Discourse"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "erlang",
+          "label": "Erlang"
+        },
+        {
+          "slug": "etcd",
+          "label": "etcd"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "gerrit",
+          "label": "Gerrit"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "chrome",
+          "label": "Google Chrome"
+        },
+        {
+          "slug": "graalvm-ce",
+          "label": "GraalVM Community Edition"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "jruby",
+          "label": "JRuby"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "matomo",
+          "label": "Matomo"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "neo4j",
+          "label": "Neo4j"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "qt",
+          "label": "Qt"
+        },
+        {
+          "slug": "quarkus-framework",
+          "label": "Quarkus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "redhat-jboss-eap",
+          "label": "Red Hat JBoss Enterprise Application Platform"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "virtualbox",
+          "label": "VirtualBox"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
+        },
+        {
+          "slug": "zabbix",
+          "label": "Zabbix"
         }
       ]
     }
