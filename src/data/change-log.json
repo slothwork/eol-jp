@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-23T00:08:37+00:00",
+  "updatedAt": "2026-09-26T00:41:25+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -2991,6 +2991,386 @@
       "release": "25",
       "from": "2030-09-30",
       "to": "2031-09-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-opus-5-5",
+      "eolFrom": "2027-09-22"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "apache-groovy",
+      "label": "Apache Groovy",
+      "release": "6.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "apache-groovy",
+      "label": "Apache Groovy",
+      "release": "5.1",
+      "from": null,
+      "to": "2026-09-19"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "arangodb",
+      "label": "ArangoDB",
+      "release": "3.11",
+      "from": null,
+      "to": "2025-05-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "clickhouse",
+      "label": "ClickHouse",
+      "release": "26.9",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "clickhouse",
+      "label": "ClickHouse",
+      "release": "26.6",
+      "from": null,
+      "to": "2026-09-21"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "cnspec",
+      "label": "cnspec",
+      "release": "14",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "cnspec",
+      "label": "cnspec",
+      "release": "13",
+      "from": null,
+      "to": "2026-09-23"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "cnspec",
+      "label": "cnspec",
+      "release": "12",
+      "from": null,
+      "to": "2026-09-23"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "discourse",
+      "label": "Discourse",
+      "release": "2026.9",
+      "eolFrom": "2026-11-24"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "discourse",
+      "label": "Discourse",
+      "release": "2026.1",
+      "from": "2026-09-30",
+      "to": "2026-09-22"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "duckdb",
+      "label": "DuckDB",
+      "release": "1.5",
+      "from": null,
+      "to": "2026-11-01"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "duckdb",
+      "label": "DuckDB",
+      "release": "1.4",
+      "from": "2026-09-16",
+      "to": "2026-11-17"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "eslint",
+      "label": "ESLint",
+      "release": "9",
+      "from": null,
+      "to": "2025-11-14"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "github-actions-runner-images",
+      "label": "GitHub Actions Runner Images",
+      "release": "ubuntu-slim",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "keda",
+      "label": "KEDA",
+      "release": "2.21",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "keda",
+      "label": "KEDA",
+      "release": "2.19",
+      "from": null,
+      "to": "2026-09-23"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "looker",
+      "label": "Looker",
+      "release": "26.18",
+      "eolFrom": "2027-02-28"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "looker",
+      "label": "Looker",
+      "release": "26.16",
+      "from": "2026-12-31",
+      "to": "2026-10-31"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.54",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.53",
+      "from": null,
+      "to": "2026-09-21"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "9.7",
+      "from": "2034-04-21",
+      "to": "2034-04-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "9.7",
+      "from": null,
+      "to": "2031-04-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "8.3",
+      "from": "2024-04-10",
+      "to": "2024-04-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "8.3",
+      "from": "2024-04-10",
+      "to": "2024-04-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "8.2",
+      "from": "2023-12-14",
+      "to": "2024-01-16"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "8.2",
+      "from": "2023-12-14",
+      "to": "2024-01-16"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "neo4j",
+      "label": "Neo4j",
+      "release": "2026.09",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "neo4j",
+      "label": "Neo4j",
+      "release": "2026.08",
+      "from": null,
+      "to": "2026-09-21"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6-sol",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6-luna",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "openbao",
+      "label": "OpenBao",
+      "release": "2.7",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "openbao",
+      "label": "OpenBao",
+      "release": "2.6",
+      "from": null,
+      "to": "2026-09-23"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "openwrt",
+      "label": "OpenWrt",
+      "release": "22.03",
+      "from": "2024-04-11",
+      "to": "2024-07-31"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "openwrt",
+      "label": "OpenWrt",
+      "release": "21.02",
+      "from": "2023-04-30",
+      "to": "2023-05-31"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "openwrt",
+      "label": "OpenWrt",
+      "release": "18.06",
+      "from": "2021-07-01",
+      "to": "2020-12-31"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "openwrt",
+      "label": "OpenWrt",
+      "release": "17.01",
+      "from": "2019-02-01",
+      "to": "2019-06-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "plone",
+      "label": "Plone",
+      "release": "6.2",
+      "from": "2027-12-31",
+      "to": "2028-06-30"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "samba",
+      "label": "Samba",
+      "release": "4.24",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "samba",
+      "label": "Samba",
+      "release": "4.23",
+      "eolFrom": "2027-03-18"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "release-added",
+      "product": "samba",
+      "label": "Samba",
+      "release": "4.22",
+      "eolFrom": "2026-09-12"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "valkey",
+      "label": "Valkey",
+      "release": "9.1",
+      "from": null,
+      "to": "2031-05-19"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "support-changed",
+      "product": "valkey",
+      "label": "Valkey",
+      "release": "9.1",
+      "from": null,
+      "to": "2029-05-19"
+    },
+    {
+      "detectedAt": "2026-09-26T00:41:25+00:00",
+      "type": "eol-changed",
+      "product": "vitess",
+      "label": "Vitess",
+      "release": "24",
+      "from": "2027-05-07",
+      "to": "2027-04-30"
     }
   ]
 }
