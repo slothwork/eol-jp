@@ -109,9 +109,58 @@ const attentionUpdated = attentionRanking.generatedAt
     </section>
   )}
 
-  <section class="section">
+
+  <section class="section" aria-labelledby="home-eol-guide">
+    <div class="container">
+      <h2 id="home-eol-guide">EOL・サポート期限をどう読む？</h2>
+      <p class="section-lead">EOLという言葉が指す終了の範囲は製品によって異なります。日付と一緒に対象バージョン・サポート区分を確認してください。</p>
+      <div class="grid">
+        <article class="panel">
+          <h3>EOLは一律の「利用禁止日」ではありません</h3>
+          <p>EOL（End of Life）は製品・バージョンのライフサイクル上の終了を表す言葉です。終了する保守内容や継続利用の条件は、ベンダーの方針によって異なります。</p>
+        </article>
+        <article class="panel">
+          <h3>通常サポートとセキュリティサポート</h3>
+          <p>不具合修正や機能改善の提供終了と、セキュリティ修正の提供終了が別の日になる場合があります。利用中のエディションやサポート契約も含め、公式情報で確認してください。</p>
+        </article>
+        <article class="panel">
+          <h3>「あと何日」は準備の目安</h3>
+          <p>残日数は影響調査や移行テストを始める目安です。期限当日の更新を前提とせず、必要な作業と余裕を見込んで計画してください。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-next-steps">
+    <div class="container">
+      <h2 id="home-next-steps">期限を確認した後の3ステップ</h2>
+      <p class="section-lead">日付だけで判断せず、対象の一致と公式情報を確かめ、必要な製品を継続して管理します。</p>
+      <div class="grid">
+        <article class="panel">
+          <h3>1. 利用中のバージョンを特定する</h3>
+          <p>実際に使っている製品・バージョンを確かめ、掲載されているリリースと照合します。同じ製品名でもエディションや配布元によって条件が異なる場合があります。</p>
+          <p><a href="/eol/">製品一覧から探す →</a></p>
+        </article>
+        <article class="panel">
+          <h3>2. 公式のサポート条件を確認する</h3>
+          <p>サポート区分、延長サポートの有無、更新時の条件をベンダー・公式プロジェクトの情報で確認します。当サイトでは公式ソースの確認と日付の照合を区別しています。</p>
+          <p><a href="/trust/official-sources/">公式ソース照合状況を見る →</a></p>
+        </article>
+        <article class="panel">
+          <h3>3. 必要な製品は継続して見直す</h3>
+          <p>移行予定や次回の確認日を決め、管理対象の製品をマイEOLでまとめて確認できます。重要な更新判断では、その時点の公式情報も確認してください。</p>
+          <p><a href="/my-eol/">マイEOLで管理する →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-data-sources">
     <div class="container notice">
-      <strong>データ更新：</strong> {updated}。ライフサイクル情報は endoflife.date API を基礎データとして利用し、表示用に正規化しています。
+      <h2 id="home-data-sources">掲載情報の根拠と更新について</h2>
+      <p>ライフサイクル情報は endoflife.date API を基礎データとして利用し、表示用に正規化しています。主要製品には独自の日本語説明や公式情報への導線も用意しています。</p>
+      <p>公式ソースの確認と掲載日付の照合は別々に管理しており、すべての製品で日付の一致を確認済みという意味ではありません。重要な判断ではベンダー・公式プロジェクトの最新情報を優先してください。</p>
+      <p><strong>データ更新：</strong> {updated}。<a href="/about/">出典と免責事項 →</a>　<a href="/trust/official-sources/">公式ソース照合状況 →</a>　<a href="/trust/audit-log/">変更監査ログ →</a></p>
     </div>
   </section>
 </BaseLayout>
