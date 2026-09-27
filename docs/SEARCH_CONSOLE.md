@@ -19,6 +19,27 @@ Search Console の URL 検査が「クロール済み - インデックス未登
 
 ビルド後の sitemap は `npm run test:sitemap` で検証する。indexable な canonical URL が sitemap に含まれ、`noindex` URL が含まれないこと、`robots.txt` の sitemap 指定と一致することを自動確認する。
 
+## 登録件数と未登録理由の正しい確認
+
+Sitemaps APIの `contents[].indexed` は廃止されているため、値が0でも「サイト全体が未登録」と判断しない。Windsor等の連携で公開されている `indexed` も登録件数の判定には使わない。sitemapからはURL件数、取得日時、error / warningだけを確認する。検索表示回数0も、未登録の直接的な証拠ではない。
+
+- 全体: Search Consoleの「ページのインデックス登録」で登録件数・未登録理由別件数・レポート更新日を確認する。
+- 個別: ホームと代表製品ページのURL検査で最終クロール日時、取得結果、robots許可、登録許可、ユーザー指定とGoogle選択のcanonicalを確認する。
+- 現在の取得可否: 「公開URLをテスト」で確認する。テスト成功はインデックス登録済みを意味しない。
+- 連携がURL検査を提供しない場合は該当画面のスクリーンショットを依頼する。過去の検査結果を現在の結果として流用しない。
+
+| 確認できた状態 | 次の調査・対策 |
+| --- | --- |
+| robots / noindexによる除外 | 意図した除外かを確認し、対象ページだけ修正 |
+| 取得失敗・403・5xx | 公開URLテストとCloudflare側のイベントを突き合わせる。通常クライアントの失敗だけでGooglebot遮断と判断しない |
+| Googleが別のcanonicalを選択 | 重複URL、redirect、内部リンク、canonicalの整合性を調査 |
+| 検出済み・未クロール | sitemap認識、内部導線、配信安定性を確認 |
+| クロール済み・未登録、取得・正規化が正常 | 代表3〜5ページで独自情報・本文の回答性・重複を監査。不足が確認できた点だけ改善し、同じURLで経過を見る |
+
+検索表示回数を必要とするCTR改善と、インデックス未登録の原因調査は区別する。原因調査は表示回数がない段階でも進める。固定日数の経過だけで大量のページ削除・noindex化・本文生成へ進まない。
+
+出典: https://developers.google.com/webmaster-tools/v1/sitemaps
+
 ## Recommended review window
 
 初期は直近28日を基本とする。

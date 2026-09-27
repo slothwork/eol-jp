@@ -1,6 +1,6 @@
 # 現在の状態
 
-最終更新: 2026-09-17
+最終更新: 2026-09-26
 
 この文書は履歴保管ではなく、プロジェクトの「今」を短時間で把握するために使う。目的・制約は `docs/PROJECT.md`、重要な判断理由は `docs/DECISIONS.md`、中期計画は `ROADMAP.md` を参照する。
 
@@ -45,33 +45,34 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 `未判定` — Growth gateは継続する。
 
-2026-09-16にSearch Consoleの実データを再確認した結果:
+2026-09-26の再調査結果:
 
-- Search Consoleの確定データは2026-09-13まで。直近28日はクリック0・表示0
-- 期間を約90日まで広げてもQueries / Pagesは0件で、Phase 7のBaselineを作れる検索実績はまだない
-- `https://eol.slothwright.com/sitemap.xml` は正常取得され、462 URL submitted、0 indexed、warning 0、error 0
-- ホーム、`/eol/`、`/releases/`、`/eol/nodejs/` はいずれも「クロール済み - インデックス未登録」。robots.txtは許可、indexingも許可、ページ取得は成功
-- 共通レイアウトは通常ページへself-canonicalを生成し、`noindex` は明示指定時だけ出す。`Astro.site` の既定値も本番originと一致している
-- 上記4URLをSearch Console連携のIndexing Trackerへ登録し、即時確認でも4件とも `not_indexed` / `INDEXING_ALLOWED`、警告なしであることを確認した
+- Windsor経由のSearch Consoleで `sc-domain:eol.slothwright.com` を確認。9月1日〜25日を指定した取得結果は9月3日〜23日で、クリック・表示回数はすべて0。表示0だけから全URL未登録とは断定しない。
+- sitemapは463 URL、error 0、warning 0。最終取得は2026-09-25 15:27:44 UTC（9月26日 00:27:44 JST）。
+- 公開サイトへの通常のHTTP GETで、ホーム、`/eol/`、`/releases/`、`/eol/nodejs/`、`/eol/python/` は200。確認したHTMLのcanonicalは本番URL自身を指し、noindexとX-Robots-Tagはない。
+- 公開robots.txtは全体を許可し、本番sitemapを案内。sitemapは200で463 URL、originは本番のみ。存在しない検査用URLは404。
+- これは通常のHTTP取得であり、Googlebotの取得成功やGoogleが選択したcanonicalの確認を代替しない。
+- 9月16日の主要4URL「クロール済み - インデックス未登録」は過去の観測として保持する。今回の接続はURL検査・Indexing Trackerを提供していないため、現在の各URLの登録状態は未確認。
+- 過去の「sitemap indexed 0」をサイト全体の登録件数の根拠に使う記述を訂正する。Google Sitemaps APIの `contents[].indexed` は廃止項目で使用不可。登録件数はSearch Console画面の「ページのインデックス登録」、個別状態はURL検査で確認する。
 
-Googleがページを取得できない技術ブロックは今回の確認では見つからなかった。現時点では、推測でtitle / description、内部リンク、indexableページ範囲を大きく変更せず、初期インデックス反映を待つ。
+出典: https://developers.google.com/webmaster-tools/v1/sitemaps
+
+確認範囲では登録を妨げる配信・SEO設定の異常は見つからない。未登録理由は未確定であり、「品質不足」や「CloudflareがGooglebotを遮断」とは断定しない。
 
 ## 作業中のこと
 
-- 日次EOLデータ同期・snapshot鮮度・手動レビュー鮮度の既存運用を継続する
-- Indexing Trackerで主要4URLの状態変化を追い、Search Consoleでsitemapのindexed件数またはQueries / Pagesの表示回数が発生するかを確認する
-
-検索実データがない間は、SEO変更を作ること自体を目的にしない。
+- 最新の「ページのインデックス登録」と主要URL検査の結果を取得し、未登録理由を切り分ける。
+- 日次EOLデータ同期・snapshot鮮度・手動レビュー鮮度の既存運用を継続する。
 
 ## 次に行うこと
 
-1. **既存運用の異常に対応する** — 日次同期、鮮度監視、CI等に未解決の異常があれば優先する。異常や実利用上の課題がない場合は、追加実装を目的化しない。
-2. **Growth gateを再確認する** — 主要4URLのindex状態、sitemapのindexed件数が0から変化する、またはQueries / Pagesに表示回数が出た時点でSearch Consoleを再確認する。毎日のSEO変更や一括再設計は行わない。
-3. **実データに基づく最小実験へ進む** — 比較可能なデータが得られたら `docs/SEARCH_CONSOLE.md` に従ってBaselineを作成し、ROADMAPの条件に沿って3〜5ページ程度のPhase 7実験を設計する。
+1. **現在の未登録理由を確認する** — ページ登録レポートの理由別件数と、ホーム・Node.jsのURL検査（最終クロール、取得結果、登録許可、ユーザー指定／Google選択canonical、公開URLテスト）を確認する。
+2. **原因に対応する最小修正を行う** — 取得失敗なら配信設定、重複なら正規化を調査。取得・正規化が正常でクロール済み未登録が継続していれば、対象3〜5ページの独自情報・検索意図への回答性を監査し、根拠のある不足だけを改善する。表示回数がないことを理由に原因調査まで停止しない。
+3. **結果を観測する** — 修正後の公開URLテストと必要な代表URLの登録リクエストを行い、URL検査・ページ登録レポート・検索表示を同じ対象で追う。大量再送信や連日の推測SEO変更は行わない。
 
 ## ブロッカー・重要リスク
 
-- Phase 7の検索改善はSearch Consoleの比較可能な実データ待ち。2026-09-16時点ではsitemap 462 URLに対してindexed 0、主要確認URLも「クロール済み - インデックス未登録」
+- 現在のURL検査・ページ登録レポートが未取得。過去の未登録状態や廃止API指標を現在のサイト全体の状態として扱わない。
 - インデックス反映待ちの段階で大規模なSEO変更を重ねると、何が効いたか比較できなくなる
 - 文書パスが将来build / test入力になる場合は、同じ変更でCI分類を再検討する
 - 新しいプロセス文書やCIロジックを増やしすぎて、管理負荷を実開発より重くしないこと
