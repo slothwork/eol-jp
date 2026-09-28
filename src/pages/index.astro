@@ -1,4 +1,9 @@
 ---
+import HomeDeadlineChanges from '@/components/HomeDeadlineChanges.astro';
+import HomeCategories from '@/components/HomeCategories.astro';
+import HomePracticalGuides from '@/components/HomePracticalGuides.astro';
+import HomeLatestReleases from '@/components/HomeLatestReleases.astro';
+import HomeMyEolGuide from '@/components/HomeMyEolGuide.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import DeadlineTable from '@/components/DeadlineTable.astro';
 import ProductCard from '@/components/ProductCard.astro';
@@ -66,6 +71,8 @@ const attentionUpdated = attentionRanking.generatedAt
     </div>
   </section>
 
+  <HomeDeadlineChanges />
+
   {attentionItems.length > 0 && (
     <section class="section">
       <div class="container">
@@ -97,6 +104,7 @@ const attentionUpdated = attentionRanking.generatedAt
       <h2>主要製品から探す</h2>
       <p class="section-lead">EOL確認の入口として、主要な開発・インフラ製品を優先表示しています。</p>
       <div class="grid">{featured.map((product) => <ProductCard product={product} />)}</div>
+      <HomeCategories />
     </div>
   </section>
 
@@ -109,6 +117,10 @@ const attentionUpdated = attentionRanking.generatedAt
     </section>
   )}
 
+
+  <HomeLatestReleases />
+
+  <HomePracticalGuides />
 
   <section class="section" aria-labelledby="home-eol-guide">
     <div class="container">
@@ -154,6 +166,8 @@ const attentionUpdated = attentionRanking.generatedAt
       </div>
     </div>
   </section>
+
+  <HomeMyEolGuide />
 
   <section class="section" aria-labelledby="home-data-sources">
     <div class="container notice">

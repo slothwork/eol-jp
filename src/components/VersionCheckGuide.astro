@@ -1,0 +1,14 @@
+---
+import { versionCheckGuides } from '@/data/version-check-guides';
+interface Props { slug: string; }
+const guide = versionCheckGuides[Astro.props.slug];
+---
+{guide && (
+  <div>
+    <p>対象のアプリケーションを動かしている環境のターミナルで確認します。</p>
+    <div class="code"><code>{guide.command}</code></div>
+    <p>出力例：<code>{guide.example}</code> → サポート表の「{guide.series}」系列と照合します。例のバージョンは推奨先を示すものではありません。</p>
+    <p>{guide.note}</p>
+    <p class="section-note"><a href={guide.source}>公式のコマンド説明</a>（確認日：{guide.reviewedAt}）</p>
+  </div>
+)}

@@ -1,0 +1,33 @@
+---
+import DenseTable from '@/components/DenseTable.astro';
+import { products } from '@/lib/eol';
+import { collectLatestReleaseEntries } from '@/lib/latest-releases';
+import { formatJaDate, relativeEol } from '@/lib/date';
+
+const entries = collectLatestReleaseEntries(products).filter((entry) => entry.ageDays <= 30).slice(0, 5);
+const headers = [
+  { label: '製品' }, { label: '系列' }, { label: '系列の最新版' },
+  { label: 'EOLまで' }, { label: 'リリース日' }
+];
+---
+<section class="section" aria-labelledby="home-latest-releases">
+  <div class="container">
+    <h2 id="home-latest-releases">最新リリースのダイジェスト</h2>
+    <p class="section-lead">サポート継続中と判断できる系列のうち、直近30日の最新版更新を新しい順に5件まで表示します。</p>
+    {entries.length > 0 ? (
+      <DenseTable headers={headers} variant="deadline" ariaLabel="最新リリースのダイジェスト">
+        {entries.map((entry) => (
+          <tr>
+            <td class="deadline-table-product"><a href={`/eol/${entry.productSlug}/`}>{entry.productLabel}</a></td>
+            <td class="deadline-table-version">{entry.cycle}</td>
+            <td class="deadline-table-status"><span class="dense-table-secondary">最新版</span><strong>{entry.latestName}</strong></td>
+            <td class="deadline-table-relative">{relativeEol(entry.eolFrom)}</td>
+            <td class="deadline-table-date"><time datetime={entry.latestDate}>{formatJaDate(entry.latestDate)}</time></td>
+          </tr>
+        ))}
+      </DenseTable>
+    ) : <p class="notice">直近30日の対象リリースはありません。期間を広げてリリース一覧をご確認ください。</p>}
+    <p class="section-note">系列ごとの最新版であり、移行先の推奨ではありません。更新前に公式の変更点と互換性をご確認ください。</p>
+    <p><a href="/releases/">最新リリースをすべて見る →</a></p>
+  </div>
+</section>
