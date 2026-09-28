@@ -1,0 +1,45 @@
+---
+import DenseTable from '@/components/DenseTable.astro';
+import changeLog from '@/data/change-log.json';
+import { products } from '@/lib/eol';
+import { formatJaDate } from '@/lib/date';
+
+const knownProducts = new Set(products.map((product) => product.slug));
+const events = changeLog.events
+  .filter((event) => (event.type === 'eol-changed' || event.type === 'support-changed') && knownProducts.has(event.product))
+  .slice()
+  .sort((a, b) => Date.parse(b.detectedAt) - Date.parse(a.detectedAt))
+  .slice(0, 5);
+const headers = [
+  { label: '検出日（日本時間）' }, { label: '変更種別' },
+  { label: '製品' }, { label: '対象系列' }, { label: '変更前 → 変更後' }
+];
+function direction(from?: string | null, to?: string | null) {
+  if (!from && to) return '日付を追加';
+  if (from && !to) return '日付が未定に変更';
+  if (from && to && to > from) return '期限が後ろに変更';
+  if (from && to && to < from) return '期限が前に変更';
+  return '期限情報を更新';
+}
+---
+<section class="section" aria-labelledby="home-deadline-changes">
+  <div class="container">
+    <h2 id="home-deadline-changes">最近のサポート期限変更</h2>
+    <p class="section-lead">定期同期で検出した期限の変更を最新5件まで表示します。検出日は当サイトが差分を確認した日で、公式発表日ではありません。</p>
+    {events.length > 0 ? (
+      <DenseTable headers={headers} variant="change" ariaLabel="最近のサポート期限変更">
+        {events.map((event) => (
+          <tr>
+            <td class="change-table-date"><time datetime={event.detectedAt}>{new Date(event.detectedAt).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}</time></td>
+            <td class="change-table-type">{event.type === 'eol-changed' ? 'EOL変更' : '通常サポート変更'}</td>
+            <td class="change-table-product"><a href={`/eol/${event.product}/`}>{event.label}</a></td>
+            <td class="change-table-release"><strong>{event.release}</strong></td>
+            <td class="change-table-detail">{formatJaDate(event.from)} → {formatJaDate(event.to)}<span class="dense-table-secondary">{direction(event.from, event.to)}</span></td>
+          </tr>
+        ))}
+      </DenseTable>
+    ) : <p class="notice">記録済みの期限変更はまだありません。変更を検出すると、ここに表示します。</p>}
+    <p class="section-note">元データの訂正を含む場合があります。実際のサポート条件は製品ページから公式情報をご確認ください。</p>
+    <p><a href="/changes/">変更履歴をすべて見る →</a></p>
+  </div>
+</section>

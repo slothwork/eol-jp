@@ -1,0 +1,32 @@
+---
+import { featuredProducts, getCategoryLabel, products } from '@/lib/eol';
+
+const descriptions: Record<string, string> = {
+  os: 'サーバーや端末のOSの保守期限を確認します。',
+  lang: 'アプリケーションで使うプログラミング言語の期限を確認します。',
+  database: 'データを保存する基盤の期限を確認します。',
+  framework: '開発フレームワークや実行環境の期限を確認します。',
+  'server-app': 'Webサーバーやインフラ製品の期限を確認します。',
+  service: 'クラウドサービス等の提供・サポート期限を確認します。'
+};
+const categories = Object.entries(descriptions).flatMap(([category, description]) => {
+  const items = products.filter((product) => product.category === category);
+  if (!items.length) return [];
+  const featured = featuredProducts().filter((product) => product.category === category);
+  const examples = [...featured, ...items.filter((product) => !featured.includes(product))].slice(0, 3);
+  return [{ category, description, count: items.length, examples }];
+});
+---
+<nav aria-labelledby="home-categories">
+  <h3 id="home-categories">カテゴリから探す</h3>
+  <div class="grid">
+    {categories.map(({ category, description, count, examples }) => (
+      <article class="panel">
+        <h4><a href={`/category/${category}/`}>{getCategoryLabel(category)}</a></h4>
+        <p>{description}</p>
+        <p class="muted">{examples.map((product) => product.label).join(' / ')} など・{count}製品</p>
+      </article>
+    ))}
+  </div>
+  <p><a href="/eol/">すべてのカテゴリ・製品を見る →</a></p>
+</nav>
