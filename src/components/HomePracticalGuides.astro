@@ -1,0 +1,62 @@
+---
+import VersionCheckGuide from '@/components/VersionCheckGuide.astro';
+import { getProduct } from '@/lib/eol';
+const guides = ['nodejs', 'python', 'php'].flatMap((slug) => {
+  const product = getProduct(slug);
+  return product ? [product] : [];
+});
+---
+<section class="section" aria-labelledby="home-version-check">
+  <div class="container">
+    <h2 id="home-version-check">利用中のバージョンを調べる</h2>
+    <p class="section-lead">手元のPCと本番サーバーでは、バージョンが異なる場合があります。コンテナや仮想環境を含め、確認したいアプリケーションが動く環境で調べてください。</p>
+    <div class="grid">
+      {guides.map((product) => (
+        <article class="panel">
+          <h3>{product.label}</h3>
+          <VersionCheckGuide slug={product.slug} />
+          <p><a href={`/eol/${product.slug}/#version-support-table`}>{product.label}のサポート期限を確認 →</a></p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<section class="section" aria-labelledby="home-environment-checklist">
+  <div class="container">
+    <h2 id="home-environment-checklist">環境別・期限確認チェックリスト</h2>
+    <p class="section-lead">利用している構成に合わせて、確認対象を洗い出します。各項目の製品名・バージョン・配布元を控え、サポート条件と照合してください。</p>
+    <div class="grid">
+      <article class="panel">
+        <h3>Webアプリケーション</h3>
+        <ul>
+          <li>OS・コンテナのベースイメージ</li>
+          <li>Node.js・Python・PHPなどの実行環境</li>
+          <li>フレームワークとデータベース</li>
+          <li>Webサーバー・リバースプロキシ</li>
+        </ul>
+        <p><a href="/category/framework/">フレームワーク・ランタイムから確認 →</a></p>
+      </article>
+      <article class="panel">
+        <h3>サーバー・インフラ</h3>
+        <ul>
+          <li>OSのバージョンとサポート契約</li>
+          <li>コンテナエンジンと管理基盤</li>
+          <li>データベース・キャッシュ・監視製品</li>
+          <li>マネージドサービス固有の提供期限</li>
+        </ul>
+        <p><a href="/category/server-app/">サーバー・インフラ製品から確認 →</a></p>
+      </article>
+      <article class="panel">
+        <h3>社内PC・業務端末</h3>
+        <ul>
+          <li>OSのエディションとバージョン</li>
+          <li>Officeなど業務アプリの製品・提供形態</li>
+          <li>業務システムが要求する実行環境</li>
+          <li>端末メーカーの保守条件と更新要件</li>
+        </ul>
+        <p><a href="/category/os/">OSの期限から確認 →</a></p>
+      </article>
+    </div>
+    <p class="section-note">当サイトに掲載されていない製品やサービスの期限は、提供元の公式情報で確認してください。</p>
+  </div>
+</section>

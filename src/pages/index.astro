@@ -1,6 +1,7 @@
 ---
 import HomeDeadlineChanges from '@/components/HomeDeadlineChanges.astro';
 import HomeCategories from '@/components/HomeCategories.astro';
+import HomePracticalGuides from '@/components/HomePracticalGuides.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import DeadlineTable from '@/components/DeadlineTable.astro';
 import ProductCard from '@/components/ProductCard.astro';
@@ -114,6 +115,8 @@ const attentionUpdated = attentionRanking.generatedAt
     </section>
   )}
 
+
+  <HomePracticalGuides />
 
   <section class="section" aria-labelledby="home-eol-guide">
     <div class="container">

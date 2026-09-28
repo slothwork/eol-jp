@@ -1,4 +1,6 @@
 ---
+import VersionCheckGuide from '@/components/VersionCheckGuide.astro';
+import { versionCheckGuides } from '@/data/version-check-guides';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import TrackedVersionPanel from '@/components/TrackedVersionPanel.astro';
@@ -167,7 +169,9 @@ const structured = {
       ) : <p>現在のスナップショットでは、将来のEOL日が確定しているサポート中バージョンを特定できません。期限未定の系列を含め、公式のサポート方針を確認してください。</p>}
       <p class="warning-box">このサイトは移行作業の安全性を保証するものではありません。本番更新前に公式ドキュメント、破壊的変更、依存パッケージの互換性を確認してください。</p>
       {releaseHighlights.length > 0 && <p><a href="#release-highlights">主なリリース変更点を見る →</a></p>}
-      {product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
+      {versionCheckGuides[product.slug] ? (
+        <section id="version-check"><h3>現在のバージョン確認</h3><VersionCheckGuide slug={product.slug} /></section>
+      ) : product.versionCommand && <><h3>現在のバージョン確認</h3><div class="code">{product.versionCommand}</div></>}
       {migrationGuide && <>
         <h3>公式の移行・アップグレード資料</h3>
         <p><a href={migrationGuide.url} rel="external">{migrationGuide.label} →</a></p>
