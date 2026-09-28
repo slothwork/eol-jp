@@ -2,6 +2,8 @@
 import HomeDeadlineChanges from '@/components/HomeDeadlineChanges.astro';
 import HomeCategories from '@/components/HomeCategories.astro';
 import HomePracticalGuides from '@/components/HomePracticalGuides.astro';
+import HomeLatestReleases from '@/components/HomeLatestReleases.astro';
+import HomeMyEolGuide from '@/components/HomeMyEolGuide.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import DeadlineTable from '@/components/DeadlineTable.astro';
 import ProductCard from '@/components/ProductCard.astro';
@@ -116,6 +118,8 @@ const attentionUpdated = attentionRanking.generatedAt
   )}
 
 
+  <HomeLatestReleases />
+
   <HomePracticalGuides />
 
   <section class="section" aria-labelledby="home-eol-guide">
@@ -162,6 +166,8 @@ const attentionUpdated = attentionRanking.generatedAt
       </div>
     </div>
   </section>
+
+  <HomeMyEolGuide />
 
   <section class="section" aria-labelledby="home-data-sources">
     <div class="container notice">

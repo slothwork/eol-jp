@@ -61,6 +61,8 @@ function smokeDocument() {
   <output id="result">pending</output>
   <script>
     const targets = [
+      { id: 'homeChanges', path: '/', selector: '[aria-label="最近のサポート期限変更"]' },
+      { id: 'homeReleases', path: '/', selector: '[aria-label="最新リリースのダイジェスト"]' },
       { id: 'products', path: '/eol/', selector: '.dense-table--product' },
       { id: 'category', path: '/category/lang/', selector: '.dense-table--product' },
       { id: 'upcoming', path: '/upcoming/', selector: '.dense-table--deadline' },
@@ -77,6 +79,21 @@ function smokeDocument() {
         const table = doc?.querySelector(target.selector);
         const wrap = table?.closest(target.wrapSelector ?? '.dense-table-wrap');
         let row = table?.querySelector('tbody tr:not([hidden])');
+        if ((!table || !wrap) && target.id.startsWith('home')) {
+          const section = doc?.querySelector(target.id === 'homeChanges' ? '[aria-labelledby="home-deadline-changes"]' : '[aria-labelledby="home-latest-releases"]');
+          if (section?.querySelector('.notice')) {
+            root.dataset[target.id + 'Display'] = 'grid';
+            root.dataset[target.id + 'Fits'] = 'true';
+            root.dataset[target.id + 'PageFits'] = String(doc.documentElement.scrollWidth <= win.innerWidth + 1);
+            root.dataset[target.id + 'Ready'] = 'true';
+            frame.remove();
+            if (targets.every((item) => root.dataset[item.id + 'Ready'] === 'true')) {
+              root.dataset.ready = 'true';
+              document.getElementById('result').textContent = 'ready';
+            }
+            return;
+          }
+        }
         if (!table || !wrap) {
           if (Date.now() < deadline) return setTimeout(() => inspect(target, frame), 50);
           root.dataset.testError = target.id + ': responsive table not found';
@@ -97,6 +114,7 @@ function smokeDocument() {
         const fits = wrap.scrollWidth <= wrap.clientWidth + 1;
         root.dataset[target.id + 'Display'] = display;
         root.dataset[target.id + 'Fits'] = String(fits);
+        root.dataset[target.id + 'PageFits'] = String(doc.documentElement.scrollWidth <= win.innerWidth + 1);
         root.dataset[target.id + 'Width'] = String(win?.innerWidth ?? -1);
         root.dataset[target.id + 'Media'] = String(win?.matchMedia('(max-width: 620px)').matches ?? false);
         root.dataset[target.id + 'StyleSheets'] = String(doc?.styleSheets.length ?? -1);
@@ -170,13 +188,17 @@ async function main() {
     assert(!testError, `dense table smoke failed: ${testError}`);
     assert(readDataAttribute(html, 'ready') === 'true', 'dense table smoke page did not complete');
 
-    for (const id of ['products', 'category', 'upcoming', 'changes']) {
+    for (const id of ['home-changes', 'home-releases', 'products', 'category', 'upcoming', 'changes']) {
       const display = readDataAttribute(html, `${id}-display`);
       const width = readDataAttribute(html, `${id}-width`);
       const media = readDataAttribute(html, `${id}-media`);
       const styleSheets = readDataAttribute(html, `${id}-style-sheets`);
       assert(display === 'grid', `${id}: mobile table row did not collapse to grid (display=${display}, width=${width}, media620=${media}, stylesheets=${styleSheets})`);
       assert(readDataAttribute(html, `${id}-fits`) === 'true', `${id}: mobile table requires horizontal scrolling`);
+    }
+
+    for (const id of ['home-changes', 'home-releases']) {
+      assert(readDataAttribute(html, `${id}-page-fits`) === 'true', `${id}: home page requires horizontal scrolling`);
     }
 
     const versionDisplay = readDataAttribute(html, 'version-display');

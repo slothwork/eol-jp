@@ -9,7 +9,7 @@ export const versionCheckGuides: Record<string, {
   python: {
     command: 'python --version', example: 'Python 3.12.0', series: '3.12',
     note: '先頭2つの数字を系列と照合します。普段python3で起動する環境ではpython3 --versionを使い、仮想環境を使う場合は対象の環境で確認します。',
-    source: 'https://docs.python.org/3/using/cmdline.html#cmdoption-version', reviewedAt: '2026-09-28'
+    source: 'https://docs.python.org/3/using/cmdline.html', reviewedAt: '2026-09-28'
   },
   php: {
     command: 'php --version', example: 'PHP 8.3.0', series: '8.3',
