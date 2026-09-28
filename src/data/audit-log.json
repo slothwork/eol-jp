@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-27T05:17:58.068Z",
+  "updatedAt": "2026-09-28T05:23:28.656Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -2838,6 +2838,72 @@
         {
           "slug": "zabbix",
           "label": "Zabbix"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-28T05:23:28.656Z-ef7dfc8f9251",
+      "syncedAt": "2026-09-28T05:23:28.656Z",
+      "sourceGeneratedAt": "2026-09-28T00:08:33+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "5d079505467273a5de0538b1b881ebfe90589c0ad32bd172a3f1559e88afbf83",
+      "afterSha256": "ef7dfc8f9251b73638d64173ffbae2f2b15ccd7b9fa09a058172d2a4d9ab76fe",
+      "productCount": 478,
+      "releaseCount": 8743,
+      "changes": {
+        "total": 69,
+        "releaseAdded": 30,
+        "releaseRemoved": 19,
+        "eolChanged": 5,
+        "supportChanged": 3,
+        "latestChanged": 7,
+        "releaseMetadataChanged": 5,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "tomcat",
+          "label": "Apache Tomcat"
+        },
+        {
+          "slug": "behat",
+          "label": "Behat"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "gleam",
+          "label": "Gleam"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "intel-processors",
+          "label": "Intel Processors"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "samba",
+          "label": "Samba"
+        },
+        {
+          "slug": "sourcegraph",
+          "label": "Sourcegraph"
         }
       ]
     }

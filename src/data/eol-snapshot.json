@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-09-27T00:08:32+00:00",
+  "generatedAt": "2026-09-28T00:08:33+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -19271,9 +19271,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.33.0",
-            "date": "2026-09-07",
-            "link": "https://github.com/Behat/Behat/releases/tag/v3.33.0"
+            "name": "3.34.0",
+            "date": "2026-09-27",
+            "link": "https://github.com/Behat/Behat/releases/tag/v3.34.0"
           }
         },
         {
@@ -28429,8 +28429,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.9.3.38",
-            "date": "2026-09-26",
+            "name": "26.9.4.3",
+            "date": "2026-09-27",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -28446,8 +28446,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.8.12.53",
-            "date": "2026-09-26",
+            "name": "26.8.13.2",
+            "date": "2026-09-27",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -44413,7 +44413,7 @@
           "name": "0.13",
           "label": "0.13",
           "codename": null,
-          "releaseDate": "2018-08-18",
+          "releaseDate": "2018-04-30",
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
@@ -44422,7 +44422,7 @@
           "isMaintained": false,
           "latest": {
             "name": "0.13.8",
-            "date": "2018-04-30",
+            "date": "2018-08-18",
             "link": "https://github.com/fluent/fluent-bit/releases/tag/v0.13.8"
           }
         },
@@ -50353,10 +50353,10 @@
       },
       "releases": [
         {
-          "name": "1.18",
-          "label": "1.18",
+          "name": "1",
+          "label": "1",
           "codename": null,
-          "releaseDate": "2026-07-29",
+          "releaseDate": "2024-03-04",
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
@@ -50367,312 +50367,6 @@
             "name": "1.18.1",
             "date": "2026-08-01",
             "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.18.1"
-          }
-        },
-        {
-          "name": "1.17",
-          "label": "1.17",
-          "codename": null,
-          "releaseDate": "2026-06-02",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2026-07-29",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.17.0",
-            "date": "2026-06-02",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.17.0"
-          }
-        },
-        {
-          "name": "1.16",
-          "label": "1.16",
-          "codename": null,
-          "releaseDate": "2026-04-24",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2026-06-02",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.16.0",
-            "date": "2026-04-24",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.16.0"
-          }
-        },
-        {
-          "name": "1.15",
-          "label": "1.15",
-          "codename": null,
-          "releaseDate": "2026-03-16",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2026-04-24",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.15.4",
-            "date": "2026-04-12",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.15.4"
-          }
-        },
-        {
-          "name": "1.14",
-          "label": "1.14",
-          "codename": null,
-          "releaseDate": "2025-12-25",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2026-03-16",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.14.0",
-            "date": "2025-12-25",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.14.0"
-          }
-        },
-        {
-          "name": "1.13",
-          "label": "1.13",
-          "codename": null,
-          "releaseDate": "2025-10-19",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-12-25",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.13.0",
-            "date": "2025-10-19",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.13.0"
-          }
-        },
-        {
-          "name": "1.12",
-          "label": "1.12",
-          "codename": null,
-          "releaseDate": "2025-08-05",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-10-19",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.12.0",
-            "date": "2025-08-05",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.12.0"
-          }
-        },
-        {
-          "name": "1.11",
-          "label": "1.11",
-          "codename": null,
-          "releaseDate": "2025-06-02",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-08-05",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.11.1",
-            "date": "2025-06-05",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.11.1"
-          }
-        },
-        {
-          "name": "1.10",
-          "label": "1.10",
-          "codename": null,
-          "releaseDate": "2025-04-14",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-06-02",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.10.0",
-            "date": "2025-04-14",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.10.0"
-          }
-        },
-        {
-          "name": "1.9",
-          "label": "1.9",
-          "codename": null,
-          "releaseDate": "2025-03-08",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-04-14",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.9.1",
-            "date": "2025-03-10",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.9.1"
-          }
-        },
-        {
-          "name": "1.8",
-          "label": "1.8",
-          "codename": null,
-          "releaseDate": "2025-02-07",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-03-08",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.8.1",
-            "date": "2025-02-11",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.8.1"
-          }
-        },
-        {
-          "name": "1.7",
-          "label": "1.7",
-          "codename": null,
-          "releaseDate": "2025-01-04",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-02-07",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.7.0",
-            "date": "2025-01-04",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.7.0"
-          }
-        },
-        {
-          "name": "1.6",
-          "label": "1.6",
-          "codename": null,
-          "releaseDate": "2024-11-18",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2025-01-04",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.6.3",
-            "date": "2024-12-04",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.6.3"
-          }
-        },
-        {
-          "name": "1.5",
-          "label": "1.5",
-          "codename": null,
-          "releaseDate": "2024-09-19",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-11-18",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.5.1",
-            "date": "2024-09-26",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.5.1"
-          }
-        },
-        {
-          "name": "1.4",
-          "label": "1.4",
-          "codename": null,
-          "releaseDate": "2024-08-02",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-09-19",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.4.1",
-            "date": "2024-08-04",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.4.1"
-          }
-        },
-        {
-          "name": "1.3",
-          "label": "1.3",
-          "codename": null,
-          "releaseDate": "2024-07-09",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-08-02",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.3.2",
-            "date": "2024-07-11",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.3.2"
-          }
-        },
-        {
-          "name": "1.2",
-          "label": "1.2",
-          "codename": null,
-          "releaseDate": "2024-05-27",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-07-09",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.2.1",
-            "date": "2024-05-30",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.2.1"
-          }
-        },
-        {
-          "name": "1.1",
-          "label": "1.1",
-          "codename": null,
-          "releaseDate": "2024-04-16",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-05-27",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.1.1",
-            "date": "2020-07-20",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.1.1"
-          }
-        },
-        {
-          "name": "1.0",
-          "label": "1.0",
-          "codename": null,
-          "releaseDate": "2024-03-04",
-          "isLts": false,
-          "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2024-04-16",
-          "isEol": true,
-          "isMaintained": false,
-          "latest": {
-            "name": "1.0.0",
-            "date": "2024-03-04",
-            "link": "https://github.com/gleam-lang/gleam/releases/tag/v1.0.0"
           }
         }
       ]
@@ -54368,7 +54062,7 @@
           "name": "3",
           "label": "3",
           "codename": null,
-          "releaseDate": "2014-01-28",
+          "releaseDate": "2012-10-15",
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
@@ -55968,9 +55662,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.4.10",
-            "date": "2026-09-20",
-            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/7.4.10"
+            "name": "7.4.11",
+            "date": "2026-09-27",
+            "link": "https://github.com/hibernate/hibernate-orm/releases/tag/7.4.11"
           }
         },
         {
@@ -58702,7 +58396,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
+          "eolFrom": "2026-12-31",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -115970,9 +115664,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.115.10",
-            "date": "2026-09-26",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.115.10"
+            "name": "44.115.13",
+            "date": "2026-09-27",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.115.13"
           }
         },
         {
@@ -122128,14 +121822,31 @@
       },
       "releases": [
         {
+          "name": "4.25",
+          "label": "4.25",
+          "codename": null,
+          "releaseDate": "2026-09-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2027-09-30",
+          "eolFrom": "2028-03-31",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "4.25.0",
+            "date": "2026-09-24",
+            "link": "https://www.samba.org/samba/history/samba-4.25.0.html"
+          }
+        },
+        {
           "name": "4.24",
           "label": "4.24",
           "codename": null,
           "releaseDate": "2026-03-18",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": null,
+          "eoasFrom": "2027-03-31",
+          "eolFrom": "2027-09-30",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -122151,8 +121862,8 @@
           "releaseDate": "2025-09-12",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": "2027-03-18",
+          "eoasFrom": "2026-09-30",
+          "eolFrom": "2027-03-31",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -122168,14 +121879,490 @@
           "releaseDate": "2025-03-06",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": "2026-03-18",
-          "eolFrom": "2026-09-12",
+          "eoasFrom": "2026-03-31",
+          "eolFrom": "2026-09-30",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "4.22.11",
+            "date": "2026-07-22",
+            "link": "https://www.samba.org/samba/history/samba-4.22.11.html"
+          }
+        },
+        {
+          "name": "4.21",
+          "label": "4.21",
+          "codename": null,
+          "releaseDate": "2024-09-02",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2025-09-12",
+          "eolFrom": "2026-03-31",
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "4.22.11",
-            "date": "2026-07-23",
-            "link": "https://www.samba.org/samba/history/samba-4.22.11.html"
+            "name": "4.21.10",
+            "date": "2025-11-11",
+            "link": "https://www.samba.org/samba/history/samba-4.21.10.html"
+          }
+        },
+        {
+          "name": "4.20",
+          "label": "4.20",
+          "codename": null,
+          "releaseDate": "2024-03-27",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2025-03-06",
+          "eolFrom": "2025-09-12",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.20.8",
+            "date": "2025-03-25",
+            "link": "https://www.samba.org/samba/history/samba-4.20.8.html"
+          }
+        },
+        {
+          "name": "4.19",
+          "label": "4.19",
+          "codename": null,
+          "releaseDate": "2023-09-04",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2024-09-02",
+          "eolFrom": "2025-03-06",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.19.9",
+            "date": "2024-10-17",
+            "link": "https://www.samba.org/samba/history/samba-4.19.9.html"
+          }
+        },
+        {
+          "name": "4.18",
+          "label": "4.18",
+          "codename": null,
+          "releaseDate": "2023-03-08",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2024-03-27",
+          "eolFrom": "2024-09-02",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.18.11",
+            "date": "2024-03-13",
+            "link": "https://www.samba.org/samba/history/samba-4.18.11.html"
+          }
+        },
+        {
+          "name": "4.17",
+          "label": "4.17",
+          "codename": null,
+          "releaseDate": "2022-09-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2023-09-04",
+          "eolFrom": "2024-03-27",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.17.12",
+            "date": "2023-10-10",
+            "link": "https://www.samba.org/samba/history/samba-4.17.12.html"
+          }
+        },
+        {
+          "name": "4.16",
+          "label": "4.16",
+          "codename": null,
+          "releaseDate": "2022-03-21",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2023-03-08",
+          "eolFrom": "2023-09-04",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.16.11",
+            "date": "2023-07-17",
+            "link": "https://www.samba.org/samba/history/samba-4.16.11.html"
+          }
+        },
+        {
+          "name": "4.15",
+          "label": "4.15",
+          "codename": null,
+          "releaseDate": "2021-09-20",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2022-09-13",
+          "eolFrom": "2023-03-08",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.15.13",
+            "date": "2022-12-15",
+            "link": "https://www.samba.org/samba/history/samba-4.15.13.html"
+          }
+        },
+        {
+          "name": "4.14",
+          "label": "4.14",
+          "codename": null,
+          "releaseDate": "2021-03-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2022-03-21",
+          "eolFrom": "2022-09-13",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.14.14",
+            "date": "2022-07-27",
+            "link": "https://www.samba.org/samba/history/samba-4.14.14.html"
+          }
+        },
+        {
+          "name": "4.13",
+          "label": "4.13",
+          "codename": null,
+          "releaseDate": "2020-09-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2021-09-20",
+          "eolFrom": "2022-03-21",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.13.17",
+            "date": "2022-01-31",
+            "link": "https://www.samba.org/samba/history/samba-4.13.17.html"
+          }
+        },
+        {
+          "name": "4.12",
+          "label": "4.12",
+          "codename": null,
+          "releaseDate": "2020-03-03",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2021-03-09",
+          "eolFrom": "2021-09-20",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.12.15",
+            "date": "2021-04-26",
+            "link": "https://www.samba.org/samba/history/samba-4.12.15.html"
+          }
+        },
+        {
+          "name": "4.11",
+          "label": "4.11",
+          "codename": null,
+          "releaseDate": "2019-09-17",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2020-12-03",
+          "eolFrom": "2021-03-09",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.11.17",
+            "date": "2020-12-03",
+            "link": "https://www.samba.org/samba/history/samba-4.11.17.html"
+          }
+        },
+        {
+          "name": "4.10",
+          "label": "4.10",
+          "codename": null,
+          "releaseDate": "2019-03-19",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2020-03-03",
+          "eolFrom": "2020-09-22",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.10.18",
+            "date": "2020-09-18",
+            "link": "https://www.samba.org/samba/history/samba-4.10.18.html"
+          }
+        },
+        {
+          "name": "4.9",
+          "label": "4.9",
+          "codename": null,
+          "releaseDate": "2018-09-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2019-09-17",
+          "eolFrom": "2020-03-03",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.9.18",
+            "date": "2020-01-14",
+            "link": "https://www.samba.org/samba/history/samba-4.9.18.html"
+          }
+        },
+        {
+          "name": "4.8",
+          "label": "4.8",
+          "codename": null,
+          "releaseDate": "2018-03-13",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2019-03-19",
+          "eolFrom": "2019-09-17",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.8.12",
+            "date": "2019-05-07",
+            "link": "https://www.samba.org/samba/history/samba-4.8.12.html"
+          }
+        },
+        {
+          "name": "4.7",
+          "label": "4.7",
+          "codename": null,
+          "releaseDate": "2017-09-21",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2018-09-13",
+          "eolFrom": "2019-03-19",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.7.12",
+            "date": "2018-11-26",
+            "link": "https://www.samba.org/samba/history/samba-4.7.12.html"
+          }
+        },
+        {
+          "name": "4.6",
+          "label": "4.6",
+          "codename": null,
+          "releaseDate": "2017-03-07",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2018-03-13",
+          "eolFrom": "2018-09-13",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.6.16",
+            "date": "2018-08-13",
+            "link": "https://www.samba.org/samba/history/samba-4.6.16.html"
+          }
+        },
+        {
+          "name": "4.5",
+          "label": "4.5",
+          "codename": null,
+          "releaseDate": "2016-09-07",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2017-09-21",
+          "eolFrom": "2018-03-13",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.5.16",
+            "date": "2018-03-12",
+            "link": "https://www.samba.org/samba/history/samba-4.5.16.html"
+          }
+        },
+        {
+          "name": "4.4",
+          "label": "4.4",
+          "codename": null,
+          "releaseDate": "2016-03-22",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2017-03-07",
+          "eolFrom": "2017-09-21",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.4.16",
+            "date": "2017-09-13",
+            "link": "https://www.samba.org/samba/history/samba-4.4.16.html"
+          }
+        },
+        {
+          "name": "4.3",
+          "label": "4.3",
+          "codename": null,
+          "releaseDate": "2015-09-08",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2016-09-07",
+          "eolFrom": "2017-03-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.3.13",
+            "date": "2016-12-09",
+            "link": "https://www.samba.org/samba/history/samba-4.3.13.html"
+          }
+        },
+        {
+          "name": "4.2",
+          "label": "4.2",
+          "codename": null,
+          "releaseDate": "2015-03-04",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2016-03-22",
+          "eolFrom": "2016-09-07",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.2.14",
+            "date": "2016-07-07",
+            "link": "https://www.samba.org/samba/history/samba-4.2.14.html"
+          }
+        },
+        {
+          "name": "4.1",
+          "label": "4.1",
+          "codename": null,
+          "releaseDate": "2013-10-11",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2015-09-08",
+          "eolFrom": "2016-03-22",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.1.23",
+            "date": "2016-02-24",
+            "link": "https://www.samba.org/samba/history/samba-4.1.23.html"
+          }
+        },
+        {
+          "name": "4.0",
+          "label": "4.0",
+          "codename": null,
+          "releaseDate": "2012-12-11",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2015-03-04",
+          "eolFrom": "2015-09-08",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "4.0.26",
+            "date": "2015-05-06",
+            "link": "https://www.samba.org/samba/history/samba-4.0.26.html"
+          }
+        },
+        {
+          "name": "3.6",
+          "label": "3.6",
+          "codename": null,
+          "releaseDate": "2011-08-09",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2013-11-29",
+          "eolFrom": "2015-03-04",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.6.25",
+            "date": "2015-02-22",
+            "link": "https://www.samba.org/samba/history/samba-3.6.25.html"
+          }
+        },
+        {
+          "name": "3.5",
+          "label": "3.5",
+          "codename": null,
+          "releaseDate": "2010-03-01",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2012-12-17",
+          "eolFrom": "2013-10-11",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.5.22",
+            "date": "2013-08-05",
+            "link": "https://www.samba.org/samba/history/samba-3.5.22.html"
+          }
+        },
+        {
+          "name": "3.4",
+          "label": "3.4",
+          "codename": null,
+          "releaseDate": "2009-07-03",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2011-08-23",
+          "eolFrom": "2012-12-11",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.4.17",
+            "date": "2012-04-29",
+            "link": "https://www.samba.org/samba/history/samba-3.4.17.html"
+          }
+        },
+        {
+          "name": "3.3",
+          "label": "3.3",
+          "codename": null,
+          "releaseDate": "2009-01-27",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2010-03-01",
+          "eolFrom": "2011-08-09",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.3.16",
+            "date": "2011-07-24",
+            "link": "https://www.samba.org/samba/history/samba-3.3.16.html"
+          }
+        },
+        {
+          "name": "3.2",
+          "label": "3.2",
+          "codename": null,
+          "releaseDate": "2008-07-02",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2009-08-11",
+          "eolFrom": "2010-03-01",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.2.15",
+            "date": "2009-10-01",
+            "link": "https://www.samba.org/samba/history/samba-3.2.15.html"
+          }
+        },
+        {
+          "name": "3.0",
+          "label": "3.0",
+          "codename": null,
+          "releaseDate": "2003-09-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2009-01-27",
+          "eolFrom": "2009-08-05",
+          "isEol": true,
+          "isMaintained": false,
+          "latest": {
+            "name": "3.0.37",
+            "date": "2009-10-01",
+            "link": "https://www.samba.org/samba/history/samba-3.0.37.html"
           }
         }
       ]
@@ -135662,9 +135849,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-02-25",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "6.12.5040",
             "date": "2026-02-10",
@@ -141971,7 +142158,7 @@
           "name": "7",
           "label": "7",
           "codename": null,
-          "releaseDate": "2013-01-10",
+          "releaseDate": "2010-06-13",
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
