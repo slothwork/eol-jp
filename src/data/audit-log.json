@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-28T05:23:28.656Z",
+  "updatedAt": "2026-09-30T05:31:54.250Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -2904,6 +2904,228 @@
         {
           "slug": "sourcegraph",
           "label": "Sourcegraph"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-30T05:31:54.250Z-d1146ab6505a",
+      "syncedAt": "2026-09-30T05:31:54.250Z",
+      "sourceGeneratedAt": "2026-09-30T04:37:45+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "ef7dfc8f9251b73638d64173ffbae2f2b15ccd7b9fa09a058172d2a4d9ab76fe",
+      "afterSha256": "d1146ab6505a234ff3589eb47405edaafb61fa833beb46a7e72beacd635a8fe2",
+      "productCount": 478,
+      "releaseCount": 8746,
+      "changes": {
+        "total": 127,
+        "releaseAdded": 3,
+        "releaseRemoved": 0,
+        "eolChanged": 21,
+        "supportChanged": 0,
+        "latestChanged": 97,
+        "releaseMetadataChanged": 6,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "akeneo-pim",
+          "label": "Akeneo PIM"
+        },
+        {
+          "slug": "amazon-aurora-postgresql",
+          "label": "Amazon Aurora PostgreSQL"
+        },
+        {
+          "slug": "amazon-eks",
+          "label": "Amazon EKS"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "apache-kafka",
+          "label": "Apache Kafka"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "macos",
+          "label": "Apple macOS"
+        },
+        {
+          "slug": "visionos",
+          "label": "Apple visionOS"
+        },
+        {
+          "slug": "arangodb",
+          "label": "ArangoDB"
+        },
+        {
+          "slug": "aws-lambda",
+          "label": "AWS Lambda"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cloud-sql-auth-proxy",
+          "label": "Cloud SQL Auth Proxy"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "contao",
+          "label": "Contao"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "duckdb",
+          "label": "DuckDB"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "grafana",
+          "label": "Grafana"
+        },
+        {
+          "slug": "haproxy",
+          "label": "HAProxy"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "joomla",
+          "label": "Joomla!"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "mageia",
+          "label": "Mageia"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "motorola-mobility",
+          "label": "Motorola Mobility"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "opensearch",
+          "label": "OpenSearch"
+        },
+        {
+          "slug": "openssl",
+          "label": "OpenSSL"
+        },
+        {
+          "slug": "php",
+          "label": "PHP"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "podman",
+          "label": "Podman"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "symfony",
+          "label": "Symfony"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
         }
       ]
     }
