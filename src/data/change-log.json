@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-30T04:37:45+00:00",
+  "updatedAt": "2026-10-03T04:54:39+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -4847,6 +4847,316 @@
       "label": "Prometheus",
       "release": "3.15",
       "eolFrom": "2026-11-06"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-5-5",
+      "eolFrom": "2027-09-28"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-4-5-20250929",
+      "from": "2026-09-29",
+      "to": "2026-11-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-4-5-20250929",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "series-12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "ultra-4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "checkmk",
+      "label": "Checkmk",
+      "release": "2.1",
+      "eolFrom": "2024-11-24"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "checkmk",
+      "label": "Checkmk",
+      "release": "2.0",
+      "eolFrom": "2023-09-09"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "containerd",
+      "label": "containerd",
+      "release": "1.7",
+      "from": "2026-09-01",
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "iphone",
+      "label": "Apple iPhone",
+      "release": "18-pro",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "iphone",
+      "label": "Apple iPhone",
+      "release": "18-pro-max",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "longhorn",
+      "label": "Longhorn",
+      "release": "1.13",
+      "eolFrom": "2027-11-29"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "longhorn",
+      "label": "Longhorn",
+      "release": "1.12",
+      "from": "2027-12-02",
+      "to": "2027-08-14"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "mongodb",
+      "label": "MongoDB Server",
+      "release": "9.0",
+      "eolFrom": "2031-10-31"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-nano",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-nano",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-codex",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-codex",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-tts",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-tts",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1-hd",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1-hd",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "openbao",
+      "label": "OpenBao",
+      "release": "2.6",
+      "from": "2026-09-23",
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "opentofu",
+      "label": "OpenTofu",
+      "release": "1.13",
+      "eolFrom": "2027-08-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "opentofu",
+      "label": "OpenTofu",
+      "release": "1.10",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "python",
+      "label": "Python",
+      "release": "3.10",
+      "from": "2026-10-31",
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "quarkus-framework",
+      "label": "Quarkus",
+      "release": "3.40",
+      "eolFrom": "2027-09-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "quarkus-framework",
+      "label": "Quarkus",
+      "release": "3.39",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.5",
+      "eolFrom": "2028-03-01"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "eol-changed",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.4",
+      "from": null,
+      "to": "2026-09-29"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "support-changed",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.4",
+      "from": null,
+      "to": "2026-09-29"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "windows",
+      "label": "Microsoft Windows",
+      "release": "11-26h2-e",
+      "eolFrom": "2029-10-09"
+    },
+    {
+      "detectedAt": "2026-10-03T04:54:39+00:00",
+      "type": "release-added",
+      "product": "windows",
+      "label": "Microsoft Windows",
+      "release": "11-26h2-w",
+      "eolFrom": "2028-10-10"
     }
   ]
 }
