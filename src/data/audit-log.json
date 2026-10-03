@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-30T05:31:54.250Z",
+  "updatedAt": "2026-10-03T05:18:10.301Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -3126,6 +3126,360 @@
         {
           "slug": "youtrack",
           "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-03T05:18:10.301Z-23b7c787cce3",
+      "syncedAt": "2026-10-03T05:18:10.301Z",
+      "sourceGeneratedAt": "2026-10-03T04:54:39+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "d1146ab6505a234ff3589eb47405edaafb61fa833beb46a7e72beacd635a8fe2",
+      "afterSha256": "23b7c787cce3d4fcff2174fa36831340f7960a8bc910f618e0226290e8f16f02",
+      "productCount": 478,
+      "releaseCount": 8760,
+      "changes": {
+        "total": 166,
+        "releaseAdded": 14,
+        "releaseRemoved": 0,
+        "eolChanged": 14,
+        "supportChanged": 8,
+        "latestChanged": 94,
+        "releaseMetadataChanged": 35,
+        "productMetadataChanged": 1
+      },
+      "affectedProducts": [
+        {
+          "slug": "akeneo-pim",
+          "label": "Akeneo PIM"
+        },
+        {
+          "slug": "alibaba-ack",
+          "label": "Alibaba ACK"
+        },
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "hbase",
+          "label": "Apache HBase"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "iphone",
+          "label": "Apple iPhone"
+        },
+        {
+          "slug": "apple-watch",
+          "label": "Apple Watch"
+        },
+        {
+          "slug": "azul-zulu",
+          "label": "Azul Zulu"
+        },
+        {
+          "slug": "azure-database-for-mysql",
+          "label": "Azure Database for MySQL"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "caddy",
+          "label": "Caddy"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "checkmk",
+          "label": "Checkmk"
+        },
+        {
+          "slug": "cisco-ios-xe",
+          "label": "Cisco IOS XE"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "fairphone",
+          "label": "Fairphone"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "flux",
+          "label": "Flux"
+        },
+        {
+          "slug": "foreman",
+          "label": "Foreman"
+        },
+        {
+          "slug": "fortios",
+          "label": "FortiOS"
+        },
+        {
+          "slug": "freebsd",
+          "label": "FreeBSD"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "pixel",
+          "label": "Google Pixel"
+        },
+        {
+          "slug": "pixel-watch",
+          "label": "Google Pixel Watch"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "ibm-i",
+          "label": "IBM iSeries"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "keycloak",
+          "label": "Keycloak"
+        },
+        {
+          "slug": "longhorn",
+          "label": "Longhorn"
+        },
+        {
+          "slug": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "slug": "mautic",
+          "label": "Mautic"
+        },
+        {
+          "slug": "mediawiki",
+          "label": "MediaWiki"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "windows",
+          "label": "Microsoft Windows"
+        },
+        {
+          "slug": "mongodb",
+          "label": "MongoDB Server"
+        },
+        {
+          "slug": "motorola-mobility",
+          "label": "Motorola Mobility"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nextcloud",
+          "label": "Nextcloud"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "openbao",
+          "label": "OpenBao"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "openwrt",
+          "label": "OpenWrt"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "oracle-graalvm",
+          "label": "Oracle GraalVM"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "python",
+          "label": "Python"
+        },
+        {
+          "slug": "quarkus-framework",
+          "label": "Quarkus"
+        },
+        {
+          "slug": "red-hat-ansible-automation-platform",
+          "label": "Red Hat Ansible Automation Platform"
+        },
+        {
+          "slug": "redhat-satellite",
+          "label": "Red Hat Satellite"
+        },
+        {
+          "slug": "redmine",
+          "label": "Redmine"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "salt",
+          "label": "Salt"
+        },
+        {
+          "slug": "samba",
+          "label": "Samba"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "sonarqube-server",
+          "label": "SonarQube Server"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "vitess",
+          "label": "Vitess"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
         }
       ]
     }
