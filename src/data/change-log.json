@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-09-30T04:37:45+00:00",
+  "updatedAt": "2026-10-08T00:10:44+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -4847,6 +4847,3331 @@
       "label": "Prometheus",
       "release": "3.15",
       "eolFrom": "2026-11-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "amazon-eks",
+      "label": "Amazon EKS",
+      "release": "1.37",
+      "eolFrom": "2027-12-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-5-5",
+      "eolFrom": "2027-09-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-4-5-20250929",
+      "from": "2026-09-29",
+      "to": "2026-11-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-sonnet-4-5-20250929",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.19",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.18",
+      "from": null,
+      "to": "2026-09-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "apache-maven",
+      "label": "Apache Maven",
+      "release": "3.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "series-12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "ultra-4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "ultra-1",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "series-8",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "se-2",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "series-7",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "apple-watch",
+      "label": "Apple Watch",
+      "release": "series-6",
+      "from": null,
+      "to": "2026-09-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "9.2",
+      "from": "2025-03-04",
+      "to": "2025-02-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "9.1",
+      "from": "2023-06-15",
+      "to": "2024-12-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "9.0",
+      "from": "2023-05-16",
+      "to": "2024-08-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "8.2",
+      "from": "2023-05-15",
+      "to": "2024-04-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "8.1",
+      "from": "2023-03-28",
+      "to": "2023-12-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "8.0",
+      "from": "2023-03-28",
+      "to": "2023-07-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "7.2",
+      "eolFrom": "2022-11-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "7.1",
+      "eolFrom": "2022-07-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "7.0",
+      "eolFrom": "2022-03-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.10",
+      "eolFrom": "2021-09-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.9",
+      "eolFrom": "2021-05-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.8",
+      "eolFrom": "2021-02-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.7",
+      "eolFrom": "2020-10-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.6",
+      "eolFrom": "2020-06-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.5",
+      "eolFrom": "2020-04-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.4",
+      "eolFrom": "2020-02-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.3",
+      "eolFrom": "2019-12-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.2",
+      "eolFrom": "2019-09-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.1",
+      "eolFrom": "2019-07-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "6.0",
+      "eolFrom": "2019-04-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.15",
+      "eolFrom": "2019-02-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.14",
+      "eolFrom": "2018-10-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.13",
+      "eolFrom": "2018-08-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.12",
+      "eolFrom": "2018-05-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.11",
+      "eolFrom": "2018-04-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.10",
+      "eolFrom": "2018-01-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.9",
+      "eolFrom": "2017-06-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.8",
+      "eolFrom": "2017-03-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.7",
+      "eolFrom": "2016-11-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.6",
+      "eolFrom": "2016-07-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.5",
+      "eolFrom": "2016-04-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.4",
+      "eolFrom": "2016-03-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.3",
+      "eolFrom": "2015-12-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.2",
+      "eolFrom": "2015-11-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.1",
+      "eolFrom": "2015-09-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "5.0",
+      "eolFrom": "2015-07-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "4.4",
+      "eolFrom": "2015-01-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "4.3",
+      "eolFrom": "2014-11-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "4.2",
+      "eolFrom": "2014-08-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "4.1",
+      "eolFrom": "2014-06-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "4.0",
+      "eolFrom": "2014-04-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "3.4",
+      "eolFrom": "2014-05-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "3.3",
+      "eolFrom": "2014-05-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "3.2",
+      "eolFrom": "2013-08-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "3.1",
+      "eolFrom": "2013-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "3.0",
+      "eolFrom": "2013-05-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.7",
+      "eolFrom": "2013-02-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.6",
+      "eolFrom": "2012-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.5",
+      "eolFrom": "2012-05-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.4",
+      "eolFrom": "2011-12-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.3",
+      "eolFrom": "2011-08-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.2",
+      "eolFrom": "2011-07-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.1",
+      "eolFrom": "2010-12-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "2.0",
+      "eolFrom": "2010-07-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "1.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "1.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "1.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "0.9",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "behat",
+      "label": "Behat",
+      "release": "4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "behat",
+      "label": "Behat",
+      "release": "3",
+      "from": null,
+      "to": "2028-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "behat",
+      "label": "Behat",
+      "release": "3",
+      "from": null,
+      "to": "2027-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "behat",
+      "label": "Behat",
+      "release": "2",
+      "from": "2015-06-01",
+      "to": "2015-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "behat",
+      "label": "Behat",
+      "release": "2",
+      "from": "2015-06-01",
+      "to": "2015-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "10.5",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.6",
+      "eolFrom": "2024-11-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.5",
+      "eolFrom": "2024-10-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.4",
+      "eolFrom": "2024-09-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.3",
+      "eolFrom": "2024-08-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.2",
+      "eolFrom": "2024-06-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.1",
+      "eolFrom": "2024-05-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "8.0",
+      "eolFrom": "2024-05-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.21",
+      "from": "2024-02-28",
+      "to": "2024-03-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.20",
+      "eolFrom": "2024-01-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.19",
+      "eolFrom": "2023-12-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.18",
+      "eolFrom": "2023-11-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.17",
+      "eolFrom": "2023-10-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.16",
+      "eolFrom": "2023-08-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.15",
+      "eolFrom": "2023-07-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.14",
+      "eolFrom": "2023-06-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.13",
+      "eolFrom": "2023-05-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.12",
+      "eolFrom": "2023-04-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.11",
+      "eolFrom": "2023-03-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.10",
+      "eolFrom": "2023-02-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.9",
+      "eolFrom": "2023-01-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.8",
+      "eolFrom": "2022-11-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.7",
+      "eolFrom": "2022-10-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.6",
+      "eolFrom": "2023-04-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.5",
+      "eolFrom": "2022-08-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.4",
+      "eolFrom": "2022-07-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.3",
+      "eolFrom": "2022-06-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.2",
+      "eolFrom": "2022-04-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.1",
+      "eolFrom": "2022-03-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "7.0",
+      "eolFrom": "2022-03-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.10",
+      "eolFrom": "2022-01-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.9",
+      "eolFrom": "2021-12-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.8",
+      "eolFrom": "2021-11-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.7",
+      "eolFrom": "2021-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.6",
+      "eolFrom": "2021-08-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.5",
+      "eolFrom": "2021-07-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.4",
+      "eolFrom": "2021-06-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.3",
+      "eolFrom": "2021-05-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.2",
+      "eolFrom": "2021-04-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.1",
+      "eolFrom": "2021-03-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "6.0",
+      "eolFrom": "2021-02-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.16",
+      "eolFrom": "2020-11-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.15",
+      "eolFrom": "2020-10-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.14",
+      "eolFrom": "2020-09-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.13",
+      "eolFrom": "2020-08-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.12",
+      "eolFrom": "2020-07-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.11",
+      "eolFrom": "2020-05-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.10",
+      "eolFrom": "2020-04-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.9",
+      "eolFrom": "2020-03-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.8",
+      "eolFrom": "2020-02-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.7",
+      "eolFrom": "2020-01-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.6",
+      "eolFrom": "2019-11-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.5",
+      "eolFrom": "2019-10-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.4",
+      "eolFrom": "2019-09-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.3",
+      "eolFrom": "2019-08-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.2",
+      "eolFrom": "2019-07-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.1",
+      "eolFrom": "2019-06-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "5.0",
+      "eolFrom": "2019-05-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.14",
+      "eolFrom": "2019-02-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.13",
+      "eolFrom": "2019-01-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.12",
+      "eolFrom": "2018-12-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.11",
+      "eolFrom": "2018-11-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.10",
+      "eolFrom": "2018-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.9",
+      "eolFrom": "2018-08-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.8",
+      "eolFrom": "2018-07-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.7",
+      "eolFrom": "2018-06-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.6",
+      "eolFrom": "2018-05-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.5",
+      "eolFrom": "2018-04-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.4",
+      "eolFrom": "2018-03-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.3",
+      "eolFrom": "2018-01-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.2",
+      "eolFrom": "2017-12-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.1",
+      "eolFrom": "2017-11-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "4.0",
+      "eolFrom": "2017-09-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.11",
+      "eolFrom": "2017-07-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.10",
+      "eolFrom": "2017-06-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.9",
+      "eolFrom": "2017-05-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.8",
+      "eolFrom": "2017-04-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.7",
+      "eolFrom": "2017-02-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.6",
+      "eolFrom": "2017-01-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.5",
+      "eolFrom": "2016-11-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.4",
+      "eolFrom": "2016-10-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.3",
+      "eolFrom": "2016-10-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.2",
+      "eolFrom": "2016-10-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.1",
+      "eolFrom": "2016-10-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "3.0",
+      "eolFrom": "2016-10-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.12",
+      "eolFrom": "2016-08-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.11",
+      "eolFrom": "2016-08-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.10",
+      "eolFrom": "2016-05-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.9",
+      "eolFrom": "2016-02-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.8",
+      "eolFrom": "2016-03-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.7",
+      "eolFrom": "2015-11-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.6",
+      "eolFrom": "2015-11-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.5",
+      "eolFrom": "2015-11-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.4",
+      "eolFrom": "2015-05-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.3",
+      "eolFrom": "2015-04-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.2",
+      "eolFrom": "2015-03-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.1",
+      "eolFrom": "2015-02-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "2.0",
+      "eolFrom": "2014-12-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "1.3",
+      "eolFrom": "2014-11-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "1.2",
+      "eolFrom": "2014-09-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "1.1",
+      "eolFrom": "2014-07-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "bitbucket",
+      "label": "Bitbucket",
+      "release": "1.0",
+      "eolFrom": "2014-05-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "calico",
+      "label": "Calico",
+      "release": "3.33",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "calico",
+      "label": "Calico",
+      "release": "3.31",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "checkmk",
+      "label": "Checkmk",
+      "release": "2.1",
+      "eolFrom": "2024-11-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "checkmk",
+      "label": "Checkmk",
+      "release": "2.0",
+      "eolFrom": "2023-09-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "chrome",
+      "label": "Google Chrome",
+      "release": "155",
+      "eolFrom": "2026-10-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.12",
+      "eolFrom": "2023-04-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.11",
+      "eolFrom": "2023-02-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.10",
+      "eolFrom": "2022-12-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.9",
+      "eolFrom": "2022-11-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.8",
+      "eolFrom": "2022-09-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.7",
+      "eolFrom": "2022-08-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.6",
+      "eolFrom": "2022-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.5",
+      "eolFrom": "2022-05-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.4",
+      "from": "2022-04-21",
+      "to": "2022-08-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.3",
+      "eolFrom": "2022-02-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.2",
+      "eolFrom": "2021-12-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.1",
+      "eolFrom": "2021-11-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "7.0",
+      "eolFrom": "2021-09-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.15",
+      "eolFrom": "2021-03-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.14",
+      "eolFrom": "2021-01-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.13",
+      "from": "2020-12-04",
+      "to": "2021-04-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.12",
+      "eolFrom": "2020-10-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.11",
+      "eolFrom": "2020-08-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.10",
+      "eolFrom": "2020-06-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.9",
+      "eolFrom": "2020-05-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.8",
+      "eolFrom": "2020-03-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.7",
+      "eolFrom": "2020-01-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.5",
+      "eolFrom": "2019-11-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.4",
+      "eolFrom": "2019-09-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.3",
+      "eolFrom": "2019-07-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.2",
+      "eolFrom": "2019-05-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.1",
+      "eolFrom": "2019-03-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "6.0",
+      "eolFrom": "2018-11-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.10",
+      "eolFrom": "2018-06-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.9",
+      "eolFrom": "2017-11-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.8",
+      "eolFrom": "2017-06-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.7",
+      "eolFrom": "2017-01-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.6",
+      "eolFrom": "2016-09-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.5",
+      "eolFrom": "2016-08-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.4",
+      "eolFrom": "2016-03-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.3",
+      "eolFrom": "2015-11-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.2",
+      "eolFrom": "2015-09-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.1",
+      "eolFrom": "2015-08-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "5.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "4.3",
+      "eolFrom": "2015-01-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "4.2",
+      "eolFrom": "2014-08-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "4.1",
+      "eolFrom": "2014-05-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "4.0",
+      "eolFrom": "2013-11-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.5",
+      "eolFrom": "2013-09-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.4",
+      "eolFrom": "2013-02-07"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.3",
+      "eolFrom": "2012-09-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.2",
+      "eolFrom": "2012-05-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.1",
+      "eolFrom": "2011-12-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "3.0",
+      "eolFrom": "2011-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.10",
+      "eolFrom": "2011-04-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.9",
+      "eolFrom": "2010-10-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.8",
+      "eolFrom": "2010-07-03"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.7",
+      "eolFrom": "2010-03-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.6",
+      "eolFrom": "2009-11-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "2.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "1.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "1.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "1.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "1.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "1.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "containerd",
+      "label": "containerd",
+      "release": "1.7",
+      "from": "2026-09-01",
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "cos",
+      "label": "Google Container-Optimized OS (COS)",
+      "release": "cos-133",
+      "eolFrom": "2028-11-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.18",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.17",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.16",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.15",
+      "eolFrom": "2026-06-10"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.14",
+      "eolFrom": "2026-02-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.13",
+      "eolFrom": "2025-09-16"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.12",
+      "eolFrom": "2025-02-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.11",
+      "eolFrom": "2024-08-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.10",
+      "eolFrom": "2024-03-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.9",
+      "eolFrom": "2023-10-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "dapr",
+      "label": "Dapr",
+      "release": "1.8",
+      "eolFrom": "2023-06-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "emberjs",
+      "label": "Ember",
+      "release": "7.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "emberjs",
+      "label": "Ember",
+      "release": "7.2",
+      "from": null,
+      "to": "2026-10-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "emberjs",
+      "label": "Ember",
+      "release": "7.2",
+      "from": null,
+      "to": "2026-10-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "external-dns",
+      "label": "ExternalDNS",
+      "release": "0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "fairphone",
+      "label": "Fairphone",
+      "release": "6+",
+      "eolFrom": "2033-06-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "iphone",
+      "label": "Apple iPhone",
+      "release": "18-pro",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "iphone",
+      "label": "Apple iPhone",
+      "release": "18-pro-max",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "11.3",
+      "eolFrom": "2027-12-03"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "11.2",
+      "eolFrom": "2027-11-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "11.1",
+      "eolFrom": "2027-09-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "11.0",
+      "eolFrom": "2027-08-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.7",
+      "eolFrom": "2027-06-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.6",
+      "eolFrom": "2027-04-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.5",
+      "eolFrom": "2027-03-12"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.4",
+      "eolFrom": "2027-01-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.3",
+      "eolFrom": "2026-12-05"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.2",
+      "eolFrom": "2026-11-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.1",
+      "eolFrom": "2026-10-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "10.0",
+      "eolFrom": "2026-08-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.17",
+      "eolFrom": "2026-06-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.16",
+      "eolFrom": "2026-05-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.15",
+      "eolFrom": "2026-03-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.14",
+      "eolFrom": "2026-02-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.13",
+      "eolFrom": "2026-01-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.12",
+      "eolFrom": "2025-11-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.11",
+      "eolFrom": "2025-08-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.10",
+      "eolFrom": "2025-07-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.9",
+      "eolFrom": "2025-06-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.8",
+      "eolFrom": "2025-04-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.7",
+      "eolFrom": "2025-03-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.6",
+      "eolFrom": "2025-01-24"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.5",
+      "eolFrom": "2024-12-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.4",
+      "eolFrom": "2025-01-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.3",
+      "eolFrom": "2024-09-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.2",
+      "eolFrom": "2024-08-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.1",
+      "eolFrom": "2024-07-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "5.0",
+      "eolFrom": "2024-06-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.22",
+      "eolFrom": "2024-02-16"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.21",
+      "eolFrom": "2023-12-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.20",
+      "eolFrom": "2024-01-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.19",
+      "eolFrom": "2023-08-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.18",
+      "eolFrom": "2023-07-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.17",
+      "eolFrom": "2023-05-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.16",
+      "eolFrom": "2023-03-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.15",
+      "eolFrom": "2023-02-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.14",
+      "eolFrom": "2022-11-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.13",
+      "eolFrom": "2022-11-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.12",
+      "eolFrom": "2022-08-26"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.11",
+      "eolFrom": "2022-07-15"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.10",
+      "eolFrom": "2022-06-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.9",
+      "eolFrom": "2022-05-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.8",
+      "eolFrom": "2022-03-19"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.7",
+      "eolFrom": "2022-02-03"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.6",
+      "eolFrom": "2021-12-17"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.5",
+      "eolFrom": "2021-10-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.4",
+      "eolFrom": "2021-09-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.3",
+      "eolFrom": "2021-07-22"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.2",
+      "eolFrom": "2021-05-21"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.1",
+      "eolFrom": "2021-04-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "4.0",
+      "eolFrom": "2021-02-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.16",
+      "eolFrom": "2020-11-28"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.15",
+      "eolFrom": "2020-08-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.14",
+      "eolFrom": "2020-07-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.13",
+      "eolFrom": "2020-05-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.12",
+      "eolFrom": "2020-04-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.11",
+      "eolFrom": "2020-02-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.10",
+      "eolFrom": "2020-01-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.9",
+      "eolFrom": "2019-11-16"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.8",
+      "eolFrom": "2019-09-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.7",
+      "eolFrom": "2019-09-04"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.6",
+      "eolFrom": "2019-06-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.5",
+      "eolFrom": "2019-04-27"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.4",
+      "eolFrom": "2019-03-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.3",
+      "eolFrom": "2019-01-03"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.2",
+      "eolFrom": "2018-08-23"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.1",
+      "eolFrom": "2018-02-11"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "jira-service-management",
+      "label": "Jira Service Management",
+      "release": "3.0",
+      "eolFrom": "2017-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "8.13",
+      "from": "2022-10-08",
+      "to": "2022-11-08"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "7.6",
+      "from": "2019-11-14",
+      "to": "2019-11-16"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "5.2",
+      "from": null,
+      "to": "2015-04-18"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "5.1",
+      "from": null,
+      "to": "2014-10-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "5.0",
+      "from": "2012-07-01",
+      "to": "2014-07-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "3.12",
+      "from": null,
+      "to": "2010-04-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "3.11",
+      "from": null,
+      "to": "2009-09-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "jira-software",
+      "label": "Jira Software",
+      "release": "3.10",
+      "from": null,
+      "to": "2009-08-20"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "keycloak",
+      "label": "Keycloak",
+      "release": "26.8",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "keycloak",
+      "label": "Keycloak",
+      "release": "26.7",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "ldap-account-manager",
+      "label": "LDAP Account Manager",
+      "release": "9.7",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "ldap-account-manager",
+      "label": "LDAP Account Manager",
+      "release": "9.6",
+      "from": null,
+      "to": "2026-10-02"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "longhorn",
+      "label": "Longhorn",
+      "release": "1.13",
+      "eolFrom": "2027-11-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "longhorn",
+      "label": "Longhorn",
+      "release": "1.12",
+      "from": "2027-12-02",
+      "to": "2027-08-14"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "lua",
+      "label": "Lua",
+      "release": "5.4",
+      "from": null,
+      "to": "2026-08-25"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "mongodb",
+      "label": "MongoDB Server",
+      "release": "9.0",
+      "eolFrom": "2031-10-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "moodle",
+      "label": "Moodle",
+      "release": "5.3",
+      "eolFrom": "2029-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.8",
+      "eolFrom": "2023-12-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.7",
+      "eolFrom": "2023-07-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.6",
+      "eolFrom": "2022-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.5",
+      "eolFrom": "2022-01-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.4",
+      "eolFrom": "2019-06-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.3",
+      "eolFrom": "2021-01-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.2",
+      "eolFrom": "2018-07-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.1",
+      "eolFrom": "2020-01-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "netapp-ontap",
+      "label": "NetApp ONTAP",
+      "release": "9.0",
+      "eolFrom": "2017-12-31"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6.1-sol",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-nano",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.4-nano",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-codex",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.3-codex",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1",
+      "from": null,
+      "to": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-5.1",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-tts",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-tts",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1-hd",
+      "from": null,
+      "to": "2027-01-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "tts-1-hd",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "openbao",
+      "label": "OpenBao",
+      "release": "2.6",
+      "from": "2026-09-23",
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "opentofu",
+      "label": "OpenTofu",
+      "release": "1.13",
+      "eolFrom": "2027-08-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "opentofu",
+      "label": "OpenTofu",
+      "release": "1.10",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "plone",
+      "label": "Plone",
+      "release": "6.2",
+      "from": "2026-06-26",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "python",
+      "label": "Python",
+      "release": "3.10",
+      "from": "2026-10-31",
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "qt",
+      "label": "Qt",
+      "release": "6.12",
+      "eolFrom": "2027-04-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "qt",
+      "label": "Qt",
+      "release": "6.11",
+      "from": "2026-09-22",
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "qt",
+      "label": "Qt",
+      "release": "6.5",
+      "from": "2023-10-09",
+      "to": "2023-12-13"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "quarkus-framework",
+      "label": "Quarkus",
+      "release": "3.40",
+      "eolFrom": "2027-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "quarkus-framework",
+      "label": "Quarkus",
+      "release": "3.39",
+      "from": null,
+      "to": "2026-09-30"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "rust",
+      "label": "Rust",
+      "release": "1.99",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "rust",
+      "label": "Rust",
+      "release": "1.98",
+      "from": null,
+      "to": "2026-10-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-a04s",
+      "from": null,
+      "to": "2026-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-a23-5g",
+      "from": null,
+      "to": "2026-10-06"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.5",
+      "eolFrom": "2028-03-01"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "eol-changed",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.4",
+      "from": null,
+      "to": "2026-09-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "support-changed",
+      "product": "sonarqube-server",
+      "label": "SonarQube Server",
+      "release": "2026.4",
+      "from": null,
+      "to": "2026-09-29"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "2.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "2.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.11",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.9",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.7",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.6",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.5",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "wagtail",
+      "label": "Wagtail",
+      "release": "1.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "windows",
+      "label": "Microsoft Windows",
+      "release": "11-26h2-e",
+      "eolFrom": "2029-10-09"
+    },
+    {
+      "detectedAt": "2026-10-08T00:10:44+00:00",
+      "type": "release-added",
+      "product": "windows",
+      "label": "Microsoft Windows",
+      "release": "11-26h2-w",
+      "eolFrom": "2028-10-10"
     }
   ]
 }

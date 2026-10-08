@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-09-30T05:31:54.250Z",
+  "updatedAt": "2026-10-08T06:03:21.471Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -3122,6 +3122,676 @@
         {
           "slug": "symfony",
           "label": "Symfony"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-08T06:03:21.471Z-9c4b3fbd77dd",
+      "syncedAt": "2026-10-08T06:03:21.471Z",
+      "sourceGeneratedAt": "2026-10-08T00:10:44+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "d1146ab6505a234ff3589eb47405edaafb61fa833beb46a7e72beacd635a8fe2",
+      "afterSha256": "9c4b3fbd77dd323b3d938cfa6bf1032f39e9e1c063d3525f8133dcfcdea6ba21",
+      "productCount": 481,
+      "releaseCount": 9093,
+      "changes": {
+        "total": 714,
+        "releaseAdded": 347,
+        "releaseRemoved": 0,
+        "eolChanged": 49,
+        "supportChanged": 12,
+        "latestChanged": 251,
+        "releaseMetadataChanged": 53,
+        "productMetadataChanged": 2
+      },
+      "affectedProducts": [
+        {
+          "slug": "adonisjs",
+          "label": "AdonisJS"
+        },
+        {
+          "slug": "akeneo-pim",
+          "label": "Akeneo PIM"
+        },
+        {
+          "slug": "alibaba-ack",
+          "label": "Alibaba ACK"
+        },
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "amazon-eks",
+          "label": "Amazon EKS"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "ansible",
+          "label": "Ansible"
+        },
+        {
+          "slug": "ansible-core",
+          "label": "Ansible-core"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "apache-apisix",
+          "label": "Apache APISIX"
+        },
+        {
+          "slug": "apache-camel",
+          "label": "Apache Camel"
+        },
+        {
+          "slug": "hbase",
+          "label": "Apache HBase"
+        },
+        {
+          "slug": "apache-http-server",
+          "label": "Apache HTTP Server"
+        },
+        {
+          "slug": "apache-lucene",
+          "label": "Apache Lucene"
+        },
+        {
+          "slug": "apache-maven",
+          "label": "Apache Maven"
+        },
+        {
+          "slug": "apache-pulsar",
+          "label": "Apache Pulsar"
+        },
+        {
+          "slug": "solr",
+          "label": "Apache Solr"
+        },
+        {
+          "slug": "tomcat",
+          "label": "Apache Tomcat"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "iphone",
+          "label": "Apple iPhone"
+        },
+        {
+          "slug": "apple-watch",
+          "label": "Apple Watch"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "artifactory",
+          "label": "Artifactory"
+        },
+        {
+          "slug": "azul-zulu",
+          "label": "Azul Zulu"
+        },
+        {
+          "slug": "azure-database-for-mysql",
+          "label": "Azure Database for MySQL"
+        },
+        {
+          "slug": "bamboo",
+          "label": "Bamboo"
+        },
+        {
+          "slug": "bazel",
+          "label": "Bazel"
+        },
+        {
+          "slug": "behat",
+          "label": "Behat"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "bitbucket",
+          "label": "Bitbucket"
+        },
+        {
+          "slug": "caddy",
+          "label": "Caddy"
+        },
+        {
+          "slug": "cakephp",
+          "label": "CakePHP"
+        },
+        {
+          "slug": "calico",
+          "label": "Calico"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "checkmk",
+          "label": "Checkmk"
+        },
+        {
+          "slug": "cisco-ios-xe",
+          "label": "Cisco IOS XE"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "commvault",
+          "label": "Commvault"
+        },
+        {
+          "slug": "concrete-cms",
+          "label": "Concrete CMS"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "dapr",
+          "label": "Dapr"
+        },
+        {
+          "slug": "dependency-track",
+          "label": "Dependency-Track"
+        },
+        {
+          "slug": "django",
+          "label": "Django"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "eclipse-jetty",
+          "label": "Eclipse Jetty"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "beats",
+          "label": "Elastic Beats"
+        },
+        {
+          "slug": "elasticsearch",
+          "label": "Elasticsearch"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "emberjs",
+          "label": "Ember"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "external-dns",
+          "label": "ExternalDNS"
+        },
+        {
+          "slug": "fairphone",
+          "label": "Fairphone"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "flux",
+          "label": "Flux"
+        },
+        {
+          "slug": "foreman",
+          "label": "Foreman"
+        },
+        {
+          "slug": "fortios",
+          "label": "FortiOS"
+        },
+        {
+          "slug": "freebsd",
+          "label": "FreeBSD"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gleam",
+          "label": "Gleam"
+        },
+        {
+          "slug": "chrome",
+          "label": "Google Chrome"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "pixel",
+          "label": "Google Pixel"
+        },
+        {
+          "slug": "pixel-watch",
+          "label": "Google Pixel Watch"
+        },
+        {
+          "slug": "gradle",
+          "label": "Gradle"
+        },
+        {
+          "slug": "graylog",
+          "label": "Graylog"
+        },
+        {
+          "slug": "grumphp",
+          "label": "GrumPHP"
+        },
+        {
+          "slug": "harbor",
+          "label": "Harbor"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "hashicorp-vault",
+          "label": "Hashicorp Vault"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "ibm-i",
+          "label": "IBM iSeries"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "jaeger",
+          "label": "Jaeger"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "jira-service-management",
+          "label": "Jira Service Management"
+        },
+        {
+          "slug": "jira-software",
+          "label": "Jira Software"
+        },
+        {
+          "slug": "keycloak",
+          "label": "Keycloak"
+        },
+        {
+          "slug": "kibana",
+          "label": "Kibana"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "ldap-account-manager",
+          "label": "LDAP Account Manager"
+        },
+        {
+          "slug": "libreoffice",
+          "label": "LibreOffice"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "logstash",
+          "label": "Logstash"
+        },
+        {
+          "slug": "longhorn",
+          "label": "Longhorn"
+        },
+        {
+          "slug": "lua",
+          "label": "Lua"
+        },
+        {
+          "slug": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "slug": "matomo",
+          "label": "Matomo"
+        },
+        {
+          "slug": "mautic",
+          "label": "Mautic"
+        },
+        {
+          "slug": "mediawiki",
+          "label": "MediaWiki"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "windows",
+          "label": "Microsoft Windows"
+        },
+        {
+          "slug": "mongodb",
+          "label": "MongoDB Server"
+        },
+        {
+          "slug": "moodle",
+          "label": "Moodle"
+        },
+        {
+          "slug": "motorola-mobility",
+          "label": "Motorola Mobility"
+        },
+        {
+          "slug": "neos",
+          "label": "Neos"
+        },
+        {
+          "slug": "netapp-ontap",
+          "label": "NetApp ONTAP"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nextcloud",
+          "label": "Nextcloud"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "nuxt",
+          "label": "Nuxt"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "openbao",
+          "label": "OpenBao"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "openvpn",
+          "label": "OpenVPN"
+        },
+        {
+          "slug": "openwrt",
+          "label": "OpenWrt"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "oracle-graalvm",
+          "label": "Oracle GraalVM"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "plone",
+          "label": "Plone"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "python",
+          "label": "Python"
+        },
+        {
+          "slug": "qt",
+          "label": "Qt"
+        },
+        {
+          "slug": "quarkus-framework",
+          "label": "Quarkus"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "red-hat-ansible-automation-platform",
+          "label": "Red Hat Ansible Automation Platform"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "redhat-satellite",
+          "label": "Red Hat Satellite"
+        },
+        {
+          "slug": "redmine",
+          "label": "Redmine"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "rust",
+          "label": "Rust"
+        },
+        {
+          "slug": "salt",
+          "label": "Salt"
+        },
+        {
+          "slug": "samba",
+          "label": "Samba"
+        },
+        {
+          "slug": "samsung-mobile",
+          "label": "Samsung Mobile"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "sonarqube-server",
+          "label": "SonarQube Server"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "svelte",
+          "label": "Svelte"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
+        },
+        {
+          "slug": "tarteaucitron",
+          "label": "tarteaucitron"
+        },
+        {
+          "slug": "traefik",
+          "label": "Traefik"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "umbraco",
+          "label": "Umbraco CMS"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "veeam-backup-and-replication",
+          "label": "Veeam Backup & Replication"
+        },
+        {
+          "slug": "vitess",
+          "label": "Vitess"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
+        },
+        {
+          "slug": "wagtail",
+          "label": "Wagtail"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
         },
         {
           "slug": "youtrack",
