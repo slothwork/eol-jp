@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-08T00:10:44+00:00",
+  "updatedAt": "2026-10-10T00:40:23+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -8172,6 +8172,126 @@
       "label": "Microsoft Windows",
       "release": "11-26h2-w",
       "eolFrom": "2028-10-10"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-haiku-5-5",
+      "eolFrom": "2027-10-07"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "apache-pulsar",
+      "label": "Apache Pulsar",
+      "release": "5.0",
+      "eolFrom": "2028-10-05"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "grails",
+      "label": "Apache Grails Framework",
+      "release": "8.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "influxdb",
+      "label": "InfluxDB",
+      "release": "3.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "6.0",
+      "eolFrom": "2028-09-29"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.2",
+      "eolFrom": "2028-08-12"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.1",
+      "eolFrom": "2028-03-26"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.0",
+      "eolFrom": "2027-11-24"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.33",
+      "eolFrom": "2027-07-09"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.32",
+      "eolFrom": "2027-07-03"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.31",
+      "eolFrom": "2027-02-17"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.30",
+      "eolFrom": "2026-11-05"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.29",
+      "eolFrom": "2026-10-16"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "redmine",
+      "label": "Redmine",
+      "release": "3.4",
+      "eolFrom": "2020-04-06"
+    },
+    {
+      "detectedAt": "2026-10-10T00:40:23+00:00",
+      "type": "release-added",
+      "product": "redmine",
+      "label": "Redmine",
+      "release": "3.3",
+      "eolFrom": "2019-11-18"
     }
   ]
 }
