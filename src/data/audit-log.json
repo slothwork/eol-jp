@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-10-08T06:03:21.471Z",
+  "updatedAt": "2026-10-14T04:52:55.278Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -3792,6 +3792,336 @@
         {
           "slug": "wordpress",
           "label": "WordPress"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-14T04:52:55.278Z-0d6e65463dec",
+      "syncedAt": "2026-10-14T04:52:55.278Z",
+      "sourceGeneratedAt": "2026-10-13T13:33:44+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "9c4b3fbd77dd323b3d938cfa6bf1032f39e9e1c063d3525f8133dcfcdea6ba21",
+      "afterSha256": "0d6e65463decd209bb09686e3831c7ad7aa824e8b55e69959c7719c3862436f8",
+      "productCount": 484,
+      "releaseCount": 9164,
+      "changes": {
+        "total": 231,
+        "releaseAdded": 71,
+        "releaseRemoved": 0,
+        "eolChanged": 9,
+        "supportChanged": 2,
+        "latestChanged": 140,
+        "releaseMetadataChanged": 8,
+        "productMetadataChanged": 1
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-neptune",
+          "label": "Amazon Neptune"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "apache-couchdb",
+          "label": "Apache CouchDB"
+        },
+        {
+          "slug": "grails",
+          "label": "Apache Grails Framework"
+        },
+        {
+          "slug": "apache-pulsar",
+          "label": "Apache Pulsar"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "argo-workflows",
+          "label": "Argo Workflows"
+        },
+        {
+          "slug": "bun",
+          "label": "Bun"
+        },
+        {
+          "slug": "ceph",
+          "label": "Ceph"
+        },
+        {
+          "slug": "ckeditor",
+          "label": "CKEditor"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cloud-sql-auth-proxy",
+          "label": "Cloud SQL Auth Proxy"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "contao",
+          "label": "Contao"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "dce",
+          "label": "DaoCloud Enterprise"
+        },
+        {
+          "slug": "dapr",
+          "label": "Dapr"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "exim",
+          "label": "Exim"
+        },
+        {
+          "slug": "express",
+          "label": "Express"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "forgejo",
+          "label": "Forgejo"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gleam",
+          "label": "Gleam"
+        },
+        {
+          "slug": "go",
+          "label": "Go"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "gradle",
+          "label": "Gradle"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "gstreamer",
+          "label": "GStreamer"
+        },
+        {
+          "slug": "harbor",
+          "label": "Harbor"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "jfrog-xray",
+          "label": "JFrog Xray"
+        },
+        {
+          "slug": "jira-service-management",
+          "label": "Jira Service Management"
+        },
+        {
+          "slug": "jira-software",
+          "label": "Jira Software"
+        },
+        {
+          "slug": "karpenter",
+          "label": "Karpenter"
+        },
+        {
+          "slug": "kong-gateway",
+          "label": "Kong Gateway"
+        },
+        {
+          "slug": "kotlin",
+          "label": "Kotlin"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "liquibase-secure",
+          "label": "Liquibase Secure"
+        },
+        {
+          "slug": "looker",
+          "label": "Looker"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "neo4j",
+          "label": "Neo4j"
+        },
+        {
+          "slug": "neos",
+          "label": "Neos"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "numpy",
+          "label": "NumPy"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "nuxt",
+          "label": "Nuxt"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "pgadmin",
+          "label": "pgAdmin"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "podman",
+          "label": "Podman"
+        },
+        {
+          "slug": "python",
+          "label": "Python"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "redmine",
+          "label": "Redmine"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "sonarqube-community",
+          "label": "SonarQube Community Build"
+        },
+        {
+          "slug": "sqlite",
+          "label": "SQLite"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "telegraf",
+          "label": "Telegraf"
+        },
+        {
+          "slug": "typo3",
+          "label": "TYPO3"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "veeam-backup-and-replication",
+          "label": "Veeam Backup & Replication"
         },
         {
           "slug": "youtrack",

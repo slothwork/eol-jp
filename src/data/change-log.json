@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-08T00:10:44+00:00",
+  "updatedAt": "2026-10-13T13:33:44+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -8172,6 +8172,673 @@
       "label": "Microsoft Windows",
       "release": "11-26h2-w",
       "eolFrom": "2028-10-10"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.4.8.1",
+      "eolFrom": "2027-10-27"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-haiku-5-5",
+      "eolFrom": "2027-10-07"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "apache-pulsar",
+      "label": "Apache Pulsar",
+      "release": "5.0",
+      "eolFrom": "2028-10-05"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.38",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "support-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.36",
+      "from": null,
+      "to": "2026-10-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.35",
+      "from": null,
+      "to": "2026-10-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "confluence",
+      "label": "Confluence",
+      "release": "11.0",
+      "eolFrom": "2028-10-08"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "dce",
+      "label": "DaoCloud Enterprise",
+      "release": "5.0",
+      "from": "2029-01-31",
+      "to": "2026-06-01"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "exim",
+      "label": "Exim",
+      "release": "4.100",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "exim",
+      "label": "Exim",
+      "release": "4.99",
+      "from": null,
+      "to": "2026-08-20"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "158",
+      "eolFrom": "2026-10-27"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "157",
+      "from": null,
+      "to": "2026-10-13"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "grafana-loki",
+      "label": "Grafana Loki",
+      "release": "2.9",
+      "from": null,
+      "to": "2025-11-07"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "grails",
+      "label": "Apache Grails Framework",
+      "release": "8.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "influxdb",
+      "label": "InfluxDB",
+      "release": "3.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.150",
+      "eolFrom": "2028-01-29"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.143",
+      "eolFrom": "2027-10-28"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.137",
+      "eolFrom": "2027-08-03"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.131",
+      "eolFrom": "2027-05-09"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.124",
+      "eolFrom": "2027-01-29"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.118",
+      "eolFrom": "2026-10-28"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.111",
+      "eolFrom": "2026-07-30"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.107",
+      "eolFrom": "2026-05-25"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.104",
+      "eolFrom": "2026-04-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.103",
+      "eolFrom": "2026-02-27"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.102",
+      "eolFrom": "2026-02-13"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.101",
+      "eolFrom": "2026-01-28"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.100",
+      "eolFrom": "2026-01-18"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.98",
+      "eolFrom": "2026-01-07"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.97",
+      "eolFrom": "2025-12-23"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.96",
+      "eolFrom": "2025-11-27"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.95",
+      "eolFrom": "2025-11-05"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.94",
+      "eolFrom": "2025-10-18"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.92",
+      "eolFrom": "2025-10-01"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.91",
+      "eolFrom": "2025-09-12"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.90",
+      "eolFrom": "2025-08-26"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.89",
+      "eolFrom": "2025-08-15"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.88",
+      "eolFrom": "2025-08-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.87",
+      "eolFrom": "2025-06-08"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.86",
+      "eolFrom": "2025-04-29"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.85",
+      "eolFrom": "2025-04-02"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.83",
+      "eolFrom": "2025-03-12"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.82",
+      "eolFrom": "2025-02-10"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.81",
+      "eolFrom": "2025-01-31"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.80",
+      "eolFrom": "2025-01-17"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.79",
+      "eolFrom": "2025-01-07"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.78",
+      "eolFrom": "2024-12-11"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.77",
+      "eolFrom": "2024-12-04"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.76",
+      "eolFrom": "2024-11-27"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.75",
+      "eolFrom": "2024-11-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "jfrog-xray",
+      "label": "JFrog Xray",
+      "release": "3.74",
+      "eolFrom": "2024-10-28"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "karpenter",
+      "label": "Karpenter",
+      "release": "1.15",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "karpenter",
+      "label": "Karpenter",
+      "release": "1.14",
+      "from": null,
+      "to": "2026-10-10"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "6.0",
+      "eolFrom": "2028-09-29"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.2",
+      "eolFrom": "2028-08-12"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.1",
+      "eolFrom": "2028-03-26"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "5.0",
+      "eolFrom": "2027-11-24"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.33",
+      "eolFrom": "2027-07-09"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.32",
+      "eolFrom": "2027-07-03"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.31",
+      "eolFrom": "2027-02-17"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.30",
+      "eolFrom": "2026-11-05"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "4.29",
+      "eolFrom": "2026-10-16"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "looker",
+      "label": "Looker",
+      "release": "26.20",
+      "eolFrom": "2026-12-31"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "metabase",
+      "label": "Metabase",
+      "release": "0.64",
+      "eolFrom": "2027-12-01"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "neos",
+      "label": "Neos",
+      "release": "9.2",
+      "eolFrom": "2028-10-01"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "9",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "8",
+      "eolFrom": "2025-02-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "7",
+      "eolFrom": "2023-11-23"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "6",
+      "eolFrom": "2023-04-13"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "5",
+      "eolFrom": "2021-10-07"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "4",
+      "eolFrom": "2021-02-25"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "3",
+      "eolFrom": "2019-01-10"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "2",
+      "eolFrom": "2018-04-13"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "pgadmin",
+      "label": "pgAdmin",
+      "release": "1",
+      "eolFrom": "2017-10-05"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "3.15",
+      "eolFrom": "2031-10-31"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "redmine",
+      "label": "Redmine",
+      "release": "3.4",
+      "eolFrom": "2020-04-06"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "redmine",
+      "label": "Redmine",
+      "release": "3.3",
+      "eolFrom": "2019-11-18"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "release-added",
+      "product": "sonarqube-community",
+      "label": "SonarQube Community Build",
+      "release": "26.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "sonarqube-community",
+      "label": "SonarQube Community Build",
+      "release": "26.9",
+      "from": null,
+      "to": "2026-10-12"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "13",
+      "from": "2028-11-01",
+      "to": "2028-11-30"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "support-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "13",
+      "from": "2028-11-01",
+      "to": "2028-11-30"
+    },
+    {
+      "detectedAt": "2026-10-13T13:33:44+00:00",
+      "type": "eol-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "12",
+      "from": "2027-02-01",
+      "to": "2027-02-28"
     }
   ]
 }
