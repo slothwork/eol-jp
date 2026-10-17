@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-10-14T04:52:55.278Z",
+  "updatedAt": "2026-10-17T04:24:47.530Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -4126,6 +4126,440 @@
         {
           "slug": "youtrack",
           "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-17T04:24:47.530Z-c21dda352ade",
+      "syncedAt": "2026-10-17T04:24:47.530Z",
+      "sourceGeneratedAt": "2026-10-17T03:16:32+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "0d6e65463decd209bb09686e3831c7ad7aa824e8b55e69959c7719c3862436f8",
+      "afterSha256": "c21dda352ade7cb5c70b37d1cfeee682b419caea87c950b70ef422749499111b",
+      "productCount": 485,
+      "releaseCount": 9200,
+      "changes": {
+        "total": 350,
+        "releaseAdded": 36,
+        "releaseRemoved": 0,
+        "eolChanged": 45,
+        "supportChanged": 40,
+        "latestChanged": 185,
+        "releaseMetadataChanged": 44,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "coldfusion",
+          "label": "Adobe ColdFusion"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "amazon-neptune",
+          "label": "Amazon Neptune"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "aws-lambda",
+          "label": "AWS Lambda"
+        },
+        {
+          "slug": "backdrop",
+          "label": "Backdrop"
+        },
+        {
+          "slug": "cakephp",
+          "label": "CakePHP"
+        },
+        {
+          "slug": "cfengine",
+          "label": "CFEngine"
+        },
+        {
+          "slug": "chef-inspec",
+          "label": "Chef InSpec"
+        },
+        {
+          "slug": "cilium",
+          "label": "Cilium"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cloud-sql-auth-proxy",
+          "label": "Cloud SQL Auth Proxy"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "cockroachdb",
+          "label": "CockroachDB"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "dbt-core",
+          "label": "dbt Core"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "duckdb",
+          "label": "DuckDB"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "emberjs",
+          "label": "Ember"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "erlang",
+          "label": "Erlang"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "grafana",
+          "label": "Grafana"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "grumphp",
+          "label": "GrumPHP"
+        },
+        {
+          "slug": "haproxy",
+          "label": "HAProxy"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "istio",
+          "label": "Istio"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "joomla",
+          "label": "Joomla!"
+        },
+        {
+          "slug": "julia",
+          "label": "Julia"
+        },
+        {
+          "slug": "kde-plasma",
+          "label": "KDE Plasma"
+        },
+        {
+          "slug": "keycloak",
+          "label": "Keycloak"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "lineageos",
+          "label": "LineageOS"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "liquibase-secure",
+          "label": "Liquibase Secure"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "dotnet",
+          "label": "Microsoft .NET"
+        },
+        {
+          "slug": "msexchange",
+          "label": "Microsoft Exchange"
+        },
+        {
+          "slug": "office",
+          "label": "Microsoft Office"
+        },
+        {
+          "slug": "powershell",
+          "label": "Microsoft PowerShell"
+        },
+        {
+          "slug": "sharepoint",
+          "label": "Microsoft SharePoint"
+        },
+        {
+          "slug": "mssqlserver",
+          "label": "Microsoft SQL Server"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "windows",
+          "label": "Microsoft Windows"
+        },
+        {
+          "slug": "windows-server",
+          "label": "Microsoft Windows Server"
+        },
+        {
+          "slug": "windows-server-core",
+          "label": "Microsoft Windows Server Core"
+        },
+        {
+          "slug": "mongodb",
+          "label": "MongoDB Server"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nextcloud",
+          "label": "Nextcloud"
+        },
+        {
+          "slug": "nginx",
+          "label": "nginx"
+        },
+        {
+          "slug": "nix",
+          "label": "nix"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "nura",
+          "label": "Nura"
+        },
+        {
+          "slug": "nutanix-prism",
+          "label": "Nutanix Prism Central"
+        },
+        {
+          "slug": "nuxt",
+          "label": "Nuxt"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "react",
+          "label": "React"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "rust",
+          "label": "Rust"
+        },
+        {
+          "slug": "samba",
+          "label": "Samba"
+        },
+        {
+          "slug": "sourcegraph",
+          "label": "Sourcegraph"
+        },
+        {
+          "slug": "sqlite",
+          "label": "SQLite"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "symfony",
+          "label": "Symfony"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
+        },
+        {
+          "slug": "tarteaucitron",
+          "label": "tarteaucitron"
+        },
+        {
+          "slug": "traefik",
+          "label": "Traefik"
+        },
+        {
+          "slug": "typo3",
+          "label": "TYPO3"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "vitess",
+          "label": "Vitess"
+        },
+        {
+          "slug": "vue",
+          "label": "Vue"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
+        },
+        {
+          "slug": "zabbix",
+          "label": "Zabbix"
         }
       ]
     }
