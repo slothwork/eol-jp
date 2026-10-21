@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-13T13:33:44+00:00",
+  "updatedAt": "2026-10-21T04:30:34+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -8839,6 +8839,1156 @@
       "release": "12",
       "from": "2027-02-01",
       "to": "2027-02-28"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "amazon-neptune",
+      "label": "Amazon Neptune",
+      "release": "1.5.0.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "apache-subversion",
+      "label": "Apache Subversion",
+      "release": "1.15",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "aws-lambda",
+      "label": "AWS Lambda",
+      "release": "nodejs22.x",
+      "from": "2027-07-01",
+      "to": "2027-08-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "cakephp",
+      "label": "CakePHP",
+      "release": "4.6",
+      "from": "2026-09-09",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "chrome",
+      "label": "Google Chrome",
+      "release": "156",
+      "eolFrom": "2026-11-03"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "duckdb",
+      "label": "DuckDB",
+      "release": "1.5",
+      "from": "2026-11-01",
+      "to": "2027-03-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "envoy",
+      "label": "Envoy",
+      "release": "1.40",
+      "eolFrom": "2027-10-13"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "forgejo",
+      "label": "Forgejo",
+      "release": "17.0",
+      "eolFrom": "2027-01-28"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "gitlab-runner",
+      "label": "GitLab Runner",
+      "release": "19.5",
+      "eolFrom": "2027-01-21"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "gitlab",
+      "label": "GitLab",
+      "release": "19.5",
+      "eolFrom": "2027-01-21"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "istio",
+      "label": "Istio",
+      "release": "1.29",
+      "from": "2026-10-31",
+      "to": "2026-10-15"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "kde-plasma",
+      "label": "KDE Plasma",
+      "release": "6.8",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "kde-plasma",
+      "label": "KDE Plasma",
+      "release": "6.7",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "kde-plasma",
+      "label": "KDE Plasma",
+      "release": "6.7",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "kuma",
+      "label": "Kuma",
+      "release": "3.0",
+      "eolFrom": "2027-10-15"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "lineageos",
+      "label": "LineageOS",
+      "release": "24.0",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "linux",
+      "label": "Linux Kernel",
+      "release": "7.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "26.7",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nexus",
+      "label": "Nexus Repository",
+      "release": "3.97",
+      "eolFrom": "2028-04-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.17",
+      "eolFrom": "2020-05-26"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.15",
+      "eolFrom": "2019-05-21"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.13",
+      "eolFrom": "2018-06-05"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.11",
+      "eolFrom": "2017-04-25"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.9",
+      "eolFrom": "2016-05-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.7",
+      "eolFrom": "2015-04-28"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.5",
+      "eolFrom": "2014-04-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.3",
+      "eolFrom": "2013-05-07"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nginx",
+      "label": "nginx",
+      "release": "1.1",
+      "eolFrom": "2012-05-15"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "nura",
+      "label": "Nura",
+      "release": "26.06",
+      "eolFrom": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1",
+      "from": null,
+      "to": "2027-01-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1-mini",
+      "from": null,
+      "to": "2027-01-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4.1-mini",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini",
+      "from": null,
+      "to": "2027-01-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o",
+      "from": "2026-10-23",
+      "to": "2027-01-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o",
+      "from": "2026-04-22",
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "openbsd",
+      "label": "OpenBSD",
+      "release": "8.0",
+      "eolFrom": "2027-11-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "openbsd",
+      "label": "OpenBSD",
+      "release": "7.8",
+      "from": "2026-11-01",
+      "to": "2026-10-20"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "rocket-chat",
+      "label": "Rocket.Chat",
+      "release": "8.9",
+      "eolFrom": "2027-10-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "ubuntu",
+      "label": "Ubuntu",
+      "release": "26.10",
+      "eolFrom": "2027-07-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.11",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.10",
+      "from": null,
+      "to": "2026-10-13"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "7.0",
+      "from": "2026-08-19",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "7.0",
+      "from": null,
+      "to": "2026-08-19"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.9",
+      "from": "2026-05-20",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.9",
+      "from": null,
+      "to": "2026-05-20"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.8",
+      "from": "2025-12-02",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.8",
+      "from": null,
+      "to": "2025-12-02"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.7",
+      "from": "2025-04-15",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.7",
+      "from": null,
+      "to": "2025-04-15"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.6",
+      "from": "2024-11-12",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.6",
+      "from": null,
+      "to": "2024-11-12"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.5",
+      "from": "2024-07-16",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.5",
+      "from": null,
+      "to": "2024-07-16"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.4",
+      "from": "2024-04-02",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.4",
+      "from": null,
+      "to": "2024-04-02"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.3",
+      "from": "2023-11-07",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.3",
+      "from": null,
+      "to": "2023-11-07"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.2",
+      "from": "2023-08-08",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.2",
+      "from": null,
+      "to": "2023-08-08"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.1",
+      "from": "2023-03-29",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.1",
+      "from": null,
+      "to": "2023-03-29"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.0",
+      "from": "2022-11-01",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "6.0",
+      "from": null,
+      "to": "2022-11-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.9",
+      "from": "2022-05-24",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.9",
+      "from": null,
+      "to": "2022-05-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.8",
+      "from": "2022-01-25",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.8",
+      "from": null,
+      "to": "2022-01-25"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.7",
+      "from": "2021-07-20",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.7",
+      "from": null,
+      "to": "2021-07-20"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.6",
+      "from": "2021-03-09",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.6",
+      "from": null,
+      "to": "2021-03-09"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.5",
+      "from": "2020-12-08",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.5",
+      "from": null,
+      "to": "2020-12-08"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.4",
+      "from": "2020-08-11",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.4",
+      "from": null,
+      "to": "2020-08-11"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.3",
+      "from": "2020-03-31",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.3",
+      "from": null,
+      "to": "2020-03-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.2",
+      "from": "2019-11-12",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.2",
+      "from": null,
+      "to": "2019-11-12"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.1",
+      "from": "2019-05-07",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.1",
+      "from": null,
+      "to": "2019-05-07"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.0",
+      "from": "2019-02-21",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "5.0",
+      "from": null,
+      "to": "2019-02-21"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.9",
+      "from": "2018-12-06",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.9",
+      "from": null,
+      "to": "2018-12-06"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.8",
+      "from": "2017-11-16",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.8",
+      "from": null,
+      "to": "2017-11-16"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.7",
+      "from": "2017-06-08",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.7",
+      "from": null,
+      "to": "2017-06-08"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.6",
+      "from": "2016-12-06",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.6",
+      "from": null,
+      "to": "2016-12-06"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.5",
+      "from": "2016-08-16",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.5",
+      "from": null,
+      "to": "2016-08-16"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.4",
+      "from": "2016-04-12",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.4",
+      "from": null,
+      "to": "2016-04-12"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.3",
+      "from": "2015-12-08",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.3",
+      "from": null,
+      "to": "2015-12-09"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.2",
+      "from": "2015-08-18",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.2",
+      "from": null,
+      "to": "2015-08-18"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.1",
+      "from": "2015-04-23",
+      "to": "2025-07-31"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.1",
+      "from": null,
+      "to": "2015-04-23"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.0",
+      "from": "2014-12-18",
+      "to": "2022-12-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "4.0",
+      "from": null,
+      "to": "2014-12-18"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.9",
+      "from": "2014-09-04",
+      "to": "2022-12-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.9",
+      "from": null,
+      "to": "2014-09-04"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.8",
+      "from": "2014-04-16",
+      "to": "2022-12-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.8",
+      "from": null,
+      "to": "2014-04-16"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.7",
+      "from": "2013-12-12",
+      "to": "2022-12-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.7",
+      "from": null,
+      "to": "2013-12-12"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "support-changed",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.6",
+      "from": null,
+      "to": "2013-10-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.5",
+      "eolFrom": "2013-08-01"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.4",
+      "eolFrom": "2012-12-11"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.3",
+      "eolFrom": "2012-06-13"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.2",
+      "eolFrom": "2011-12-12"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.1",
+      "eolFrom": "2011-07-04"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "3.0",
+      "eolFrom": "2011-02-23"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.9",
+      "eolFrom": "2010-06-17"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.8",
+      "eolFrom": "2009-12-18"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.7",
+      "eolFrom": "2009-09-10"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.6",
+      "eolFrom": "2008-12-10"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.5",
+      "eolFrom": "2008-07-14"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.3",
+      "eolFrom": "2008-03-29"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.2",
+      "eolFrom": "2007-09-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.1",
+      "eolFrom": "2007-09-24"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "2.0",
+      "eolFrom": "2007-08-05"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "1.5",
+      "eolFrom": "2005-12-26"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "1.2",
+      "eolFrom": "2005-02-17"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "1.0",
+      "eolFrom": "2004-05-22"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "0.72",
+      "eolFrom": "2004-01-03"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "release-added",
+      "product": "wordpress",
+      "label": "WordPress",
+      "release": "0.71",
+      "eolFrom": "2003-10-11"
+    },
+    {
+      "detectedAt": "2026-10-21T04:30:34+00:00",
+      "type": "eol-changed",
+      "product": "zabbix",
+      "label": "Zabbix",
+      "release": "7.4",
+      "from": "2026-12-31",
+      "to": "2027-03-31"
     }
   ]
 }
