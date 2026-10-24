@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-21T04:30:34+00:00",
+  "updatedAt": "2026-10-24T00:08:55+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -9989,6 +9989,64 @@
       "release": "7.4",
       "from": "2026-12-31",
       "to": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "eol-changed",
+      "product": "azure-database-for-postgresql",
+      "label": "Azure Database for PostgreSQL",
+      "release": "14",
+      "from": "2026-12-11",
+      "to": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "release-added",
+      "product": "duckdb",
+      "label": "DuckDB",
+      "release": "2.0",
+      "eolFrom": "2027-10-21"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "release-added",
+      "product": "electron",
+      "label": "Electron",
+      "release": "45",
+      "eolFrom": "2027-04-27"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "release-added",
+      "product": "mattermost",
+      "label": "Mattermost",
+      "release": "12.0",
+      "eolFrom": "2027-01-15"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "release-added",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.55",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "eol-changed",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.54",
+      "from": null,
+      "to": "2026-10-12"
+    },
+    {
+      "detectedAt": "2026-10-24T00:08:55+00:00",
+      "type": "release-added",
+      "product": "scala",
+      "label": "Scala",
+      "release": "3.10",
+      "eolFrom": null
     }
   ]
 }
