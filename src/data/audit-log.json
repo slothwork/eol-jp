@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-10-21T04:45:32.473Z",
+  "updatedAt": "2026-10-24T04:35:36.175Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -4708,6 +4708,400 @@
         {
           "slug": "zabbix",
           "label": "Zabbix"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-24T04:35:36.175Z-703f5e129e58",
+      "syncedAt": "2026-10-24T04:35:36.175Z",
+      "sourceGeneratedAt": "2026-10-24T00:08:55+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "6e1383453c263dcd2c59a49cc3b4d632e191e8717c891127f886387e24b235e7",
+      "afterSha256": "703f5e129e58a5bd2c4b52c1489a41ec14b447d8cf2d9cfd803ba1c51847cd03",
+      "productCount": 485,
+      "releaseCount": 9216,
+      "changes": {
+        "total": 221,
+        "releaseAdded": 5,
+        "releaseRemoved": 0,
+        "eolChanged": 2,
+        "supportChanged": 0,
+        "latestChanged": 195,
+        "releaseMetadataChanged": 19,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "alpine-linux",
+          "label": "Alpine Linux"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "apache-activemq",
+          "label": "Apache ActiveMQ Classic"
+        },
+        {
+          "slug": "apache-pulsar",
+          "label": "Apache Pulsar"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "argo-workflows",
+          "label": "Argo Workflows"
+        },
+        {
+          "slug": "artifactory",
+          "label": "Artifactory"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "azure-database-for-postgresql",
+          "label": "Azure Database for PostgreSQL"
+        },
+        {
+          "slug": "bazel",
+          "label": "Bazel"
+        },
+        {
+          "slug": "bellsoft-liberica",
+          "label": "Bellsoft Liberica JDK"
+        },
+        {
+          "slug": "bind-9",
+          "label": "BIND 9"
+        },
+        {
+          "slug": "blender",
+          "label": "Blender"
+        },
+        {
+          "slug": "bun",
+          "label": "Bun"
+        },
+        {
+          "slug": "cert-manager",
+          "label": "cert-manager"
+        },
+        {
+          "slug": "cfengine",
+          "label": "CFEngine"
+        },
+        {
+          "slug": "cilium",
+          "label": "Cilium"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cloud-sql-auth-proxy",
+          "label": "Cloud SQL Auth Proxy"
+        },
+        {
+          "slug": "cockroachdb",
+          "label": "CockroachDB"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "dapr",
+          "label": "Dapr"
+        },
+        {
+          "slug": "deno",
+          "label": "Deno"
+        },
+        {
+          "slug": "discourse",
+          "label": "Discourse"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "duckdb",
+          "label": "DuckDB"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "etcd",
+          "label": "etcd"
+        },
+        {
+          "slug": "external-dns",
+          "label": "ExternalDNS"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "harbor",
+          "label": "Harbor"
+        },
+        {
+          "slug": "hashicorp-packer",
+          "label": "Hashicorp Packer"
+        },
+        {
+          "slug": "terraform",
+          "label": "Hashicorp Terraform"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "istio",
+          "label": "Istio"
+        },
+        {
+          "slug": "karpenter",
+          "label": "Karpenter"
+        },
+        {
+          "slug": "kuma",
+          "label": "Kuma"
+        },
+        {
+          "slug": "kyverno",
+          "label": "Kyverno"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "matomo",
+          "label": "Matomo"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "microsoft-build-of-openjdk",
+          "label": "Microsoft Build of OpenJDK"
+        },
+        {
+          "slug": "powershell",
+          "label": "Microsoft PowerShell"
+        },
+        {
+          "slug": "mssqlserver",
+          "label": "Microsoft SQL Server"
+        },
+        {
+          "slug": "mysql",
+          "label": "MySQL"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nginx",
+          "label": "nginx"
+        },
+        {
+          "slug": "nix",
+          "label": "nix"
+        },
+        {
+          "slug": "nodejs",
+          "label": "Node.js"
+        },
+        {
+          "slug": "nvidia",
+          "label": "NVIDIA Driver"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "opensearch",
+          "label": "OpenSearch"
+        },
+        {
+          "slug": "openssl",
+          "label": "OpenSSL"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "php",
+          "label": "PHP"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "proxmox-backup-server",
+          "label": "Proxmox Backup Server"
+        },
+        {
+          "slug": "python",
+          "label": "Python"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "ruby",
+          "label": "Ruby"
+        },
+        {
+          "slug": "samba",
+          "label": "Samba"
+        },
+        {
+          "slug": "sapmachine",
+          "label": "SapMachine"
+        },
+        {
+          "slug": "scala",
+          "label": "Scala"
+        },
+        {
+          "slug": "sourcegraph",
+          "label": "Sourcegraph"
+        },
+        {
+          "slug": "spring-boot",
+          "label": "Spring Boot"
+        },
+        {
+          "slug": "spring-cloud",
+          "label": "Spring Cloud"
+        },
+        {
+          "slug": "spring-framework",
+          "label": "Spring Framework"
+        },
+        {
+          "slug": "spring-security",
+          "label": "Spring Security"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "tarantool",
+          "label": "Tarantool"
+        },
+        {
+          "slug": "typo3",
+          "label": "TYPO3"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
         }
       ]
     }
