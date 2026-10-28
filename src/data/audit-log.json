@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-10-24T04:35:36.175Z",
+  "updatedAt": "2026-10-28T05:41:45.866Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -5102,6 +5102,360 @@
         {
           "slug": "youtrack",
           "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-28T05:41:45.866Z-930918ee5480",
+      "syncedAt": "2026-10-28T05:41:45.866Z",
+      "sourceGeneratedAt": "2026-10-28T02:11:39+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "703f5e129e58a5bd2c4b52c1489a41ec14b447d8cf2d9cfd803ba1c51847cd03",
+      "afterSha256": "930918ee54800301166e69b5dbfa89943206e2a4e10ed8300d76b5655c06913b",
+      "productCount": 486,
+      "releaseCount": 9234,
+      "changes": {
+        "total": 208,
+        "releaseAdded": 18,
+        "releaseRemoved": 0,
+        "eolChanged": 10,
+        "supportChanged": 2,
+        "latestChanged": 165,
+        "releaseMetadataChanged": 13,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-corretto",
+          "label": "Amazon Corretto"
+        },
+        {
+          "slug": "amazon-opensearch",
+          "label": "Amazon OpenSearch"
+        },
+        {
+          "slug": "apache-camel",
+          "label": "Apache Camel"
+        },
+        {
+          "slug": "apache-pulsar",
+          "label": "Apache Pulsar"
+        },
+        {
+          "slug": "solr",
+          "label": "Apache Solr"
+        },
+        {
+          "slug": "apache-spark",
+          "label": "Apache Spark"
+        },
+        {
+          "slug": "ios",
+          "label": "Apple iOS"
+        },
+        {
+          "slug": "ipados",
+          "label": "Apple iPadOS"
+        },
+        {
+          "slug": "iphone",
+          "label": "Apple iPhone"
+        },
+        {
+          "slug": "macos",
+          "label": "Apple macOS"
+        },
+        {
+          "slug": "tvos",
+          "label": "Apple tvOS"
+        },
+        {
+          "slug": "visionos",
+          "label": "Apple visionOS"
+        },
+        {
+          "slug": "watchos",
+          "label": "Apple watchOS"
+        },
+        {
+          "slug": "arangodb",
+          "label": "ArangoDB"
+        },
+        {
+          "slug": "bellsoft-liberica",
+          "label": "Bellsoft Liberica JDK"
+        },
+        {
+          "slug": "calico",
+          "label": "Calico"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "dependency-track",
+          "label": "Dependency-Track"
+        },
+        {
+          "slug": "discourse",
+          "label": "Discourse"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "envoy",
+          "label": "Envoy"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "flux",
+          "label": "Flux"
+        },
+        {
+          "slug": "forgejo",
+          "label": "Forgejo"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "grafana",
+          "label": "Grafana"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "haproxy-ingress",
+          "label": "HAProxy Ingress"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "julia",
+          "label": "Julia"
+        },
+        {
+          "slug": "kde-plasma",
+          "label": "KDE Plasma"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "kubernetes",
+          "label": "Kubernetes"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "livewire",
+          "label": "Livewire"
+        },
+        {
+          "slug": "looker",
+          "label": "Looker"
+        },
+        {
+          "slug": "mautic",
+          "label": "Mautic"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "powershell",
+          "label": "Microsoft PowerShell"
+        },
+        {
+          "slug": "visual-studio",
+          "label": "Microsoft Visual Studio"
+        },
+        {
+          "slug": "mysql",
+          "label": "MySQL"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "nuxt",
+          "label": "Nuxt"
+        },
+        {
+          "slug": "horizon",
+          "label": "Omnissa Horizon"
+        },
+        {
+          "slug": "openbao",
+          "label": "OpenBao"
+        },
+        {
+          "slug": "openssl",
+          "label": "OpenSSL"
+        },
+        {
+          "slug": "oracle-jdk",
+          "label": "Oracle JDK"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "privatebin",
+          "label": "PrivateBin"
+        },
+        {
+          "slug": "proftpd",
+          "label": "ProFTPD"
+        },
+        {
+          "slug": "python",
+          "label": "Python"
+        },
+        {
+          "slug": "qt",
+          "label": "Qt"
+        },
+        {
+          "slug": "rabbitmq",
+          "label": "RabbitMQ"
+        },
+        {
+          "slug": "rancher",
+          "label": "Rancher"
+        },
+        {
+          "slug": "react-native",
+          "label": "React Native"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "redis",
+          "label": "Redis"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "salt",
+          "label": "Salt"
+        },
+        {
+          "slug": "sapmachine",
+          "label": "SapMachine"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "sonarqube-server",
+          "label": "SonarQube Server"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "svelte",
+          "label": "Svelte"
+        },
+        {
+          "slug": "umbraco",
+          "label": "Umbraco CMS"
+        },
+        {
+          "slug": "valkey",
+          "label": "Valkey"
+        },
+        {
+          "slug": "veeam-backup-and-replication",
+          "label": "Veeam Backup & Replication"
+        },
+        {
+          "slug": "veeam-backup-for-microsoft-365",
+          "label": "Veeam Backup for Microsoft 365"
+        },
+        {
+          "slug": "veeam-one",
+          "label": "Veeam ONE"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
+        },
+        {
+          "slug": "yocto",
+          "label": "Yocto Project"
         }
       ]
     }
