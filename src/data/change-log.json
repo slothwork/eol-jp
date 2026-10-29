@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-24T00:08:55+00:00",
+  "updatedAt": "2026-10-28T02:11:39+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -10047,6 +10047,258 @@
       "label": "Scala",
       "release": "3.10",
       "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "amazon-opensearch",
+      "label": "Amazon OpenSearch",
+      "release": "3.7",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "apache-camel",
+      "label": "Apache Camel",
+      "release": "4.23",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "centreon",
+      "label": "Centreon",
+      "release": "26.10",
+      "eolFrom": "2029-04-30"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "159",
+      "eolFrom": "2026-11-10"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "flux",
+      "label": "Flux",
+      "release": "2.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "flux",
+      "label": "Flux",
+      "release": "2.7",
+      "from": null,
+      "to": "2026-10-26"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "iphone",
+      "label": "Apple iPhone",
+      "release": "duo",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "livewire",
+      "label": "Livewire",
+      "release": "4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "livewire",
+      "label": "Livewire",
+      "release": "3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "livewire",
+      "label": "Livewire",
+      "release": "2",
+      "eolFrom": "2023-08-20"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "livewire",
+      "label": "Livewire",
+      "release": "1",
+      "eolFrom": "2020-09-08"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "looker",
+      "label": "Looker",
+      "release": "26.22",
+      "eolFrom": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.56",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.55",
+      "from": null,
+      "to": "2026-10-26"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "26.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "26.7",
+      "from": null,
+      "to": "2026-10-20"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "support-changed",
+      "product": "mysql",
+      "label": "MySQL",
+      "release": "26.7",
+      "from": null,
+      "to": "2026-10-20"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "15",
+      "from": "2026-10-21",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "openssl",
+      "label": "OpenSSL",
+      "release": "4.1",
+      "eolFrom": "2027-11-30"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "privatebin",
+      "label": "PrivateBin",
+      "release": "2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "privatebin",
+      "label": "PrivateBin",
+      "release": "2.0",
+      "from": null,
+      "to": "2026-10-18"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "rabbitmq",
+      "label": "RabbitMQ",
+      "release": "4.4",
+      "eolFrom": "2027-07-31"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "rabbitmq",
+      "label": "RabbitMQ",
+      "release": "4.3",
+      "from": null,
+      "to": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "rabbitmq",
+      "label": "RabbitMQ",
+      "release": "4.0",
+      "from": "2025-04-15",
+      "to": "2025-04-30"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "rabbitmq",
+      "label": "RabbitMQ",
+      "release": "3.13",
+      "from": "2024-09-17",
+      "to": "2024-09-30"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "rabbitmq",
+      "label": "RabbitMQ",
+      "release": "3.12",
+      "from": "2024-02-21",
+      "to": "2024-02-29"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "react-native",
+      "label": "React Native",
+      "release": "0.88",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "support-changed",
+      "product": "react-native",
+      "label": "React Native",
+      "release": "0.86",
+      "from": null,
+      "to": "2026-10-12"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "eol-changed",
+      "product": "react-native",
+      "label": "React Native",
+      "release": "0.85",
+      "from": null,
+      "to": "2026-10-12"
+    },
+    {
+      "detectedAt": "2026-10-28T02:11:39+00:00",
+      "type": "release-added",
+      "product": "yocto",
+      "label": "Yocto Project",
+      "release": "6.1",
+      "eolFrom": "2027-04-30"
     }
   ]
 }
