@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-10-28T02:11:39+00:00",
+  "updatedAt": "2026-10-31T00:09:04+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -10299,6 +10299,313 @@
       "label": "Yocto Project",
       "release": "6.1",
       "eolFrom": "2027-04-30"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "apache-activemq",
+      "label": "Apache ActiveMQ Classic",
+      "release": "6.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "apache-kafka",
+      "label": "Apache Kafka",
+      "release": "4.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "bitcoin-core",
+      "label": "Bitcoin Core",
+      "release": "29",
+      "from": null,
+      "to": "2026-10-27"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "clickhouse",
+      "label": "ClickHouse",
+      "release": "26.10",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "clickhouse",
+      "label": "ClickHouse",
+      "release": "26.7",
+      "from": null,
+      "to": "2026-10-24"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "consul",
+      "label": "Hashicorp Consul",
+      "release": "2.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "discourse",
+      "label": "Discourse",
+      "release": "2026.10",
+      "eolFrom": "2026-12-29"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.56",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.55",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.54",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.53",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.52",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.51",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.50",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.49",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.48",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.47",
+      "eolFrom": "2025-10-15"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.46",
+      "eolFrom": "2025-07-08"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.45",
+      "eolFrom": "2025-07-08"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.44",
+      "eolFrom": "2025-01-14"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "git",
+      "label": "Git",
+      "release": "2.43",
+      "eolFrom": "2025-01-14"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "grafana",
+      "label": "Grafana",
+      "release": "13.3",
+      "eolFrom": "2027-07-20"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "support-changed",
+      "product": "grafana",
+      "label": "Grafana",
+      "release": "13.2",
+      "from": null,
+      "to": "2026-10-20"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "graylog",
+      "label": "Graylog",
+      "release": "7.2",
+      "eolFrom": "2027-10-13"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "hashicorp-vault",
+      "label": "Hashicorp Vault",
+      "release": "2.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "hashicorp-vault",
+      "label": "Hashicorp Vault",
+      "release": "2.1",
+      "from": null,
+      "to": "2026-10-14"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "15",
+      "from": null,
+      "to": "2027-01-31"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "horizon",
+      "label": "Omnissa Horizon",
+      "release": "8.2609",
+      "eolFrom": "2029-10-22"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "openssl",
+      "label": "OpenSSL",
+      "release": "4.1",
+      "from": "2027-11-30",
+      "to": "2027-11-23"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "routeros",
+      "label": "RouterOS",
+      "release": "7.25",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "routeros",
+      "label": "RouterOS",
+      "release": "7.24",
+      "from": null,
+      "to": "2026-10-23"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "rtpengine",
+      "label": "rtpengine",
+      "release": "26.3",
+      "eolFrom": "2027-01-30"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "silverstripe",
+      "label": "Silverstripe CMS",
+      "release": "6.2",
+      "from": "2027-04-30",
+      "to": "2027-04-29"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "support-changed",
+      "product": "silverstripe",
+      "label": "Silverstripe CMS",
+      "release": "6.2",
+      "from": "2026-10-31",
+      "to": "2026-10-28"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "release-added",
+      "product": "terraform",
+      "label": "Hashicorp Terraform",
+      "release": "1.17",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "terraform",
+      "label": "Hashicorp Terraform",
+      "release": "1.15",
+      "from": null,
+      "to": "2026-10-21"
+    },
+    {
+      "detectedAt": "2026-10-31T00:09:04+00:00",
+      "type": "eol-changed",
+      "product": "vinyl-cache",
+      "label": "Vinyl Cache",
+      "release": "6.0",
+      "from": null,
+      "to": "2027-04-15"
     }
   ]
 }
