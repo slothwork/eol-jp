@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-03T01:24:18+00:00",
+  "updatedAt": "2026-11-07T02:38:40+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -11581,6 +11581,177 @@
       "label": "Wagtail",
       "release": "8.1",
       "eolFrom": "2027-05-04"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "ansible-core",
+      "label": "Ansible-core",
+      "release": "2.22",
+      "eolFrom": "2028-05-31"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "apache-airflow",
+      "label": "Apache Airflow",
+      "release": "3.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "apache-airflow",
+      "label": "Apache Airflow",
+      "release": "3.3",
+      "from": null,
+      "to": "2026-11-07"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "support-changed",
+      "product": "apache-airflow",
+      "label": "Apache Airflow",
+      "release": "3.3",
+      "from": null,
+      "to": "2026-11-07"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "apache-kafka",
+      "label": "Apache Kafka",
+      "release": "4.0",
+      "from": null,
+      "to": "2026-07-03"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "apache-kafka",
+      "label": "Apache Kafka",
+      "release": "3.9",
+      "from": null,
+      "to": "2026-07-03"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "argo-cd",
+      "label": "Argo CD",
+      "release": "3.6",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "argo-cd",
+      "label": "Argo CD",
+      "release": "3.3",
+      "from": null,
+      "to": "2026-11-04"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "chrome",
+      "label": "Google Chrome",
+      "release": "157",
+      "eolFrom": "2026-11-17"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "fedora",
+      "label": "Fedora Linux",
+      "release": "45",
+      "eolFrom": "2027-12-08"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "fedora",
+      "label": "Fedora Linux",
+      "release": "43",
+      "from": "2026-12-09",
+      "to": "2026-12-01"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "nvidia",
+      "label": "NVIDIA Driver",
+      "release": "r620-linux",
+      "eolFrom": "2029-11-04"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "nvidia",
+      "label": "NVIDIA Driver",
+      "release": "r620-windows",
+      "eolFrom": "2029-11-04"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-m04",
+      "from": "2026-11-03",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "samsung-mobile",
+      "label": "Samsung Mobile",
+      "release": "galaxy-a04e",
+      "from": "2026-11-03",
+      "to": null
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "sonarqube-community",
+      "label": "SonarQube Community Build",
+      "release": "26.11",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "sonarqube-community",
+      "label": "SonarQube Community Build",
+      "release": "26.10",
+      "from": null,
+      "to": "2026-11-04"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "release-added",
+      "product": "zabbix",
+      "label": "Zabbix",
+      "release": "8.0",
+      "eolFrom": "2031-11-30"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "eol-changed",
+      "product": "zabbix",
+      "label": "Zabbix",
+      "release": "7.4",
+      "from": "2027-03-31",
+      "to": "2027-05-31"
+    },
+    {
+      "detectedAt": "2026-11-07T02:38:40+00:00",
+      "type": "support-changed",
+      "product": "zabbix",
+      "label": "Zabbix",
+      "release": "7.4",
+      "from": null,
+      "to": "2026-11-12"
     }
   ]
 }
