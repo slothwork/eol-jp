@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-03T06:46:12.213Z",
+  "updatedAt": "2026-11-09T06:26:00.969Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -6026,6 +6026,460 @@
         {
           "slug": "youtrack",
           "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-09T06:26:00.969Z-224e542d2843",
+      "syncedAt": "2026-11-09T06:26:00.969Z",
+      "sourceGeneratedAt": "2026-11-09T00:10:09+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "9427c4c09a90f55d1abc8c8bfac5ee18ab3bc7266821e4236b1ad277fb7a9c09",
+      "afterSha256": "224e542d28433cf0f8084595ef5de23ffb78c3dc5aefd53a3c4e147e149610a0",
+      "productCount": 489,
+      "releaseCount": 9375,
+      "changes": {
+        "total": 212,
+        "releaseAdded": 10,
+        "releaseRemoved": 0,
+        "eolChanged": 11,
+        "supportChanged": 2,
+        "latestChanged": 169,
+        "releaseMetadataChanged": 17,
+        "productMetadataChanged": 3
+      },
+      "affectedProducts": [
+        {
+          "slug": "alpine-linux",
+          "label": "Alpine Linux"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "ansible",
+          "label": "Ansible"
+        },
+        {
+          "slug": "ansible-core",
+          "label": "Ansible-core"
+        },
+        {
+          "slug": "apache-airflow",
+          "label": "Apache Airflow"
+        },
+        {
+          "slug": "apache-http-server",
+          "label": "Apache HTTP Server"
+        },
+        {
+          "slug": "apache-kafka",
+          "label": "Apache Kafka"
+        },
+        {
+          "slug": "apache-struts",
+          "label": "Apache Struts"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "arangodb",
+          "label": "ArangoDB"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "artifactory",
+          "label": "Artifactory"
+        },
+        {
+          "slug": "bamboo",
+          "label": "Bamboo"
+        },
+        {
+          "slug": "bazel",
+          "label": "Bazel"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "bitbucket",
+          "label": "Bitbucket"
+        },
+        {
+          "slug": "caddy",
+          "label": "Caddy"
+        },
+        {
+          "slug": "ceph",
+          "label": "Ceph"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "cockroachdb",
+          "label": "CockroachDB"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "commvault",
+          "label": "Commvault"
+        },
+        {
+          "slug": "confluence",
+          "label": "Confluence"
+        },
+        {
+          "slug": "containerd",
+          "label": "containerd"
+        },
+        {
+          "slug": "contao",
+          "label": "Contao"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "dbt-core",
+          "label": "dbt Core"
+        },
+        {
+          "slug": "django",
+          "label": "Django"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "fedora",
+          "label": "Fedora Linux"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "freedesktop-sdk",
+          "label": "Freedesktop SDK"
+        },
+        {
+          "slug": "gerrit",
+          "label": "Gerrit"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "chrome",
+          "label": "Google Chrome"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "graalvm-ce",
+          "label": "GraalVM Community Edition"
+        },
+        {
+          "slug": "gradle",
+          "label": "Gradle"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "graylog",
+          "label": "Graylog"
+        },
+        {
+          "slug": "greenlight",
+          "label": "Greenlight"
+        },
+        {
+          "slug": "gstreamer",
+          "label": "GStreamer"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "istio",
+          "label": "Istio"
+        },
+        {
+          "slug": "jaeger",
+          "label": "Jaeger"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "jira-software",
+          "label": "Jira Software"
+        },
+        {
+          "slug": "jruby",
+          "label": "JRuby"
+        },
+        {
+          "slug": "kde-plasma",
+          "label": "KDE Plasma"
+        },
+        {
+          "slug": "keycloak",
+          "label": "Keycloak"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "knative",
+          "label": "Knative"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "liquibase-secure",
+          "label": "Liquibase Secure"
+        },
+        {
+          "slug": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "metallb",
+          "label": "MetalLB"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "microsoft-build-of-openjdk",
+          "label": "Microsoft Build of OpenJDK"
+        },
+        {
+          "slug": "neo4j",
+          "label": "Neo4j"
+        },
+        {
+          "slug": "nestjs",
+          "label": "NestJS"
+        },
+        {
+          "slug": "netbsd",
+          "label": "NetBSD"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nexus",
+          "label": "Nexus Repository"
+        },
+        {
+          "slug": "nix",
+          "label": "nix"
+        },
+        {
+          "slug": "notepad-plus-plus",
+          "label": "Notepad++"
+        },
+        {
+          "slug": "nutanix-aos",
+          "label": "Nutanix AOS"
+        },
+        {
+          "slug": "nvidia",
+          "label": "NVIDIA Driver"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "openvpn",
+          "label": "OpenVPN"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "pgadmin",
+          "label": "pgAdmin"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "privatebin",
+          "label": "PrivateBin"
+        },
+        {
+          "slug": "prometheus",
+          "label": "Prometheus"
+        },
+        {
+          "slug": "proxmox-backup-server",
+          "label": "Proxmox Backup Server"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "rocky-linux",
+          "label": "Rocky Linux"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "rails",
+          "label": "Ruby on Rails"
+        },
+        {
+          "slug": "samsung-mobile",
+          "label": "Samsung Mobile"
+        },
+        {
+          "slug": "sonarqube-community",
+          "label": "SonarQube Community Build"
+        },
+        {
+          "slug": "sonarqube-server",
+          "label": "SonarQube Server"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "symfony",
+          "label": "Symfony"
+        },
+        {
+          "slug": "tailwind-css",
+          "label": "Tailwind CSS"
+        },
+        {
+          "slug": "truenas",
+          "label": "TrueNAS"
+        },
+        {
+          "slug": "umbraco",
+          "label": "Umbraco CMS"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "unrealircd",
+          "label": "UnrealIRCd"
+        },
+        {
+          "slug": "vitess",
+          "label": "Vitess"
+        },
+        {
+          "slug": "vue",
+          "label": "Vue"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
+        },
+        {
+          "slug": "weechat",
+          "label": "WeeChat"
+        },
+        {
+          "slug": "zabbix",
+          "label": "Zabbix"
         }
       ]
     }
