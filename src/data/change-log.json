@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-09T00:10:09+00:00",
+  "updatedAt": "2026-11-13T00:09:58+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -11778,6 +11778,152 @@
       "release": "7.4",
       "from": null,
       "to": "2026-11-12"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "support-changed",
+      "product": "aws-lambda",
+      "label": "AWS Lambda",
+      "release": "nodejs22.x",
+      "from": "2027-04-30",
+      "to": "2027-05-30"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "bamboo",
+      "label": "Bamboo",
+      "release": "13.0",
+      "eolFrom": "2028-11-05"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "blender",
+      "label": "Blender",
+      "release": "5.3",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "support-changed",
+      "product": "blender",
+      "label": "Blender",
+      "release": "4.5",
+      "from": "2025-11-11",
+      "to": "2025-11-18"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "dotnet",
+      "label": "Microsoft .NET",
+      "release": "11",
+      "eolFrom": "2028-11-14"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "160",
+      "eolFrom": "2026-11-24"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "istio",
+      "label": "Istio",
+      "release": "1.31",
+      "from": "2027-02-28",
+      "to": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "istio",
+      "label": "Istio",
+      "release": "1.30",
+      "from": "2026-12-31",
+      "to": "2026-12-16"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "6.0",
+      "from": "2028-09-29",
+      "to": "2028-11-03"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "nexus",
+      "label": "Nexus Repository",
+      "release": "3.98",
+      "eolFrom": "2028-05-03"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2",
+      "from": null,
+      "to": "2027-02-10"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2",
+      "from": null,
+      "to": "2026-11-10"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "powershell",
+      "label": "Microsoft PowerShell",
+      "release": "7.7",
+      "eolFrom": "2028-11-14"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.3",
+      "from": null,
+      "to": "2027-12-31"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "support-changed",
+      "product": "sylius",
+      "label": "Sylius",
+      "release": "2.3",
+      "from": null,
+      "to": "2027-06-30"
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "release-added",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-13T00:09:58+00:00",
+      "type": "eol-changed",
+      "product": "visual-studio",
+      "label": "Microsoft Visual Studio",
+      "release": "18.11",
+      "from": null,
+      "to": "2028-11-14"
     }
   ]
 }
