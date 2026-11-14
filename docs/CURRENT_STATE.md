@@ -1,6 +1,6 @@
 # 現在の状態
 
-最終更新: 2026-09-28
+最終更新: 2026-11-14
 
 この文書は履歴保管ではなく、プロジェクトの「今」を短時間で把握するために使う。目的・制約は `docs/PROJECT.md`、重要な判断理由は `docs/DECISIONS.md`、中期計画は `ROADMAP.md` を参照する。
 
@@ -37,6 +37,8 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 ## 直近の検証結果
 
+2026-11-14時点で、mainのCIはPR #125 / #126マージ後にPASS、定期EOL同期も成功。URL検査では未登録問題が継続しているが、全ページに及ぶ技術的ブロックは確認されていない。検索流入の観測・改善判断は依然としてGrowth gate中。
+
 `PASS` — 初回Design Refinementは完了。PR #97〜#101では、既存のResponsive / Accessibility / Astro check / production build / Performance budget / browser smoke / SEO等の品質gateを維持したまま改善を行った。
 
 特にPR #98では、global token化を広げすぎた段階でCSS Performance budget超過を検出した。budgetを緩和せず、Component内で完結するVisual valueをlocalへ戻し、Theme全体・複数Component・Domain meaningとの境界に関係する値だけをglobal semantic tokenとして残すことでPASSへ戻した。この結果を `docs/DESIGN.md` に反映済み。
@@ -47,7 +49,17 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 
 ## 本番確認・公開後の判断
 
-`未判定` — Growth gateは継続する。
+`未判定` — Growth gateは継続する。技術的なindex可否と、Googleが実際にindexするかは区別する。
+
+2026-11-14の再調査結果（Google Search Console `sc-domain:eol.slothwright.com` の実データ）:
+
+- URL検査を主要20 URLに実施。標本内の登録済みは0件。内訳は「クロール済み - インデックス未登録」14件、「URL が Google に認識されていません」6件。**これはサイト全体の登録件数を意味しない**。
+- クロール済み14件はGoogleの保存済み検査結果で、当時の取得は成功、robots / index許可、Google選択canonicalとユーザー指定canonicalは一致。最終クロール日時は2026-09-04〜09-29の範囲。現在のGooglebotによる取得成功を保証するデータではない。
+- 検査対象にはトップ、製品一覧、最新リリース、期限一覧、カレンダー、変更履歴、Node.js / Python / PHP / Ubuntu / PostgreSQL / Windows / Kubernetes / Docker Engine等の製品詳細を含む。未認識の例: マイEOL、公式ソース照合、MySQL、Redis、nginx、.NET。
+- 検索パフォーマンスは2026-08-11〜11-11のページ別・クエリ別で該当行が0。直近28日（取得対象2026-10-15〜11-11）の日別応答27行（10月15日〜11月10日）はクリック・表示回数とも0。表示回数0をサイト全体の未登録件数の根拠にはしない。
+- 2026-11-14の外部クローラーによる50ページ限定の本番監査では50件すべてHTTP 200。欠落title / H1、canonical競合、内部リンク切れの指摘なし。指摘はmeta descriptionが短い36ページ、トップtitleが短い1ページ（いずれも情報レベル）と50ページ上限。これはGooglebotのライブ取得を代替せず、短いメタ情報が未登録の原因と判断する証拠もない。
+- ソース上の `public/robots.txt` は `Allow: /` と正しいsitemap URLを案内し、`astro.config.mjs` は本番originと静的出力を指定。代表ページには固有の見出し、バージョン一覧、移行・公式情報への導線がある。現時点で根拠のない一括title / description変更、無差別noindex化、ページ削除は行わない。
+- Search Consoleの**「ページのインデックス登録」レポートの登録件数・未登録理由別件数**と代表URLの**「公開URLをテスト」**は今回未取得。現状の主要ブロッカーとして [Issue #129](https://github.com/slothwork/eol-jp/issues/129) で追跡する。
 
 2026-09-26の再調査結果:
 
@@ -65,18 +77,18 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 
 ## 作業中のこと
 
-- 最新の「ページのインデックス登録」と主要URL検査の結果を取得し、未登録理由を切り分ける。
+- [Issue #129](https://github.com/slothwork/eol-jp/issues/129) に沿って、Search Consoleのページ登録レポートと代表URLの公開URLテストを取得し、Google側の未登録理由を切り分ける。
 - 日次EOLデータ同期・snapshot鮮度・手動レビュー鮮度の既存運用を継続する。
 
 ## 次に行うこと
 
-1. **現在の未登録理由を確認する** — ページ登録レポートの理由別件数と、ホーム・Node.jsのURL検査（最終クロール、取得結果、登録許可、ユーザー指定／Google選択canonical、公開URLテスト）を確認する。
-2. **原因に対応する最小修正を行う** — 取得失敗なら配信設定、重複なら正規化を調査。取得・正規化が正常でクロール済み未登録が継続していれば、対象3〜5ページの独自情報・検索意図への回答性を監査し、根拠のある不足だけを改善する。表示回数がないことを理由に原因調査まで停止しない。
-3. **結果を観測する** — 修正後の公開URLテストと必要な代表URLの登録リクエストを行い、URL検査・ページ登録レポート・検索表示を同じ対象で追う。大量再送信や連日の推測SEO変更は行わない。
+1. **登録理由と現在の取得可否を確定する** — Search Consoleのページ登録レポートの更新日・登録件数・理由別件数とsitemap取得状態を確認。ホーム、Node.js、Python、マイEOLに公開URLテストを実施し、保存済みURL検査と区別する。
+2. **原因に合う最小修正だけを実施する** — 現在の取得失敗ならCloudflare配信・WAF等、canonicalが不一致なら正規化を調査。Googleの取得・正規化が正常ならホーム、Node.js、Python、PHP、Ubuntuの5ページで検索意図・独自性・公式資料・重複をレビューし、根拠がある不足のみ修正する。情報不足の判断なしに一括メタ情報変更は行わない。
+3. **同じ対象で再観測する** — 必要な代表URLのみ登録リクエストし、2〜4週間程度の間隔でURL検査・ページ登録レポート・検索表示を比較する。Phase 7のクエリ別CTR施策は検索実データが出てから判断する。
 
 ## ブロッカー・重要リスク
 
-- 現在のURL検査・ページ登録レポートが未取得。過去の未登録状態や廃止API指標を現在のサイト全体の状態として扱わない。
+- URL検査は2026-11-14に取得済みだが、ページ登録レポート（理由別件数）と公開URLテストは未取得。保存済みクロール日時を現在の取得状態と混同しない。
 - インデックス反映待ちの段階で大規模なSEO変更を重ねると、何が効いたか比較できなくなる
 - 文書パスが将来build / test入力になる場合は、同じ変更でCI分類を再検討する
 - 新しいプロセス文書やCIロジックを増やしすぎて、管理負荷を実開発より重くしないこと
@@ -84,6 +96,7 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 
 ## 関連するPull Request / Issue
 
+- [Issue #129](https://github.com/slothwork/eol-jp/issues/129) — Search Consoleの理由別件数・公開URLテストで未登録原因を特定。対応中
 - [PR #90](https://github.com/slothwork/eol-jp/pull/90) — 企画・判断・現在地の整理。マージ済み
 - [PR #91](https://github.com/slothwork/eol-jp/pull/91) — 文書専用変更のCI軽量化。マージ済み
 - [PR #92](https://github.com/slothwork/eol-jp/pull/92) — 標準化の振り返りと文書専用軽量CIの実案件確認。マージ済み
