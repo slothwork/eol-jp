@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-13T00:09:58+00:00",
+  "updatedAt": "2026-11-18T09:37:30+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -11924,6 +11924,410 @@
       "release": "18.11",
       "from": null,
       "to": "2028-11-14"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-mythos-5-2",
+      "eolFrom": "2027-11-09"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-fable-5-2",
+      "eolFrom": "2027-11-09"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.20",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.19",
+      "from": null,
+      "to": "2026-11-11"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "cfengine",
+      "label": "CFEngine",
+      "release": "3.29",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "cfengine",
+      "label": "CFEngine",
+      "release": "3.28",
+      "from": null,
+      "to": "2026-11-06"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.23",
+      "eolFrom": "2024-03-19"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.22",
+      "eolFrom": "2023-10-15"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.21",
+      "eolFrom": "2023-04-04"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.20",
+      "eolFrom": "2022-11-17"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.19",
+      "eolFrom": "2022-05-22"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.18",
+      "eolFrom": "2021-10-13"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "geoserver",
+      "label": "GeoServer",
+      "release": "2.17",
+      "eolFrom": "2021-03-18"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "gerrit",
+      "label": "Gerrit",
+      "release": "3.15",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "gerrit",
+      "label": "Gerrit",
+      "release": "3.12",
+      "from": null,
+      "to": "2026-11-14"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.9",
+      "eolFrom": "2018-08-24"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.8",
+      "eolFrom": "2018-02-16"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.7",
+      "eolFrom": "2017-08-24"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.6",
+      "eolFrom": "2017-02-16"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.5",
+      "eolFrom": "2016-08-15"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.4",
+      "eolFrom": "2016-02-17"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.3",
+      "eolFrom": "2015-08-19"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "go",
+      "label": "Go",
+      "release": "1.2",
+      "eolFrom": "2014-12-10"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "google-kubernetes-engine",
+      "label": "Google Kubernetes Engine",
+      "release": "1.34",
+      "from": "2026-10-01",
+      "to": "2027-01-25"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "support-changed",
+      "product": "google-kubernetes-engine",
+      "label": "Google Kubernetes Engine",
+      "release": "1.34",
+      "from": "2026-08-30",
+      "to": "2026-11-30"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "google-kubernetes-engine",
+      "label": "Google Kubernetes Engine",
+      "release": "1.33",
+      "from": "2026-08-03",
+      "to": "2026-08-12"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "google-kubernetes-engine",
+      "label": "Google Kubernetes Engine",
+      "release": "1.32",
+      "from": "2026-04-11",
+      "to": "2026-04-27"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "graylog",
+      "label": "Graylog",
+      "release": "6.0",
+      "from": "2025-05-08",
+      "to": "2025-05-07"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "support-changed",
+      "product": "nestjs",
+      "label": "NestJS",
+      "release": "10",
+      "from": "2025-01-20",
+      "to": "2025-01-16"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "nestjs",
+      "label": "NestJS",
+      "release": "6",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-transcribe",
+      "from": "2027-02-26",
+      "to": "2027-01-20"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "support-changed",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-4o-mini-transcribe",
+      "from": "2026-08-26",
+      "to": "2026-07-20"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.24",
+      "eolFrom": "2019-05-09"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.22",
+      "eolFrom": "2018-06-01"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.20",
+      "eolFrom": "2017-05-27"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.18",
+      "eolFrom": "2016-05-18"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.16",
+      "eolFrom": "2015-05-20"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.14",
+      "eolFrom": "2014-05-14"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.12",
+      "eolFrom": "2013-04-12"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.10",
+      "eolFrom": "2011-05-14"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "perl",
+      "label": "Perl",
+      "release": "5.8",
+      "eolFrom": "2008-12-14"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "2.5",
+      "eolFrom": "2011-05-26"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "2.4",
+      "eolFrom": "2008-12-19"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "2.3",
+      "eolFrom": "2008-03-11"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "2.2",
+      "eolFrom": "2003-05-30"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "python",
+      "label": "Python",
+      "release": "2.1",
+      "eolFrom": "2002-04-09"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "ruby",
+      "label": "Ruby",
+      "release": "1.8",
+      "eolFrom": "2013-06-30"
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "release-added",
+      "product": "rust",
+      "label": "Rust",
+      "release": "1.100",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-18T09:37:30+00:00",
+      "type": "eol-changed",
+      "product": "rust",
+      "label": "Rust",
+      "release": "1.99",
+      "from": null,
+      "to": "2026-11-12"
     }
   ]
 }

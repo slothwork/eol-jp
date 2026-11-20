@@ -5,9 +5,9 @@ on:
     - cron: '15 0 * * *'
   workflow_dispatch:
 
+# PR作成とpushはCIを自動起動できる専用PATで実施する。
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: sync-eol-data
@@ -16,11 +16,28 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout main
+      - name: Verify automation token
+        env:
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::EOL_AUTOMATION_TOKENが未設定です。ContentsとPull requestsのRead/Writeを持つfine-grained PATを登録してください。"
+            exit 1
+          fi
+          if ! gh api "repos/$GITHUB_REPOSITORY" --jq '.full_name' >/dev/null; then
+            echo "::error::EOL_AUTOMATION_TOKENの認証に失敗しました。期限とリポジトリ権限を確認してください。"
+            exit 1
+          fi
+
+      - name: Checkout main with automation token
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: main
+          fetch-depth: 0
+          token: ${{ secrets.EOL_AUTOMATION_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -30,9 +47,13 @@ jobs:
       - name: Fetch endoflife.date data
         run: node scripts/sync-eol.mjs
 
+      - name: Validate incoming data before commit
+        run: node scripts/validate-eol-sync.mjs
+
       - name: Detect changes
         id: changes
         run: |
+          set -euo pipefail
           if git diff --quiet -- src/data/eol-snapshot.json src/data/change-log.json src/data/audit-log.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No EOL data changes"
@@ -40,29 +61,34 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit and push sync branch
+      - name: Commit and safely update data branch
         if: steps.changes.outputs.changed == 'true'
         run: |
+          set -euo pipefail
           git config user.name "eol-jp-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 他の更新でbranchが動いていた場合はpushを拒否する。
+          git fetch origin "+refs/heads/chore/eol-data-sync:refs/remotes/origin/chore/eol-data-sync" || true
           git checkout -B chore/eol-data-sync
           git add src/data/eol-snapshot.json src/data/change-log.json src/data/audit-log.json
           git commit -m "chore(data): sync endoflife.date"
-          git push --force origin HEAD:chore/eol-data-sync
+          git push --force-with-lease origin HEAD:refs/heads/chore/eol-data-sync
 
-      - name: Create pull request if needed
+      - name: Create or update data-only PR
         if: steps.changes.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
         run: |
+          set -euo pipefail
           existing_pr="$(gh pr list --base main --head chore/eol-data-sync --state open --json number --jq '.[0].number // empty')"
           if [ -n "$existing_pr" ]; then
-            echo "Updated existing PR #$existing_pr"
+            echo "既存のデータ更新PR #$existing_pr を更新しました。"
             exit 0
           fi
 
           gh pr create \
             --base main \
             --head chore/eol-data-sync \
-            --title "chore(data): sync endoflife.date" \
-            --body "Automated EOL data refresh from endoflife.date. CI must pass before this PR is merged."
+            --title "chore(data): endoflife.dateの情報を自動更新" \
+            --body "endoflife.date API v1由来の3ファイルのみを更新します。データ安全性チェック、フルCI、Cloudflareビルドがすべて成功した場合にのみ専用workflowが自動マージします。問題があればマージせず担当者が調査します。"

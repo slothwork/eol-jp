@@ -1,6 +1,6 @@
 # Operations Runbook
 
-最終更新: 2026-09-06
+最終更新: 2026-11-21
 
 ## 目的
 
@@ -211,19 +211,31 @@ API仕様変更の可能性がある。
 
 ### branch push / PR作成失敗
 
-`Sync EOL data` はGitHub Actionsのrepository tokenで `chore/eol-data-sync` を更新する。
+`Sync EOL data` は `EOL_AUTOMATION_TOKEN`（対象リポジトリに限定したfine-grained PAT）で `chore/eol-data-sync` を更新・PR作成する。標準 `GITHUB_TOKEN` でPRを作るとCIが承認待ちになるため、代用しない。
 
-- workflow permissionsが `contents: write`, `pull-requests: write` のままか確認。
-- repository settings変更でGitHub Actionsの書込権限が制限されていないか確認。
+- PATの有効期限と `Contents: Read and write` / `Pull requests: Read and write` を確認する。
+- 2026-11-16にはランキング同期のcheckoutで `fatal: could not read Username` が発生。secretが設定済みでもPATが失効・無効ならGit取得に失敗する。
+- GitHubの `Settings > Secrets and variables > Actions` で `EOL_AUTOMATION_TOKEN` を更新する。トークンの値をログ、Issue、チャットへ貼らない。
+- 設定後、`Sync EOL data` を `Run workflow` で実行。更新PRに `CI` が自動起動することを確認する。
 
-### 同期PRのCI失敗
+### 同期データの安全性検証に失敗
 
-同期PRを無理にmergeしない。
+`scripts/validate-eol-sync.mjs` は候補とmainのsnapshotを比較する。大量の製品・リリース削除、日付変更、schema version変更、重複、古い取得日時などを検知すると公開しない。
+
+- API側の仕様変更か一時障害かを一次データで確かめる。
+- 正当な変更でも、自動マージが止まった場合は影響する製品やEOL日を確認する。
+- **失敗したからという理由で閾値を緩めたり、異常データを本番へ直接書き込まない**。必要なら原因に応じた修正PR・テストを作成する。
+
+### 同期PRのCI / Cloudflareビルド / 自動マージ失敗
+
+同期PRを無理にmergeしない。`Auto-merge verified EOL data` が成功する条件は、PRの変更が指定データ3ファイルだけ、フルCI成功、Cloudflareビルド成功、最新mainに追従していること。いずれか失敗・未確認なら自動マージを停止する。
 
 最低限確認:
 
 ```bash
 npm run test:eol-audit
+npm run test:eol-sync-safety
+npm run check:eol-sync-safety
 npm run check:snapshot-freshness
 npm run check
 npm run build
@@ -233,11 +245,12 @@ CI上では全テスト、Browser smoke、SEO validationまで通してからmer
 
 ### 復旧確認
 
-1. `Sync EOL data` が成功。
-2. `chore/eol-data-sync` PRの差分を確認。
-3. CI成功後にmerge。
-4. mainの `src/data/eol-snapshot.json` の `generatedAt` が更新されたことを確認。
+1. 有効な `EOL_AUTOMATION_TOKEN` を確認後、`Sync EOL data` を手動実行して成功。
+2. `chore/eol-data-sync` PRが作成・更新され、PRの `CI` が承認待ちにならず自動成功。
+3. `Workers Builds: eol-jp` と `Auto-merge verified EOL data` が成功し、PRがsquash mergeされたことを確認。
+4. mainの `src/data/eol-snapshot.json` の `generatedAt` が更新されたことと、main CI・Cloudflare本番デプロイを確認。
 5. `Check EOL snapshot freshness` を手動実行して成功することを確認。
+6. 自動マージが失敗した場合はPRを残したまま原因を調査し、問題を修正する。コード・手動レビュー情報は自動化の対象外。
 
 ---
 
@@ -264,7 +277,7 @@ npm run check:snapshot-freshness
 ### 復旧
 
 1. Openな `chore/eol-data-sync` PRがあるか確認。
-2. PRが正常でCI成功済みならmerge。
+2. PRが残っている場合は、フルCI・Cloudflareビルド・自動マージworkflowの結果を確認する。安全チェックや認証に失敗している場合は原因を解消してから再同期する。
 3. PRが無い場合は `Sync EOL data` をmanual dispatch。
 4. Workflow失敗ならRunbook Bへ進む。
 5. `generatedAt` だけを手作業で現在時刻へ変更してfresh扱いにしない。
@@ -808,7 +821,7 @@ Issue等へ残す場合も秘密情報は含めない。
 
 ### 毎日
 
-- `Sync EOL data` の成功確認。異常時は通知/Actions画面で確認。
+- `Sync EOL data`、`Auto-merge verified EOL data` の成功とmain反映を確認。異常時は通知/Actions画面で確認。
 - `Check EOL snapshot freshness` が失敗していないこと。
 - 通知Cronに継続的なエラーがないことを、障害兆候がある場合に確認。
 
