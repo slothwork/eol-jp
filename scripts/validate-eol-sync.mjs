@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 
 const SNAPSHOT_PATH = 'src/data/eol-snapshot.json';
 const SOURCE_URL = 'https://endoflife.date/api/v1/products/full';
@@ -70,7 +70,6 @@ export function validateEolSnapshot(previous, next, now = new Date()) {
     if (newReleaseCount > oldReleaseCount * 1.3) errors.push('リリース数が30%以上増加しています');
   }
 
-  const oldProducts = new Map(previous.products.map((product) => [product.slug, product]));
   let removedProducts = 0;
   let removedReleases = 0;
   let changedEol = 0;
@@ -119,7 +118,7 @@ async function main() {
   const argument = process.argv.find((item) => item.startsWith('--base-ref='));
   const baseRef = argument ? argument.slice('--base-ref='.length) : 'HEAD';
   if (!/^[a-zA-Z0-9_./-]+$/.test(baseRef)) throw new Error('base-refが不正です');
-  const baseline = JSON.parse(execFileSync('git', ['show', baseRef + ':' + SNAPSHOT_PATH], { encoding: 'utf8' }));
+  const baseline = JSON.parse(execFileSync('git', ['show', baseRef + ':' + SNAPSHOT_PATH], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }));
   const next = JSON.parse(await readFile(resolve(SNAPSHOT_PATH), 'utf8'));
   const result = validateEolSnapshot(baseline, next);
   console.log('EOL同期データ検証: ' + JSON.stringify(result.metrics));
