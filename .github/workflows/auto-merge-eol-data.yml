@@ -32,14 +32,15 @@ jobs:
       - name: Verify exact PR, head SHA, files, and full CI
         id: gate
         env:
-          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          AUTOMATION_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.event.workflow_run.id }}
           EXPECTED_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           set -euo pipefail
-          if [ -z "$GH_TOKEN" ]; then
+          if [ -z "$AUTOMATION_TOKEN" ]; then
             echo "::error::EOL_AUTOMATION_TOKENがありません。自動マージを停止します。"
             exit 1
           fi
@@ -93,7 +94,7 @@ jobs:
 
       - name: Verify Cloudflare build and current base
         env:
-          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           HEAD_SHA: ${{ steps.gate.outputs.head_sha }}
           PR_NUMBER: ${{ steps.gate.outputs.number }}
