@@ -129,6 +129,16 @@ jobs:
       - name: Attention sync syntax check
         run: node --check scripts/sync-eol-attention.mjs
 
+      - name: EOL sync safety tests
+        run: npm run test:eol-sync-safety
+
+      # 自動マージ用の更新PRでは、mainとのデータ差分自体も安全性評価する。
+      - name: Validate EOL data against main
+        if: github.event_name == 'pull_request' && github.head_ref == 'chore/eol-data-sync'
+        run: |
+          git fetch origin main --depth=1
+          npm run check:eol-sync-safety -- --base-ref=FETCH_HEAD
+
       - name: Snapshot freshness tests
         run: npm run test:snapshot-freshness
 
