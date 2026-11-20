@@ -47,7 +47,8 @@ src/data/eol-snapshot.json
 change-log.json / audit-log.json
        ↓
 chore/eol-data-sync PR
-       ↓ CI / review / merge
+       ↓ 異常データ検知 / フルCI / Cloudflareビルド
+       ↓ データ3ファイルのみ自動マージ
 GitHub main
        ↓
 Cloudflare build
@@ -56,6 +57,18 @@ Workers + Static Assets
 ```
 
 Cloudflareの本番build時にendoflife.date APIを必須依存させないことで、API一時障害や仕様変更の影響を本番配信から切り離します。
+
+### EOLデータ公開の完全自動化（安全停止つき）
+
+- 毎日09:15 JSTに `Sync EOL data` がendoflife.date API v1から取得・正規化し、スナップショット・変更履歴・監査ログを更新する。
+- 同期後、製品数・リリース数の急変、重複、スキーマ変更、タイムスタンプ不正、EOL日・サポート終了日の大量変更をチェックし、異常ならコミットしない。
+- 有効な `EOL_AUTOMATION_TOKEN` でブランチとPRを作成・更新することで、GitHubのフルCIを承認待ちにせず起動する。
+- `Auto-merge verified EOL data` は、上記3ファイルだけのPR、CIの全項目成功、Cloudflareビルド成功、mainからbehindしていないことを再検証した場合だけsquash mergeする。
+- マージによるmainの更新がCloudflareの本番build・デプロイを起動する。異常時は自動マージを止め、前回の正常データを公開し続ける。
+
+**初回設定・更新時に必要なもの:** GitHub repository secret `EOL_AUTOMATION_TOKEN`。対象リポジトリだけにアクセスできるfine-grained PATで `Contents: Read and write` / `Pull requests: Read and write` を許可する。期限切れ時はActionsがエラーで停止するため、発行者が期限前に更新する。値をコード、PR、Issueへ貼り付けない。専用GitHub Appへ移行すると期限更新負荷を減らせるが、現状は既存のsecretを再利用する。
+
+この自動マージは**endoflife.date由来の3ファイルだけ**が対象。公式ソース照合、独自の日本語解説、商用サポート、リリース解説など人間による事実確認が必要な情報は、従来どおり手動レビューで更新する。その他の開発PR・依存更新PRのマージ承認は必要である。手順は `docs/RUNBOOK.md` を参照する。
 
 ### 注目されているEOL情報
 
