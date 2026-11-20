@@ -1,0 +1,151 @@
+name: Auto-merge verified EOL data
+
+# 信頼済みCIが完了してから、データ更新PRだけを判定する。
+# このworkflowではPRブランチのコードをcheckout・実行しない。
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+
+permissions:
+  contents: read
+  pull-requests: read
+  actions: read
+  checks: read
+
+concurrency:
+  group: eol-data-auto-merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'chore/eol-data-sync' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Verify exact PR, head SHA, files, and full CI
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          EXPECTED_SHA: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::EOL_AUTOMATION_TOKENがありません。自動マージを停止します。"
+            exit 1
+          fi
+          owner="${REPO%%/*}"
+          prs="$(gh api "repos/$REPO/pulls?state=open&base=main&head=$owner:chore/eol-data-sync&per_page=100")"
+          count="$(jq 'length' <<< "$prs")"
+          if [ "$count" -ne 1 ]; then
+            echo "::error::対象PRが1件ではありません（$count 件）。自動マージしません。"
+            exit 1
+          fi
+          number="$(jq -r '.[0].number' <<< "$prs")"
+          pr="$(gh api "repos/$REPO/pulls/$number")"
+          head_sha="$(jq -r '.head.sha' <<< "$pr")"
+          head_repo="$(jq -r '.head.repo.full_name' <<< "$pr")"
+          head_ref="$(jq -r '.head.ref' <<< "$pr")"
+          base_ref="$(jq -r '.base.ref' <<< "$pr")"
+          is_draft="$(jq -r '.draft' <<< "$pr")"
+          if [ "$head_sha" != "$EXPECTED_SHA" ] || [ "$head_repo" != "$REPO" ] || \
+             [ "$head_ref" != "chore/eol-data-sync" ] || [ "$base_ref" != "main" ] || [ "$is_draft" != "false" ]; then
+            echo "::error::PRのbranch・SHA・baseが想定外です。自動マージしません。"
+            exit 1
+          fi
+
+          # 変更ファイルのホワイトリストはCIではなく特権側で再検証する。
+          files="$(gh api "repos/$REPO/pulls/$number/files?per_page=100")"
+          count_files="$(jq 'length' <<< "$files")"
+          if [ "$count_files" -lt 1 ] || [ "$count_files" -gt 3 ]; then
+            echo "::error::データ更新PRに1〜3件以外の変更があります。"
+            exit 1
+          fi
+          snapshot_changed=false
+          while IFS= read -r filename; do
+            case "$filename" in
+              src/data/eol-snapshot.json) snapshot_changed=true ;;
+              src/data/change-log.json|src/data/audit-log.json) ;;
+              *) echo "::error::許可されていない変更: $filename"; exit 1 ;;
+            esac
+          done < <(jq -r '.[].filename' <<< "$files")
+          if [ "$snapshot_changed" != "true" ]; then
+            echo "::error::EOLスナップショットの変更がありません。"
+            exit 1
+          fi
+
+          # webhookの成功フラグだけでなく、必要なフルCI jobを検証する。
+          jobs="$(gh api "repos/$REPO/actions/runs/$RUN_ID/jobs?per_page=100")"
+          jq -e '.jobs | any(.[]; .name == "Classify changes" and .conclusion == "success")' <<< "$jobs" >/dev/null
+          jq -e '.jobs | any(.[]; .name == "Check, build and SEO validate" and .conclusion == "success")' <<< "$jobs" >/dev/null
+
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Verify Cloudflare build and current base
+        env:
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ steps.gate.outputs.head_sha }}
+          PR_NUMBER: ${{ steps.gate.outputs.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Cloudflareの外部チェックがCIより遅い場合は短時間だけ確認する。
+          success=false
+          for attempt in {1..15}; do
+            checks="$(gh api "repos/$REPO/commits/$HEAD_SHA/check-runs?per_page=100")"
+            conclusion="$(jq -r '[.check_runs[] | select(.name == "Workers Builds: eol-jp")][0].conclusion // empty' <<< "$checks")"
+            if [ "$conclusion" = "success" ]; then
+              success=true
+              break
+            fi
+            if [ -n "$conclusion" ] && [ "$conclusion" != "null" ]; then
+              echo "::error::Cloudflareビルドが$conclusionのため自動マージを停止します。"
+              exit 1
+            fi
+            echo "Cloudflareビルド完了待ち: $attempt / 15"
+            sleep 20
+          done
+          if [ "$success" != "true" ]; then
+            echo "::error::Cloudflareビルドの成功を確認できませんでした。"
+            exit 1
+          fi
+
+          # PRの更新やmainの先行更新があれば絶対に古い検証を使わない。
+          actual_head="$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq '.head.sha')"
+          if [ "$actual_head" != "$HEAD_SHA" ]; then
+            echo "::error::PRのheadが検証後に変更されました。"
+            exit 1
+          fi
+          behind="$(gh api "repos/$REPO/compare/main...$HEAD_SHA" --jq '.behind_by')"
+          if [ "$behind" != "0" ]; then
+            echo "::error::mainよりbehindしているため自動マージを停止します。"
+            exit 1
+          fi
+
+      - name: Squash-merge verified EOL data
+        env:
+          GH_TOKEN: ${{ secrets.EOL_AUTOMATION_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ steps.gate.outputs.head_sha }}
+          PR_NUMBER: ${{ steps.gate.outputs.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api \
+            --method PUT "repos/$REPO/pulls/$PR_NUMBER/merge" \
+            -f merge_method=squash \
+            -f sha="$HEAD_SHA" \
+            -f commit_title="chore(data): EOL情報を自動更新 (#$PR_NUMBER)" \
+            --jq '{merged, sha, message}'
+          echo "EOLデータPR #$PR_NUMBER をCIとCloudflare成功後に自動マージしました。" >> "$GITHUB_STEP_SUMMARY"
