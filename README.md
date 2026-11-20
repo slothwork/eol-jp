@@ -110,7 +110,7 @@ CLOUDFLARE_ACCOUNT_ID=<Cloudflare Account ID>
 EOL_AUTOMATION_TOKEN=<GitHub fine-grained PAT>
 ```
 
-`EOL_AUTOMATION_TOKEN` はランキング更新ブランチのpushとPR作成・更新に使います。不要な権限は追加せず、トークンの有効期限前に更新してください。
+`EOL_AUTOMATION_TOKEN` はランキング更新、日次EOLデータPRの作成・更新、検証済みEOLデータPRの自動マージに共用します。不要な権限は追加せず、トークンの有効期限前に更新してください。
 
 Cloudflare Secretsが未設定の場合、ランキング同期はデータ取得をスキップします。`EOL_AUTOMATION_TOKEN` が未設定の場合は、自動PRのCIを保証できないためworkflowを明示的に失敗させます。ランキングデータが空の場合、トップページのランキングセクションは表示しません。
 
