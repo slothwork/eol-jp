@@ -132,12 +132,16 @@ jobs:
       - name: EOL sync safety tests
         run: npm run test:eol-sync-safety
 
-      # 自動マージ用の更新PRでは、mainとのデータ差分自体も安全性評価する。
+      # EOLスナップショットを変更したPRはブランチ名に関係なく異常データを拒否する。
       - name: Validate EOL data against main
-        if: github.event_name == 'pull_request' && github.head_ref == 'chore/eol-data-sync'
+        if: github.event_name == 'pull_request'
         run: |
           git fetch origin main --depth=1
-          npm run check:eol-sync-safety -- --base-ref=FETCH_HEAD
+          if git diff --quiet FETCH_HEAD HEAD -- src/data/eol-snapshot.json; then
+            echo "EOLスナップショットに変更はありません。"
+          else
+            npm run check:eol-sync-safety -- --base-ref=FETCH_HEAD
+          fi
 
       - name: Snapshot freshness tests
         run: npm run test:snapshot-freshness
