@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-18T09:37:30+00:00",
+  "updatedAt": "2026-11-20T23:03:40+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -12328,6 +12328,328 @@
       "release": "1.99",
       "from": null,
       "to": "2026-11-12"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "amazon-rds-mysql",
+      "label": "Amazon RDS for MySQL",
+      "release": "9.7",
+      "eolFrom": "2031-07-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "ansible",
+      "label": "Ansible",
+      "release": "15",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "bellsoft-liberica",
+      "label": "Bellsoft Liberica JDK",
+      "release": "21",
+      "from": null,
+      "to": "2029-12-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "bellsoft-liberica",
+      "label": "Bellsoft Liberica JDK",
+      "release": "11",
+      "from": "2024-10-31",
+      "to": "2027-10-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "bellsoft-liberica",
+      "label": "Bellsoft Liberica JDK",
+      "release": "8",
+      "from": "2026-11-30",
+      "to": "2030-12-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "chrome",
+      "label": "Google Chrome",
+      "release": "158",
+      "eolFrom": "2026-12-01"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "cockroachdb",
+      "label": "CockroachDB",
+      "release": "26.4",
+      "eolFrom": "2028-04-26"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "11.4",
+      "from": "2027-07-07",
+      "to": "2027-04-21"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "11.3",
+      "from": "2026-12-16",
+      "to": "2026-12-09"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "10.6",
+      "from": "2026-12-16",
+      "to": "2026-12-09"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "support-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "11.2",
+      "from": "2025-12-10",
+      "to": "2025-12-17"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "10.4",
+      "from": "2025-12-10",
+      "to": "2025-12-17"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "drupal",
+      "label": "Drupal",
+      "release": "11.1",
+      "from": "2025-12-10",
+      "to": "2025-12-17"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "fluent-bit",
+      "label": "Fluent Bit",
+      "release": "5.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "fluent-bit",
+      "label": "Fluent Bit",
+      "release": "5.1",
+      "from": null,
+      "to": "2027-02-09"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "gitlab-runner",
+      "label": "GitLab Runner",
+      "release": "19.6",
+      "eolFrom": "2027-02-18"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "gitlab",
+      "label": "GitLab",
+      "release": "19.6",
+      "eolFrom": "2027-02-18"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "harbor",
+      "label": "Harbor",
+      "release": "2.16",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "harbor",
+      "label": "Harbor",
+      "release": "2.13",
+      "from": null,
+      "to": "2026-11-10"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "istio",
+      "label": "Istio",
+      "release": "1.32",
+      "eolFrom": "2027-06-30"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "kyverno",
+      "label": "Kyverno",
+      "release": "1.20",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "kyverno",
+      "label": "Kyverno",
+      "release": "1.19",
+      "from": null,
+      "to": "2026-11-11"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "6.0",
+      "from": "2028-11-03",
+      "to": "2028-11-17"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "mattermost",
+      "label": "Mattermost",
+      "release": "12.1",
+      "eolFrom": "2027-02-15"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.57",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.56",
+      "from": null,
+      "to": "2026-11-16"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "nvm",
+      "label": "nvm",
+      "release": "0.41",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "nvm",
+      "label": "nvm",
+      "release": "0.40",
+      "from": null,
+      "to": "2026-11-04"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "openbsd",
+      "label": "OpenBSD",
+      "release": "6.3",
+      "from": "2019-05-03",
+      "to": "2019-05-01"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "php",
+      "label": "PHP",
+      "release": "8.6",
+      "eolFrom": "2030-12-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "podman",
+      "label": "Podman",
+      "release": "6.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "podman",
+      "label": "Podman",
+      "release": "6.1",
+      "from": null,
+      "to": "2026-11-10"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "postgresql",
+      "label": "PostgreSQL",
+      "release": "19",
+      "eolFrom": "2031-11-19"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "red-hat-openshift",
+      "label": "Red Hat OpenShift",
+      "release": "5.0",
+      "eolFrom": "2028-11-30"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "rocket-chat",
+      "label": "Rocket.Chat",
+      "release": "9.0",
+      "eolFrom": "2027-05-31"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "eol-changed",
+      "product": "rtpengine",
+      "label": "rtpengine",
+      "release": "26.3",
+      "from": "2027-01-30",
+      "to": "2027-02-28"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "sles",
+      "label": "SUSE Linux Enterprise Server",
+      "release": "16.1",
+      "eolFrom": "2028-11-30"
+    },
+    {
+      "detectedAt": "2026-11-20T23:03:40+00:00",
+      "type": "release-added",
+      "product": "valkey",
+      "label": "Valkey",
+      "release": "9.2",
+      "eolFrom": "2031-11-19"
     }
   ]
 }
