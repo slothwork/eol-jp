@@ -40,6 +40,23 @@ Sitemaps APIの `contents[].indexed` は廃止されているため、値が0で
 
 出典: https://developers.google.com/webmaster-tools/v1/sitemaps
 
+## Issue #129 — 未登録原因を判断するためのGSC画面確認（2026-11-21）
+
+OpenSEOでSearch Consoleの**保存済みURL検査**と検索パフォーマンスは取得済み。ただし、それだけではページ登録レポートの全体件数やGooglebotの**現在のライブ取得結果**は分からない。GoogleのURL Inspection APIもライブテストには対応していない。
+
+https://search.google.com/search-console にログインし、`sc-domain:eol.slothwright.com` を選択して、次の3画面の**数値と検査結果をそのまま**Issue #129へ共有する（スクリーンショットでよい）。
+
+1. **インデックス作成 → ページ**: 更新日、登録済み件数、未登録合計、理由別の項目名と件数。「クロール済み - インデックス未登録」「検出 - インデックス未登録」があれば特に記録する。パフォーマンス表示0やSitemaps APIの古い `indexed` 値で代用しない。
+2. **インデックス作成 → サイトマップ**: `https://eol.slothwright.com/sitemap.xml` の最新ステータス、最終読み込み日、検出されたページ数、エラー/警告。過去の送信成功を現在の状態と混同しない。
+3. **URL検査**: `https://eol.slothwright.com/` と `https://eol.slothwright.com/eol/nodejs/` を入力し、**「公開URLをテスト」**を押す。結果の「URLはGoogleに登録可能か」「ページの取得」「クロールを許可」「インデックス登録を許可」を記録し、必要なら「テスト済みページを表示」からHTML/HTTPヘッダー/スクリーンショットを取得する。まず2 URLに絞り、違いが見つからなければ `/eol/python/` と `/my-eol/` も確認する。
+
+**判断:** ライブ検査で取得失敗/403/5xxならCloudflareのボット管理・WAF・レスポンスを、robots/noindex/canonical不整合なら当該設定を調べる。両URLとも取得可能で設定が正常なら、少数の代表ページについて内容の独自性・重複とクロール需要を調べる。これだけでは未登録原因が確定しない場合もあり、Googleに登録を保証させる手段はない。原因・対象が絞れてから変更し、変更前後の同じURLを2〜4週単位で比較する。
+
+Google公式:
+- https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect
+- https://support.google.com/webmasters/answer/9012289?hl=ja
+- https://support.google.com/webmasters/answer/7440203?hl=ja
+
 ## Recommended review window
 
 初期は直近28日を基本とする。
