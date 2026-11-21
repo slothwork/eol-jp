@@ -37,9 +37,7 @@ Phase 0〜6の公開・通知・信頼性情報・GitHub Import・運用・テ�
 
 ## 直近の検証結果
 
-2026-11-21の運用点検: `Sync EOL data` は11月15日以降の日次同期に成功しているが、更新PR #131が未マージのためmainのデータは古い。GitHub標準トークンによって作成・更新されたPRはCIが `action_required` となり、自動検証が進んでいない。11月20日には committed snapshot の鮮度チェックが失敗。`Sync EOL attention ranking` は11月16日にcheckoutで認証失敗したため、既存の `EOL_AUTOMATION_TOKEN` の認証確認・再設定も必要。
-
-本変更では、指定されたデータ3ファイルだけに対する安全性チェック、専用PATによるPR CI起動、フルCIとCloudflareビルド成功時だけの自動マージを導入する。GitHub branchルール・通常の開発PR承認方針は維持し、公式ソース照合など人による確認データは対象外。導入PRがマージされ、tokenの正常性と本番での一巡を実証するまでは「完全自動化済み」と判断しない。
+2026-11-21の運用点検: PR #132 の自動化がmainへ反映され、期限切れ・権限不足だった `EOL_AUTOMATION_TOKEN` の書き込み権限が修正された。手動起動した `Sync EOL data` → 更新PR #131 → フルCI → Cloudflareビルド → `Auto-merge verified EOL data` → main CI がすべて成功。PR #131は自動マージ済みで、mainにEOLスナップショット更新が反映された。独自の公式情報確認・日本語説明・開発PRは自動マージ対象外である。
 
 2026-11-14時点で、mainのCIはPR #125 / #126マージ後にPASS、定期EOL同期も成功。URL検査では未登録問題が継続しているが、全ページに及ぶ技術的ブロックは確認されていない。検索流入の観測・改善判断は依然としてGrowth gate中。
 
@@ -54,6 +52,16 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 ## 本番確認・公開後の判断
 
 `未判定` — Growth gateは継続する。技術的なindex可否と、Googleが実際にindexするかは区別する。
+
+2026-11-21のSearch Console再確認（プロパティ `sc-domain:eol.slothwright.com`、OpenSEO経由の保存済みURL検査）:
+
+- 代表10 URL中「クロール済み - インデックス未登録」8件、「Googleに認識されていません」2件（`/my-eol/`, `/trust/official-sources/`）。この10件は標本であり、サイト全体の登録件数ではない。
+- クロール済み8 URLの保存済み最終クロールは2026-09-04〜09-29。robots許可・index許可・取得成功・両canonicalの一致を確認。11月時点のライブ取得状況は不明。
+- 検索パフォーマンスは2026-10-22〜11-18の28日間すべて表示0・クリック0。2026-08-18〜11-18のページ別データ行も0。これのみでは全URL未登録とは断定しない。
+- 既存の外部クローラー監査（2026-11-14）は50件すべてHTTP 200・トップページはindexable、約2,498語相当（クローラー計測）。対象50件に重大なタイトル/H1欠落・canonical競合・リンク切れはないが、約492 URLはページ上限で未検査。短いtitle/descriptionの情報レベル指摘が未登録の原因と証明されたわけではない。
+- コード再確認: `robots.txt` はクロール許可・sitemap案内、`astro.config.mjs` は本番origin・静的生成、`BaseLayout.astro` はself canonical・noindex指定時のみrobotsメタ。トップ/Node.js/Python/PHP/Ubuntuには独自日本語解説、EOL表、FAQ、移行・公式資料への導線があり、重大な内容欠落は現時点で確認していない。
+- **未取得のままの判断材料**: GSC画面「ページのインデックス登録」の更新日・登録件数・理由別件数、サイトマップの最新取得結果、`公開URLをテスト` の結果。Google URL Inspection APIは保存済みインデックス情報のみ取得でき、ライブテストには対応していない。画面の実結果が揃うまで技術的原因や品質原因を断定しない。Issue #129で追跡する。
+
 
 2026-11-14の再調査結果（Google Search Console `sc-domain:eol.slothwright.com` の実データ）:
 
@@ -81,20 +89,18 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 
 ## 作業中のこと
 
-- 日次EOLデータの安全な自動公開を復旧し、更新PR #131の滞留・鮮度チェック失敗を解消する。
-- [Issue #129](https://github.com/slothwork/eol-jp/issues/129) でSearch Consoleのページ登録レポートと公開URLテストの確認を継続する。
+- [Issue #129](https://github.com/slothwork/eol-jp/issues/129) のSearch Console原因切り分け（GSC画面の未取得データ待ち）。
 
 ## 次に行うこと
 
-1. **EOL同期自動化を有効化する** — 自動化実装PRをレビュー・承認後mainへマージし、GitHub secret `EOL_AUTOMATION_TOKEN` の認証を復旧する。
-2. **データ公開を実証する** — `Sync EOL data` を手動起動し、#131のデータPR更新、フルCI、Cloudflareチェック、専用自動マージ、mainへの反映、本番デプロイとsnapshot freshnessの正常化を確認する。失敗時は安全に停止し原因を修正する。
-3. **Growth gate観測を続ける** — [Issue #129](https://github.com/slothwork/eol-jp/issues/129) のページ登録理由別件数・公開URLテストを確認し、根拠のないSEO一括変更を避ける。
+1. **GSCのページ登録レポートを取得** — 更新日、登録済み件数、未登録理由別件数、sitemapの最終取得日時・取得成否・検出URL数を記録する（Issue #129）。
+2. **代表URLで公開URLテスト** — `/` と `/eol/nodejs/` を優先し、取得・robots・index許可、Googleに返ったHTMLとレスポンスを確認。必要なら `/eol/python/`、`/my-eol/` を追加する。
+3. **証拠に応じて対応** — 403/5xx等ならCloudflare WAF/本番配信を、取得に問題がなければ品質・独自価値とクロール需要を中心に対象ページだけを検討する。修正後は同じURLを2〜4週単位で再観測する。
 
 ## ブロッカー・重要リスク
 
-- **公開データの鮮度:** 同期PR #131が滞留しmainへの反映が止まっている。EOL用の認証・自動マージ修正PRの導入と一巡確認が先決。
-- **PAT認証:** 11月16日のランキング同期checkoutで認証失敗。secret更新はGitHub管理画面から所有者が実施する。token値をコミットしない。
-- **自動化対象外:** 公式ソース照合、独自日本語説明、商用サポート、変更内容の一次情報確認は別途手動レビューを要する。
+- **GSC画面取得待ち:** ページ登録レポート、サイトマップ取得結果、公開URLテストの実測が未取得。保存済みURL検査では原因を特定できない。
+- **自動化の対象外:** 公式ソース照合、独自日本語説明、商用サポート、変更内容の一次情報確認は別途手動レビューを要する。
 - URL検査は2026-11-14に取得済みだが、ページ登録レポート（理由別件数）と公開URLテストは未取得。保存済みクロール日時を現在の取得状態と混同しない。
 - インデックス反映待ちの段階で大規模なSEO変更を重ねると、何が効いたか比較できなくなる
 - 文書パスが将来build / test入力になる場合は、同じ変更でCI分類を再検討する
@@ -104,6 +110,7 @@ PR #113のフルCIとマージ後のmain CIはすべて成功。公開TOPはHTTP
 ## 関連するPull Request / Issue
 
 - [Issue #129](https://github.com/slothwork/eol-jp/issues/129) — Search Consoleの理由別件数・公開URLテストで未登録原因を特定。対応中
+- [PR #132](https://github.com/slothwork/eol-jp/pull/132) — EOL更新データの安全な自動公開。マージ済み
 - [PR #90](https://github.com/slothwork/eol-jp/pull/90) — 企画・判断・現在地の整理。マージ済み
 - [PR #91](https://github.com/slothwork/eol-jp/pull/91) — 文書専用変更のCI軽量化。マージ済み
 - [PR #92](https://github.com/slothwork/eol-jp/pull/92) — 標準化の振り返りと文書専用軽量CIの実案件確認。マージ済み
