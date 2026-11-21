@@ -19,6 +19,10 @@ const groups = [...alphabet, '0-9', 'その他']
   .filter((group) => products.some((product) => groupForLabel(product.label) === group));
 const initialGroup = groups.includes('A') ? 'A' : (groups[0] ?? 'その他');
 const initialProducts = products.filter((product) => groupForLabel(product.label) === initialGroup);
+const directoryGroups = groups.map((group) => ({
+  group,
+  items: products.filter((product) => groupForLabel(product.label) === group)
+}));
 
 const productData = products.map((product) => {
   const categoryLabel = getCategoryLabel(product.category);
@@ -78,6 +82,25 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
     </div>
     <aside class="recent-products-rail" data-view-history-slot hidden aria-label="最近見た製品"></aside>
   </div></section>
+
+  <section class="section" aria-labelledby="product-directory-heading">
+    <div class="container">
+      <h2 id="product-directory-heading">製品名の索引</h2>
+      <p class="section-lead">すべての製品へ頭文字別のリンクから直接移動できます。上の絞り込みを使わなくても、製品名を探せます。</p>
+      <nav class="product-directory" data-product-directory aria-label="製品名の索引">
+        {directoryGroups.map(({ group, items }) => (
+          <details class="panel product-directory-group">
+            <summary>{group}（{items.length}件）</summary>
+            <ul class="product-directory-links">
+              {items.map((product) => (
+                <li><a href={`/eol/${product.slug}/`}>{product.label}</a></li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </nav>
+    </div>
+  </section>
 
   <script id="product-data" type="application/json" is:inline set:html={productDataJson}></script>
   <script>
@@ -219,6 +242,14 @@ const productDataJson = JSON.stringify(productData).replace(/</g, '\\u003c');
   <style>
     .product-browser-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:24px; align-items:start; }
     .recent-products-rail { min-width:0; }
+    .product-directory { display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:12px; align-items:start; }
+    .product-directory-group summary { cursor:pointer; font-weight:700; }
+    .product-directory-group[open] { grid-column:1 / -1; }
+    .product-directory-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px 20px; margin:14px 0 0; padding-left:20px; }
+    @media (max-width: 620px) {
+      .product-directory { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .product-directory-links { grid-template-columns:minmax(0,1fr); }
+    }
     @media (min-width: 981px) {
       .product-browser-layout.has-recent-history { grid-template-columns:minmax(0,1fr) minmax(270px,310px); }
     }
