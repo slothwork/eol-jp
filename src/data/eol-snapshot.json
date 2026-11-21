@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-11-20T23:03:40+00:00",
+  "generatedAt": "2026-11-21T00:08:00+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -19215,8 +19215,8 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-11-20",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "10.1.1",
             "date": "2024-12-12",
@@ -69136,8 +69136,8 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-11-20",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "10.2.1",
             "date": "2024-11-28",
@@ -70338,8 +70338,8 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-11-20",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "10.2.1",
             "date": "2024-11-28",
