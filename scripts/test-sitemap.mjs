@@ -57,6 +57,25 @@ for (const url of sitemapUrls) {
   assert(url.startsWith(`${SITE_ORIGIN}/`), `sitemap.xml contains an unexpected origin: ${url}`);
 }
 
+/*
+ * 製品一覧の頭文字ボタンはJavaScriptを使うため、初期HTMLにも各製品への
+ * 通常のリンクを確保する。Googlebotがボタンを押さなくても辿れる状態を検証する。
+ */
+const productDirectoryHtml = await fs.readFile(path.join(DIST_DIR, 'eol', 'index.html'), 'utf8');
+const productDirectory = productDirectoryHtml.match(/<nav\b[^>]*\bdata-product-directory\b[^>]*>([\s\S]*?)<\/nav>/i)?.[1];
+assert(Boolean(productDirectory), '/eol/: JavaScriptに依存しない製品名の索引がありません。');
+const directoryHrefs = [...productDirectory.matchAll(/<a\b[^>]*\bhref=["'](\/eol\/[^"']+\/?)["']/gi)].map((match) => match[1]);
+const directoryUrls = new Set(directoryHrefs.map((href) => new URL(href, SITE_ORIGIN).toString()));
+assert(directoryHrefs.length === directoryUrls.size, '/eol/: 製品名索引に重複リンクがあります。');
+const productSitemapUrls = [...sitemapUrls].filter((url) =>
+  url.startsWith(`${SITE_ORIGIN}/eol/`) && url !== `${SITE_ORIGIN}/eol/`
+);
+for (const url of productSitemapUrls) {
+  assert(directoryUrls.has(url), `/eol/: sitemap掲載製品への静的HTMLリンクがありません: ${url}`);
+}
+assert(productSitemapUrls.length > 300, '/eol/: 想定より製品URL数が少ないため索引の検証を停止します。');
+
+
 const indexableCanonicals = new Set();
 const noindexCanonicals = new Set();
 
@@ -88,5 +107,5 @@ for (const url of sitemapUrls) {
 }
 
 console.log(
-  `Sitemap validation passed: ${sitemapUrls.size} sitemap URLs, ${indexableCanonicals.size} indexable HTML pages, ${noindexCanonicals.size} noindex HTML pages.`
+  `Sitemap validation passed: ${sitemapUrls.size} sitemap URLs, ${indexableCanonicals.size} indexable HTML pages, ${noindexCanonicals.size} noindex HTML pages; ${productSitemapUrls.length} product URLs linked in the HTML directory.`
 );
