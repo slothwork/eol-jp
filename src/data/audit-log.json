@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-20T07:13:58.997Z",
+  "updatedAt": "2026-11-21T00:08:57.201Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -7240,6 +7240,412 @@
         {
           "slug": "vuetify",
           "label": "Vuetify"
+        },
+        {
+          "slug": "youtrack",
+          "label": "YouTrack"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-21T00:08:57.201Z-ee1b7139b31e",
+      "syncedAt": "2026-11-21T00:08:57.201Z",
+      "sourceGeneratedAt": "2026-11-20T23:03:40+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "b674b6777a19febf57d16e4f9f5ca573e6a3c2f6ec9068abefbdd11169fc9dfc",
+      "afterSha256": "ee1b7139b31e4ab9ec6c3b2ac1f98ec3eaf66cf454dae30a3507fee193787bab",
+      "productCount": 489,
+      "releaseCount": 9439,
+      "changes": {
+        "total": 239,
+        "releaseAdded": 20,
+        "releaseRemoved": 0,
+        "eolChanged": 17,
+        "supportChanged": 1,
+        "latestChanged": 187,
+        "releaseMetadataChanged": 14,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "adonisjs",
+          "label": "AdonisJS"
+        },
+        {
+          "slug": "alibaba-dragonwell",
+          "label": "Alibaba Dragonwell"
+        },
+        {
+          "slug": "amazon-aurora-mysql",
+          "label": "Amazon Aurora MySQL"
+        },
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "amazon-rds-mysql",
+          "label": "Amazon RDS for MySQL"
+        },
+        {
+          "slug": "angular",
+          "label": "Angular"
+        },
+        {
+          "slug": "ansible",
+          "label": "Ansible"
+        },
+        {
+          "slug": "api-platform",
+          "label": "API Platform"
+        },
+        {
+          "slug": "ipad",
+          "label": "Apple iPad"
+        },
+        {
+          "slug": "arangodb",
+          "label": "ArangoDB"
+        },
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "authentik",
+          "label": "authentik"
+        },
+        {
+          "slug": "bazel",
+          "label": "Bazel"
+        },
+        {
+          "slug": "behat",
+          "label": "Behat"
+        },
+        {
+          "slug": "bellsoft-liberica",
+          "label": "Bellsoft Liberica JDK"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "bind-9",
+          "label": "BIND 9"
+        },
+        {
+          "slug": "bitcoin-core",
+          "label": "Bitcoin Core"
+        },
+        {
+          "slug": "bun",
+          "label": "Bun"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "clamav",
+          "label": "ClamAV"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cockroachdb",
+          "label": "CockroachDB"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "dapr",
+          "label": "Dapr"
+        },
+        {
+          "slug": "dependency-track",
+          "label": "Dependency-Track"
+        },
+        {
+          "slug": "discourse",
+          "label": "Discourse"
+        },
+        {
+          "slug": "drupal",
+          "label": "Drupal"
+        },
+        {
+          "slug": "duckdb",
+          "label": "DuckDB"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "etcd",
+          "label": "etcd"
+        },
+        {
+          "slug": "fluent-bit",
+          "label": "Fluent Bit"
+        },
+        {
+          "slug": "flux",
+          "label": "Flux"
+        },
+        {
+          "slug": "forgejo",
+          "label": "Forgejo"
+        },
+        {
+          "slug": "gitlab",
+          "label": "GitLab"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "chrome",
+          "label": "Google Chrome"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "gorilla",
+          "label": "Gorilla Toolkit"
+        },
+        {
+          "slug": "gradle",
+          "label": "Gradle"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "greenlight",
+          "label": "Greenlight"
+        },
+        {
+          "slug": "grumphp",
+          "label": "GrumPHP"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "haproxy",
+          "label": "HAProxy"
+        },
+        {
+          "slug": "harbor",
+          "label": "Harbor"
+        },
+        {
+          "slug": "hibernate-orm",
+          "label": "Hibernate ORM"
+        },
+        {
+          "slug": "influxdb",
+          "label": "InfluxDB"
+        },
+        {
+          "slug": "istio",
+          "label": "Istio"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "kong-gateway",
+          "label": "Kong Gateway"
+        },
+        {
+          "slug": "kyverno",
+          "label": "Kyverno"
+        },
+        {
+          "slug": "liquibase-secure",
+          "label": "Liquibase Secure"
+        },
+        {
+          "slug": "mastodon",
+          "label": "Mastodon"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "mediawiki",
+          "label": "MediaWiki"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "nestjs",
+          "label": "NestJS"
+        },
+        {
+          "slug": "nginx",
+          "label": "nginx"
+        },
+        {
+          "slug": "nvm",
+          "label": "nvm"
+        },
+        {
+          "slug": "openbao",
+          "label": "OpenBao"
+        },
+        {
+          "slug": "openbsd",
+          "label": "OpenBSD"
+        },
+        {
+          "slug": "pangp",
+          "label": "Palo Alto Networks GlobalProtect App"
+        },
+        {
+          "slug": "phoenix-framework",
+          "label": "Phoenix Framework"
+        },
+        {
+          "slug": "php",
+          "label": "PHP"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "podman",
+          "label": "Podman"
+        },
+        {
+          "slug": "postgresql",
+          "label": "PostgreSQL"
+        },
+        {
+          "slug": "proftpd",
+          "label": "ProFTPD"
+        },
+        {
+          "slug": "proxmox-datacenter-manager",
+          "label": "Proxmox Datacenter Manager"
+        },
+        {
+          "slug": "red-hat-openshift",
+          "label": "Red Hat OpenShift"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "robo",
+          "label": "Robo"
+        },
+        {
+          "slug": "rocket-chat",
+          "label": "Rocket.Chat"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "ruby",
+          "label": "Ruby"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "sourcegraph",
+          "label": "Sourcegraph"
+        },
+        {
+          "slug": "spring-boot",
+          "label": "Spring Boot"
+        },
+        {
+          "slug": "spring-cloud",
+          "label": "Spring Cloud"
+        },
+        {
+          "slug": "spring-framework",
+          "label": "Spring Framework"
+        },
+        {
+          "slug": "spring-security",
+          "label": "Spring Security"
+        },
+        {
+          "slug": "strapi",
+          "label": "Strapi"
+        },
+        {
+          "slug": "sles",
+          "label": "SUSE Linux Enterprise Server"
+        },
+        {
+          "slug": "svelte",
+          "label": "Svelte"
+        },
+        {
+          "slug": "sylius",
+          "label": "Sylius"
+        },
+        {
+          "slug": "tarantool",
+          "label": "Tarantool"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "valkey",
+          "label": "Valkey"
+        },
+        {
+          "slug": "veeam-backup-for-microsoft-365",
+          "label": "Veeam Backup for Microsoft 365"
+        },
+        {
+          "slug": "vue",
+          "label": "Vue"
+        },
+        {
+          "slug": "wireshark",
+          "label": "Wireshark"
+        },
+        {
+          "slug": "wordpress",
+          "label": "WordPress"
         },
         {
           "slug": "youtrack",
