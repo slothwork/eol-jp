@@ -111,6 +111,8 @@ Reference:
 - 404はnoindexとする。
 - URLパラメータで検索結果ページを生成しない。
 - JSだけに重要コンテンツを閉じ込めない。
+- `/eol/` の頭文字切り替えと検索はJavaScript利用者向けの操作だが、**全製品への直接リンクを初期HTMLの「製品名の索引」にも置く**。カテゴリー別ページのリンクも維持し、JavaScriptのボタン操作だけにURL発見を依存させない。
+- `npm run test:sitemap` でsitemap掲載の全製品URLが `/eol/` 初期HTMLの索引内にリンクとして存在することを検証する。これにより**リンク到達性のみを担保**し、Googleによるクロール・インデックス登録は保証しない。
 
 Reference:
 - https://developers.google.com/search/docs/crawling-indexing/block-indexing
