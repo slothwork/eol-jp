@@ -40,22 +40,41 @@ Sitemaps APIの `contents[].indexed` は廃止されているため、値が0で
 
 出典: https://developers.google.com/webmaster-tools/v1/sitemaps
 
-## Issue #129 — 未登録原因を判断するためのGSC画面確認（2026-11-21）
+## 2026-11-21 GSCインデックス登録ゼロの基準点（Issue #129 → #134）
 
-OpenSEOでSearch Consoleの**保存済みURL検査**と検索パフォーマンスは取得済み。ただし、それだけではページ登録レポートの全体件数やGooglebotの**現在のライブ取得結果**は分からない。GoogleのURL Inspection APIもライブテストには対応していない。
+ユーザー提供のGoogle Search Console画像により、従来未取得だったページ登録レポート、サイトマップ、代表2 URLの**公開URLテスト**を確認した。
 
-https://search.google.com/search-console にログインし、`sc-domain:eol.slothwright.com` を選択して、次の3画面の**数値と検査結果をそのまま**Issue #129へ共有する（スクリーンショットでよい）。
+| 指標 | 2026-11-21時点の画面 |
+| --- | --- |
+| 登録済み | **0ページ** |
+| 未登録 | **473ページ** |
+| 検出 - インデックス未登録 | **452ページ** |
+| クロール済み - インデックス未登録 | **21ページ** |
+| サイトマップ | `https://eol.slothwright.com/sitemap.xml` |
+| サイトマップ取得 | **成功**、最終読み込み **2026-11-15**、検出ページ **473** |
+| トップ公開URLテスト | 2026-11-21 09:32 JST、クロール許可・ページ取得・index許可が正常 |
+| Node.js公開URLテスト | 2026-11-21 09:34 JST、クロール許可・ページ取得・index許可が正常 |
 
-1. **インデックス作成 → ページ**: 更新日、登録済み件数、未登録合計、理由別の項目名と件数。「クロール済み - インデックス未登録」「検出 - インデックス未登録」があれば特に記録する。パフォーマンス表示0やSitemaps APIの古い `indexed` 値で代用しない。
-2. **インデックス作成 → サイトマップ**: `https://eol.slothwright.com/sitemap.xml` の最新ステータス、最終読み込み日、検出されたページ数、エラー/警告。過去の送信成功を現在の状態と混同しない。
-3. **URL検査**: `https://eol.slothwright.com/` と `https://eol.slothwright.com/eol/nodejs/` を入力し、**「公開URLをテスト」**を押す。結果の「URLはGoogleに登録可能か」「ページの取得」「クロールを許可」「インデックス登録を許可」を記録し、必要なら「テスト済みページを表示」からHTML/HTTPヘッダー/スクリーンショットを取得する。まず2 URLに絞り、違いが見つからなければ `/eol/python/` と `/my-eol/` も確認する。
+両ページの「Googleが選択した正規URL」は「インデックス登録後にのみ決定されます」。そのためライブテストの「URLはGoogleに登録できます」は、**登録済みの証拠ではない**。
 
-**判断:** ライブ検査で取得失敗/403/5xxならCloudflareのボット管理・WAF・レスポンスを、robots/noindex/canonical不整合なら当該設定を調べる。両URLとも取得可能で設定が正常なら、少数の代表ページについて内容の独自性・重複とクロール需要を調べる。これだけでは未登録原因が確定しない場合もあり、Googleに登録を保証させる手段はない。原因・対象が絞れてから変更し、変更前後の同じURLを2〜4週単位で比較する。
+### 状態別の切り分け
 
-Google公式:
-- https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect
-- https://support.google.com/webmasters/answer/9012289?hl=ja
+- **452件（検出・未クロール）**: URLはGoogleに認識されているが、まだクロールされていない。サイトマップ登録成功・代表URLのライブテスト成功だけでは、全473ページのクロール需要や取得可否を保証しない。ページ一覧から3〜5件を選び、静的HTMLの内部リンク、robots、noindex、canonical、ステータスコード、サイトマップ掲載状況を確認する。
+- **21件（クロール済み・未登録）**: 取得後にGoogleがインデックス登録していない。検証ステータス「失敗しました」は**修正の検証が通らなかった表示**であり、HTTP取得失敗と同義ではない。代表ページの独自情報、検索意図への回答、競合・出典との差別化、関連ページへの導線を調べる。
+- **サイト側の技術的障害**: トップとNode.jsのライブテストでは取得成功・クロール許可・index許可を確認。全URLに同一の技術原因があるとは現時点で言えない。
+
+### 次の進め方
+
+1. GSCの「検出 - インデックス未登録」と「クロール済み - インデックス未登録」それぞれの詳細にある代表URLを取得して、サイトの生成結果・リンク元と照合する。
+2. ホーム、Node.js、Python、PHP、Ubuntuのうち3〜5ページを優先し、**実際に確認できた不足点だけ**を個別改善する。ベンダー公式の日付・商用サポート情報は一次資料を確認し、推測で追加しない。
+3. 変更したURLと実行日を控え、2〜4週間後（2026-12-05〜12-19目安）にGSCの**登録済み・未登録理由別件数・最終クロール・表示回数**を同じ条件で再取得する。必要なURLに限って登録をリクエストし、短期間に連続送信しない。
+
+調査基準点は [Issue #129](https://github.com/slothwork/eol-jp/issues/129) に記録済み。**登録済み0件からの改善は [Issue #134](https://github.com/slothwork/eol-jp/issues/134) で継続**する。0件の原因がすべて「低品質」であると断定しない。URL Inspection APIの保存済み検査とライブテストは別の情報源として扱う。
+
+Google公式資料：
 - https://support.google.com/webmasters/answer/7440203?hl=ja
+- https://support.google.com/webmasters/answer/9012289?hl=ja
+- https://developers.google.com/crawling/docs/crawl-budget
 
 ## Recommended review window
 
