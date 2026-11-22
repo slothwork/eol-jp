@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-20T23:03:40+00:00",
+  "updatedAt": "2026-11-22T05:24:21+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -12650,6 +12650,144 @@
       "label": "Valkey",
       "release": "9.2",
       "eolFrom": "2031-11-19"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "cisco-ios-xe",
+      "label": "Cisco IOS XE",
+      "release": "26.2",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "eol-changed",
+      "product": "cisco-ios-xe",
+      "label": "Cisco IOS XE",
+      "release": "17.18",
+      "from": "2029-08-08",
+      "to": "2029-09-30"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "support-changed",
+      "product": "cisco-ios-xe",
+      "label": "Cisco IOS XE",
+      "release": "17.18",
+      "from": "2028-02-08",
+      "to": "2028-04-29"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "ffmpeg",
+      "label": "FFmpeg",
+      "release": "9.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "foundationdb",
+      "label": "FoundationDB",
+      "release": "7.4",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "support-changed",
+      "product": "foundationdb",
+      "label": "FoundationDB",
+      "release": "7.3",
+      "from": null,
+      "to": "2026-11-20"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "eol-changed",
+      "product": "foundationdb",
+      "label": "FoundationDB",
+      "release": "7.1",
+      "from": null,
+      "to": "2026-11-20"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "nix",
+      "label": "nix",
+      "release": "2.36",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "eol-changed",
+      "product": "nix",
+      "label": "nix",
+      "release": "2.35",
+      "from": null,
+      "to": "2026-11-19"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "spring-boot",
+      "label": "Spring Boot",
+      "release": "4.2",
+      "eolFrom": "2027-12-31"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "release-added",
+      "product": "spring-framework",
+      "label": "Spring Framework",
+      "release": "7.1",
+      "eolFrom": "2027-12-31"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "support-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "12",
+      "from": "2025-09-03",
+      "to": "2025-11-30"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "eol-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "11",
+      "from": "2024-02-01",
+      "to": "2024-02-29"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "support-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "11",
+      "from": "2023-02-01",
+      "to": "2023-02-28"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "eol-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "10",
+      "from": "2023-02-01",
+      "to": "2023-02-28"
+    },
+    {
+      "detectedAt": "2026-11-22T05:24:21+00:00",
+      "type": "support-changed",
+      "product": "veeam-backup-and-replication",
+      "label": "Veeam Backup & Replication",
+      "release": "10",
+      "from": "2021-02-01",
+      "to": "2021-02-28"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-21T07:05:48.541Z",
+  "updatedAt": "2026-11-22T06:46:31.751Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -7684,6 +7684,128 @@
         {
           "slug": "jira-software",
           "label": "Jira Software"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-22T06:46:31.751Z-198050b33e1c",
+      "syncedAt": "2026-11-22T06:46:31.751Z",
+      "sourceGeneratedAt": "2026-11-22T05:24:21+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "a6a0161aa536930a44854cadd097298ec8cd5680b32ded736973443c98a603dd",
+      "afterSha256": "198050b33e1c48e435d6fa3a0764e964c9e131fdfd332a9df2c6b5e7ab7950a1",
+      "productCount": 489,
+      "releaseCount": 9445,
+      "changes": {
+        "total": 55,
+        "releaseAdded": 6,
+        "releaseRemoved": 0,
+        "eolChanged": 5,
+        "supportChanged": 5,
+        "latestChanged": 36,
+        "releaseMetadataChanged": 3,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-cdk",
+          "label": "Amazon CDK"
+        },
+        {
+          "slug": "amazon-eks",
+          "label": "Amazon EKS"
+        },
+        {
+          "slug": "apache-camel",
+          "label": "Apache Camel"
+        },
+        {
+          "slug": "behat",
+          "label": "Behat"
+        },
+        {
+          "slug": "cisco-ios-xe",
+          "label": "Cisco IOS XE"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "ffmpeg",
+          "label": "FFmpeg"
+        },
+        {
+          "slug": "foundationdb",
+          "label": "FoundationDB"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "ionic",
+          "label": "Ionic Framework"
+        },
+        {
+          "slug": "julia",
+          "label": "Julia"
+        },
+        {
+          "slug": "livewire",
+          "label": "Livewire"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "nix",
+          "label": "nix"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "php",
+          "label": "PHP"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "spring-boot",
+          "label": "Spring Boot"
+        },
+        {
+          "slug": "spring-framework",
+          "label": "Spring Framework"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "veeam-backup-and-replication",
+          "label": "Veeam Backup & Replication"
+        },
+        {
+          "slug": "photon",
+          "label": "VMware Photon"
+        },
+        {
+          "slug": "yarn",
+          "label": "Yarn"
         }
       ]
     }
