@@ -1,18 +1,9 @@
 {
-  "generatedAt": "2026-09-07T03:03:52.227Z",
-  "periodStart": "2026-08-08T03:03:52.227Z",
-  "periodEnd": "2026-09-07T03:03:52.227Z",
+  "generatedAt": "2026-11-23T08:10:54.495Z",
+  "periodStart": "2026-10-24T08:10:54.495Z",
+  "periodEnd": "2026-11-23T08:10:54.495Z",
   "windowDays": 30,
   "scopeDays": 180,
   "source": "cloudflare-web-analytics",
-  "items": [
-    {
-      "slug": "chrome",
-      "pageViews": 30
-    },
-    {
-      "slug": "docker-engine",
-      "pageViews": 10
-    }
-  ]
+  "items": []
 }
