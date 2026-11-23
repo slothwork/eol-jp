@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-22T05:24:21+00:00",
+  "updatedAt": "2026-11-23T00:08:38+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -12788,6 +12788,413 @@
       "release": "10",
       "from": "2021-02-01",
       "to": "2021-02-28"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.21",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "apache-apisix",
+      "label": "Apache APISIX",
+      "release": "3.20",
+      "from": null,
+      "to": "2026-11-20"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "3.1",
+      "eolFrom": "2022-12-28"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "3.0",
+      "eolFrom": "2021-10-08"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "2.3",
+      "eolFrom": "2020-05-04"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "2.2",
+      "eolFrom": "2020-02-24"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "2.1",
+      "eolFrom": "2018-12-05"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "2.0",
+      "eolFrom": "2018-08-07"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "apache-couchdb",
+      "label": "Apache CouchDB",
+      "release": "1",
+      "eolFrom": "2018-08-07"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "68",
+      "eolFrom": "2020-09-22"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "60",
+      "eolFrom": "2019-10-22"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "52",
+      "eolFrom": "2018-09-05"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "45",
+      "eolFrom": "2017-06-13"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "38",
+      "eolFrom": "2016-06-07"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "31",
+      "eolFrom": "2015-08-11"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "24",
+      "eolFrom": "2014-10-14"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "17",
+      "eolFrom": "2013-12-10"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "10",
+      "eolFrom": "2013-02-19"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "ibm-semeru-runtime",
+      "label": "IBM Semeru Runtime",
+      "release": "25",
+      "from": "2031-09-30",
+      "to": "2033-09-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "ibm-semeru-runtime",
+      "label": "IBM Semeru Runtime",
+      "release": "21",
+      "from": "2029-12-31",
+      "to": "2031-09-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "ibm-semeru-runtime",
+      "label": "IBM Semeru Runtime",
+      "release": "17",
+      "from": "2027-10-31",
+      "to": "2029-01-31"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "ibm-semeru-runtime",
+      "label": "IBM Semeru Runtime",
+      "release": "8",
+      "from": "2030-12-31",
+      "to": "2032-12-31"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "isc-dhcp",
+      "label": "ISC DHCP",
+      "release": "4.3",
+      "from": "2018-02-28",
+      "to": "2018-07-31"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "isc-dhcp",
+      "label": "ISC DHCP",
+      "release": "4.2",
+      "from": "2015-03-05",
+      "to": "2015-08-31"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "16",
+      "from": null,
+      "to": "2027-10-22"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "16",
+      "from": null,
+      "to": "2026-10-22"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "15",
+      "from": null,
+      "to": "2025-10-22"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "14",
+      "from": null,
+      "to": "2024-10-26"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "13",
+      "from": null,
+      "to": "2023-10-25"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "12",
+      "from": null,
+      "to": "2022-10-26"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "11",
+      "from": null,
+      "to": "2022-01-27"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "10",
+      "from": null,
+      "to": "2021-06-15"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "support-changed",
+      "product": "nextjs",
+      "label": "Next.js",
+      "release": "9",
+      "from": null,
+      "to": "2020-10-27"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "nvidia-gpu",
+      "label": "NVIDIA GPUs",
+      "release": "mobile-professional-blackwell",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "nvidia-gpu",
+      "label": "NVIDIA GPUs",
+      "release": "consumer-kepler",
+      "from": "2024-09-01",
+      "to": "2024-09-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "nvidia-gpu",
+      "label": "NVIDIA GPUs",
+      "release": "mobile-consumer-kepler",
+      "from": "2019-04-11",
+      "to": "2020-04-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "nvidia-gpu",
+      "label": "NVIDIA GPUs",
+      "release": "consumer-fermi",
+      "from": "2018-03-10",
+      "to": "2019-01-31"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "office",
+      "label": "Microsoft Office",
+      "release": "2003",
+      "eolFrom": "2014-04-08"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6.2-astra",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6.2-sol",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-6-cyber",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2.6-sunburst",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-image-2.6-flare",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "raspberry-pi",
+      "label": "Raspberry Pi",
+      "release": "cm3",
+      "from": "2028-01-01",
+      "to": "2026-06-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "raspberry-pi",
+      "label": "Raspberry Pi",
+      "release": "cm1",
+      "from": "2026-01-01",
+      "to": "2028-01-01"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "redhat-satellite",
+      "label": "Red Hat Satellite",
+      "release": "6.17",
+      "from": "2026-11-30",
+      "to": "2026-11-28"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "eol-changed",
+      "product": "redhat-satellite",
+      "label": "Red Hat Satellite",
+      "release": "6.14",
+      "from": "2025-05-31",
+      "to": "2025-05-30"
+    },
+    {
+      "detectedAt": "2026-11-23T00:08:38+00:00",
+      "type": "release-added",
+      "product": "tomcat",
+      "label": "Apache Tomcat",
+      "release": "4",
+      "eolFrom": "2009-06-25"
     }
   ]
 }

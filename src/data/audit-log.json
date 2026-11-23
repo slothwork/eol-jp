@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-22T06:46:31.751Z",
+  "updatedAt": "2026-11-23T07:36:55.301Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -7806,6 +7806,124 @@
         {
           "slug": "yarn",
           "label": "Yarn"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-23T07:36:55.301Z-919f61436ab1",
+      "syncedAt": "2026-11-23T07:36:55.301Z",
+      "sourceGeneratedAt": "2026-11-23T00:08:38+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "198050b33e1c48e435d6fa3a0764e964c9e131fdfd332a9df2c6b5e7ab7950a1",
+      "afterSha256": "919f61436ab13d8738e23bf19a582f88707247d6721b4b3e1c6a80d640f266c0",
+      "productCount": 489,
+      "releaseCount": 9470,
+      "changes": {
+        "total": 88,
+        "releaseAdded": 25,
+        "releaseRemoved": 0,
+        "eolChanged": 15,
+        "supportChanged": 8,
+        "latestChanged": 29,
+        "releaseMetadataChanged": 8,
+        "productMetadataChanged": 3
+      },
+      "affectedProducts": [
+        {
+          "slug": "apache-apisix",
+          "label": "Apache APISIX"
+        },
+        {
+          "slug": "apache-couchdb",
+          "label": "Apache CouchDB"
+        },
+        {
+          "slug": "apache-maven",
+          "label": "Apache Maven"
+        },
+        {
+          "slug": "tomcat",
+          "label": "Apache Tomcat"
+        },
+        {
+          "slug": "cakephp",
+          "label": "CakePHP"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "guzzle",
+          "label": "Guzzle"
+        },
+        {
+          "slug": "ibm-semeru-runtime",
+          "label": "IBM Semeru Runtime"
+        },
+        {
+          "slug": "isc-dhcp",
+          "label": "ISC DHCP"
+        },
+        {
+          "slug": "mandrel",
+          "label": "Mandrel"
+        },
+        {
+          "slug": "office",
+          "label": "Microsoft Office"
+        },
+        {
+          "slug": "nextjs",
+          "label": "Next.js"
+        },
+        {
+          "slug": "nvidia-gpu",
+          "label": "NVIDIA GPUs"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "cortex-xdr",
+          "label": "Palo Alto Networks Cortex XDR agent"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "raspberry-pi",
+          "label": "Raspberry Pi"
+        },
+        {
+          "slug": "redhat-satellite",
+          "label": "Red Hat Satellite"
+        },
+        {
+          "slug": "suse-manager",
+          "label": "SUSE Multi-Linux Manager"
+        },
+        {
+          "slug": "vmware-cloud-foundation",
+          "label": "VMware Cloud Foundation"
+        },
+        {
+          "slug": "esxi",
+          "label": "VMware ESXi"
+        },
+        {
+          "slug": "vmware-srm",
+          "label": "VMware Site Recovery Manager"
+        },
+        {
+          "slug": "vcenter",
+          "label": "VMware vCenter Server"
         }
       ]
     }
