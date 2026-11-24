@@ -337,6 +337,11 @@ Pull requests: Read and write
 - Cloudflare 2項目が空: ranking fetchをskip。
 - Analytics API 401/403: Cloudflare API tokenの期限・権限を確認。
 - Git push / PR作成失敗: GitHub PATの期限・repository permissionを確認。
+- API応答にアカウントまたはpages配列がない、集計上限に達した、件数やパス形式が不正: 取得異常として停止し、前回のJSONを保持する。
+- `Attention ranking diagnostics` の `groups`、`totalObservedPageViews`、`productPathGroups`、`eligibleProducts`、`eligiblePathGroups`、`eligiblePageViews` を確認する。生のURL・トークン・アカウントIDは出力しない。
+- サイト全体の観測ページビューが正数で、180日以内にEOLを迎える製品の閲覧が0件なら、正常な空ランキングとして扱う（取得した集計範囲での判定）。
+- サイト全体の観測ページビューが0件の場合は、実際の訪問者0件と計測停止を区別できないため、更新を停止する。Cloudflare Dashboard → Web Analyticsで対象ホストと過去30日間のPage viewsを確認し、公開ページのbeacon配信・計測設定・API対象アカウントを照合する。設定変更は別途承認を得る。
+- 2026-11-23のPR #140はランキング2件から0件への更新だが、旧ログでは上記診断値が取得されていない。新しい同期処理で正常性を確認するまでマージしない。
 
 ### 復旧確認
 
