@@ -1,6 +1,6 @@
 # Security operations
 
-最終更新: 2026-09-06
+最終更新: 2026-11-24
 
 ## 目的
 
@@ -15,7 +15,7 @@ EOL情報.jp の静的配信・Worker API・依存関係更新を、追加の有
 - 静的HTML / CSS / JS / 画像など: `public/_headers` を Astro build が `dist/_headers` へコピーし、Cloudflare Static Assets が適用する。
 - `/api/notifications/*`, `/api/v1/*`, `/badge/*`: `assets.run_worker_first` の対象なので `_headers` は適用されない。`worker/security-headers.ts` でWorker生成レスポンスへ付与する。
 
-この2経路は別々に保護する必要があります。静的側だけ、またはWorker側だけ変更しないでください。
+この2経路は別々に保護する必要があります。変更時は両経路への影響を確認し、用途の異なる側に不要な許可を追加しないでください。
 
 ### 静的ページの方針
 
@@ -33,6 +33,7 @@ CSPは原則same-originとし、現在必要な外部接続だけを明示的に
 
 - `https://challenges.cloudflare.com`: Cloudflare Turnstile のscript / frame / challenge通信
 - `https://api.github.com`: Public GitHub Repository Import のブラウザ直接通信
+- `https://static.cloudflareinsights.com/beacon.min.js`: Cloudflare Web Analyticsの自動挿入で使用する計測スクリプト。`script-src` にこのURLだけを追加し、`connect-src 'self'` で同一オリジンの `/cdn-cgi/rum` への送信を許可する。手動埋め込み用の外部送信先は追加しない。
 
 `unsafe-eval`、wildcard source、平文 `http:` は許可しません。
 
@@ -60,12 +61,16 @@ Production build後に `npm run test:security-headers` を実行します。
 
 1. `public/_headers` が `dist/_headers` へそのままコピーされている。
 2. 必須セキュリティヘッダーが欠落していない。
-3. CSPにTurnstile / GitHub APIの必要最小限の許可がある。
+3. CSPにTurnstile / GitHub API / Web Analyticsの必要最小限の許可があり、`script-src` / `connect-src` が許可済みの送信先・スクリプトに限定されている。
 4. `unsafe-eval` / wildcard / `http:` を許可していない。
 5. Worker共通ヘッダーが付与される。
 6. ルート固有のより厳しいCSPをWorker共通処理が上書きしない。
 
 本番デプロイ後にヘッダーを変更した場合は、ブラウザDevToolsまたは `curl -I https://eol.slothwright.com/` でも実レスポンスを確認してください。
+
+Web Analyticsの場合は、マージ前に可能ならプレビュー環境でCSPを検証する。デプロイ後は実際のHTMLへの計測スクリプト挿入、DevToolsのConsoleにCSP違反がないこと、Networkで `beacon.min.js` の取得と同一オリジンの `/cdn-cgi/rum` への送信を確認する。Cloudflare Dashboardで対象ホストの計測方式が自動挿入か確認する。手動埋め込み方式なら必要な通信先が異なるため別途判断する。ビルド・ヘッダーテストの成功だけで計測復旧を断定しない。
+
+Cloudflare公式: https://developers.cloudflare.com/web-analytics/faq/
 
 ## 依存パッケージ更新
 
