@@ -71,6 +71,23 @@ for (const directive of [
 ]) {
   assert(csp.includes(directive), `Static CSP is missing: ${directive}`);
 }
+// 計測スクリプトのURLだけ許可し、同一オリジンの自動計測送信を維持する。
+const cspDirectives = new Map();
+for (const entry of csp.split(';').map((value) => value.trim()).filter(Boolean)) {
+  const [name, ...sources] = entry.split(/\s+/);
+  assert(!cspDirectives.has(name), `Static CSP has duplicate directive: ${name}`);
+  cspDirectives.set(name, sources);
+}
+for (const [name, sources] of [
+  ['script-src', ["'self'", "'unsafe-inline'", 'https://challenges.cloudflare.com', 'https://static.cloudflareinsights.com/beacon.min.js']],
+  ['connect-src', ["'self'", 'https://api.github.com', 'https://challenges.cloudflare.com']]
+]) {
+  const actual = cspDirectives.get(name) ?? [];
+  assert(actual.length === sources.length && sources.every((source) => actual.includes(source)),
+    `Static CSP ${name} must allow only the approved sources`);
+}
+assert(DYNAMIC_CONTENT_SECURITY_POLICY === "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'",
+  'Worker API CSP must remain restrictive and must not inherit analytics permissions');
 assert(!csp.includes("'unsafe-eval'"), "Static CSP must not allow 'unsafe-eval'");
 assert(!/(^|\s)http:($|\s|;)/.test(csp), 'Static CSP must not allow insecure http: sources');
 assert(!/(^|\s)\*($|\s|;)/.test(csp), 'Static CSP must not contain wildcard sources');
