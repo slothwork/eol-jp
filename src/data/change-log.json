@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-23T00:08:38+00:00",
+  "updatedAt": "2026-11-24T07:54:44+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -13195,6 +13195,117 @@
       "label": "Apache Tomcat",
       "release": "4",
       "eolFrom": "2009-06-25"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "eol-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-opus-4-5-20251101",
+      "from": "2026-11-24",
+      "to": "2027-01-22"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "support-changed",
+      "product": "claude",
+      "label": "Anthropic Claude",
+      "release": "claude-opus-4-5-20251101",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "firefox",
+      "label": "Firefox",
+      "release": "161",
+      "eolFrom": "2026-12-08"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "looker",
+      "label": "Looker",
+      "release": "26.24",
+      "eolFrom": "2027-02-28"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "mariadb",
+      "label": "MariaDB",
+      "release": "13.1",
+      "eolFrom": "2027-03-31"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "openai-api-models",
+      "label": "OpenAI API Models",
+      "release": "gpt-live-1.1",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "cortex-xdr",
+      "label": "Palo Alto Networks Cortex XDR agent",
+      "release": "9.4",
+      "eolFrom": "2027-08-22"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "release-added",
+      "product": "redis",
+      "label": "Redis",
+      "release": "8.12",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "support-changed",
+      "product": "redis",
+      "label": "Redis",
+      "release": "8.10",
+      "from": null,
+      "to": "2026-11-22"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "eol-changed",
+      "product": "redis",
+      "label": "Redis",
+      "release": "8.8",
+      "from": null,
+      "to": "2027-01-29"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "eol-changed",
+      "product": "redis",
+      "label": "Redis",
+      "release": "8.6",
+      "from": null,
+      "to": "2026-11-25"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "eol-changed",
+      "product": "redis",
+      "label": "Redis",
+      "release": "8.4",
+      "from": null,
+      "to": "2026-08-10"
+    },
+    {
+      "detectedAt": "2026-11-24T07:54:44+00:00",
+      "type": "eol-changed",
+      "product": "vinyl-cache",
+      "label": "Vinyl Cache",
+      "release": "9.1",
+      "from": "2027-09-16",
+      "to": null
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-23T07:36:55.301Z",
+  "updatedAt": "2026-11-24T09:53:03.467Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -7924,6 +7924,192 @@
         {
           "slug": "vcenter",
           "label": "VMware vCenter Server"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-24T09:53:03.467Z-1d93139bf606",
+      "syncedAt": "2026-11-24T09:53:03.467Z",
+      "sourceGeneratedAt": "2026-11-24T07:54:44+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "919f61436ab13d8738e23bf19a582f88707247d6721b4b3e1c6a80d640f266c0",
+      "afterSha256": "1d93139bf606f9e5f4b7d8512537a672b4b9a1afd81265844ef231d11574cb34",
+      "productCount": 489,
+      "releaseCount": 9476,
+      "changes": {
+        "total": 81,
+        "releaseAdded": 6,
+        "releaseRemoved": 0,
+        "eolChanged": 5,
+        "supportChanged": 2,
+        "latestChanged": 64,
+        "releaseMetadataChanged": 4,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-linux",
+          "label": "Amazon Linux"
+        },
+        {
+          "slug": "claude",
+          "label": "Anthropic Claude"
+        },
+        {
+          "slug": "apache-camel",
+          "label": "Apache Camel"
+        },
+        {
+          "slug": "apache-spark",
+          "label": "Apache Spark"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cloud-sql-auth-proxy",
+          "label": "Cloud SQL Auth Proxy"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "debian",
+          "label": "Debian"
+        },
+        {
+          "slug": "beats",
+          "label": "Elastic Beats"
+        },
+        {
+          "slug": "elasticsearch",
+          "label": "Elasticsearch"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "google-kubernetes-engine",
+          "label": "Google Kubernetes Engine"
+        },
+        {
+          "slug": "jruby",
+          "label": "JRuby"
+        },
+        {
+          "slug": "kibana",
+          "label": "Kibana"
+        },
+        {
+          "slug": "kubernetes-csi-node-driver-registrar",
+          "label": "Kubernetes CSI Node Driver Registrar"
+        },
+        {
+          "slug": "linux",
+          "label": "Linux Kernel"
+        },
+        {
+          "slug": "logstash",
+          "label": "Logstash"
+        },
+        {
+          "slug": "looker",
+          "label": "Looker"
+        },
+        {
+          "slug": "mariadb",
+          "label": "MariaDB"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "neo4j",
+          "label": "Neo4j"
+        },
+        {
+          "slug": "nginx",
+          "label": "nginx"
+        },
+        {
+          "slug": "nuxt",
+          "label": "Nuxt"
+        },
+        {
+          "slug": "nvidia",
+          "label": "NVIDIA Driver"
+        },
+        {
+          "slug": "openai-api-models",
+          "label": "OpenAI API Models"
+        },
+        {
+          "slug": "opentofu",
+          "label": "OpenTofu"
+        },
+        {
+          "slug": "cortex-xdr",
+          "label": "Palo Alto Networks Cortex XDR agent"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "qt",
+          "label": "Qt"
+        },
+        {
+          "slug": "redis",
+          "label": "Redis"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "roundcube",
+          "label": "Roundcube Webmail"
+        },
+        {
+          "slug": "routeros",
+          "label": "RouterOS"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "sns-smc",
+          "label": "Stormshield Management Center"
+        },
+        {
+          "slug": "telegraf",
+          "label": "Telegraf"
+        },
+        {
+          "slug": "traefik",
+          "label": "Traefik"
+        },
+        {
+          "slug": "twig",
+          "label": "Twig"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "vinyl-cache",
+          "label": "Vinyl Cache"
         }
       ]
     }
