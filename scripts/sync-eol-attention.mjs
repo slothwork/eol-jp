@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { hasMeaningfulRankingChange } from './attention-ranking-utils.mjs';
+import { analyzeAttentionRanking, hasMeaningfulRankingChange } from './attention-ranking-utils.mjs';
 
 const API_ENDPOINT = 'https://api.cloudflare.com/client/v4/graphql';
 const HOSTNAME = 'eol.slothwright.com';
@@ -97,26 +97,14 @@ if (payload.errors?.length) {
   throw new Error(`Cloudflare GraphQL error: ${payload.errors.map((error) => error.message).join('; ')}`);
 }
 
-const groups = payload.data?.viewer?.accounts?.flatMap((account) => account.pages ?? []) ?? [];
-const viewsBySlug = new Map();
-
-for (const group of groups) {
-  const path = group.dimensions?.requestPath;
-  const match = typeof path === 'string' ? path.match(/^\/eol\/([^/]+)\/?$/) : null;
-  if (!match) continue;
-
-  const slug = match[1];
-  if (!eligibleSlugs.has(slug)) continue;
-
-  const count = Number(group.count ?? 0);
-  if (!Number.isFinite(count) || count <= 0) continue;
-  viewsBySlug.set(slug, (viewsBySlug.get(slug) ?? 0) + count);
+const { items, stats, observed } = analyzeAttentionRanking(payload, eligibleSlugs, { limit: 1000, topN: TOP_N });
+console.log('Attention ranking diagnostics: ' + JSON.stringify(stats));
+if (!observed) {
+  throw new Error('No observed page views for this hostname and period. Cannot distinguish no traffic from unavailable measurement; keeping the previous snapshot.');
 }
-
-const items = [...viewsBySlug.entries()]
-  .map(([slug, pageViews]) => ({ slug, pageViews }))
-  .sort((a, b) => b.pageViews - a.pageViews || a.slug.localeCompare(b.slug))
-  .slice(0, TOP_N);
+if (items.length === 0) {
+  console.log('Observed page views exist, but no eligible product has positive page views. A zero-item ranking is valid for the returned data.');
+}
 
 const output = {
   generatedAt: periodEnd,
