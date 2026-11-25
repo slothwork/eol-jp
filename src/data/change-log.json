@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-24T07:54:44+00:00",
+  "updatedAt": "2026-11-25T06:14:07+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -13306,6 +13306,162 @@
       "release": "9.1",
       "from": "2027-09-16",
       "to": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "clickhouse",
+      "label": "ClickHouse",
+      "release": "26.11",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.39",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "support-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.37",
+      "from": null,
+      "to": "2026-11-03"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "coder",
+      "label": "Coder",
+      "release": "2.36",
+      "from": null,
+      "to": "2026-11-03"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "kirby",
+      "label": "Kirby",
+      "release": "6",
+      "eolFrom": "2029-11-24"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "kirby",
+      "label": "Kirby",
+      "release": "5",
+      "from": null,
+      "to": "2028-06-24"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "liquibase-secure",
+      "label": "Liquibase Secure",
+      "release": "6.0",
+      "from": "2028-11-17",
+      "to": "2028-11-24"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "matomo",
+      "label": "Matomo",
+      "release": "6",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "matomo",
+      "label": "Matomo",
+      "release": "5",
+      "from": null,
+      "to": "2027-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "support-changed",
+      "product": "matomo",
+      "label": "Matomo",
+      "release": "5",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.58",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "meilisearch",
+      "label": "Meilisearch",
+      "release": "1.57",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "roundcube",
+      "label": "Roundcube Webmail",
+      "release": "1.6",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "release-added",
+      "product": "traefik",
+      "label": "Traefik",
+      "release": "3.8",
+      "eolFrom": null
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "traefik",
+      "label": "Traefik",
+      "release": "3.7",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "support-changed",
+      "product": "traefik",
+      "label": "Traefik",
+      "release": "3.7",
+      "from": null,
+      "to": "2026-11-23"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "eol-changed",
+      "product": "ubuntu",
+      "label": "Ubuntu",
+      "release": "26.10",
+      "from": "2027-07-01",
+      "to": "2027-07-15"
+    },
+    {
+      "detectedAt": "2026-11-25T06:14:07+00:00",
+      "type": "support-changed",
+      "product": "ubuntu",
+      "label": "Ubuntu",
+      "release": "26.10",
+      "from": "2027-07-01",
+      "to": "2027-07-15"
     }
   ]
 }
