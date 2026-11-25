@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.2.1",
-  "generatedAt": "2026-11-24T07:54:44+00:00",
+  "generatedAt": "2026-11-25T06:14:07+00:00",
   "sourceUrl": "https://endoflife.date/api/v1/products/full",
   "products": [
     {
@@ -15618,8 +15618,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.6.2",
-            "date": "2026-11-18",
+            "name": "3.6.3",
+            "date": "2026-11-24",
             "link": "https://blog.argoproj.io/argo-cd-v3-6-rc1-is-here-c0b562dc78d1"
           }
         },
@@ -15635,9 +15635,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.5.8",
-            "date": "2026-11-18",
-            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.8"
+            "name": "3.5.9",
+            "date": "2026-11-24",
+            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.9"
           }
         },
         {
@@ -15652,9 +15652,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.4.14",
-            "date": "2026-11-18",
-            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.4.14"
+            "name": "3.4.15",
+            "date": "2026-11-24",
+            "link": "https://github.com/argoproj/argo-cd/releases/tag/v3.4.15"
           }
         },
         {
@@ -19269,8 +19269,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.0.1",
-            "date": "2026-11-05",
+            "name": "13.0.2",
+            "date": "2026-11-24",
             "link": "https://confluence.atlassian.com/display/BAMBOORELEASES/Bamboo+13.0+release+notes"
           }
         },
@@ -21755,9 +21755,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.0.3",
-            "date": "2026-11-19",
-            "link": "https://github.com/bigbluebutton/bigbluebutton/releases/tag/v4.0.3"
+            "name": "4.0.4",
+            "date": "2026-11-24",
+            "link": "https://github.com/bigbluebutton/bigbluebutton/releases/tag/v4.0.4"
           }
         },
         {
@@ -21772,9 +21772,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.0.41",
-            "date": "2026-11-19",
-            "link": "https://github.com/bigbluebutton/bigbluebutton/releases/tag/v3.0.41"
+            "name": "3.0.42",
+            "date": "2026-11-24",
+            "link": "https://github.com/bigbluebutton/bigbluebutton/releases/tag/v3.0.42"
           }
         },
         {
@@ -24557,8 +24557,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.2.4",
-            "date": "2026-11-09",
+            "name": "5.2.5",
+            "date": "2026-11-23",
             "link": "https://www.blender.org/download/releases/5-2/"
           }
         },
@@ -24608,8 +24608,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.5.16",
-            "date": "2026-11-09",
+            "name": "4.5.17",
+            "date": "2026-11-23",
             "link": "https://www.blender.org/download/releases/4-5/"
           }
         },
@@ -31903,6 +31903,23 @@
       },
       "releases": [
         {
+          "name": "26.11",
+          "label": "26.11",
+          "codename": null,
+          "releaseDate": "2026-11-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "26.11.1.2942",
+            "date": "2026-11-24",
+            "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
+          }
+        },
+        {
           "name": "26.10",
           "label": "26.10",
           "codename": null,
@@ -31914,8 +31931,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.10.11.12",
-            "date": "2026-11-23",
+            "name": "26.10.12.13",
+            "date": "2026-11-24",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -31931,8 +31948,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.9.37.5",
-            "date": "2026-11-23",
+            "name": "26.9.38.8",
+            "date": "2026-11-24",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -31948,8 +31965,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.8.45.6",
-            "date": "2026-11-23",
+            "name": "26.8.46.6",
+            "date": "2026-11-24",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -32033,8 +32050,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.3.70.5",
-            "date": "2026-11-23",
+            "name": "26.3.71.3",
+            "date": "2026-11-24",
             "link": "https://github.com/ClickHouse/ClickHouse/blob/master/CHANGELOG.md"
           }
         },
@@ -32346,9 +32363,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "14.13.0",
-            "date": "2026-11-23",
-            "link": "https://github.com/mondoohq/cnspec/releases/tag/v14.13.0"
+            "name": "14.14.0",
+            "date": "2026-11-24",
+            "link": "https://github.com/mondoohq/cnspec/releases/tag/v14.14.0"
           }
         },
         {
@@ -32937,6 +32954,23 @@
       },
       "releases": [
         {
+          "name": "2.39",
+          "label": "2.39",
+          "codename": null,
+          "releaseDate": "2026-11-03",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "2.39.4",
+            "date": "2026-11-16",
+            "link": "https://github.com/coder/coder/releases/tag/v2.39.4"
+          }
+        },
+        {
           "name": "2.38",
           "label": "2.38",
           "codename": null,
@@ -32960,7 +32994,7 @@
           "releaseDate": "2026-09-01",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": null,
+          "eoasFrom": "2026-11-03",
           "eolFrom": null,
           "isEol": false,
           "isMaintained": true,
@@ -32978,9 +33012,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": "2026-10-06",
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-11-03",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "2.36.12",
             "date": "2026-10-30",
@@ -33766,9 +33800,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.11.2",
-            "date": "2026-11-10",
-            "link": "https://getcomposer.org/changelog/2.11.2"
+            "name": "2.11.3",
+            "date": "2026-11-24",
+            "link": "https://getcomposer.org/changelog/2.11.3"
           }
         },
         {
@@ -33919,9 +33953,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.2.32",
-            "date": "2026-11-10",
-            "link": "https://getcomposer.org/changelog/2.2.32"
+            "name": "2.2.33",
+            "date": "2026-11-24",
+            "link": "https://getcomposer.org/changelog/2.2.33"
           }
         },
         {
@@ -37473,8 +37507,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.12.2",
-            "date": "2026-11-20",
+            "name": "5.12.3",
+            "date": "2026-11-24",
             "link": "https://craftcms.com/docs/5.x/"
           }
         },
@@ -38912,9 +38946,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2026.10.2",
-            "date": "2026-11-19",
-            "link": "https://releases.discourse.org/changelog/v2026.10.2"
+            "name": "2026.10.3",
+            "date": "2026-11-24",
+            "link": "https://releases.discourse.org/changelog/v2026.10.3"
           }
         },
         {
@@ -38926,12 +38960,12 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-11-24",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
-            "name": "2026.9.3",
-            "date": "2026-11-19",
-            "link": "https://releases.discourse.org/changelog/v2026.9.3"
+            "name": "2026.9.4",
+            "date": "2026-11-24",
+            "link": "https://releases.discourse.org/changelog/v2026.9.4"
           }
         },
         {
@@ -38963,9 +38997,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2026.7.6",
-            "date": "2026-11-19",
-            "link": "https://releases.discourse.org/changelog/v2026.7.6"
+            "name": "2026.7.7",
+            "date": "2026-11-24",
+            "link": "https://releases.discourse.org/changelog/v2026.7.7"
           }
         },
         {
@@ -39565,9 +39599,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "29.10.0",
-            "date": "2026-11-13",
-            "link": "https://docs.docker.com/engine/release-notes/29/#29100"
+            "name": "29.10.1",
+            "date": "2026-11-24",
+            "link": "https://docs.docker.com/engine/release-notes/29/#29101"
           }
         },
         {
@@ -42094,9 +42128,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "45.4.1",
-            "date": "2026-11-19",
-            "link": "https://releases.electronjs.org/release/v45.4.1"
+            "name": "45.5.0",
+            "date": "2026-11-24",
+            "link": "https://releases.electronjs.org/release/v45.5.0"
           }
         },
         {
@@ -42111,9 +42145,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.11.5",
-            "date": "2026-11-19",
-            "link": "https://releases.electronjs.org/release/v44.11.5"
+            "name": "44.11.6",
+            "date": "2026-11-24",
+            "link": "https://releases.electronjs.org/release/v44.11.6"
           }
         },
         {
@@ -42128,9 +42162,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "43.8.12",
-            "date": "2026-11-19",
-            "link": "https://releases.electronjs.org/release/v43.8.12"
+            "name": "43.8.13",
+            "date": "2026-11-24",
+            "link": "https://releases.electronjs.org/release/v43.8.13"
           }
         },
         {
@@ -44641,9 +44675,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "29.1.2",
-            "date": "2026-10-14",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-29.1.2"
+            "name": "29.1.3",
+            "date": "2026-11-23",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-29.1.3"
           }
         },
         {
@@ -44658,9 +44692,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "28.5.0.8",
-            "date": "2026-10-14",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-28.5.0.8"
+            "name": "28.5.0.9",
+            "date": "2026-11-23",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-28.5.0.9"
           }
         },
         {
@@ -44675,9 +44709,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "27.3.4.19",
-            "date": "2026-10-14",
-            "link": "https://github.com/erlang/otp/releases/tag/OTP-27.3.4.19"
+            "name": "27.3.4.20",
+            "date": "2026-11-23",
+            "link": "https://github.com/erlang/otp/releases/tag/OTP-27.3.4.20"
           }
         },
         {
@@ -48153,8 +48187,8 @@
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": "2026-11-24",
-          "isEol": false,
-          "isMaintained": true,
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "160.0.1",
             "date": "2026-11-17",
@@ -48275,9 +48309,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "153.7.0",
-            "date": "2026-11-10",
-            "link": "https://www.firefox.com/firefox/153.7.0/releasenotes/"
+            "name": "153.8.0",
+            "date": "2026-11-24",
+            "link": "https://www.firefox.com/firefox/153.8.0/releasenotes/"
           }
         },
         {
@@ -48921,9 +48955,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "115.45.0",
-            "date": "2026-11-10",
-            "link": "https://www.firefox.com/firefox/115.45.0/releasenotes/"
+            "name": "115.46.0",
+            "date": "2026-11-24",
+            "link": "https://www.firefox.com/firefox/115.46.0/releasenotes/"
           }
         },
         {
@@ -54808,9 +54842,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.6.0",
-            "date": "2026-11-17",
-            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.6.0"
+            "name": "19.6.1",
+            "date": "2026-11-24",
+            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.6.1"
           }
         },
         {
@@ -54825,9 +54859,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.5.3",
-            "date": "2026-11-05",
-            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.5.3"
+            "name": "19.5.4",
+            "date": "2026-11-24",
+            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.5.4"
           }
         },
         {
@@ -54842,9 +54876,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "19.4.4",
-            "date": "2026-11-05",
-            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.4.4"
+            "name": "19.4.5",
+            "date": "2026-11-24",
+            "link": "https://gitlab.com/gitlab-org/gitlab-runner/-/releases/v19.4.5"
           }
         },
         {
@@ -57755,8 +57789,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "25.5.5.0.3",
-            "date": "2026-11-03",
+            "name": "25.6.5.1",
+            "date": "2026-11-24",
             "link": "https://www.graalvm.org/release-notes/JDK_25/"
           }
         },
@@ -58488,9 +58522,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.3.1",
-            "date": "2026-11-10",
-            "link": "https://github.com/grafana/grafana/releases/tag/v13.3.1"
+            "name": "13.3.2",
+            "date": "2026-11-24",
+            "link": "https://github.com/grafana/grafana/releases/tag/v13.3.2"
           }
         },
         {
@@ -58505,9 +58539,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.2.6",
-            "date": "2026-11-10",
-            "link": "https://github.com/grafana/grafana/releases/tag/v13.2.6"
+            "name": "13.2.7",
+            "date": "2026-11-24",
+            "link": "https://github.com/grafana/grafana/releases/tag/v13.2.7"
           }
         },
         {
@@ -58522,9 +58556,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.1.10",
-            "date": "2026-11-10",
-            "link": "https://github.com/grafana/grafana/releases/tag/v13.1.10"
+            "name": "13.1.11",
+            "date": "2026-11-24",
+            "link": "https://github.com/grafana/grafana/releases/tag/v13.1.11"
           }
         },
         {
@@ -58539,9 +58573,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.0.13",
-            "date": "2026-11-10",
-            "link": "https://github.com/grafana/grafana/releases/tag/v13.0.13"
+            "name": "13.0.14",
+            "date": "2026-11-24",
+            "link": "https://github.com/grafana/grafana/releases/tag/v13.0.14"
           }
         },
         {
@@ -58556,9 +58590,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "12.4.15",
-            "date": "2026-11-10",
-            "link": "https://github.com/grafana/grafana/releases/tag/v12.4.15"
+            "name": "12.4.16",
+            "date": "2026-11-24",
+            "link": "https://github.com/grafana/grafana/releases/tag/v12.4.16"
           }
         },
         {
@@ -68202,9 +68236,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "2.591",
-            "date": "2026-11-17",
-            "link": "https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.591"
+            "name": "2.592",
+            "date": "2026-11-24",
+            "link": "https://github.com/jenkinsci/jenkins/releases/tag/jenkins-2.592"
           }
         },
         {
@@ -70545,8 +70579,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "11.3.13",
-            "date": "2026-11-05",
+            "name": "11.3.14",
+            "date": "2026-11-24",
             "link": "https://confluence.atlassian.com/display/JIRASOFTWARE/JIRA+Software+11.3.x+release+notes"
           }
         },
@@ -70681,8 +70715,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "10.3.27",
-            "date": "2026-11-05",
+            "name": "10.3.28",
+            "date": "2026-11-24",
             "link": "https://confluence.atlassian.com/display/JIRASOFTWARE/JIRA+Software+10.3.x+release+notes"
           }
         },
@@ -72342,8 +72376,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.2.0",
-            "date": "2026-10-13",
+            "name": "6.2.1",
+            "date": "2026-11-24",
             "link": "https://www.joomla.org/announcements/release-news/5939-joomla-6-0-and-joomla-5-4-are-here.html"
           }
         },
@@ -72359,9 +72393,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.4.10",
-            "date": "2026-10-13",
-            "link": "https://docs.joomla.org/Special:MyLanguage/Joomla_5.4_version_history#Joomla_5.4.10"
+            "name": "5.4.11",
+            "date": "2026-11-24",
+            "link": "https://docs.joomla.org/Special:MyLanguage/Joomla_5.4_version_history#Joomla_5.4.11"
           }
         },
         {
@@ -75683,6 +75717,23 @@
       },
       "releases": [
         {
+          "name": "6",
+          "label": "6",
+          "codename": null,
+          "releaseDate": "2026-11-24",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": "2029-11-24",
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "6.0.0",
+            "date": "2026-11-24",
+            "link": "https://github.com/getkirby/kirby/releases/tag/6.0.0"
+          }
+        },
+        {
           "name": "5",
           "label": "5",
           "codename": null,
@@ -75690,7 +75741,7 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
+          "eolFrom": "2028-06-24",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -78692,8 +78743,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "13.43.0",
-            "date": "2026-11-17",
+            "name": "13.44.1",
+            "date": "2026-11-24",
             "link": "https://laravel.com/framework/docs/13.x/releases"
           }
         },
@@ -78709,8 +78760,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "12.73.0",
-            "date": "2026-11-17",
+            "name": "12.74.0",
+            "date": "2026-11-24",
             "link": "https://laravel.com/framework/docs/12.x/releases"
           }
         },
@@ -78726,8 +78777,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "11.57.1",
-            "date": "2026-10-27",
+            "name": "11.57.2",
+            "date": "2026-11-24",
             "link": "https://laravel.com/framework/docs/11.x/releases"
           }
         },
@@ -78743,8 +78794,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "10.50.4",
-            "date": "2026-10-27",
+            "name": "10.50.5",
+            "date": "2026-11-24",
             "link": "https://laravel.com/framework/docs/10.x/releases"
           }
         },
@@ -78760,8 +78811,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "9.52.23",
-            "date": "2026-10-30",
+            "name": "9.52.24",
+            "date": "2026-11-24",
             "link": "https://laravel.com/framework/docs/9.x/releases"
           }
         },
@@ -80953,12 +81004,12 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": "2028-11-17",
+          "eolFrom": "2028-11-24",
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.0.2",
-            "date": "2026-11-17",
+            "name": "6.0.3",
+            "date": "2026-11-24",
             "link": null
           }
         },
@@ -81168,9 +81219,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "4.4.9",
-            "date": "2026-11-21",
-            "link": "https://github.com/livewire/livewire/releases/tag/v4.4.9"
+            "name": "4.4.10",
+            "date": "2026-11-24",
+            "link": "https://github.com/livewire/livewire/releases/tag/v4.4.10"
           }
         },
         {
@@ -85347,14 +85398,31 @@
       },
       "releases": [
         {
+          "name": "6",
+          "label": "6",
+          "codename": null,
+          "releaseDate": "2026-11-23",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "6.0.0",
+            "date": "2026-11-23",
+            "link": "https://github.com/matomo-org/matomo/releases/tag/6.0.0"
+          }
+        },
+        {
           "name": "5",
           "label": "5",
           "codename": null,
           "releaseDate": "2023-12-18",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": null,
-          "eolFrom": null,
+          "eoasFrom": "2026-11-23",
+          "eolFrom": "2027-11-23",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -87061,6 +87129,23 @@
       },
       "releases": [
         {
+          "name": "1.58",
+          "label": "1.58",
+          "codename": null,
+          "releaseDate": "2026-11-23",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": null,
+          "eolFrom": null,
+          "isEol": false,
+          "isMaintained": true,
+          "latest": {
+            "name": "1.58.0",
+            "date": "2026-11-23",
+            "link": "https://github.com/meilisearch/meilisearch/releases/tag/v1.58.0"
+          }
+        },
+        {
           "name": "1.57",
           "label": "1.57",
           "codename": null,
@@ -87068,9 +87153,9 @@
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-11-23",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "1.57.0",
             "date": "2026-11-16",
@@ -88133,9 +88218,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.65.6.3",
-            "date": "2026-11-20",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.65.6.3"
+            "name": "0.65.7.1",
+            "date": "2026-11-24",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.65.7.1"
           }
         },
         {
@@ -88150,9 +88235,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.64.8.4",
+            "name": "0.64.9",
             "date": "2026-11-23",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.64.8.4"
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.64.9"
           }
         },
         {
@@ -88252,9 +88337,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "0.58.42",
-            "date": "2026-11-18",
-            "link": "https://github.com/metabase/metabase/releases/tag/v0.58.42"
+            "name": "0.58.43",
+            "date": "2026-11-23",
+            "link": "https://github.com/metabase/metabase/releases/tag/v0.58.43"
           }
         },
         {
@@ -89194,9 +89279,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "5.2.25",
-            "date": "2026-11-17",
-            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v5.2.25"
+            "name": "5.2.26",
+            "date": "2026-11-24",
+            "link": "https://github.com/micronaut-projects/micronaut-core/releases/tag/v5.2.26"
           }
         },
         {
@@ -111996,8 +112081,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "26.7.9",
-            "date": "2026-11-11",
+            "name": "26.7.10",
+            "date": "2026-11-23",
             "link": "https://docs.opnsense.org/releases/CE_26.7.html"
           }
         },
@@ -112916,8 +113001,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "25.3.4.1",
-            "date": "2026-08-25",
+            "name": "25.6.5.1",
+            "date": "2026-11-24",
             "link": "https://docs.oracle.com/en/graalvm/jdk/25/docs/release-notes/"
           }
         },
@@ -118620,9 +118705,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.2.0",
-            "date": "2026-11-10",
-            "link": "https://github.com/podman-container-tools/podman/releases/tag/v6.2.0"
+            "name": "6.2.1",
+            "date": "2026-11-24",
+            "link": "https://github.com/podman-container-tools/podman/releases/tag/v6.2.1"
           }
         },
         {
@@ -118671,9 +118756,9 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "5.8.10",
-            "date": "2026-11-10",
-            "link": "https://github.com/podman-container-tools/podman/releases/tag/v5.8.10"
+            "name": "5.8.11",
+            "date": "2026-11-24",
+            "link": "https://github.com/podman-container-tools/podman/releases/tag/v5.8.11"
           }
         },
         {
@@ -119290,8 +119375,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.11.7",
-            "date": "2026-09-08",
+            "name": "3.11.8",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.11.0.html"
           }
         },
@@ -119307,8 +119392,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.10.14",
-            "date": "2026-09-08",
+            "name": "3.10.15",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.10.0.html"
           }
         },
@@ -119324,8 +119409,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.9.15",
-            "date": "2026-09-08",
+            "name": "3.9.16",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.9.2.html"
           }
         },
@@ -119341,8 +119426,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.8.21",
-            "date": "2026-09-08",
+            "name": "3.8.22",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.9.2.html"
           }
         },
@@ -119358,8 +119443,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "3.7.23",
-            "date": "2026-09-08",
+            "name": "3.7.24",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.9.2.html"
           }
         },
@@ -119375,8 +119460,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "3.6.21",
-            "date": "2026-09-08",
+            "name": "3.6.22",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.9.2.html"
           }
         },
@@ -119392,8 +119477,8 @@
           "isEol": true,
           "isMaintained": false,
           "latest": {
-            "name": "3.5.28",
-            "date": "2026-09-08",
+            "name": "3.5.29",
+            "date": "2026-11-24",
             "link": "https://www.postfix.org/announcements/postfix-3.8.6.html"
           }
         },
@@ -127169,9 +127254,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "44.258.3",
-            "date": "2026-11-23",
-            "link": "https://github.com/renovatebot/renovate/releases/tag/44.258.3"
+            "name": "44.261.1",
+            "date": "2026-11-24",
+            "link": "https://github.com/renovatebot/renovate/releases/tag/44.261.1"
           }
         },
         {
@@ -129255,9 +129340,9 @@
           "isLts": true,
           "ltsFrom": "2026-05-10",
           "eoasFrom": "2026-05-10",
-          "eolFrom": null,
-          "isEol": false,
-          "isMaintained": true,
+          "eolFrom": "2026-11-23",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "1.6.22",
             "date": "2026-11-23",
@@ -143928,9 +144013,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.7.16.1",
-            "date": "2026-11-18",
-            "link": "https://github.com/shopware/shopware/releases/tag/v6.7.16.1"
+            "name": "6.7.16.2",
+            "date": "2026-11-24",
+            "link": "https://github.com/shopware/shopware/releases/tag/v6.7.16.2"
           }
         },
         {
@@ -149188,9 +149273,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "6.43.2",
-            "date": "2026-11-23",
-            "link": "https://github.com/statamic/cms/blob/v6.43.2/CHANGELOG.md"
+            "name": "6.44.0",
+            "date": "2026-11-24",
+            "link": "https://github.com/statamic/cms/blob/v6.44.0/CHANGELOG.md"
           }
         },
         {
@@ -151693,9 +151778,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "7.17",
-            "date": "2026-11-11",
-            "link": "https://tails.net/news/version_7.17/"
+            "name": "7.18",
+            "date": "2026-11-24",
+            "link": "https://tails.net/news/version_7.18/"
           }
         },
         {
@@ -154097,16 +154182,33 @@
       },
       "releases": [
         {
-          "name": "3.7",
-          "label": "3.7",
+          "name": "3.8",
+          "label": "3.8",
           "codename": null,
-          "releaseDate": "2026-05-05",
+          "releaseDate": "2026-11-23",
           "isLts": false,
           "ltsFrom": null,
           "eoasFrom": null,
           "eolFrom": null,
           "isEol": false,
           "isMaintained": true,
+          "latest": {
+            "name": "3.8.0",
+            "date": "2026-11-23",
+            "link": "https://traefik.io/blog/announcing-traefik-proxy-v3-8"
+          }
+        },
+        {
+          "name": "3.7",
+          "label": "3.7",
+          "codename": null,
+          "releaseDate": "2026-05-05",
+          "isLts": false,
+          "ltsFrom": null,
+          "eoasFrom": "2026-11-23",
+          "eolFrom": "2026-11-23",
+          "isEol": true,
+          "isMaintained": false,
           "latest": {
             "name": "3.7.20",
             "date": "2026-11-23",
@@ -154574,8 +154676,8 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "3.31.0",
-            "date": "2026-11-23",
+            "name": "3.31.1",
+            "date": "2026-11-24",
             "link": "https://github.com/twigphp/Twig/blob/3.x/CHANGELOG"
           }
         },
@@ -154780,8 +154882,8 @@
           "releaseDate": "2026-10-15",
           "isLts": false,
           "ltsFrom": null,
-          "eoasFrom": "2027-07-01",
-          "eolFrom": "2027-07-01",
+          "eoasFrom": "2027-07-15",
+          "eolFrom": "2027-07-15",
           "isEol": false,
           "isMaintained": true,
           "latest": {
@@ -154803,7 +154905,7 @@
           "isMaintained": true,
           "latest": {
             "name": "26.04.1",
-            "date": "2026-08-27",
+            "date": "2026-08-31",
             "link": "https://wiki.ubuntu.com/ResoluteRaccoon/ReleaseNotes/"
           }
         },
@@ -154871,7 +154973,7 @@
           "isMaintained": true,
           "latest": {
             "name": "24.04.5",
-            "date": "2026-09-10",
+            "date": "2026-09-30",
             "link": "https://wiki.ubuntu.com/NobleNumbat/ReleaseNotes/"
           }
         },
@@ -158812,9 +158914,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.1.1.0",
-            "date": "2026-09-03",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/vmware-cloud-foundation-9-1-1-0-release-notes.html"
+            "name": "9.1.2.0",
+            "date": "2026-11-24",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/vmware-cloud-foundation-9-1-2-0-release-notes.html"
           }
         },
         {
@@ -159096,9 +159198,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.1.1.0100",
-            "date": "2026-10-12",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/patch-releases-9-1-1-x/vsphere/esx/esx-9-1-1-0100-release-notes.html"
+            "name": "9.1.2.0",
+            "date": "2026-11-24",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/vmware-cloud-foundation-9-1-2-0-release-notes/esx-9-1-2-0-release-notes.html"
           }
         },
         {
@@ -159113,9 +159215,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.0.2.0100",
-            "date": "2026-07-29",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/release-notes/patch-releases-9-0-0-x/vsphere/esx/esx-9-0-2-0100-release-notes.html"
+            "name": "9.0.2.0200",
+            "date": "2026-11-24",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/release-notes/patch-releases-9-0-0-x/vsphere/esx/esx-9-0-2-0200-release-notes.html"
           }
         },
         {
@@ -159130,9 +159232,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.0 Update 3k",
-            "date": "2026-07-29",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/esxi-update-and-patch-release-notes/vsphere-esxi-80u3k-release-notes.html"
+            "name": "8.0 Update 3m",
+            "date": "2026-11-19",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/esxi-update-and-patch-release-notes/vsphere-esxi-80u3m-release-notes.html"
           }
         },
         {
@@ -159875,9 +159977,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.1.1.0100",
-            "date": "2026-10-12",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/patch-releases-9-1-1-x/vsphere/vcenter/vcenter-9-1-1-0100-release-notes.html"
+            "name": "9.1.2.0",
+            "date": "2026-11-24",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-1/release-notes/vmware-cloud-foundation-9-1-2-0-release-notes/vcenter-9-1-2-0-release-notes.html"
           }
         },
         {
@@ -159892,9 +159994,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "9.0.2.0100",
-            "date": "2026-07-29",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/release-notes/patch-releases-9-0-0-x/vsphere/vcenter/vcenter-9-0-2-0100-release-notes.html"
+            "name": "9.0.2.0300",
+            "date": "2026-11-24",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vcf/vcf-9-0-and-later/9-0/release-notes/patch-releases-9-0-0-x/vsphere/vcenter/vcenter-9-0-2-0300-release-notes.html"
           }
         },
         {
@@ -159909,9 +160011,9 @@
           "isEol": false,
           "isMaintained": true,
           "latest": {
-            "name": "8.0 U3k",
-            "date": "2026-07-29",
-            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/vcenter-server-update-and-patch-release-notes/vsphere-vcenter-server-80u3k-release-notes.html"
+            "name": "8.0 U3m",
+            "date": "2026-11-19",
+            "link": "https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/release-notes/vcenter-server-update-and-patch-release-notes/vsphere-vcenter-server-80u3m-release-notes.html"
           }
         },
         {

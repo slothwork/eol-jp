@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-24T09:53:03.467Z",
+  "updatedAt": "2026-11-25T08:32:26.963Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -8110,6 +8110,200 @@
         {
           "slug": "vinyl-cache",
           "label": "Vinyl Cache"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-25T08:32:26.963Z-7569f16a1a32",
+      "syncedAt": "2026-11-25T08:32:26.963Z",
+      "sourceGeneratedAt": "2026-11-25T06:14:07+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "1d93139bf606f9e5f4b7d8512537a672b4b9a1afd81265844ef231d11574cb34",
+      "afterSha256": "7569f16a1a3280a05c33390549e0ccb6c11174c34ff7f0418b3d79ebbe38e2a9",
+      "productCount": 489,
+      "releaseCount": 9482,
+      "changes": {
+        "total": 102,
+        "releaseAdded": 6,
+        "releaseRemoved": 0,
+        "eolChanged": 8,
+        "supportChanged": 4,
+        "latestChanged": 78,
+        "releaseMetadataChanged": 6,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "argo-cd",
+          "label": "Argo CD"
+        },
+        {
+          "slug": "bamboo",
+          "label": "Bamboo"
+        },
+        {
+          "slug": "bigbluebutton",
+          "label": "BigBlueButton"
+        },
+        {
+          "slug": "blender",
+          "label": "Blender"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cnspec",
+          "label": "cnspec"
+        },
+        {
+          "slug": "coder",
+          "label": "Coder"
+        },
+        {
+          "slug": "composer",
+          "label": "Composer"
+        },
+        {
+          "slug": "craft-cms",
+          "label": "Craft CMS"
+        },
+        {
+          "slug": "discourse",
+          "label": "Discourse"
+        },
+        {
+          "slug": "docker-engine",
+          "label": "Docker Engine"
+        },
+        {
+          "slug": "electron",
+          "label": "Electron"
+        },
+        {
+          "slug": "erlang",
+          "label": "Erlang"
+        },
+        {
+          "slug": "firefox",
+          "label": "Firefox"
+        },
+        {
+          "slug": "gitlab-runner",
+          "label": "GitLab Runner"
+        },
+        {
+          "slug": "graalvm-ce",
+          "label": "GraalVM Community Edition"
+        },
+        {
+          "slug": "grafana",
+          "label": "Grafana"
+        },
+        {
+          "slug": "jenkins",
+          "label": "Jenkins"
+        },
+        {
+          "slug": "jira-software",
+          "label": "Jira Software"
+        },
+        {
+          "slug": "joomla",
+          "label": "Joomla!"
+        },
+        {
+          "slug": "kirby",
+          "label": "Kirby"
+        },
+        {
+          "slug": "laravel",
+          "label": "Laravel"
+        },
+        {
+          "slug": "liquibase-secure",
+          "label": "Liquibase Secure"
+        },
+        {
+          "slug": "livewire",
+          "label": "Livewire"
+        },
+        {
+          "slug": "matomo",
+          "label": "Matomo"
+        },
+        {
+          "slug": "meilisearch",
+          "label": "Meilisearch"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "micronaut",
+          "label": "Micronaut Framework"
+        },
+        {
+          "slug": "opnsense",
+          "label": "OPNsense"
+        },
+        {
+          "slug": "oracle-graalvm",
+          "label": "Oracle GraalVM"
+        },
+        {
+          "slug": "podman",
+          "label": "Podman"
+        },
+        {
+          "slug": "postfix",
+          "label": "Postfix"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "roundcube",
+          "label": "Roundcube Webmail"
+        },
+        {
+          "slug": "shopware",
+          "label": "Shopware"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "tails",
+          "label": "Tails"
+        },
+        {
+          "slug": "traefik",
+          "label": "Traefik"
+        },
+        {
+          "slug": "twig",
+          "label": "Twig"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "vmware-cloud-foundation",
+          "label": "VMware Cloud Foundation"
+        },
+        {
+          "slug": "esxi",
+          "label": "VMware ESXi"
+        },
+        {
+          "slug": "vcenter",
+          "label": "VMware vCenter Server"
         }
       ]
     }
