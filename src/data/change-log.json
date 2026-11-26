@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-25T06:14:07+00:00",
+  "updatedAt": "2026-11-25T23:43:38+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -13462,6 +13462,54 @@
       "release": "26.10",
       "from": "2027-07-01",
       "to": "2027-07-15"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "pop-os",
+      "label": "Pop!_OS",
+      "release": "26.04",
+      "eolFrom": "2031-05-29"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "quarkus-framework",
+      "label": "Quarkus",
+      "release": "4.0",
+      "eolFrom": "2027-01-01"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "varnish",
+      "label": "Varnish",
+      "release": "9.1",
+      "eolFrom": "2028-04-30"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "varnish",
+      "label": "Varnish",
+      "release": "9.0",
+      "eolFrom": "2027-04-30"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "varnish",
+      "label": "Varnish",
+      "release": "8.0",
+      "eolFrom": "2026-09-15"
+    },
+    {
+      "detectedAt": "2026-11-25T23:43:38+00:00",
+      "type": "release-added",
+      "product": "varnish",
+      "label": "Varnish",
+      "release": "6.0",
+      "eolFrom": "2027-04-30"
     }
   ]
 }
