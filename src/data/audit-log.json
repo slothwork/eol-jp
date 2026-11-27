@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-26T08:16:13.338Z",
+  "updatedAt": "2026-11-27T08:30:40.826Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -8462,6 +8462,104 @@
         {
           "slug": "vinyl-cache",
           "label": "Vinyl Cache"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-27T08:30:40.826Z-e6c6fb4b4b01",
+      "syncedAt": "2026-11-27T08:30:40.826Z",
+      "sourceGeneratedAt": "2026-11-27T00:08:31+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "dc74c0c5602d8fa74c35f580e4e2c5301683f4039f0115b7e9a354eea2db4a23",
+      "afterSha256": "e6c6fb4b4b0198b806891384b87cf611ae425001723f2974c29a4b2817795a0d",
+      "productCount": 490,
+      "releaseCount": 9489,
+      "changes": {
+        "total": 39,
+        "releaseAdded": 1,
+        "releaseRemoved": 0,
+        "eolChanged": 0,
+        "supportChanged": 0,
+        "latestChanged": 36,
+        "releaseMetadataChanged": 2,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "amazon-eks",
+          "label": "Amazon EKS"
+        },
+        {
+          "slug": "amazon-rds-postgresql",
+          "label": "Amazon RDS for PostgreSQL"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "cos",
+          "label": "Google Container-Optimized OS (COS)"
+        },
+        {
+          "slug": "haproxy",
+          "label": "HAProxy"
+        },
+        {
+          "slug": "metabase",
+          "label": "Metabase"
+        },
+        {
+          "slug": "nestjs",
+          "label": "NestJS"
+        },
+        {
+          "slug": "panos",
+          "label": "Palo Alto Networks PAN-OS"
+        },
+        {
+          "slug": "plesk",
+          "label": "Plesk"
+        },
+        {
+          "slug": "pnpm",
+          "label": "pnpm"
+        },
+        {
+          "slug": "quasar",
+          "label": "Quasar"
+        },
+        {
+          "slug": "redis",
+          "label": "Redis"
+        },
+        {
+          "slug": "renovate",
+          "label": "Renovate CLI"
+        },
+        {
+          "slug": "rtpengine",
+          "label": "rtpengine"
+        },
+        {
+          "slug": "spring-security",
+          "label": "Spring Security"
+        },
+        {
+          "slug": "unity",
+          "label": "Unity"
+        },
+        {
+          "slug": "valkey",
+          "label": "Valkey"
+        },
+        {
+          "slug": "vuetify",
+          "label": "Vuetify"
+        },
+        {
+          "slug": "weechat",
+          "label": "WeeChat"
         }
       ]
     }

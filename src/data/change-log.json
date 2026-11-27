@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-25T23:43:38+00:00",
+  "updatedAt": "2026-11-27T00:08:31+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -13510,6 +13510,14 @@
       "label": "Varnish",
       "release": "6.0",
       "eolFrom": "2027-04-30"
+    },
+    {
+      "detectedAt": "2026-11-27T00:08:31+00:00",
+      "type": "release-added",
+      "product": "spring-security",
+      "label": "Spring Security",
+      "release": "7.2",
+      "eolFrom": "2027-12-31"
     }
   ]
 }
