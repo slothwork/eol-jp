@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1",
   "startedAt": "2026-09-05",
-  "updatedAt": "2026-11-27T08:30:40.826Z",
+  "updatedAt": "2026-11-28T07:47:38.301Z",
   "entries": [
     {
       "id": "2026-09-06T04:38:21.632Z-426c2bf779b4",
@@ -8560,6 +8560,104 @@
         {
           "slug": "weechat",
           "label": "WeeChat"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-28T07:47:38.301Z-f3f367e1bc21",
+      "syncedAt": "2026-11-28T07:47:38.301Z",
+      "sourceGeneratedAt": "2026-11-28T00:08:17+00:00",
+      "sourceUrl": "https://endoflife.date/api/v1/products/full",
+      "beforeSha256": "e6c6fb4b4b0198b806891384b87cf611ae425001723f2974c29a4b2817795a0d",
+      "afterSha256": "f3f367e1bc215dfb8e9ab5beaeb7f21fc2dd473248d7e07a31719c0f7f1c13ec",
+      "productCount": 490,
+      "releaseCount": 9489,
+      "changes": {
+        "total": 37,
+        "releaseAdded": 0,
+        "releaseRemoved": 0,
+        "eolChanged": 5,
+        "supportChanged": 0,
+        "latestChanged": 31,
+        "releaseMetadataChanged": 1,
+        "productMetadataChanged": 0
+      },
+      "affectedProducts": [
+        {
+          "slug": "adonisjs",
+          "label": "AdonisJS"
+        },
+        {
+          "slug": "apache-groovy",
+          "label": "Apache Groovy"
+        },
+        {
+          "slug": "centreon",
+          "label": "Centreon"
+        },
+        {
+          "slug": "ckeditor",
+          "label": "CKEditor"
+        },
+        {
+          "slug": "clickhouse",
+          "label": "ClickHouse"
+        },
+        {
+          "slug": "eclipse-temurin",
+          "label": "Eclipse Temurin"
+        },
+        {
+          "slug": "eslint",
+          "label": "ESLint"
+        },
+        {
+          "slug": "gradle",
+          "label": "Gradle"
+        },
+        {
+          "slug": "grafana-loki",
+          "label": "Grafana Loki"
+        },
+        {
+          "slug": "haproxy",
+          "label": "HAProxy"
+        },
+        {
+          "slug": "longhorn",
+          "label": "Longhorn"
+        },
+        {
+          "slug": "mattermost",
+          "label": "Mattermost"
+        },
+        {
+          "slug": "neos",
+          "label": "Neos"
+        },
+        {
+          "slug": "rust",
+          "label": "Rust"
+        },
+        {
+          "slug": "statamic",
+          "label": "Statamic"
+        },
+        {
+          "slug": "symfony",
+          "label": "Symfony"
+        },
+        {
+          "slug": "tarteaucitron",
+          "label": "tarteaucitron"
+        },
+        {
+          "slug": "ubuntu",
+          "label": "Ubuntu"
+        },
+        {
+          "slug": "unrealircd",
+          "label": "UnrealIRCd"
         }
       ]
     }
