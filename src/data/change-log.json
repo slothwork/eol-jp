@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2",
   "startedAt": "2026-09-04",
-  "updatedAt": "2026-11-27T00:08:31+00:00",
+  "updatedAt": "2026-11-28T00:08:17+00:00",
   "events": [
     {
       "detectedAt": "2026-09-05T00:07:19+00:00",
@@ -13518,6 +13518,51 @@
       "label": "Spring Security",
       "release": "7.2",
       "eolFrom": "2027-12-31"
+    },
+    {
+      "detectedAt": "2026-11-28T00:08:17+00:00",
+      "type": "eol-changed",
+      "product": "eclipse-temurin",
+      "label": "Eclipse Temurin",
+      "release": "25",
+      "from": "2031-09-30",
+      "to": "2033-09-30"
+    },
+    {
+      "detectedAt": "2026-11-28T00:08:17+00:00",
+      "type": "eol-changed",
+      "product": "eclipse-temurin",
+      "label": "Eclipse Temurin",
+      "release": "21",
+      "from": "2029-12-31",
+      "to": "2031-09-30"
+    },
+    {
+      "detectedAt": "2026-11-28T00:08:17+00:00",
+      "type": "eol-changed",
+      "product": "eclipse-temurin",
+      "label": "Eclipse Temurin",
+      "release": "17",
+      "from": "2027-10-31",
+      "to": "2029-01-31"
+    },
+    {
+      "detectedAt": "2026-11-28T00:08:17+00:00",
+      "type": "eol-changed",
+      "product": "eclipse-temurin",
+      "label": "Eclipse Temurin",
+      "release": "11",
+      "from": "2027-10-31",
+      "to": "2032-01-31"
+    },
+    {
+      "detectedAt": "2026-11-28T00:08:17+00:00",
+      "type": "eol-changed",
+      "product": "eclipse-temurin",
+      "label": "Eclipse Temurin",
+      "release": "8",
+      "from": "2030-12-31",
+      "to": "2032-12-31"
     }
   ]
 }
